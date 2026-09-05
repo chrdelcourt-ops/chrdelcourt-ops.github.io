@@ -3,117 +3,193 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Site pédagogique SNT - Seconde - Lycée Marie Rivier">
-  <title>SNT Seconde | Marie Rivier</title>
+  <meta name="description" content="Site pédagogique de Sciences Numériques et Technologie en classe de seconde - Lycée Marie Rivier - Christophe Delcourt">
+  <title>SNT Seconde | Lycée Marie Rivier</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
   <header class="site-header">
     <div class="header-inner">
-      <img src="assets/logo-marie-rivier.png" alt="Logo Marie Rivier" class="logo">
-      <div>
+      <a href="index.html" class="brand" aria-label="Accueil SNT">
+        <img src="assets/logo-marie-rivier.png" alt="Logo du Lycée Marie Rivier" class="logo">
+      </a>
+      <div class="header-title">
         <p class="eyebrow">Lycée Marie Rivier</p>
         <h1>Sciences Numériques et Technologie</h1>
-        <p class="subtitle">Seconde • Christophe Delcourt</p>
+        <p class="subtitle">Seconde • Christophe Delcourt • 2026–2027</p>
       </div>
     </div>
   </header>
 
   <nav class="main-nav" aria-label="Navigation principale">
-    <a href="#themes">Thèmes</a>
-    <a href="#python">Python</a>
-    <a href="#quiz">Quiz</a>
-    <a href="#ressources">Ressources</a>
+    <div class="nav-inner">
+      <a class="active" href="index.html">Accueil</a>
+      <a href="#themes">Thèmes</a>
+      <a href="#python">Python</a>
+      <a href="#entrainement">S'entraîner</a>
+      <a href="#ressources">Ressources</a>
+    </div>
   </nav>
 
-  <main>
+  <main id="contenu">
     <section class="hero">
-      <div>
+      <div class="hero-content">
         <span class="badge">SNT • Seconde</span>
         <h2>Comprendre le numérique qui nous entoure</h2>
-        <p>Un espace pour retrouver les cours, activités, TP, fiches de révision et quiz de Sciences Numériques et Technologie.</p>
-        <a class="cta" href="#themes">Découvrir les thèmes</a>
+        <p>
+          Cours, activités, travaux pratiques, fiches de synthèse et quiz pour progresser
+          tout au long de l'année en Sciences Numériques et Technologie.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#themes">Voir les 7 thèmes</a>
+          <a class="btn btn-secondary" href="themes/internet.html">Commencer : Internet</a>
+        </div>
       </div>
+      <div class="hero-panel" aria-label="Informations du cours">
+        <div class="metric"><strong>7</strong><span>thèmes officiels</span></div>
+        <div class="metric"><strong>1</strong><span>thème complet en ligne</span></div>
+        <div class="metric"><strong>∞</strong><span>curiosité recommandée</span></div>
+      </div>
+    </section>
+
+    <section class="info-strip" aria-label="Informations">
+      <div><span>✓</span> Accessible sur ordinateur, tablette et téléphone</div>
+      <div><span>✓</span> Aucun compte élève nécessaire</div>
+      <div><span>✓</span> Contenus et quiz consultables à la maison</div>
     </section>
 
     <section id="themes" class="section">
       <div class="section-heading">
-        <p class="eyebrow">Programme</p>
-        <h2>Les 7 thèmes de SNT</h2>
+        <div>
+          <p class="eyebrow">Programme de seconde</p>
+          <h2>Les 7 thèmes de SNT</h2>
+        </div>
+        <p class="section-intro">
+          Chaque thème comportera progressivement un cours, des activités, un TP,
+          une fiche « À retenir » et un quiz.
+        </p>
       </div>
 
       <div class="cards">
-        <a class="card" href="themes/internet.html">
-          <span class="icon">🌐</span><h3>Internet</h3>
-          <p>IP, DNS, routage, paquets et protocoles.</p>
+        <a class="card card-featured" href="themes/internet.html">
+          <div class="card-top">
+            <span class="icon" aria-hidden="true">🌐</span>
+            <span class="status status-ready">Cours disponible</span>
+          </div>
+          <h3>Internet</h3>
+          <p>Adresses IP, DNS, paquets, routage, TCP, pair-à-pair et réseaux physiques.</p>
+          <span class="card-link">Ouvrir le chapitre →</span>
         </a>
+
         <a class="card" href="themes/web.html">
-          <span class="icon">🕸️</span><h3>Le Web</h3>
-          <p>HTML, CSS, URL, HTTP et moteurs de recherche.</p>
+          <div class="card-top"><span class="icon">🕸️</span><span class="status">À venir</span></div>
+          <h3>Le Web</h3>
+          <p>HTML, CSS, URL, HTTP/HTTPS, hyperliens et moteurs de recherche.</p>
+          <span class="card-link">Voir la page →</span>
         </a>
+
         <a class="card" href="themes/reseaux-sociaux.html">
-          <span class="icon">👥</span><h3>Réseaux sociaux</h3>
-          <p>Graphes, communautés, identité numérique et données.</p>
+          <div class="card-top"><span class="icon">👥</span><span class="status">À venir</span></div>
+          <h3>Réseaux sociaux</h3>
+          <p>Graphes, communautés, recommandations, identité numérique et cyberviolence.</p>
+          <span class="card-link">Voir la page →</span>
         </a>
+
         <a class="card" href="themes/donnees.html">
-          <span class="icon">📊</span><h3>Données structurées</h3>
-          <p>CSV, tables, traitement et données ouvertes.</p>
+          <div class="card-top"><span class="icon">📊</span><span class="status">À venir</span></div>
+          <h3>Données structurées</h3>
+          <p>Tables, CSV, descripteurs, recherche, tri, traitement et open data.</p>
+          <span class="card-link">Voir la page →</span>
         </a>
+
         <a class="card" href="themes/localisation.html">
-          <span class="icon">📍</span><h3>Localisation</h3>
-          <p>GPS, coordonnées, cartographie et mobilité.</p>
+          <div class="card-top"><span class="icon">📍</span><span class="status">À venir</span></div>
+          <h3>Localisation, cartographie et mobilité</h3>
+          <p>GPS, coordonnées, cartes numériques, itinéraires et géolocalisation.</p>
+          <span class="card-link">Voir la page →</span>
         </a>
+
         <a class="card" href="themes/objets-connectes.html">
-          <span class="icon">🤖</span><h3>Objets connectés</h3>
-          <p>Capteurs, systèmes embarqués et objets communicants.</p>
+          <div class="card-top"><span class="icon">🤖</span><span class="status">À venir</span></div>
+          <h3>Informatique embarquée et objets connectés</h3>
+          <p>Capteurs, actionneurs, microcontrôleurs, communications et sécurité.</p>
+          <span class="card-link">Voir la page →</span>
         </a>
+
         <a class="card" href="themes/photo-numerique.html">
-          <span class="icon">📷</span><h3>Photographie numérique</h3>
-          <p>Pixels, couleurs, métadonnées et traitement d'image.</p>
+          <div class="card-top"><span class="icon">📷</span><span class="status">À venir</span></div>
+          <h3>Photographie numérique</h3>
+          <p>Pixels, couleurs RVB, définition, résolution, métadonnées et traitement.</p>
+          <span class="card-link">Voir la page →</span>
         </a>
       </div>
     </section>
 
     <section id="python" class="feature">
       <div>
-        <p class="eyebrow">Programmation</p>
+        <p class="eyebrow">Programmation transversale</p>
         <h2>Python en SNT</h2>
-        <p>Retrouver les bases indispensables : variables, conditions, boucles, fonctions et petits programmes appliqués aux thèmes du cours.</p>
+        <p>
+          La programmation accompagne les différents thèmes : variables, conditions,
+          boucles, fonctions et manipulation de données.
+        </p>
+        <span class="status status-soon">Espace Python en préparation</span>
       </div>
-      <div class="code-card">
-<pre><code>nom = "SNT"
-for i in range(3):
-    print("Bienvenue en", nom)</code></pre>
+      <div class="code-card" aria-label="Exemple de code Python">
+<pre><code>theme = "SNT"
+for numero in range(1, 4):
+    print(numero, "-", theme)</code></pre>
       </div>
     </section>
 
-    <section id="quiz" class="section">
+    <section id="entrainement" class="section">
       <div class="section-heading">
-        <p class="eyebrow">S'entraîner</p>
-        <h2>Quiz rapide</h2>
-      </div>
-      <div class="quiz-box">
-        <p id="question">Quel protocole permet principalement de traduire un nom de domaine en adresse IP ?</p>
-        <div class="quiz-actions">
-          <button onclick="checkAnswer(this, false)">HTTP</button>
-          <button onclick="checkAnswer(this, true)">DNS</button>
-          <button onclick="checkAnswer(this, false)">HTML</button>
+        <div>
+          <p class="eyebrow">S'entraîner</p>
+          <h2>Question flash</h2>
         </div>
-        <p id="result" class="result" aria-live="polite"></p>
+        <p class="section-intro">Une question pour vérifier une notion fondamentale du thème Internet.</p>
+      </div>
+
+      <div class="quiz-box home-quiz">
+        <p class="question-number">QUESTION FLASH</p>
+        <h3>Quel service permet principalement d'associer un nom de domaine à une adresse IP ?</h3>
+        <div class="quiz-actions">
+          <button type="button" data-home-answer="false">HTTP</button>
+          <button type="button" data-home-answer="true">DNS</button>
+          <button type="button" data-home-answer="false">HTML</button>
+        </div>
+        <p id="home-result" class="result" aria-live="polite"></p>
       </div>
     </section>
 
-    <section id="ressources" class="section resources">
+    <section id="ressources" class="section">
       <div class="section-heading">
-        <p class="eyebrow">Ressources</p>
-        <h2>Pour aller plus loin</h2>
+        <div>
+          <p class="eyebrow">Références</p>
+          <h2>Ressources officielles</h2>
+        </div>
       </div>
-      <p>Les ressources pédagogiques et liens utiles seront ajoutés progressivement pour chaque thème.</p>
+      <div class="resource-list">
+        <a href="https://eduscol.education.gouv.fr/5841/programmes-et-ressources-en-sciences-numeriques-et-technologie-voie-gt" target="_blank" rel="noopener">
+          <strong>Éduscol — SNT voie générale et technologique</strong>
+          <span>Programme en vigueur et ressources d'accompagnement.</span>
+        </a>
+        <a href="https://www.education.gouv.fr/sites/default/files/imported_files/document/2de_Sciences_numeriques_et_technologie_Ens-commun_1025410.pdf" target="_blank" rel="noopener">
+          <strong>Ministère de l'Éducation nationale — Programme SNT</strong>
+          <span>Programme officiel de la classe de seconde.</span>
+        </a>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026–2027 • Lycée Marie Rivier • SNT • Christophe Delcourt</p>
+    <div class="footer-inner">
+      <p><strong>Lycée Marie Rivier</strong> • Sciences Numériques et Technologie</p>
+      <p>Christophe Delcourt • Année scolaire 2026–2027</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>
