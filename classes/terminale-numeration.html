@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Terminale STI2D SIN - Numération et codage de l'information - Christophe Delcourt - Lycée Marie Rivier">
+  <title>Numération et codage | Terminale STI2D SIN</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header compact-header">
+    <div class="header-inner">
+      <a href="../index.html" class="brand" aria-label="Retour à l'accueil">
+        <img src="../assets/logo-marie-rivier.png" alt="Logo Marie Rivier" class="logo">
+      </a>
+      <div class="header-title">
+        <p class="eyebrow">Terminale STI2D • 2I2D / SIN</p>
+        <h1>Numération et codage de l'information</h1>
+        <p class="subtitle">Christophe Delcourt • Édition 2026</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Navigation du chapitre">
+    <div class="nav-inner">
+      <a href="terminale-sti2d.html">← Terminale</a>
+      <a href="#objectifs">Objectifs</a>
+      <a href="#diagnostic">Diagnostic</a>
+      <a href="#cours">Cours</a>
+      <a href="#outils">Outils</a>
+      <a href="#evaluation">Évaluation</a>
+      <a href="#methode">Fiche méthode</a>
+    </div>
+  </nav>
+
+  <main id="contenu">
+    <section class="chapter-hero coding-hero">
+      <div>
+        <span class="badge">TERMINALE STI2D • SIN</span>
+        <h2>Du bit au traitement numérique</h2>
+        <p>
+          Comprendre comment un microcontrôleur acquiert, stocke, traite et transmet
+          l'information : bases de numération, types de données, opérations binaires,
+          ASCII, masques et conversion analogique/numérique.
+        </p>
+        <div class="hero-actions no-print">
+          <a class="btn btn-primary" href="#diagnostic">Commencer</a>
+          <a class="btn btn-secondary" href="../documents/numeration-codage-terminale-sti2d.pdf" target="_blank">Ouvrir le dossier PDF</a>
+          <button class="btn btn-secondary" type="button" onclick="window.print()">Imprimer / PDF</button>
+        </div>
+      </div>
+      <aside class="chapter-summary">
+        <p class="eyebrow">Parcours</p>
+        <ul class="check-list">
+          <li>Binaire, décimal, hexadécimal</li>
+          <li>Bit, octet, LSB et MSB</li>
+          <li>Entiers signés / non signés</li>
+          <li>Opérations et débordements</li>
+          <li>ET, OU, XOR et masques</li>
+          <li>ASCII et UTF-8</li>
+          <li>CAN et quantification</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="objectifs" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Repères pédagogiques</p>
+          <h2>Objectifs d'apprentissage</h2>
+        </div>
+        <p class="section-intro">
+          Les conversions sont utilisées pour comprendre le stockage et le traitement
+          de l'information dans les systèmes numériques.
+        </p>
+      </div>
+
+      <div class="objectives-grid">
+        <div class="objective"><span>01</span><p>Convertir un entier entre les bases <strong>2, 10 et 16</strong>.</p></div>
+        <div class="objective"><span>02</span><p>Expliquer le rôle d'un <strong>bit, octet, LSB et MSB</strong>.</p></div>
+        <div class="objective"><span>03</span><p>Déterminer l'<strong>étendue représentable</strong> sur n bits.</p></div>
+        <div class="objective"><span>04</span><p>Coder et décoder un entier signé en <strong>complément à 2</strong>.</p></div>
+        <div class="objective"><span>05</span><p>Effectuer une opération binaire et repérer un <strong>débordement</strong>.</p></div>
+        <div class="objective"><span>06</span><p>Utiliser des <strong>masques logiques</strong> avec AND, OR et XOR.</p></div>
+        <div class="objective"><span>07</span><p>Reconnaître et utiliser un <strong>encodage ASCII</strong>.</p></div>
+        <div class="objective"><span>08</span><p>Relier <strong>résolution d'un CAN</strong>, nombre de bits et taille des données.</p></div>
+      </div>
+    </section>
+
+    <section id="diagnostic" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Avant de commencer</p>
+          <h2>Diagnostic — bases indispensables</h2>
+        </div>
+        <p class="section-intro">Durée conseillée : 15 min, sans calculatrice.</p>
+      </div>
+
+      <div class="diagnostic-grid">
+        <div class="diagnostic-card"><span>1</span><p>Convertir <code>110001₂</code> en décimal.</p></div>
+        <div class="diagnostic-card"><span>2</span><p>Convertir <code>12₁₀</code> en binaire.</p></div>
+        <div class="diagnostic-card"><span>3</span><p>Convertir <code>8E5₁₆</code> en binaire sur 12 bits.</p></div>
+        <div class="diagnostic-card"><span>4</span><p>Décoder le BCD <code>1000 0110 0001</code>.</p></div>
+        <div class="diagnostic-card"><span>5</span><p>Calculer <code>11010 + 01011</code>.</p></div>
+        <div class="diagnostic-card"><span>6</span><p>Donner le code ASCII hexadécimal de <strong>A</strong>.</p></div>
+      </div>
+    </section>
+
+    <section id="cours" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Cours interactif</p>
+          <h2>Les chapitres</h2>
+        </div>
+        <p class="section-intro">Ouvre chaque partie pour travailler à ton rythme.</p>
+      </div>
+
+      <div class="accordion-list">
+        <details class="course-accordion" open>
+          <summary><span>1</span> Comprendre une base de numération</summary>
+          <div class="accordion-content">
+            <p>Dans une base <strong>B</strong>, chaque position pèse une puissance de B. Les chiffres disponibles vont de 0 à B − 1.</p>
+            <div class="formula-box">(aₙ … a₁ a₀)<sub>B</sub> = aₙBⁿ + … + a₁B + a₀</div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Terme</th><th>Définition</th><th>Exemple</th></tr></thead>
+                <tbody>
+                  <tr><td>bit</td><td>binary digit : 0 ou 1</td><td>1</td></tr>
+                  <tr><td>quartet</td><td>groupe de 4 bits</td><td>1010</td></tr>
+                  <tr><td>octet</td><td>groupe de 8 bits</td><td>11001010</td></tr>
+                  <tr><td>LSB</td><td>bit de poids faible, à droite</td><td>2⁰</td></tr>
+                  <tr><td>MSB</td><td>bit de poids fort, à gauche</td><td>2ⁿ⁻¹</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="example-box"><strong>Exemple :</strong> 10110110₂ = 128 + 32 + 16 + 4 + 2 = <strong>182₁₀</strong>.</div>
+            <div class="callout warning"><strong>Contrôle :</strong> un octet non signé représente une valeur comprise entre 0 et 255.</div>
+            <h4>Activité</h4>
+            <ol>
+              <li>Convertir <code>10101101₂</code> en décimal.</li>
+              <li>Convertir <code>3A7₁₆</code> en décimal.</li>
+              <li>Dans <code>11010100</code>, identifier le MSB, le LSB et le poids du troisième bit en partant de la droite.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="course-accordion">
+          <summary><span>2</span> Convertir entre décimal, binaire et hexadécimal</summary>
+          <div class="accordion-content">
+            <h4>Décimal → binaire</h4>
+            <p>Effectuer des divisions successives par 2, noter les restes puis les lire du dernier au premier.</p>
+            <div class="example-box"><strong>230₁₀ = 11100110₂</strong></div>
+            <h4>Binaire → hexadécimal</h4>
+            <p>Regrouper les bits par groupes de 4 à partir de la droite. Chaque quartet correspond à un chiffre hexadécimal.</p>
+            <div class="hex-grid">
+              <span>0000<br><b>0</b></span><span>0001<br><b>1</b></span><span>0010<br><b>2</b></span><span>0011<br><b>3</b></span>
+              <span>0100<br><b>4</b></span><span>0101<br><b>5</b></span><span>0110<br><b>6</b></span><span>0111<br><b>7</b></span>
+              <span>1000<br><b>8</b></span><span>1001<br><b>9</b></span><span>1010<br><b>A</b></span><span>1011<br><b>B</b></span>
+              <span>1100<br><b>C</b></span><span>1101<br><b>D</b></span><span>1110<br><b>E</b></span><span>1111<br><b>F</b></span>
+            </div>
+            <div class="callout"><strong>Programmation :</strong> on rencontre souvent <code>0b</code> pour le binaire et <code>0x</code> pour l'hexadécimal.</div>
+          </div>
+        </details>
+
+        <details class="course-accordion">
+          <summary><span>3</span> Nombres fractionnaires et approximation</summary>
+          <div class="accordion-content">
+            <p>Pour convertir la partie fractionnaire décimale en binaire, on la multiplie successivement par 2 et on conserve les parties entières obtenues.</p>
+            <div class="example-box">13,625₁₀ = <strong>1101,101₂</strong></div>
+            <p>Toutes les fractions décimales n'ont pas une écriture binaire finie. Avec un nombre limité de bits, on doit tronquer ou arrondir : cela crée une <strong>erreur de quantification</strong>.</p>
+          </div>
+        </details>
+
+        <details class="course-accordion">
+          <summary><span>4</span> Entiers non signés et taille des données</summary>
+          <div class="accordion-content">
+            <div class="formula-box">Sur n bits : minimum = 0 &nbsp; • &nbsp; maximum = 2ⁿ − 1</div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Taille</th><th>Combinaisons</th><th>Étendue non signée</th></tr></thead>
+                <tbody>
+                  <tr><td>4 bits</td><td>16</td><td>0 à 15</td></tr>
+                  <tr><td>8 bits</td><td>256</td><td>0 à 255</td></tr>
+                  <tr><td>10 bits</td><td>1 024</td><td>0 à 1 023</td></tr>
+                  <tr><td>12 bits</td><td>4 096</td><td>0 à 4 095</td></tr>
+                  <tr><td>16 bits</td><td>65 536</td><td>0 à 65 535</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout warning"><strong>Débordement :</strong> si le résultat dépasse l'étendue disponible, il ne peut pas être représenté correctement avec cette taille et ce type.</div>
+          </div>
+        </details>
+
+        <details class="course-accordion">
+          <summary><span>5</span> Entiers signés en complément à 2</summary>
+          <div class="accordion-content">
+            <div class="formula-box">Sur n bits : −2ⁿ⁻¹ à 2ⁿ⁻¹ − 1</div>
+            <p>Pour coder <strong>−x</strong> sur une taille fixée : coder +x, inverser tous les bits, puis ajouter 1.</p>
+            <div class="binary-steps">
+              <div><span>+37</span><code>0010 0101</code></div>
+              <div><span>Inversion</span><code>1101 1010</code></div>
+              <div><span>+1</span><code>1101 1011</code></div>
+              <div class="final"><span>Résultat</span><code>−37 = 1101 1011</code></div>
+            </div>
+            <div class="callout"><strong>Important :</strong> une même suite de bits peut représenter des valeurs différentes selon le type choisi.</div>
+          </div>
+        </details>
+
+        <details class="course-accordion">
+          <summary><span>6</span> Opérations binaires et débordements</summary>
+          <div class="accordion-content">
+            <p>Les opérations binaires suivent les mêmes principes que les opérations décimales, avec des retenues adaptées à la base 2.</p>
+            <div class="example-box">
+              <code>0110 1101</code> (109)<br>
+              + <code>0011 0111</code> (55)<br>
+              = <code>1010 0100</code> (164 en non signé)
+            </div>
+            <p>En non signé, une retenue au-delà du MSB signale un dépassement de capacité. En complément à 2, l'addition de deux nombres de même signe donnant un résultat de signe opposé signale un débordement signé.</p>
+            <div class="callout"><strong>Décalage :</strong> à gauche d'un bit ≈ ×2 ; à droite d'un bit non signé ≈ division entière par 2, tant qu'il n'y a pas de débordement.</div>
+          </div>
+        </details>
+
+        <details class="course-accordion">
+          <summary><span>7</span> Opérateurs logiques et masques</summary>
+          <div class="accordion-content">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Opérateur</th><th>Rôle courant</th><th>Règle</th></tr></thead>
+                <tbody>
+                  <tr><td>AND / ET</td><td>tester ou conserver</td><td>1 si les deux bits valent 1</td></tr>
+                  <tr><td>OR / OU</td><td>forcer à 1</td><td>1 si au moins un bit vaut 1</td></tr>
+                  <tr><td>XOR</td><td>inverser sélectivement</td><td>1 si les bits sont différents</td></tr>
+                  <tr><td>NOT / NON</td><td>inverser tous les bits</td><td>0 devient 1 et inversement</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="example-box">Valeur = <code>0xAC = 1010 1100</code><br>
+              Lire le quartet faible : <code>0xAC AND 0x0F = 0x0C</code>
+            </div>
+          </div>
+        </details>
+
+        <details class="course-accordion">
+          <summary><span>8</span> Encodage ASCII</summary>
+          <div class="accordion-content">
+            <p>ASCII associe un nombre à 128 caractères : lettres latines non accentuées, chiffres, ponctuation et caractères de contrôle.</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Caractère</th><th>Décimal</th><th>Hexa</th><th>Binaire</th></tr></thead>
+                <tbody>
+                  <tr><td>0</td><td>48</td><td>30</td><td>0011 0000</td></tr>
+                  <tr><td>9</td><td>57</td><td>39</td><td>0011 1001</td></tr>
+                  <tr><td>A</td><td>65</td><td>41</td><td>0100 0001</td></tr>
+                  <tr><td>Z</td><td>90</td><td>5A</td><td>0101 1010</td></tr>
+                  <tr><td>a</td><td>97</td><td>61</td><td>0110 0001</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="example-box"><strong>SIN</strong> → <code>53 49 4E</code> en hexadécimal.</div>
+            <div class="callout">UTF-8 conserve les codes ASCII pour les 128 premiers caractères et utilise plusieurs octets pour de nombreux autres caractères.</div>
+          </div>
+        </details>
+
+        <details class="course-accordion">
+          <summary><span>+</span> Compléments : octal et BCD 8421</summary>
+          <div class="accordion-content">
+            <p>Ces codages sont conservés comme compléments pour lire certains dossiers techniques.</p>
+            <h4>Octal</h4>
+            <p>La base 8 utilise les chiffres 0 à 7. Chaque chiffre octal correspond à 3 bits.</p>
+            <h4>BCD 8421</h4>
+            <p>Chaque chiffre décimal de 0 à 9 est codé séparément sur 4 bits. Les quartets 1010 à 1111 sont invalides en BCD 8421.</p>
+            <div class="example-box">19 en BCD : <code>0001 1001</code> ; 19 en binaire pur : <code>0001 0011</code>.</div>
+          </div>
+        </details>
+
+        <details class="course-accordion">
+          <summary><span>9</span> Étude de cas : acquisition d'un capteur</summary>
+          <div class="accordion-content">
+            <p>Un capteur délivre une tension comprise entre 0 V et 5 V, acquise par un CAN de 10 bits.</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Grandeur</th><th>Calcul</th><th>Résultat</th></tr></thead>
+                <tbody>
+                  <tr><td>Nombre de codes</td><td>2¹⁰</td><td>1 024</td></tr>
+                  <tr><td>Codes possibles</td><td>0 à 2¹⁰ − 1</td><td>0 à 1 023</td></tr>
+                  <tr><td>Quantum</td><td>5 / 1 023</td><td>≈ 4,888 mV/code</td></tr>
+                  <tr><td>Code pour 3,20 V</td><td>3,20 / 5 × 1 023</td><td>≈ 655</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout warning"><strong>Convention :</strong> certains documents utilisent étendue / 2ⁿ, d'autres étendue / (2ⁿ − 1). Toujours suivre la convention de l'énoncé ou de la documentation.</div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="outils" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Manipuler</p>
+          <h2>Outils interactifs</h2>
+        </div>
+        <p class="section-intro">Pour vérifier une méthode après l'avoir faite à la main.</p>
+      </div>
+
+      <div class="tool-grid">
+        <div class="interactive-tool">
+          <h3>Convertisseur entier</h3>
+          <label for="decimal-input">Valeur décimale positive</label>
+          <input id="decimal-input" type="number" min="0" step="1" placeholder="Ex. 230">
+          <button class="btn btn-primary" type="button" id="convert-number">Convertir</button>
+          <div class="tool-result" id="conversion-result">
+            <div><span>Binaire</span><strong>—</strong></div>
+            <div><span>Hexadécimal</span><strong>—</strong></div>
+          </div>
+        </div>
+
+        <div class="interactive-tool">
+          <h3>Étendue sur n bits</h3>
+          <label for="bits-input">Nombre de bits</label>
+          <input id="bits-input" type="number" min="1" max="31" step="1" value="8">
+          <button class="btn btn-primary" type="button" id="calc-range">Calculer</button>
+          <div class="tool-result" id="range-result">
+            <div><span>Non signé</span><strong>0 à 255</strong></div>
+            <div><span>Signé C2</span><strong>−128 à 127</strong></div>
+          </div>
+        </div>
+
+        <div class="interactive-tool">
+          <h3>ASCII</h3>
+          <label for="ascii-input">Un caractère ASCII</label>
+          <input id="ascii-input" type="text" maxlength="1" placeholder="Ex. A">
+          <button class="btn btn-primary" type="button" id="convert-ascii">Coder</button>
+          <div class="tool-result" id="ascii-result">
+            <div><span>Décimal</span><strong>—</strong></div>
+            <div><span>Hexa</span><strong>—</strong></div>
+            <div><span>Binaire</span><strong>—</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evaluation" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Entraînement</p>
+          <h2>Évaluation formative</h2>
+        </div>
+        <p class="section-intro">Questions issues de la logique du dossier élève. Fais les calculs avant d'afficher les réponses.</p>
+      </div>
+
+      <form id="numeration-quiz" class="full-quiz">
+        <fieldset data-correct="ad">
+          <legend><span>1</span> Convertir 173₁₀ en hexadécimal.</legend>
+          <label><input type="radio" name="n1" value="a9"> A9</label>
+          <label><input type="radio" name="n1" value="ad"> AD</label>
+          <label><input type="radio" name="n1" value="bd"> BD</label>
+        </fieldset>
+
+        <fieldset data-correct="92">
+          <legend><span>2</span> Convertir 0x5C en décimal.</legend>
+          <label><input type="radio" name="n2" value="82"> 82</label>
+          <label><input type="radio" name="n2" value="92"> 92</label>
+          <label><input type="radio" name="n2" value="102"> 102</label>
+        </fieldset>
+
+        <fieldset data-correct="11010011">
+          <legend><span>3</span> Quel est le complément à 2 de −45 sur 8 bits ?</legend>
+          <label><input type="radio" name="n3" value="00101101"> 0010 1101</label>
+          <label><input type="radio" name="n3" value="11010011"> 1101 0011</label>
+          <label><input type="radio" name="n3" value="11010110"> 1101 0110</label>
+        </fieldset>
+
+        <fieldset data-correct="-42">
+          <legend><span>4</span> 1101 0110 interprété en signé sur 8 bits vaut…</legend>
+          <label><input type="radio" name="n4" value="214"> 214</label>
+          <label><input type="radio" name="n4" value="-42"> −42</label>
+          <label><input type="radio" name="n4" value="-214"> −214</label>
+        </fieldset>
+
+        <fieldset data-correct="4f">
+          <legend><span>5</span> Quel est le code ASCII hexadécimal de O ?</legend>
+          <label><input type="radio" name="n5" value="4f"> 4F</label>
+          <label><input type="radio" name="n5" value="5f"> 5F</label>
+          <label><input type="radio" name="n5" value="41"> 41</label>
+        </fieldset>
+
+        <div class="quiz-submit no-print">
+          <button class="btn btn-primary" type="submit">Corriger</button>
+          <button class="btn btn-secondary" type="reset">Recommencer</button>
+        </div>
+        <div id="numeration-score" class="score-box" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section id="methode" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Révision</p>
+          <h2>Fiche méthode — l'essentiel</h2>
+        </div>
+      </div>
+
+      <div class="method-grid">
+        <div><strong>Binaire → décimal</strong><span>Somme des bits × puissances de 2.</span></div>
+        <div><strong>Décimal → binaire</strong><span>Divisions successives par 2, restes lus à l'envers.</span></div>
+        <div><strong>Binaire → hexadécimal</strong><span>Groupes de 4 bits.</span></div>
+        <div><strong>Non signé sur n bits</strong><span>0 à 2ⁿ − 1.</span></div>
+        <div><strong>Signé C2 sur n bits</strong><span>−2ⁿ⁻¹ à 2ⁿ⁻¹ − 1.</span></div>
+        <div><strong>Coder −x en C2</strong><span>+x sur n bits → inversion → +1.</span></div>
+        <div><strong>Tester un bit</strong><span>valeur AND masque.</span></div>
+        <div><strong>Forcer un bit</strong><span>valeur OR masque.</span></div>
+        <div><strong>Inverser un bit</strong><span>valeur XOR masque.</span></div>
+      </div>
+
+      <div class="callout success-callout">
+        <strong>Routine de vérification :</strong>
+        1. Identifier la base et le type → 2. Fixer la taille en bits → 3. Effectuer le calcul →
+        4. Vérifier l'étendue → 5. Interpréter le résultat dans le bon type.
+      </div>
+    </section>
+
+    <section class="section sources">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Document associé</p>
+          <h2>Dossier élève</h2>
+        </div>
+      </div>
+      <div class="resource-list">
+        <a href="../documents/numeration-codage-terminale-sti2d.pdf" target="_blank">
+          <strong>Numération et codage de l'information — PDF</strong>
+          <span>Dossier élève 16 pages, édition 2026.</span>
+        </a>
+        <a href="https://eduscol.education.gouv.fr/5856/programmes-et-ressources-en-serie-sti2d" target="_blank" rel="noopener">
+          <strong>Éduscol — STI2D</strong>
+          <span>Programmes et ressources en série STI2D.</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="chapter-nav no-print">
+      <a href="terminale-sti2d.html">← Retour Terminale STI2D</a>
+      <a href="../index.html">Accueil du site →</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p><strong>Lycée Marie Rivier</strong> • Terminale STI2D / SIN</p>
+      <p>Christophe Delcourt • 2026–2027</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
