@@ -1,6 +1,6 @@
-# Site SNT - Lycée Marie Rivier
+# Site SNT - STI2D - Lycée Marie Rivier
 
-Site pédagogique de Sciences Numériques et Technologie pour les classes de seconde.
+Site pédagogique.
 
 Enseignant : Christophe Delcourt
 
