@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Site pédagogique de Sciences Numériques et Technologie en classe de seconde - Lycée Marie Rivier - Christophe Delcourt">
-  <title>SNT Seconde | Lycée Marie Rivier</title>
+  <meta name="description" content="Espace pédagogique numérique et technologie - Lycée Marie Rivier - Christophe Delcourt">
+  <title>Cours Numérique & Technologie | Lycée Marie Rivier</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,13 +12,13 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="brand" aria-label="Accueil SNT">
+      <a href="index.html" class="brand" aria-label="Accueil">
         <img src="assets/logo-marie-rivier.png" alt="Logo du Lycée Marie Rivier" class="logo">
       </a>
       <div class="header-title">
         <p class="eyebrow">Lycée Marie Rivier</p>
-        <h1>Sciences Numériques et Technologie</h1>
-        <p class="subtitle">Seconde • Christophe Delcourt • 2026–2027</p>
+        <h1>Espace pédagogique — Numérique & Technologie</h1>
+        <p class="subtitle">Christophe Delcourt • Année scolaire 2026–2027</p>
       </div>
     </div>
   </header>
@@ -26,9 +26,9 @@
   <nav class="main-nav" aria-label="Navigation principale">
     <div class="nav-inner">
       <a class="active" href="index.html">Accueil</a>
-      <a href="#themes">Thèmes</a>
+      <a href="#niveaux">Mes classes</a>
+      <a href="#themes">SNT — 7 thèmes</a>
       <a href="#python">Python</a>
-      <a href="#entrainement">S'entraîner</a>
       <a href="#ressources">Ressources</a>
     </div>
   </nav>
@@ -36,46 +36,81 @@
   <main id="contenu">
     <section class="hero">
       <div class="hero-content">
-        <span class="badge">SNT • Seconde</span>
-        <h2>Comprendre le numérique qui nous entoure</h2>
+        <span class="badge">2026–2027</span>
+        <h2>Un seul site pour retrouver les cours</h2>
         <p>
-          Cours, activités, travaux pratiques, fiches de synthèse et quiz pour progresser
-          tout au long de l'année en Sciences Numériques et Technologie.
+          Espace pédagogique pour les élèves de Seconde SNT, Première STI2D et Terminale STI2D :
+          cours, activités, TP, projets, révisions et quiz.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#themes">Voir les 7 thèmes</a>
-          <a class="btn btn-secondary" href="themes/internet.html">Commencer : Internet</a>
+          <a class="btn btn-primary" href="#niveaux">Choisir ma classe</a>
+          <a class="btn btn-secondary" href="themes/web.html">Nouveau : Le Web</a>
         </div>
       </div>
-      <div class="hero-panel" aria-label="Informations du cours">
-        <div class="metric"><strong>7</strong><span>thèmes officiels</span></div>
-        <div class="metric"><strong>1</strong><span>thème complet en ligne</span></div>
-        <div class="metric"><strong>∞</strong><span>curiosité recommandée</span></div>
+      <div class="hero-panel" aria-label="Informations">
+        <div class="metric"><strong>3</strong><span>espaces de cours</span></div>
+        <div class="metric"><strong>7</strong><span>thèmes officiels en SNT</span></div>
+        <div class="metric"><strong>2</strong><span>chapitres SNT complets</span></div>
       </div>
     </section>
 
-    <section class="info-strip" aria-label="Informations">
-      <div><span>✓</span> Accessible sur ordinateur, tablette et téléphone</div>
-      <div><span>✓</span> Aucun compte élève nécessaire</div>
-      <div><span>✓</span> Contenus et quiz consultables à la maison</div>
+    <section id="niveaux" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Accès rapide</p>
+          <h2>Choisir ma classe</h2>
+        </div>
+        <p class="section-intro">Chaque niveau possède son propre espace et sera enrichi progressivement.</p>
+      </div>
+
+      <div class="level-grid">
+        <a class="level-card level-snt" href="#themes">
+          <span class="level-icon">💻</span>
+          <div>
+            <p class="level-label">SECONDE</p>
+            <h3>SNT</h3>
+            <p>Internet, Web, réseaux sociaux, données, localisation, objets connectés et photographie numérique.</p>
+          </div>
+          <span class="level-arrow">→</span>
+        </a>
+
+        <a class="level-card" href="classes/premiere-sti2d.html">
+          <span class="level-icon">⚙️</span>
+          <div>
+            <p class="level-label">PREMIÈRE</p>
+            <h3>STI2D</h3>
+            <p>Espace pour les cours, TP, activités, projets et évaluations de Première STI2D.</p>
+          </div>
+          <span class="level-arrow">→</span>
+        </a>
+
+        <a class="level-card" href="classes/terminale-sti2d.html">
+          <span class="level-icon">🛠️</span>
+          <div>
+            <p class="level-label">TERMINALE</p>
+            <h3>STI2D</h3>
+            <p>Espace pour les cours, TP, projets, révisions et préparation aux épreuves.</p>
+          </div>
+          <span class="level-arrow">→</span>
+        </a>
+      </div>
     </section>
 
     <section id="themes" class="section">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Programme de seconde</p>
-          <h2>Les 7 thèmes de SNT</h2>
+          <p class="eyebrow">Seconde SNT</p>
+          <h2>Les 7 thèmes</h2>
         </div>
         <p class="section-intro">
-          Chaque thème comportera progressivement un cours, des activités, un TP,
-          une fiche « À retenir » et un quiz.
+          Les chapitres Internet et Web sont déjà complets. Les autres seront ajoutés progressivement.
         </p>
       </div>
 
       <div class="cards">
         <a class="card card-featured" href="themes/internet.html">
           <div class="card-top">
-            <span class="icon" aria-hidden="true">🌐</span>
+            <span class="icon">🌐</span>
             <span class="status status-ready">Cours disponible</span>
           </div>
           <h3>Internet</h3>
@@ -83,11 +118,14 @@
           <span class="card-link">Ouvrir le chapitre →</span>
         </a>
 
-        <a class="card" href="themes/web.html">
-          <div class="card-top"><span class="icon">🕸️</span><span class="status">À venir</span></div>
+        <a class="card card-featured" href="themes/web.html">
+          <div class="card-top">
+            <span class="icon">🕸️</span>
+            <span class="status status-ready">Cours disponible</span>
+          </div>
           <h3>Le Web</h3>
-          <p>HTML, CSS, URL, HTTP/HTTPS, hyperliens et moteurs de recherche.</p>
-          <span class="card-link">Voir la page →</span>
+          <p>HTML, CSS, URL, HTTP/HTTPS, client-serveur, moteurs de recherche et confidentialité.</p>
+          <span class="card-link">Ouvrir le chapitre →</span>
         </a>
 
         <a class="card" href="themes/reseaux-sociaux.html">
@@ -100,7 +138,7 @@
         <a class="card" href="themes/donnees.html">
           <div class="card-top"><span class="icon">📊</span><span class="status">À venir</span></div>
           <h3>Données structurées</h3>
-          <p>Tables, CSV, descripteurs, recherche, tri, traitement et open data.</p>
+          <p>Tables, CSV, descripteurs, recherche, tri, traitement et données ouvertes.</p>
           <span class="card-link">Voir la page →</span>
         </a>
 
@@ -130,38 +168,16 @@
     <section id="python" class="feature">
       <div>
         <p class="eyebrow">Programmation transversale</p>
-        <h2>Python en SNT</h2>
+        <h2>Python</h2>
         <p>
-          La programmation accompagne les différents thèmes : variables, conditions,
-          boucles, fonctions et manipulation de données.
+          Un espace commun pourra regrouper les bases de programmation et les exercices utiles en SNT et STI2D.
         </p>
         <span class="status status-soon">Espace Python en préparation</span>
       </div>
-      <div class="code-card" aria-label="Exemple de code Python">
-<pre><code>theme = "SNT"
+      <div class="code-card" aria-label="Exemple Python">
+<pre><code>classe = "SNT"
 for numero in range(1, 4):
-    print(numero, "-", theme)</code></pre>
-      </div>
-    </section>
-
-    <section id="entrainement" class="section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">S'entraîner</p>
-          <h2>Question flash</h2>
-        </div>
-        <p class="section-intro">Une question pour vérifier une notion fondamentale du thème Internet.</p>
-      </div>
-
-      <div class="quiz-box home-quiz">
-        <p class="question-number">QUESTION FLASH</p>
-        <h3>Quel service permet principalement d'associer un nom de domaine à une adresse IP ?</h3>
-        <div class="quiz-actions">
-          <button type="button" data-home-answer="false">HTTP</button>
-          <button type="button" data-home-answer="true">DNS</button>
-          <button type="button" data-home-answer="false">HTML</button>
-        </div>
-        <p id="home-result" class="result" aria-live="polite"></p>
+    print(numero, classe)</code></pre>
       </div>
     </section>
 
@@ -174,12 +190,12 @@ for numero in range(1, 4):
       </div>
       <div class="resource-list">
         <a href="https://eduscol.education.gouv.fr/5841/programmes-et-ressources-en-sciences-numeriques-et-technologie-voie-gt" target="_blank" rel="noopener">
-          <strong>Éduscol — SNT voie générale et technologique</strong>
+          <strong>Éduscol — SNT</strong>
           <span>Programme en vigueur et ressources d'accompagnement.</span>
         </a>
-        <a href="https://www.education.gouv.fr/sites/default/files/imported_files/document/2de_Sciences_numeriques_et_technologie_Ens-commun_1025410.pdf" target="_blank" rel="noopener">
-          <strong>Ministère de l'Éducation nationale — Programme SNT</strong>
-          <span>Programme officiel de la classe de seconde.</span>
+        <a href="https://eduscol.education.gouv.fr/5856/programmes-et-ressources-en-serie-sti2d" target="_blank" rel="noopener">
+          <strong>Éduscol — STI2D</strong>
+          <span>Programmes et ressources pour la série STI2D.</span>
         </a>
       </div>
     </section>
@@ -187,8 +203,8 @@ for numero in range(1, 4):
 
   <footer>
     <div class="footer-inner">
-      <p><strong>Lycée Marie Rivier</strong> • Sciences Numériques et Technologie</p>
-      <p>Christophe Delcourt • Année scolaire 2026–2027</p>
+      <p><strong>Lycée Marie Rivier</strong> • Espace pédagogique Numérique & Technologie</p>
+      <p>Christophe Delcourt • 2026–2027</p>
     </div>
   </footer>
 

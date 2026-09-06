@@ -72,4 +72,58 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+
+  // Quiz complet du thème Web
+  const webQuiz = document.getElementById("web-quiz");
+  const webScore = document.getElementById("web-score");
+
+  if (webQuiz) {
+    webQuiz.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const questions = [...webQuiz.querySelectorAll("fieldset[data-correct]")];
+      let score = 0;
+      let answered = 0;
+
+      questions.forEach((fieldset) => {
+        fieldset.classList.remove("correct", "incorrect");
+        const selected = fieldset.querySelector("input[type='radio']:checked");
+        if (!selected) return;
+        answered += 1;
+
+        if (selected.value === fieldset.dataset.correct) {
+          score += 1;
+          fieldset.classList.add("correct");
+        } else {
+          fieldset.classList.add("incorrect");
+        }
+      });
+
+      if (webScore) {
+        webScore.classList.add("visible");
+        if (answered < questions.length) {
+          webScore.textContent = `Tu as répondu à ${answered} question(s) sur ${questions.length}. Score provisoire : ${score}/${questions.length}.`;
+        } else if (score === questions.length) {
+          webScore.textContent = `Excellent : ${score}/${questions.length}. Toutes les réponses sont correctes.`;
+        } else if (score >= 8) {
+          webScore.textContent = `Très bien : ${score}/${questions.length}.`;
+        } else if (score >= 5) {
+          webScore.textContent = `Score : ${score}/${questions.length}. Revois la fiche « À retenir », puis recommence.`;
+        } else {
+          webScore.textContent = `Score : ${score}/${questions.length}. Relis le cours avant une nouvelle tentative.`;
+        }
+      }
+    });
+
+    webQuiz.addEventListener("reset", () => {
+      webQuiz.querySelectorAll("fieldset").forEach((fieldset) => {
+        fieldset.classList.remove("correct", "incorrect");
+      });
+      if (webScore) {
+        webScore.textContent = "";
+        webScore.classList.remove("visible");
+      }
+    });
+  }
+
 });
