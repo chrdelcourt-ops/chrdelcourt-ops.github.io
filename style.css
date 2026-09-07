@@ -949,3 +949,63 @@ footer p{margin:0;font-size:.9rem}
   .hex-grid{grid-template-columns:repeat(4,1fr)}
   .binary-steps{grid-template-columns:1fr}
 }
+
+
+/* ===== V7 : classes sur une seule ligne ===== */
+.portal-hero{
+  display:block;
+  min-height:auto;
+}
+
+.portal-hero .hero-content{
+  max-width:820px;
+}
+
+.hero-classes-row{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:14px;
+}
+
+.hero-classes-row .hero-class-link{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px 20px;
+  box-shadow:var(--shadow-soft);
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  min-height:78px;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.hero-classes-row .hero-class-link:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow);
+  border-color:#a7d6de;
+}
+
+.hero-class-level{
+  color:var(--text);
+  font-size:1.05rem;
+  font-weight:800;
+}
+
+.hero-classes-row .hero-class-link strong{
+  color:var(--primary-dark);
+  background:var(--primary-soft);
+  border-radius:999px;
+  padding:7px 12px;
+  font-size:.82rem;
+  white-space:nowrap;
+}
+
+@media(max-width:760px){
+  .hero-classes-row{
+    grid-template-columns:1fr;
+  }
+}

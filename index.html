@@ -3,9 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Espace pédagogique numérique et technologie - Lycée Marie Rivier - Christophe Delcourt">
-  <title>Cours Numérique & Technologie | Lycée Marie Rivier</title>
-  <link rel="stylesheet" href="style.css">
+
+  <title>Cours SNT, STI2D &amp; SIN | Lycée Marie Rivier</title>
+  <meta name="description" content="Cours, activités, TP, quiz et ressources de Christophe Delcourt pour les élèves de SNT, Première STI2D et Terminale STI2D/SIN.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Christophe Delcourt">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/">
+  <link rel="sitemap" type="application/xml" href="https://chrdelcourt-ops.github.io/sitemap.xml">
+
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lycée Marie Rivier – Cours Numérique &amp; Technologie">
+  <meta property="og:title" content="Cours SNT, STI2D &amp; SIN | Lycée Marie Rivier">
+  <meta property="og:description" content="Cours, activités, TP, quiz et ressources de Christophe Delcourt pour les élèves de SNT, Première STI2D et Terminale STI2D/SIN.">
+  <meta property="og:url" content="https://chrdelcourt-ops.github.io/">
+  <meta property="og:image" content="https://chrdelcourt-ops.github.io/assets/logo-marie-rivier.png">
+  <meta property="og:image:alt" content="Logo du Lycée Marie Rivier">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cours SNT, STI2D &amp; SIN | Lycée Marie Rivier">
+  <meta name="twitter:description" content="Cours, activités, TP, quiz et ressources de Christophe Delcourt pour les élèves de SNT, Première STI2D et Terminale STI2D/SIN.">
+  <meta name="twitter:image" content="https://chrdelcourt-ops.github.io/assets/logo-marie-rivier.png">
+
+  <!-- Google Search Console : ajouter ici la balise de vérification fournie par Google si nécessaire. -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Cours SNT, STI2D & SIN – Lycée Marie Rivier",
+  "url": "https://chrdelcourt-ops.github.io/",
+  "inLanguage": "fr-FR",
+  "publisher": {
+    "@type": "EducationalOrganization",
+    "name": "Lycée Marie Rivier",
+    "url": "https://chrdelcourt-ops.github.io/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Lycée Marie Rivier",
+  "url": "https://chrdelcourt-ops.github.io/",
+  "logo": "https://chrdelcourt-ops.github.io/assets/logo-marie-rivier.png"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Cours disponibles",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "url": "https://chrdelcourt-ops.github.io/themes/internet.html",
+      "item": {
+        "@type": "Course",
+        "name": "Internet – SNT Seconde",
+        "description": "IP, DNS, routage, TCP et pair-à-pair.",
+        "url": "https://chrdelcourt-ops.github.io/themes/internet.html",
+        "provider": {
+          "@type": "EducationalOrganization",
+          "name": "Lycée Marie Rivier",
+          "url": "https://chrdelcourt-ops.github.io/"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "url": "https://chrdelcourt-ops.github.io/themes/web.html",
+      "item": {
+        "@type": "Course",
+        "name": "Le Web – SNT Seconde",
+        "description": "HTML, CSS, URL, HTTP et moteurs de recherche.",
+        "url": "https://chrdelcourt-ops.github.io/themes/web.html",
+        "provider": {
+          "@type": "EducationalOrganization",
+          "name": "Lycée Marie Rivier",
+          "url": "https://chrdelcourt-ops.github.io/"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "url": "https://chrdelcourt-ops.github.io/classes/terminale-numeration.html",
+      "item": {
+        "@type": "Course",
+        "name": "Numération et codage – Terminale STI2D SIN",
+        "description": "Binaire, hexadécimal, complément à 2 et ASCII.",
+        "url": "https://chrdelcourt-ops.github.io/classes/terminale-numeration.html",
+        "provider": {
+          "@type": "EducationalOrganization",
+          "name": "Lycée Marie Rivier",
+          "url": "https://chrdelcourt-ops.github.io/"
+        }
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -48,20 +150,21 @@
         </div>
       </div>
 
-      <div class="hero-panel class-panel" aria-label="Classes disponibles">
-        <a class="hero-class-link" href="#themes">
-          <strong>Seconde</strong>
-          <span>SNT</span>
-        </a>
-        <a class="hero-class-link" href="classes/premiere-sti2d.html">
-          <strong>Première</strong>
-          <span>STI2D</span>
-        </a>
-        <a class="hero-class-link" href="classes/terminale-sti2d.html">
-          <strong>Terminale</strong>
-          <span>STI2D • SIN</span>
-        </a>
-      </div>
+      </section>
+
+    <section class="hero-classes-row" aria-label="Classes disponibles">
+      <a class="hero-class-link" href="#themes">
+        <span class="hero-class-level">Seconde</span>
+        <strong>SNT</strong>
+      </a>
+      <a class="hero-class-link" href="classes/premiere-sti2d.html">
+        <span class="hero-class-level">Première</span>
+        <strong>STI2D</strong>
+      </a>
+      <a class="hero-class-link" href="classes/terminale-sti2d.html">
+        <span class="hero-class-level">Terminale</span>
+        <strong>STI2D • SIN</strong>
+      </a>
     </section>
 
     <section id="niveaux" class="section">
