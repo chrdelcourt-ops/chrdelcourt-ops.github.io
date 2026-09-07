@@ -235,4 +235,114 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+
+  // ===== Première STI2D : Idéation & brainstorming =====
+  const choiceRows = [...document.querySelectorAll("[data-choice-row]")];
+  const choiceResult = document.getElementById("choice-result");
+
+  function updateChoiceMatrix() {
+    if (!choiceRows.length || !choiceResult) return;
+
+    let bestScore = -1;
+    let bestNames = [];
+
+    choiceRows.forEach((row) => {
+      const nameInput = row.querySelector('td:first-child input');
+      const scores = [...row.querySelectorAll(".choice-score")].map((input) => {
+        let value = Number(input.value);
+        if (!Number.isFinite(value)) value = 0;
+        value = Math.max(1, Math.min(5, value));
+        input.value = value;
+        return value;
+      });
+
+      const total = scores.reduce((sum, value) => sum + value, 0);
+      const totalCell = row.querySelector(".choice-total");
+      if (totalCell) totalCell.textContent = total;
+
+      const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : "Solution";
+      if (total > bestScore) {
+        bestScore = total;
+        bestNames = [name];
+      } else if (total === bestScore) {
+        bestNames.push(name);
+      }
+    });
+
+    if (bestScore >= 0) {
+      if (bestNames.length === 1) {
+        choiceResult.textContent = `Score le plus élevé : ${bestNames[0]} avec ${bestScore}/20. Le groupe doit maintenant justifier ce choix.`;
+      } else {
+        choiceResult.textContent = `Égalité à ${bestScore}/20 entre : ${bestNames.join(", ")}. Discutez des critères prioritaires pour départager les solutions.`;
+      }
+    }
+  }
+
+  choiceRows.forEach((row) => {
+    row.querySelectorAll("input").forEach((input) => {
+      input.addEventListener("input", updateChoiceMatrix);
+    });
+  });
+  updateChoiceMatrix();
+
+  const pitchText = document.getElementById("pitch-text");
+  const pitchCount = document.getElementById("pitch-count");
+  if (pitchText && pitchCount) {
+    const updatePitchCount = () => {
+      pitchCount.textContent = pitchText.value.length;
+    };
+    pitchText.addEventListener("input", updatePitchCount);
+    updatePitchCount();
+  }
+
+  const ideationQuiz = document.getElementById("ideation-quiz");
+  const ideationScore = document.getElementById("ideation-score");
+
+  if (ideationQuiz && ideationScore) {
+    ideationQuiz.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const questions = [...ideationQuiz.querySelectorAll("fieldset[data-correct]")];
+      let score = 0;
+      let answered = 0;
+
+      questions.forEach((fieldset) => {
+        fieldset.classList.remove("correct", "incorrect");
+        const selected = fieldset.querySelector("input[type='radio']:checked");
+        if (!selected) return;
+
+        answered++;
+        if (selected.value === fieldset.dataset.correct) {
+          score++;
+          fieldset.classList.add("correct");
+        } else {
+          fieldset.classList.add("incorrect");
+        }
+      });
+
+      ideationScore.classList.add("visible");
+
+      if (answered < questions.length) {
+        ideationScore.textContent = `Tu as répondu à ${answered}/${questions.length} questions. Score provisoire : ${score}/${questions.length}.`;
+      } else if (score === questions.length) {
+        ideationScore.textContent = `Excellent : ${score}/${questions.length}. Les notions essentielles sont acquises.`;
+      } else if (score >= 6) {
+        ideationScore.textContent = `Très bien : ${score}/${questions.length}. Revois seulement les questions en rouge.`;
+      } else if (score >= 4) {
+        ideationScore.textContent = `Score : ${score}/${questions.length}. Relis la méthode brainstorming et la partie choix de solution.`;
+      } else {
+        ideationScore.textContent = `Score : ${score}/${questions.length}. Reprends le cours depuis la partie idéation, puis réessaie.`;
+      }
+    });
+
+    ideationQuiz.addEventListener("reset", () => {
+      ideationQuiz.querySelectorAll("fieldset").forEach((fieldset) => {
+        fieldset.classList.remove("correct", "incorrect");
+      });
+      ideationScore.textContent = "";
+      ideationScore.classList.remove("visible");
+    });
+  }
+
 });
