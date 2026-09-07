@@ -1301,3 +1301,121 @@ footer p{margin:0;font-size:.9rem}
     min-height:180px;
   }
 }
+
+
+/* ===== V9 : Activité 1 Robot aspirateur ===== */
+.robot-featured{
+  margin-top:18px;
+  background:linear-gradient(135deg,#174a5c,#1a7184);
+}
+.robot-hero{
+  background:
+    radial-gradient(circle at 85% 15%,rgba(242,170,25,.23),transparent 30%),
+    linear-gradient(135deg,#e5f8fb,#fff 55%,#fff3d8);
+}
+.retain-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+.retain-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:21px;
+  box-shadow:var(--shadow-soft);
+}
+.retain-number{
+  display:inline-flex;
+  width:35px;height:35px;
+  align-items:center;justify-content:center;
+  border-radius:10px;
+  background:var(--primary-soft);
+  color:var(--primary-dark);
+  font-weight:900;
+  font-size:.78rem;
+}
+.retain-card h3{margin:13px 0 8px}
+.retain-card p{margin:0;color:var(--muted)}
+.know-list{
+  display:grid;
+  gap:10px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+  box-shadow:var(--shadow-soft);
+}
+.know-list label{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:10px 12px;
+  border-radius:10px;
+}
+.know-list label:hover{background:#f6f9fa}
+.know-list input{margin-top:5px;transform:scale(1.15)}
+.big-summary{
+  background:linear-gradient(135deg,#153e51,#17647a);
+  color:#fff;
+  border-radius:22px;
+  padding:30px;
+  box-shadow:var(--shadow);
+}
+.big-summary p{
+  font-size:clamp(1.08rem,2.4vw,1.35rem);
+  line-height:1.7;
+  margin:0;
+}
+.example-timeline{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr;
+  gap:14px;
+  align-items:center;
+  margin-top:18px;
+}
+.example-timeline>div:not(.timeline-arrow){
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:20px;
+  box-shadow:var(--shadow-soft);
+}
+.example-timeline span{
+  display:inline-flex;
+  width:30px;height:30px;
+  align-items:center;justify-content:center;
+  border-radius:8px;
+  background:var(--primary-soft);
+  color:var(--primary-dark);
+  font-weight:900;
+  margin-bottom:9px;
+}
+.example-timeline strong,.example-timeline p{display:block}
+.example-timeline p{color:var(--muted);margin:5px 0 0;font-size:.9rem}
+.timeline-arrow{
+  font-size:1.7rem;
+  color:var(--primary-dark);
+  font-weight:900;
+}
+.keyword-cloud{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.keyword-cloud span{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:8px 13px;
+  font-weight:800;
+  box-shadow:var(--shadow-soft);
+}
+@media(max-width:900px){
+  .retain-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  .retain-grid{grid-template-columns:1fr}
+  .example-timeline{grid-template-columns:1fr}
+  .timeline-arrow{transform:rotate(90deg);text-align:center}
+}

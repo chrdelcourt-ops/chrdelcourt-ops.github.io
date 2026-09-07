@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Internet – Cours SNT Seconde | Lycée Marie Rivier</title>
+  <meta name="description" content="Cours SNT Seconde sur Internet : adresses IP, DNS, paquets, routage, TCP, pair-à-pair, activités et quiz.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Christophe Delcourt">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/themes/internet.html">
+  <link rel="sitemap" type="application/xml" href="https://chrdelcourt-ops.github.io/sitemap.xml">
+
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Lycée Marie Rivier – Cours Numérique &amp; Technologie">
+  <meta property="og:title" content="Internet – Cours SNT Seconde | Lycée Marie Rivier">
+  <meta property="og:description" content="Cours SNT Seconde sur Internet : adresses IP, DNS, paquets, routage, TCP, pair-à-pair, activités et quiz.">
+  <meta property="og:url" content="https://chrdelcourt-ops.github.io/themes/internet.html">
+  <meta property="og:image" content="https://chrdelcourt-ops.github.io/assets/logo-marie-rivier.png">
+  <meta property="og:image:alt" content="Logo du Lycée Marie Rivier">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Internet – Cours SNT Seconde | Lycée Marie Rivier">
+  <meta name="twitter:description" content="Cours SNT Seconde sur Internet : adresses IP, DNS, paquets, routage, TCP, pair-à-pair, activités et quiz.">
+  <meta name="twitter:image" content="https://chrdelcourt-ops.github.io/assets/logo-marie-rivier.png">
+
+  <!-- Google Search Console : ajouter ici la balise de vérification fournie par Google si nécessaire. -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://chrdelcourt-ops.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "SNT Seconde",
+      "item": "https://chrdelcourt-ops.github.io/#themes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Internet – Cours SNT Seconde",
+      "item": "https://chrdelcourt-ops.github.io/themes/internet.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Internet – SNT Seconde",
+  "description": "IP, DNS, routage, TCP et pair-à-pair.",
+  "url": "https://chrdelcourt-ops.github.io/themes/internet.html",
+  "inLanguage": "fr-FR",
+  "educationalLevel": "Seconde",
+  "provider": {
+    "@type": "EducationalOrganization",
+    "name": "Lycée Marie Rivier",
+    "url": "https://chrdelcourt-ops.github.io/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Christophe Delcourt"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header compact-header">
+    <div class="header-inner">
+      <a href="../index.html" class="brand" aria-label="Retour à l'accueil">
+        <img src="../assets/logo-marie-rivier.png" alt="Logo du Lycée Marie Rivier" class="logo">
+      </a>
+      <div class="header-title">
+        <p class="eyebrow">SNT • Seconde</p>
+        <h1>🌐 Internet</h1>
+        <p class="subtitle">Christophe Delcourt • Lycée Marie Rivier</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Navigation du chapitre">
+    <div class="nav-inner">
+      <a href="../index.html">← Accueil</a>
+      <a href="#objectifs">Objectifs</a>
+      <a href="#cours">Cours</a>
+      <a href="#activites">Activités</a>
+      <a href="#retenir">À retenir</a>
+      <a href="#quiz-internet">Quiz</a>
+    </div>
+  </nav>
+
+  <main id="contenu">
+    <section class="chapter-hero">
+      <div>
+        <span class="badge">Thème 1 • Internet</span>
+        <h2>Comment les informations circulent-elles sur Internet ?</h2>
+        <p>
+          Internet relie des milliards d'équipements. Pour communiquer, ils utilisent des
+          adresses, découpent les données en paquets et s'appuient sur des protocoles communs.
+        </p>
+        <div class="hero-actions no-print">
+          <a class="btn btn-primary" href="#cours">Commencer le cours</a>
+          <button class="btn btn-secondary" type="button" onclick="window.print()">Imprimer / PDF</button>
+        </div>
+      </div>
+      <aside class="chapter-summary">
+        <p class="eyebrow">Dans ce chapitre</p>
+        <ul class="check-list">
+          <li>Internet ≠ Web</li>
+          <li>Adresse IP et DNS</li>
+          <li>Paquets et routage</li>
+          <li>Rôle de TCP et IP</li>
+          <li>Réseaux pair-à-pair</li>
+          <li>Supports physiques</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="objectifs" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Compétences</p>
+          <h2>Objectifs du programme</h2>
+        </div>
+      </div>
+      <div class="objectives-grid">
+        <div class="objective"><span>01</span><p>Distinguer le rôle des protocoles <strong>IP</strong> et <strong>TCP</strong>.</p></div>
+        <div class="objective"><span>02</span><p>Caractériser les principes du <strong>routage</strong> et ses limites.</p></div>
+        <div class="objective"><span>03</span><p>Distinguer la <strong>fiabilité de transmission</strong> de l'absence de garantie temporelle.</p></div>
+        <div class="objective"><span>04</span><p>Retrouver une <strong>adresse IP</strong> à partir d'une adresse symbolique et inversement.</p></div>
+        <div class="objective"><span>05</span><p>Décrire l'intérêt des réseaux <strong>pair-à-pair</strong> et certains usages illicites possibles.</p></div>
+        <div class="objective"><span>06</span><p>Identifier différents <strong>supports physiques</strong> permettant d'accéder à Internet.</p></div>
+      </div>
+    </section>
+
+    <section id="cours" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Cours</p>
+          <h2>1. Internet n'est pas le Web</h2>
+        </div>
+      </div>
+      <div class="lesson">
+        <p>
+          <strong>Internet</strong> est une infrastructure mondiale qui relie entre eux de nombreux réseaux informatiques.
+          Le <strong>Web</strong> est l'un des services qui utilise Internet, au même titre que le courrier électronique
+          ou d'autres services en réseau.
+        </p>
+        <div class="callout">
+          <strong>À ne pas confondre :</strong> ouvrir une page Web nécessite Internet, mais Internet ne se limite pas au Web.
+        </div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div>
+          <p class="eyebrow">Cours</p>
+          <h2>2. Identifier les machines : les adresses IP</h2>
+        </div>
+      </div>
+      <div class="lesson two-cols">
+        <div>
+          <p>
+            Pour que des données arrivent au bon destinataire, les équipements utilisent des <strong>adresses IP</strong>.
+            Une adresse IPv4 est généralement écrite sous la forme de quatre nombres séparés par des points,
+            par exemple <code>192.168.1.20</code>.
+          </p>
+          <p>
+            Il existe également <strong>IPv6</strong>, conçu notamment pour disposer d'un espace d'adressage beaucoup plus vaste.
+          </p>
+        </div>
+        <div class="concept-card">
+          <span class="concept-label">Exemple</span>
+          <code class="big-code">192.168.1.20</code>
+          <p>Une représentation courante d'une adresse IPv4.</p>
+        </div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div>
+          <p class="eyebrow">Cours</p>
+          <h2>3. DNS : utiliser des noms plutôt que des nombres</h2>
+        </div>
+      </div>
+      <div class="lesson">
+        <p>
+          Les humains retiennent plus facilement un nom comme <code>education.gouv.fr</code> qu'une adresse IP.
+          Le système <strong>DNS</strong> (Domain Name System) permet d'effectuer la correspondance entre un
+          <strong>nom de domaine</strong> et une <strong>adresse IP</strong>.
+        </p>
+        <div class="flow" aria-label="Schéma DNS">
+          <div><strong>Nom de domaine</strong><span>education.gouv.fr</span></div>
+          <b>→</b>
+          <div><strong>Serveur DNS</strong><span>effectue la recherche</span></div>
+          <b>→</b>
+          <div><strong>Adresse IP</strong><span>machine recherchée</span></div>
+        </div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div>
+          <p class="eyebrow">Cours</p>
+          <h2>4. Les données sont découpées en paquets</h2>
+        </div>
+      </div>
+      <div class="lesson">
+        <p>
+          Lorsqu'une information est transmise, elle n'est pas nécessairement envoyée en un seul bloc.
+          Elle est découpée en <strong>paquets</strong>. Les paquets peuvent emprunter des chemins différents
+          avant d'atteindre leur destination.
+        </p>
+        <div class="packet-demo">
+          <div class="packet">Paquet 1</div>
+          <div class="packet">Paquet 2</div>
+          <div class="packet">Paquet 3</div>
+          <div class="packet">Paquet 4</div>
+        </div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div>
+          <p class="eyebrow">Cours</p>
+          <h2>5. Le routage : choisir un chemin</h2>
+        </div>
+      </div>
+      <div class="lesson">
+        <p>
+          Les <strong>routeurs</strong> font transiter les paquets d'un réseau vers un autre. Chaque routeur prend une
+          décision à partir des informations dont il dispose afin d'orienter le paquet vers sa destination.
+        </p>
+        <p>
+          Le chemin emprunté peut changer selon l'état du réseau. Internet ne garantit donc pas qu'un paquet
+          utilise toujours le même trajet ni qu'il arrive dans un délai précis.
+        </p>
+        <div class="network-diagram" aria-label="Schéma simplifié de routage">
+          <div class="node end">A</div>
+          <div class="route-line"></div>
+          <div class="node">R1</div>
+          <div class="route-line"></div>
+          <div class="node">R2</div>
+          <div class="route-line"></div>
+          <div class="node end">B</div>
+        </div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div>
+          <p class="eyebrow">Cours</p>
+          <h2>6. IP et TCP n'ont pas le même rôle</h2>
+        </div>
+      </div>
+      <div class="lesson protocol-grid">
+        <div class="protocol-card">
+          <span class="protocol-name">IP</span>
+          <h3>Acheminer</h3>
+          <p>
+            IP s'occupe principalement de l'adressage et de l'acheminement des paquets vers leur destination.
+          </p>
+        </div>
+        <div class="protocol-card">
+          <span class="protocol-name">TCP</span>
+          <h3>Fiabiliser</h3>
+          <p>
+            TCP permet notamment de détecter des pertes, d'organiser les données et de demander la retransmission
+            d'informations manquantes lorsque la communication utilise ce protocole.
+          </p>
+        </div>
+      </div>
+      <div class="callout warning">
+        <strong>Important :</strong> une transmission peut être fiable sans garantir un temps d'arrivée précis.
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div>
+          <p class="eyebrow">Cours</p>
+          <h2>7. Les réseaux pair-à-pair (P2P)</h2>
+        </div>
+      </div>
+      <div class="lesson">
+        <p>
+          Dans un réseau <strong>pair-à-pair</strong>, les machines participantes peuvent échanger directement des
+          données et jouer à la fois un rôle de client et de fournisseur de ressources.
+        </p>
+        <p>
+          Cette architecture possède des usages légitimes. Comme d'autres technologies, elle peut aussi être utilisée
+          pour partager illégalement des œuvres protégées : c'est l'usage qui peut être illicite, pas le principe technique lui-même.
+        </p>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div>
+          <p class="eyebrow">Cours</p>
+          <h2>8. Internet fonctionne sur des réseaux physiques variés</h2>
+        </div>
+      </div>
+      <div class="lesson">
+        <p>
+          Internet n'impose pas un seul support matériel. Les données peuvent circuler sur différents réseaux :
+          <strong>fibre optique</strong>, câbles en cuivre, réseaux mobiles, Wi-Fi, liaisons sous-marines ou satellitaires.
+        </p>
+        <div class="support-grid">
+          <div>💡<strong>Fibre</strong><span>très haut débit</span></div>
+          <div>📡<strong>Wi-Fi</strong><span>réseau local sans fil</span></div>
+          <div>📱<strong>4G / 5G</strong><span>réseau mobile</span></div>
+          <div>🛰️<strong>Satellite</strong><span>liaisons radio à grande distance</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="activites" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Activités élèves</p>
+          <h2>Observer Internet depuis un ordinateur</h2>
+        </div>
+      </div>
+
+      <article class="activity">
+        <div class="activity-number">A1</div>
+        <div>
+          <h3>Retrouver une adresse IP avec DNS</h3>
+          <p><strong>Objectif :</strong> observer la correspondance entre un nom de domaine et une adresse IP.</p>
+          <ol>
+            <li>Ouvrir l'invite de commandes sous Windows.</li>
+            <li>Saisir <code>nslookup education.gouv.fr</code>.</li>
+            <li>Repérer le ou les résultats affichés.</li>
+            <li>Expliquer en une phrase le rôle joué par le DNS.</li>
+          </ol>
+          <details class="teacher-help">
+            <summary>Indice</summary>
+            <p>Le résultat peut varier selon le réseau, la localisation et les infrastructures utilisées par le site.</p>
+          </details>
+        </div>
+      </article>
+
+      <article class="activity">
+        <div class="activity-number">A2</div>
+        <div>
+          <h3>Observer le chemin avec <code>tracert</code></h3>
+          <p><strong>Objectif :</strong> mettre en évidence le passage par plusieurs équipements réseau.</p>
+          <ol>
+            <li>Dans l'invite de commandes, saisir <code>tracert education.gouv.fr</code>.</li>
+            <li>Compter le nombre d'étapes visibles.</li>
+            <li>Comparer le résultat avec celui d'un camarade.</li>
+            <li>Proposer une raison pouvant expliquer des différences.</li>
+          </ol>
+          <div class="callout">
+            Certains équipements peuvent ne pas répondre aux requêtes de diagnostic : cela ne signifie pas nécessairement que le trajet est interrompu.
+          </div>
+        </div>
+      </article>
+
+      <article class="activity">
+        <div class="activity-number">A3</div>
+        <div>
+          <h3>Activité débranchée : faire circuler des paquets</h3>
+          <p>
+            Par groupes, attribuer à plusieurs élèves le rôle de routeur. Chaque « paquet » possède une destination.
+            Le but est de faire parvenir tous les paquets au destinataire en respectant uniquement les connexions autorisées entre les routeurs.
+          </p>
+          <p><strong>Question :</strong> que se passe-t-il si une liaison devient indisponible ? Peut-on trouver un autre chemin ?</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="retenir" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Fiche express</p>
+          <h2>À retenir</h2>
+        </div>
+      </div>
+
+      <div class="remember-grid">
+        <div><strong>Internet</strong><span>réseau mondial de réseaux</span></div>
+        <div><strong>IP</strong><span>adressage et acheminement</span></div>
+        <div><strong>DNS</strong><span>nom de domaine ↔ adresse IP</span></div>
+        <div><strong>Routeur</strong><span>oriente les paquets</span></div>
+        <div><strong>TCP</strong><span>fiabilise une transmission</span></div>
+        <div><strong>P2P</strong><span>échanges entre pairs</span></div>
+      </div>
+
+      <div class="vocabulary">
+        <h3>Vocabulaire essentiel</h3>
+        <dl>
+          <div><dt>Paquet</dt><dd>Bloc de données transmis sur le réseau.</dd></div>
+          <div><dt>Protocole</dt><dd>Ensemble de règles permettant à des équipements de communiquer.</dd></div>
+          <div><dt>Adresse IP</dt><dd>Adresse utilisée pour identifier et joindre un équipement ou une interface sur un réseau IP.</dd></div>
+          <div><dt>DNS</dt><dd>Système qui associe notamment des noms de domaine à des informations d'adressage.</dd></div>
+          <div><dt>Routage</dt><dd>Mécanisme permettant de choisir comment faire progresser les paquets entre réseaux.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="quiz-internet" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Auto-évaluation</p>
+          <h2>Quiz Internet</h2>
+        </div>
+        <p class="section-intro">8 questions. Le score est calculé uniquement dans ton navigateur.</p>
+      </div>
+
+      <form id="internet-quiz" class="full-quiz">
+        <fieldset data-correct="b">
+          <legend><span>1</span> Internet et le Web sont-ils exactement la même chose ?</legend>
+          <label><input type="radio" name="q1" value="a"> Oui, ce sont deux noms identiques.</label>
+          <label><input type="radio" name="q1" value="b"> Non, le Web est un service qui utilise Internet.</label>
+          <label><input type="radio" name="q1" value="c"> Non, Internet ne sert qu'aux courriels.</label>
+        </fieldset>
+
+        <fieldset data-correct="c">
+          <legend><span>2</span> À quoi sert principalement le DNS ?</legend>
+          <label><input type="radio" name="q2" value="a"> À fabriquer des pages HTML.</label>
+          <label><input type="radio" name="q2" value="b"> À chiffrer tous les fichiers.</label>
+          <label><input type="radio" name="q2" value="c"> À associer notamment un nom de domaine à une adresse IP.</label>
+        </fieldset>
+
+        <fieldset data-correct="a">
+          <legend><span>3</span> Quel équipement oriente les paquets entre réseaux ?</legend>
+          <label><input type="radio" name="q3" value="a"> Un routeur.</label>
+          <label><input type="radio" name="q3" value="b"> Un écran.</label>
+          <label><input type="radio" name="q3" value="c"> Une imprimante.</label>
+        </fieldset>
+
+        <fieldset data-correct="b">
+          <legend><span>4</span> Les paquets d'une même communication doivent-ils toujours suivre exactement le même chemin ?</legend>
+          <label><input type="radio" name="q4" value="a"> Oui, obligatoirement.</label>
+          <label><input type="radio" name="q4" value="b"> Non, ils peuvent emprunter des chemins différents.</label>
+        </fieldset>
+
+        <fieldset data-correct="c">
+          <legend><span>5</span> Quel est le rôle principal d'IP dans ce chapitre ?</legend>
+          <label><input type="radio" name="q5" value="a"> Dessiner les sites Web.</label>
+          <label><input type="radio" name="q5" value="b"> Créer les mots de passe.</label>
+          <label><input type="radio" name="q5" value="c"> Participer à l'adressage et à l'acheminement des paquets.</label>
+        </fieldset>
+
+        <fieldset data-correct="a">
+          <legend><span>6</span> TCP peut notamment…</legend>
+          <label><input type="radio" name="q6" value="a"> contribuer à une transmission fiable en gérant notamment pertes et ordre des données.</label>
+          <label><input type="radio" name="q6" value="b"> garantir que tout paquet arrive en exactement 5 ms.</label>
+          <label><input type="radio" name="q6" value="c"> remplacer le réseau physique.</label>
+        </fieldset>
+
+        <fieldset data-correct="b">
+          <legend><span>7</span> Un réseau pair-à-pair signifie que…</legend>
+          <label><input type="radio" name="q7" value="a"> un unique serveur doit obligatoirement fournir toutes les données.</label>
+          <label><input type="radio" name="q7" value="b"> des machines peuvent échanger directement des ressources entre pairs.</label>
+        </fieldset>
+
+        <fieldset data-correct="c">
+          <legend><span>8</span> Lequel de ces supports peut transporter des données Internet ?</legend>
+          <label><input type="radio" name="q8" value="a"> Fibre optique uniquement.</label>
+          <label><input type="radio" name="q8" value="b"> Réseau mobile uniquement.</label>
+          <label><input type="radio" name="q8" value="c"> Fibre, Wi-Fi, réseaux mobiles ou satellite selon les situations.</label>
+        </fieldset>
+
+        <div class="quiz-submit no-print">
+          <button class="btn btn-primary" type="submit">Corriger mon quiz</button>
+          <button class="btn btn-secondary" type="reset">Recommencer</button>
+        </div>
+        <div id="quiz-score" class="score-box" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="section sources">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Sources du chapitre</p>
+          <h2>Références officielles</h2>
+        </div>
+      </div>
+      <div class="resource-list">
+        <a href="https://eduscol.education.gouv.fr/5841/programmes-et-ressources-en-sciences-numeriques-et-technologie-voie-gt" target="_blank" rel="noopener">
+          <strong>Éduscol — Programmes et ressources SNT</strong>
+          <span>Page mise à jour en février 2026 : programme en vigueur et ressources « Internet ».</span>
+        </a>
+        <a href="https://www.education.gouv.fr/sites/default/files/imported_files/document/2de_Sciences_numeriques_et_technologie_Ens-commun_1025410.pdf" target="_blank" rel="noopener">
+          <strong>Ministère de l'Éducation nationale — Programme officiel SNT</strong>
+          <span>Capacités attendues : TCP/IP, routage, DNS, pair-à-pair et réseaux physiques.</span>
+        </a>
+        <a href="https://eduscol.education.gouv.fr/sites/default/files/document/ra19lyceegsnt2ndprotocoletcp1156206pdf-83103.pdf" target="_blank" rel="noopener">
+          <strong>Éduscol — Internet : protocole TCP</strong>
+          <span>Ressource d'accompagnement consacrée à TCP.</span>
+        </a>
+      </div>
+      <p class="source-note">Dernière vérification des références : septembre 2026.</p>
+    </section>
+
+    <div class="chapter-nav no-print">
+      <a href="../index.html">← Retour à l'accueil</a>
+      <a href="web.html">Thème suivant : Le Web →</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p><strong>Lycée Marie Rivier</strong> • Sciences Numériques et Technologie</p>
+      <p>Christophe Delcourt • Année scolaire 2026–2027</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

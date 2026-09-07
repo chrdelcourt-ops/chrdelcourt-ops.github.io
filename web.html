@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Le Web – Cours SNT Seconde | Lycée Marie Rivier</title>
+  <meta name="description" content="Cours SNT Seconde sur le Web : URL, HTML, CSS, HTTP/HTTPS, client-serveur, moteurs de recherche, TP et quiz.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Christophe Delcourt">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/themes/web.html">
+  <link rel="sitemap" type="application/xml" href="https://chrdelcourt-ops.github.io/sitemap.xml">
+
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Lycée Marie Rivier – Cours Numérique &amp; Technologie">
+  <meta property="og:title" content="Le Web – Cours SNT Seconde | Lycée Marie Rivier">
+  <meta property="og:description" content="Cours SNT Seconde sur le Web : URL, HTML, CSS, HTTP/HTTPS, client-serveur, moteurs de recherche, TP et quiz.">
+  <meta property="og:url" content="https://chrdelcourt-ops.github.io/themes/web.html">
+  <meta property="og:image" content="https://chrdelcourt-ops.github.io/assets/logo-marie-rivier.png">
+  <meta property="og:image:alt" content="Logo du Lycée Marie Rivier">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Le Web – Cours SNT Seconde | Lycée Marie Rivier">
+  <meta name="twitter:description" content="Cours SNT Seconde sur le Web : URL, HTML, CSS, HTTP/HTTPS, client-serveur, moteurs de recherche, TP et quiz.">
+  <meta name="twitter:image" content="https://chrdelcourt-ops.github.io/assets/logo-marie-rivier.png">
+
+  <!-- Google Search Console : ajouter ici la balise de vérification fournie par Google si nécessaire. -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://chrdelcourt-ops.github.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "SNT Seconde",
+      "item": "https://chrdelcourt-ops.github.io/#themes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Le Web – Cours SNT Seconde",
+      "item": "https://chrdelcourt-ops.github.io/themes/web.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Le Web – SNT Seconde",
+  "description": "HTML, CSS, URL, HTTP et moteurs de recherche.",
+  "url": "https://chrdelcourt-ops.github.io/themes/web.html",
+  "inLanguage": "fr-FR",
+  "educationalLevel": "Seconde",
+  "provider": {
+    "@type": "EducationalOrganization",
+    "name": "Lycée Marie Rivier",
+    "url": "https://chrdelcourt-ops.github.io/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Christophe Delcourt"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header compact-header">
+    <div class="header-inner">
+      <a href="../index.html" class="brand" aria-label="Retour à l'accueil">
+        <img src="../assets/logo-marie-rivier.png" alt="Logo du Lycée Marie Rivier" class="logo">
+      </a>
+      <div class="header-title">
+        <p class="eyebrow">SNT • Seconde</p>
+        <h1>🕸️ Le Web</h1>
+        <p class="subtitle">Christophe Delcourt • Lycée Marie Rivier</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Navigation du chapitre">
+    <div class="nav-inner">
+      <a href="../index.html">← Accueil</a>
+      <a href="#objectifs">Objectifs</a>
+      <a href="#cours">Cours</a>
+      <a href="#tp">TP HTML/CSS</a>
+      <a href="#retenir">À retenir</a>
+      <a href="#quiz-web">Quiz</a>
+    </div>
+  </nav>
+
+  <main id="contenu">
+    <section class="chapter-hero">
+      <div>
+        <span class="badge">Thème 2 • Le Web</span>
+        <h2>Comment fonctionne une page Web ?</h2>
+        <p>
+          Le Web repose sur des pages reliées par des hyperliens, identifiées par des URL et échangées
+          entre clients et serveurs grâce au protocole HTTP ou HTTPS.
+        </p>
+        <div class="hero-actions no-print">
+          <a class="btn btn-primary" href="#cours">Commencer le cours</a>
+          <button class="btn btn-secondary" type="button" onclick="window.print()">Imprimer / PDF</button>
+        </div>
+      </div>
+      <aside class="chapter-summary">
+        <p class="eyebrow">Dans ce chapitre</p>
+        <ul class="check-list">
+          <li>Histoire et principe du Web</li>
+          <li>Hypertexte et hyperliens</li>
+          <li>URL et HTTPS</li>
+          <li>HTML et CSS</li>
+          <li>HTTP et client/serveur</li>
+          <li>Moteurs de recherche</li>
+          <li>Confidentialité du navigateur</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="objectifs" class="section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Capacités attendues</p>
+          <h2>Objectifs du programme</h2>
+        </div>
+      </div>
+
+      <div class="objectives-grid">
+        <div class="objective"><span>01</span><p>Connaître quelques <strong>étapes du développement du Web</strong>.</p></div>
+        <div class="objective"><span>02</span><p>Comprendre les <strong>hyperliens</strong> et la navigation hypertexte.</p></div>
+        <div class="objective"><span>03</span><p>Distinguer le <strong>contenu HTML</strong> de la <strong>présentation CSS</strong>.</p></div>
+        <div class="objective"><span>04</span><p>Décomposer une <strong>URL</strong> et reconnaître une page utilisant HTTPS.</p></div>
+        <div class="objective"><span>05</span><p>Comprendre une <strong>requête HTTP</strong> et le modèle client/serveur.</p></div>
+        <div class="objective"><span>06</span><p>Analyser de façon critique les résultats d'un <strong>moteur de recherche</strong>.</p></div>
+      </div>
+    </section>
+
+    <section id="cours" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Cours</p><h2>1. Internet et Web : deux notions différentes</h2></div>
+      </div>
+      <div class="lesson">
+        <p>
+          <strong>Internet</strong> est l'infrastructure réseau mondiale. Le <strong>Web</strong> est un service
+          qui fonctionne au-dessus d'Internet et permet notamment de consulter des pages reliées entre elles.
+        </p>
+        <div class="callout"><strong>Exemple :</strong> un navigateur Web utilise Internet pour communiquer avec un serveur Web.</div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div><p class="eyebrow">Cours</p><h2>2. Hypertexte et hyperliens</h2></div>
+      </div>
+      <div class="lesson">
+        <p>
+          Une page Web peut contenir des <strong>hyperliens</strong>. Ils permettent de passer d'une ressource à
+          une autre : page, image, vidéo, document ou autre site.
+        </p>
+        <div class="concept-card concept-wide">
+          <span class="concept-label">HTML</span>
+          <code class="big-code">&lt;a href="cours.html"&gt;Voir le cours&lt;/a&gt;</code>
+          <p>La balise <code>&lt;a&gt;</code> permet de créer un lien hypertexte.</p>
+        </div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div><p class="eyebrow">Cours</p><h2>3. Comprendre une URL</h2></div>
+      </div>
+      <div class="lesson">
+        <p>Une <strong>URL</strong> (Uniform Resource Locator) indique l'emplacement d'une ressource sur le Web.</p>
+        <div class="url-demo">
+          <span class="url-part protocol">https://</span><span class="url-part domain">www.exemple.fr</span><span class="url-part path">/snt/web.html</span>
+        </div>
+        <div class="url-legend">
+          <div><b>https</b><span>protocole</span></div>
+          <div><b>www.exemple.fr</b><span>nom d'hôte / domaine</span></div>
+          <div><b>/snt/web.html</b><span>chemin vers la ressource</span></div>
+        </div>
+        <div class="callout warning">
+          <strong>HTTPS</strong> signifie que les échanges HTTP sont protégés par TLS. Cela ne prouve pas à lui seul qu'un site est honnête ou fiable.
+        </div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div><p class="eyebrow">Cours</p><h2>4. HTML : le contenu et la structure</h2></div>
+      </div>
+      <div class="lesson two-cols">
+        <div>
+          <p>
+            Le langage <strong>HTML</strong> décrit la structure et le contenu d'une page : titres, paragraphes,
+            images, liens, listes, tableaux, etc.
+          </p>
+          <p>Le navigateur interprète le document HTML pour construire l'affichage de la page.</p>
+        </div>
+        <div class="code-card light-code">
+<pre><code>&lt;h1&gt;Mon titre&lt;/h1&gt;
+&lt;p&gt;Mon premier paragraphe.&lt;/p&gt;
+&lt;a href="page2.html"&gt;Suite&lt;/a&gt;</code></pre>
+        </div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div><p class="eyebrow">Cours</p><h2>5. CSS : la présentation</h2></div>
+      </div>
+      <div class="lesson two-cols">
+        <div>
+          <p>
+            Le langage <strong>CSS</strong> sert principalement à définir la présentation :
+            taille des textes, espacements, disposition, couleurs et apparence générale.
+          </p>
+          <div class="callout"><strong>Idée essentielle :</strong> HTML = contenu/structure ; CSS = présentation.</div>
+        </div>
+        <div class="code-card light-code">
+<pre><code>h1 {
+  font-size: 2rem;
+}
+
+p {
+  line-height: 1.6;
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div><p class="eyebrow">Cours</p><h2>6. Client, serveur et HTTP</h2></div>
+      </div>
+      <div class="lesson">
+        <p>
+          Le navigateur joue généralement le rôle de <strong>client</strong>. Il envoie une requête au
+          <strong>serveur</strong>, qui renvoie une réponse contenant par exemple un document HTML.
+        </p>
+        <div class="flow">
+          <div><strong>Navigateur</strong><span>client</span></div>
+          <b>→</b>
+          <div><strong>Requête HTTP</strong><span>GET /index.html</span></div>
+          <b>→</b>
+          <div><strong>Serveur Web</strong><span>traite la demande</span></div>
+        </div>
+        <div class="flow reverse-flow">
+          <div><strong>Navigateur</strong><span>affiche la ressource</span></div>
+          <b>←</b>
+          <div><strong>Réponse HTTP</strong><span>statut + contenu</span></div>
+          <b>←</b>
+          <div><strong>Serveur Web</strong><span>renvoie la réponse</span></div>
+        </div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div><p class="eyebrow">Cours</p><h2>7. Les moteurs de recherche</h2></div>
+      </div>
+      <div class="lesson">
+        <p>
+          Un moteur de recherche explore et indexe de nombreuses pages, puis classe les résultats
+          en fonction de différents critères. L'ordre obtenu n'est donc pas une preuve de vérité.
+        </p>
+        <div class="search-steps">
+          <div><span>1</span><strong>Exploration</strong><p>Des robots parcourent des pages accessibles.</p></div>
+          <div><span>2</span><strong>Indexation</strong><p>Les informations utiles sont organisées dans un index.</p></div>
+          <div><span>3</span><strong>Classement</strong><p>Les résultats sont ordonnés selon la requête et divers critères.</p></div>
+        </div>
+        <div class="callout">
+          Toujours vérifier l'auteur, la date, la source et recouper une information importante avec d'autres sources fiables.
+        </div>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div><p class="eyebrow">Cours</p><h2>8. Navigateur, données et confidentialité</h2></div>
+      </div>
+      <div class="lesson">
+        <p>
+          Le navigateur propose des paramètres concernant notamment les <strong>cookies</strong>,
+          les autorisations accordées aux sites, l'historique, les téléchargements et certaines protections de confidentialité.
+        </p>
+        <p>
+          Un cookie est une petite donnée qu'un site peut demander au navigateur de conserver. Certains sont utiles
+          au fonctionnement d'un service ; d'autres peuvent participer à la mesure d'audience ou au suivi publicitaire.
+        </p>
+      </div>
+
+      <div class="section-heading lesson-heading">
+        <div><p class="eyebrow">Cours</p><h2>9. Publication, droit d'auteur et licences</h2></div>
+      </div>
+      <div class="lesson">
+        <p>
+          Une ressource trouvée sur le Web n'est pas automatiquement libre de réutilisation.
+          Avant de publier une image, un texte ou un autre contenu, il faut vérifier les droits et la licence associés.
+        </p>
+        <div class="callout warning">
+          <strong>Réflexe :</strong> citer la source ne suffit pas toujours à obtenir le droit de réutiliser une œuvre.
+        </div>
+      </div>
+    </section>
+
+    <section id="tp" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Travaux pratiques</p><h2>Créer une première page HTML/CSS</h2></div>
+        <p class="section-intro">Objectif : distinguer le contenu de sa présentation.</p>
+      </div>
+
+      <article class="activity">
+        <div class="activity-number">TP1</div>
+        <div>
+          <h3>Créer le fichier HTML</h3>
+          <p>Dans un éditeur de texte, créer un fichier nommé <code>index.html</code> contenant :</p>
+          <div class="code-card light-code">
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Ma première page&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Bienvenue sur ma page&lt;/h1&gt;
+  &lt;p&gt;Je découvre HTML et CSS.&lt;/p&gt;
+  &lt;a href="https://www.education.gouv.fr"&gt;Éducation nationale&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <ol>
+            <li>Enregistrer le fichier.</li>
+            <li>L'ouvrir dans un navigateur.</li>
+            <li>Modifier le titre et le paragraphe.</li>
+            <li>Ajouter une deuxième partie avec un titre <code>&lt;h2&gt;</code>.</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="activity">
+        <div class="activity-number">TP2</div>
+        <div>
+          <h3>Ajouter le fichier CSS</h3>
+          <p>Dans le même dossier, créer <code>style.css</code> :</p>
+          <div class="code-card light-code">
+<pre><code>body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  line-height: 1.6;
+}</code></pre>
+          </div>
+          <ol>
+            <li>Actualiser la page.</li>
+            <li>Observer ce qui a changé sans modifier le contenu HTML.</li>
+            <li>Modifier une propriété CSS et expliquer son effet.</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="activity">
+        <div class="activity-number">A3</div>
+        <div>
+          <h3>Analyser une URL</h3>
+          <p>À partir d'une URL fournie par le professeur, identifier :</p>
+          <ul>
+            <li>le protocole ;</li>
+            <li>le nom de domaine ;</li>
+            <li>le chemin éventuel ;</li>
+            <li>la présence ou non de HTTPS.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="activity">
+        <div class="activity-number">A4</div>
+        <div>
+          <h3>Comparer des résultats de recherche</h3>
+          <ol>
+            <li>Choisir une même requête pour toute la classe.</li>
+            <li>Observer les premiers résultats.</li>
+            <li>Identifier les résultats sponsorisés lorsqu'ils sont signalés.</li>
+            <li>Comparer auteur, domaine, date et objectif des pages.</li>
+            <li>Expliquer pourquoi le premier résultat n'est pas forcément « le meilleur ».</li>
+          </ol>
+        </div>
+      </article>
+    </section>
+
+    <section id="retenir" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Fiche express</p><h2>À retenir</h2></div>
+      </div>
+      <div class="remember-grid">
+        <div><strong>Web</strong><span>service utilisant Internet</span></div>
+        <div><strong>URL</strong><span>adresse d'une ressource Web</span></div>
+        <div><strong>HTML</strong><span>contenu et structure</span></div>
+        <div><strong>CSS</strong><span>présentation de la page</span></div>
+        <div><strong>HTTP(S)</strong><span>échange client ↔ serveur</span></div>
+        <div><strong>Hyperlien</strong><span>lien vers une autre ressource</span></div>
+      </div>
+
+      <div class="vocabulary">
+        <h3>Vocabulaire essentiel</h3>
+        <dl>
+          <div><dt>Navigateur</dt><dd>Logiciel permettant notamment de demander, recevoir et afficher des ressources Web.</dd></div>
+          <div><dt>Serveur Web</dt><dd>Système qui répond aux requêtes Web et fournit des ressources.</dd></div>
+          <div><dt>HTTP</dt><dd>Protocole utilisé pour les échanges de ressources sur le Web.</dd></div>
+          <div><dt>HTTPS</dt><dd>HTTP protégé par TLS pour sécuriser le transport des échanges.</dd></div>
+          <div><dt>Moteur de recherche</dt><dd>Service permettant de rechercher des ressources à partir d'un index.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="quiz-web" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Auto-évaluation</p><h2>Quiz Web</h2></div>
+        <p class="section-intro">10 questions. Le résultat reste uniquement dans le navigateur.</p>
+      </div>
+
+      <form id="web-quiz" class="full-quiz">
+        <fieldset data-correct="b">
+          <legend><span>1</span> Quelle proposition est correcte ?</legend>
+          <label><input type="radio" name="w1" value="a"> Internet et Web sont strictement synonymes.</label>
+          <label><input type="radio" name="w1" value="b"> Le Web est un service qui utilise Internet.</label>
+          <label><input type="radio" name="w1" value="c"> Internet est une page Web.</label>
+        </fieldset>
+
+        <fieldset data-correct="a">
+          <legend><span>2</span> Quel langage décrit principalement la structure d'une page Web ?</legend>
+          <label><input type="radio" name="w2" value="a"> HTML</label>
+          <label><input type="radio" name="w2" value="b"> CSS</label>
+          <label><input type="radio" name="w2" value="c"> DNS</label>
+        </fieldset>
+
+        <fieldset data-correct="c">
+          <legend><span>3</span> CSS sert principalement à…</legend>
+          <label><input type="radio" name="w3" value="a"> attribuer une adresse IP.</label>
+          <label><input type="radio" name="w3" value="b"> rechercher un nom de domaine.</label>
+          <label><input type="radio" name="w3" value="c"> définir la présentation d'une page.</label>
+        </fieldset>
+
+        <fieldset data-correct="b">
+          <legend><span>4</span> Une URL permet notamment…</legend>
+          <label><input type="radio" name="w4" value="a"> de mesurer la taille de l'écran.</label>
+          <label><input type="radio" name="w4" value="b"> d'identifier l'emplacement d'une ressource Web.</label>
+          <label><input type="radio" name="w4" value="c"> de remplacer HTML.</label>
+        </fieldset>
+
+        <fieldset data-correct="a">
+          <legend><span>5</span> Dans le modèle client/serveur, le navigateur est généralement…</legend>
+          <label><input type="radio" name="w5" value="a"> le client.</label>
+          <label><input type="radio" name="w5" value="b"> le routeur.</label>
+          <label><input type="radio" name="w5" value="c"> le DNS.</label>
+        </fieldset>
+
+        <fieldset data-correct="c">
+          <legend><span>6</span> HTTPS indique principalement que…</legend>
+          <label><input type="radio" name="w6" value="a"> le site dit forcément la vérité.</label>
+          <label><input type="radio" name="w6" value="b"> le site n'utilise pas Internet.</label>
+          <label><input type="radio" name="w6" value="c"> le transport des échanges HTTP est protégé par TLS.</label>
+        </fieldset>
+
+        <fieldset data-correct="b">
+          <legend><span>7</span> Un hyperlien permet…</legend>
+          <label><input type="radio" name="w7" value="a"> uniquement de changer une couleur.</label>
+          <label><input type="radio" name="w7" value="b"> d'accéder à une autre ressource.</label>
+          <label><input type="radio" name="w7" value="c"> de créer une adresse IP.</label>
+        </fieldset>
+
+        <fieldset data-correct="a">
+          <legend><span>8</span> Le premier résultat d'un moteur de recherche est-il forcément le plus fiable ?</legend>
+          <label><input type="radio" name="w8" value="a"> Non.</label>
+          <label><input type="radio" name="w8" value="b"> Oui, toujours.</label>
+        </fieldset>
+
+        <fieldset data-correct="c">
+          <legend><span>9</span> Quel réflexe est utile avant de reprendre une image trouvée en ligne ?</legend>
+          <label><input type="radio" name="w9" value="a"> La copier immédiatement.</label>
+          <label><input type="radio" name="w9" value="b"> Vérifier seulement sa taille.</label>
+          <label><input type="radio" name="w9" value="c"> Vérifier sa source et ses droits ou sa licence.</label>
+        </fieldset>
+
+        <fieldset data-correct="b">
+          <legend><span>10</span> Un cookie est notamment…</legend>
+          <label><input type="radio" name="w10" value="a"> un câble réseau.</label>
+          <label><input type="radio" name="w10" value="b"> une donnée qu'un site peut demander au navigateur de conserver.</label>
+          <label><input type="radio" name="w10" value="c"> un langage de programmation.</label>
+        </fieldset>
+
+        <div class="quiz-submit no-print">
+          <button class="btn btn-primary" type="submit">Corriger mon quiz</button>
+          <button class="btn btn-secondary" type="reset">Recommencer</button>
+        </div>
+        <div id="web-score" class="score-box" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="section sources">
+      <div class="section-heading">
+        <div><p class="eyebrow">Sources du chapitre</p><h2>Références officielles</h2></div>
+      </div>
+      <div class="resource-list">
+        <a href="https://eduscol.education.gouv.fr/5841/programmes-et-ressources-en-sciences-numeriques-et-technologie-voie-gt" target="_blank" rel="noopener">
+          <strong>Éduscol — Programmes et ressources SNT</strong>
+          <span>Programme en vigueur et ressources d'accompagnement du thème Le Web.</span>
+        </a>
+        <a href="https://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/08/5/spe641_annexe_1063085.pdf" target="_blank" rel="noopener">
+          <strong>Ministère de l'Éducation nationale — Programme SNT</strong>
+          <span>HTML/CSS, URL, HTTP, client/serveur, moteurs de recherche et paramètres du navigateur.</span>
+        </a>
+        <a href="https://eduscol.education.gouv.fr/sites/default/files/document/ra19lyceegsnt2ndfondforme1150600pdf-83106.pdf" target="_blank" rel="noopener">
+          <strong>Éduscol — Le Web : le fond et la forme</strong>
+          <span>Ressource d'accompagnement sur HTML, CSS et l'hypertexte.</span>
+        </a>
+      </div>
+      <p class="source-note">Références vérifiées en septembre 2026.</p>
+    </section>
+
+    <div class="chapter-nav no-print">
+      <a href="internet.html">← Thème précédent : Internet</a>
+      <a href="reseaux-sociaux.html">Thème suivant : Réseaux sociaux →</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p><strong>Lycée Marie Rivier</strong> • Sciences Numériques et Technologie</p>
+      <p>Christophe Delcourt • 2026–2027</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

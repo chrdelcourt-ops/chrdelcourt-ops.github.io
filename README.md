@@ -1,28 +1,78 @@
-# Site SNT - STI2D - Lycée Marie Rivier
+# Site pédagogique — Lycée Marie Rivier
 
-Site pédagogique.
+Christophe Delcourt — 2026–2027
 
-Enseignant : Christophe Delcourt
+## Version 5
 
-## Mise en ligne sur GitHub Pages
+Cette version ajoute :
+- une nouvelle zone d'accueil cohérente avec les 3 espaces :
+  - Seconde SNT
+  - Première STI2D
+  - Terminale STI2D / SIN
+- la transformation du dossier PDF « Numération et codage de l'information » en véritable cours Web ;
+- 9 chapitres repliables ;
+- diagnostic de début de séquence ;
+- tableaux et fiches méthodes ;
+- outils interactifs :
+  - conversion décimal → binaire / hexadécimal,
+  - calcul de l'étendue sur n bits,
+  - codage ASCII ;
+- quiz d'auto-évaluation ;
+- accès au PDF original depuis la page Web.
 
-Nom conseillé du dépôt :
+## Fichier principal ajouté
+
+`classes/terminale-numeration.html`
+
+## Déploiement GitHub Pages
+
+Dépôt :
 `chrdelcourt-ops.github.io`
 
-1. Créer le dépôt public sur GitHub.
-2. Décompresser ce dossier.
-3. Envoyer tous les fichiers à la racine du dépôt.
-4. Aller dans Settings > Pages.
-5. Dans Build and deployment, choisir Deploy from a branch.
-6. Choisir la branche `main` et le dossier `/ (root)`.
-7. Enregistrer.
-8. Le site sera ensuite disponible à :
-   https://chrdelcourt-ops.github.io
+Décompresser le ZIP de mise à jour et téléverser les fichiers en conservant les dossiers.
 
-## Structure
 
-- `index.html` : page d'accueil
-- `style.css` : design du site
-- `script.js` : interactions et quiz
-- `assets/` : logo et images
-- `themes/` : pages des 7 thèmes SNT
+## Version 6 — Référencement Google
+
+Ajouts :
+- titres SEO et meta descriptions uniques ;
+- balises canonical ;
+- directives robots page par page ;
+- Open Graph et Twitter Card ;
+- données structurées Schema.org (WebSite, EducationalOrganization, Course, BreadcrumbList) ;
+- `robots.txt` ;
+- `sitemap.xml` ;
+- page `404.html` ;
+- guide `GOOGLE-SEARCH-CONSOLE.md`.
+
+Les pages SNT encore « À venir » sont volontairement en `noindex,follow` jusqu'à ce qu'elles contiennent un vrai cours.
+
+
+## Version 8 — Première STI2D / Innovation Technologique
+
+Ajouts :
+- premier cours de Première STI2D en version Web :
+  `classes/premiere-ideation-brainstorming.html`
+- cours structuré autour du BO STI2D :
+  O5, CO5.1, CO5.5, CO5.6, CO4.1 et CO4.3 ;
+- contenus issus du support « Le brainstorming » et de la fiche élève « Idéater et innover » ;
+- activités « Mauvaises idées », « Usages alternatifs », « Œuvre inachevée » ;
+- mise en situation sur l'impact environnemental des livraisons de moins de 50 km ;
+- croquis et canevas d'idée ;
+- matrice interactive de choix ;
+- canevas de pitch ;
+- quiz de 8 questions ;
+- documents originaux téléchargeables ;
+- référencement SEO et ajout au sitemap.
+
+
+## Version 9 — Activité 1 Robot aspirateur
+
+Ajouts :
+- nouvelle page `classes/premiere-activite-1-robot-aspirateur.html` ;
+- rubrique « Ce que je dois retenir » ;
+- checklist « À la fin, je dois savoir… » ;
+- mini-synthèse et mots-clés ;
+- lien vers la fiche élève d'origine ;
+- ajout de l'activité sur la page Première STI2D ;
+- ajout au sitemap Google.
