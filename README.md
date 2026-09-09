@@ -53,7 +53,6 @@ Les pages SNT encore « À venir » sont volontairement en `noindex,follow` jusq
 Ajouts :
 - premier cours de Première STI2D en version Web :
   `classes/premiere-ideation-brainstorming.html`
-- cours structuré autour du BO STI2D :
   O5, CO5.1, CO5.5, CO5.6, CO4.1 et CO4.3 ;
 - contenus issus du support « Le brainstorming » et de la fiche élève « Idéater et innover » ;
 - activités « Mauvaises idées », « Usages alternatifs », « Œuvre inachevée » ;
