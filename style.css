@@ -1413,3 +1413,20 @@ background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;b
 .robot-diagnosis strong{color:var(--primary-dark)}.robot-diagnosis p{color:var(--muted)}
 @media(max-width:900px){.drivers-grid,.innovation-grid{grid-template-columns:1fr 1fr}.lineage,.cdc-flow{grid-template-columns:1fr}.concept-triplet,.mei-grid,.robot-diagnosis{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.drivers-grid,.innovation-grid,.concept-triplet,.mei-grid,.robot-diagnosis{grid-template-columns:1fr}.compromise-card{grid-template-columns:1fr}.compromise-effects{grid-template-columns:1fr}}
+
+.binary-hero{background:linear-gradient(135deg,#e6f9fb,#fff 56%,#fff4dc)}
+.binary-featured{background:linear-gradient(135deg,#153e51,#19697d)}
+.place-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.place-grid div{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+.place-grid strong,.place-grid span{display:block}.place-grid span{color:var(--muted);font-size:.85rem}
+.activity-box{margin:18px 0;background:#fff8da;border:1px solid #efd171;border-radius:14px;padding:18px}
+.activity-box>span{display:block;font-weight:900;color:#8b6b00;margin-bottom:8px}
+.binary-weights{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:16px 0}
+.binary-weights div{background:#153e51;color:#fff;border-radius:9px;padding:10px 5px;text-align:center}
+.binary-weights strong,.binary-weights span{display:block}.binary-weights span{font-size:.72rem;opacity:.8}
+.method-columns,.formula-stack{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.method-columns article{background:#fff;border:1px solid var(--border);border-radius:16px;padding:19px;box-shadow:var(--shadow-soft)}
+.formula-stack div{background:#153e51;color:#fff;border-radius:13px;padding:16px;text-align:center;font-weight:900}
+.hex-grid-full{grid-template-columns:repeat(8,1fr)}
+@media(max-width:900px){.binary-weights,.hex-grid-full{grid-template-columns:repeat(4,1fr)}.method-columns,.formula-stack{grid-template-columns:1fr}}
+@media(max-width:650px){.place-grid{grid-template-columns:1fr 1fr}.binary-weights,.hex-grid-full{grid-template-columns:repeat(2,1fr)}}

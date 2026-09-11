@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Binaire, bases numériques & débit – SNT Seconde | Marie Rivier</title>
+<meta name="description" content="Cours SNT Seconde sur les bases 10, 2 et 16, le binaire, l'hexadécimal, ASCII/Unicode, les bits, les octets et le calcul d'un débit ou d'un temps de transfert.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Christophe Delcourt">
+<link rel="canonical" href="https://chrdelcourt-ops.github.io/themes/binaire-bases-debit.html">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+<header class="site-header compact-header">
+<div class="header-inner">
+<a href="../index.html" class="brand"><img src="../assets/logo-marie-rivier.png" alt="Logo Marie Rivier" class="logo"></a>
+<div class="header-title">
+<p class="eyebrow">SNT • Seconde</p>
+<h1>💾 Binaire, bases numériques & débit</h1>
+<p class="subtitle">Christophe Delcourt • Lycée Marie Rivier • 2026–2027</p>
+</div>
+</div>
+</header>
+
+<nav class="main-nav"><div class="nav-inner">
+<a href="../index.html">← Accueil</a>
+<a href="#bases">Bases</a>
+<a href="#binaire">Binaire</a>
+<a href="#hexadecimal">Hexadécimal</a>
+<a href="#codage">Codage</a>
+<a href="#debit">Débit</a>
+<a href="#retenir">À retenir</a>
+<a href="#quiz-binaire">Quiz</a>
+</div></nav>
+
+<main id="contenu">
+<section class="chapter-hero binary-hero">
+<div>
+<span class="badge">SNT • OUTILS NUMÉRIQUES</span>
+<h2>Comment l'ordinateur représente-t-il les nombres et les données ?</h2>
+<p>Comprendre les bases 10, 2 et 16, le rôle du bit et de l'octet, le codage des caractères et la relation entre taille de fichier, débit et temps de transfert.</p>
+<div class="hero-actions no-print">
+<a class="btn btn-primary" href="#bases">Commencer</a>
+<a class="btn btn-secondary" href="../documents/seconde-snt/cours-binaire-bases-debit-eleve.docx">Fiche élève Word</a>
+<button class="btn btn-secondary" type="button" onclick="window.print()">Imprimer / PDF</button>
+</div>
+</div>
+<aside class="chapter-summary">
+<p class="eyebrow">Objectifs</p>
+<ul class="check-list">
+<li>Reconnaître les bases 10, 2 et 16</li>
+<li>Convertir des nombres simples</li>
+<li>Expliquer bit et octet</li>
+<li>Relier l'hexadécimal aux adresses informatiques</li>
+<li>Comprendre ASCII et UTF-8</li>
+<li>Calculer un temps de transfert</li>
+</ul>
+</aside>
+</section>
+
+<section id="bases" class="section">
+<div class="section-heading"><div><p class="eyebrow">1. Comprendre une base</p><h2>La base 10</h2></div></div>
+<div class="lesson">
+<p>Un système de numération utilise un ensemble de symboles et des positions. En base 10, on utilise les chiffres de <strong>0 à 9</strong>.</p>
+<div class="formula-box">2026₁₀ = 2 × 10³ + 0 × 10² + 2 × 10¹ + 6 × 10⁰</div>
+<div class="place-grid">
+<div><strong>10³</strong><span>1000</span></div>
+<div><strong>10²</strong><span>100</span></div>
+<div><strong>10¹</strong><span>10</span></div>
+<div><strong>10⁰</strong><span>1</span></div>
+</div>
+<div class="activity-box"><span>✎ Application 1</span><ol>
+<li>Décomposer 4 307 en puissances de 10.</li>
+<li>Combien de valeurs différentes peut représenter un seul chiffre décimal ?</li>
+</ol></div>
+</div>
+</section>
+
+<section id="binaire" class="section">
+<div class="section-heading"><div><p class="eyebrow">2. Base 2</p><h2>Le langage naturel des machines</h2></div><p class="section-intro">Deux états seulement : 0 et 1.</p></div>
+<div class="lesson">
+<p>Les circuits électroniques distinguent facilement deux états stables. On les représente par <strong>0</strong> et <strong>1</strong>.</p>
+<div class="remember-grid">
+<div><strong>1 bit</strong><span>0 ou 1</span></div>
+<div><strong>1 octet</strong><span>8 bits</span></div>
+<div><strong>8 bits</strong><span>256 combinaisons</span></div>
+<div><strong>Valeurs</strong><span>0 à 255</span></div>
+</div>
+<h3 class="subheading">Lire un nombre binaire</h3>
+<div class="binary-weights">
+<div><strong>128</strong><span>2⁷</span></div><div><strong>64</strong><span>2⁶</span></div>
+<div><strong>32</strong><span>2⁵</span></div><div><strong>16</strong><span>2⁴</span></div>
+<div><strong>8</strong><span>2³</span></div><div><strong>4</strong><span>2²</span></div>
+<div><strong>2</strong><span>2¹</span></div><div><strong>1</strong><span>2⁰</span></div>
+</div>
+<div class="example-box"><strong>Exemple :</strong> 11010110₂ = 128 + 64 + 16 + 4 + 2 = <strong>214₁₀</strong></div>
+<div class="callout"><strong>Méthode :</strong> on additionne uniquement les poids correspondant aux bits égaux à 1.</div>
+<div class="activity-box"><span>✎ Application 2</span><ol>
+<li>Convertir 00110101₂ en décimal.</li>
+<li>Convertir 11111111₂ en décimal.</li>
+<li>Pourquoi 255 est-il une valeur fréquente en informatique ?</li>
+</ol></div>
+</div>
+
+<div class="section-heading lesson-heading"><div><p class="eyebrow">3. Décimal → binaire</p><h2>Écrire un nombre décimal en binaire</h2></div></div>
+<div class="lesson">
+<div class="method-columns">
+<article><h3>Méthode A — avec les poids</h3><p>Exemple : 45₁₀ = 32 + 8 + 4 + 1</p><div class="formula-box">45₁₀ = 00101101₂</div></article>
+<article><h3>Méthode B — divisions successives par 2</h3><p>On relève les restes puis on les lit du bas vers le haut.</p><div class="formula-box">57₁₀ = 111001₂ = 00111001₂ sur 8 bits</div></article>
+</div>
+<div class="activity-box"><span>✎ Application 3</span><ol>
+<li>Écrire 26₁₀ en binaire sur 8 bits.</li>
+<li>Écrire 173₁₀ en binaire sur 8 bits.</li>
+<li>Vérifier 10101101₂ en le reconvertissant en décimal.</li>
+</ol></div>
+</div>
+</section>
+
+<section id="hexadecimal" class="section">
+<div class="section-heading"><div><p class="eyebrow">4. Base 16</p><h2>L'hexadécimal</h2></div></div>
+<div class="lesson">
+<p>La base 16 utilise les symboles 0 à 9 puis A, B, C, D, E et F. Les lettres valent 10 à 15.</p>
+<div class="hex-grid hex-grid-full">
+<span>0000<br><b>0</b></span><span>0001<br><b>1</b></span><span>0010<br><b>2</b></span><span>0011<br><b>3</b></span>
+<span>0100<br><b>4</b></span><span>0101<br><b>5</b></span><span>0110<br><b>6</b></span><span>0111<br><b>7</b></span>
+<span>1000<br><b>8</b></span><span>1001<br><b>9</b></span><span>1010<br><b>A</b></span><span>1011<br><b>B</b></span>
+<span>1100<br><b>C</b></span><span>1101<br><b>D</b></span><span>1110<br><b>E</b></span><span>1111<br><b>F</b></span>
+</div>
+<div class="example-box">3A₁₆ = 58₁₀<br>2F₁₆ = 0010 1111₂ = 47₁₀</div>
+<div class="callout"><strong>Où voit-on de l'hexadécimal ?</strong> Dans les adresses MAC, les couleurs du Web et des outils de diagnostic.</div>
+<div class="activity-box"><span>✎ Application 4</span><ol>
+<li>Convertir 7F₁₆ en décimal.</li>
+<li>Convertir C3₁₆ en binaire.</li>
+<li>Écrire 11111111₂ en hexadécimal.</li>
+</ol></div>
+</div>
+</section>
+
+<section id="codage" class="section">
+<div class="section-heading"><div><p class="eyebrow">5. Coder des caractères</p><h2>ASCII et Unicode / UTF-8</h2></div></div>
+<div class="lesson">
+<p>Une machine stocke un nombre associé à chaque caractère par une convention de codage.</p>
+<div class="two-cols">
+<div class="callout"><strong>ASCII</strong><br>ASCII historique : 7 bits et 128 caractères. Exemple : A = 65₁₀ = 01000001₂.</div>
+<div class="callout"><strong>Unicode / UTF-8</strong><br>Unicode représente alphabets, symboles et emojis. En UTF-8, un caractère peut occuper de 1 à 4 octets.</div>
+</div>
+<div class="table-wrap"><table>
+<thead><tr><th>Caractère</th><th>Décimal</th><th>Hexadécimal</th><th>Binaire ASCII</th></tr></thead>
+<tbody>
+<tr><td>A</td><td>65</td><td>41</td><td>01000001</td></tr>
+<tr><td>a</td><td>97</td><td>61</td><td>01100001</td></tr>
+<tr><td>0</td><td>48</td><td>30</td><td>00110000</td></tr>
+<tr><td>!</td><td>33</td><td>21</td><td>00100001</td></tr>
+</tbody></table></div>
+</div>
+</section>
+
+<section id="debit" class="section">
+<div class="section-heading"><div><p class="eyebrow">6. Bits, octets et débit</p><h2>Taille de fichier et vitesse de transmission</h2></div></div>
+<div class="lesson">
+<div class="remember-grid">
+<div><strong>bit</strong><span>symbole b</span></div>
+<div><strong>octet</strong><span>symbole o</span></div>
+<div><strong>1 octet</strong><span>8 bits</span></div>
+<div><strong>25 Mo</strong><span>200 Mbit</span></div>
+</div>
+<div class="callout warning"><strong>Attention :</strong> les tailles de fichiers s'expriment souvent en octets, les débits réseau en bit/s.</div>
+<div class="formula-stack">
+<div>Débit = quantité de données ÷ durée</div>
+<div>Durée = quantité de données ÷ débit</div>
+</div>
+<div class="example-box"><strong>Exemple :</strong> 25 Mo à 100 Mbit/s → 25 × 8 = 200 Mbit → 200 ÷ 100 = <strong>2 s</strong></div>
+</div>
+</section>
+
+<section id="outils-binaires" class="section">
+<div class="section-heading"><div><p class="eyebrow">Outils interactifs</p><h2>Vérifier mes conversions</h2></div></div>
+<div class="tool-grid">
+<div class="interactive-tool">
+<h3>Décimal → binaire / hexa</h3>
+<label for="snt-decimal">Nombre décimal (0 à 255)</label>
+<input id="snt-decimal" type="number" min="0" max="255" step="1" placeholder="Ex. 173">
+<button class="btn btn-primary" type="button" id="snt-convert-decimal">Convertir</button>
+<div class="tool-result" id="snt-decimal-result"><div><span>Binaire 8 bits</span><strong>—</strong></div><div><span>Hexadécimal</span><strong>—</strong></div></div>
+</div>
+<div class="interactive-tool">
+<h3>Binaire → décimal</h3>
+<label for="snt-binary">Binaire sur 8 bits</label>
+<input id="snt-binary" type="text" maxlength="8" placeholder="Ex. 10101101">
+<button class="btn btn-primary" type="button" id="snt-convert-binary">Convertir</button>
+<div class="tool-result" id="snt-binary-result"><div><span>Décimal</span><strong>—</strong></div><div><span>Hexadécimal</span><strong>—</strong></div></div>
+</div>
+<div class="interactive-tool">
+<h3>Temps de transfert</h3>
+<label for="snt-size-mo">Taille (Mo)</label><input id="snt-size-mo" type="number" min="0" step="0.1" placeholder="Ex. 150">
+<label for="snt-speed">Débit (Mbit/s)</label><input id="snt-speed" type="number" min="0.1" step="0.1" placeholder="Ex. 50">
+<button class="btn btn-primary" type="button" id="snt-transfer-calc">Calculer</button>
+<div class="tool-result" id="snt-transfer-result"><div><span>Durée théorique</span><strong>—</strong></div></div>
+</div>
+</div>
+</section>
+
+<section id="retenir" class="section">
+<div class="section-heading"><div><p class="eyebrow">Synthèse</p><h2>Ce que je dois retenir</h2></div></div>
+<div class="retain-grid">
+<article class="retain-card"><span class="retain-number">1</span><p>Base 10 : chiffres 0–9. Base 2 : 0 et 1. Base 16 : 0–9 et A–F.</p></article>
+<article class="retain-card"><span class="retain-number">2</span><p>1 bit vaut 0 ou 1. 1 octet = 8 bits. Un octet code 256 valeurs, de 0 à 255.</p></article>
+<article class="retain-card"><span class="retain-number">3</span><p>Binaire → décimal : additionner les poids des bits à 1.</p></article>
+<article class="retain-card"><span class="retain-number">4</span><p>Décimal → binaire : puissances de 2 ou divisions successives.</p></article>
+<article class="retain-card"><span class="retain-number">5</span><p>1 chiffre hexadécimal = 4 bits.</p></article>
+<article class="retain-card"><span class="retain-number">6</span><p>ASCII est historique ; Unicode/UTF-8 représente beaucoup plus de caractères.</p></article>
+<article class="retain-card"><span class="retain-number">7</span><p>Taille : octets. Débit : bit/s.</p></article>
+<article class="retain-card"><span class="retain-number">8</span><p>Durée = quantité de données ÷ débit.</p></article>
+</div>
+<div class="big-summary"><p><strong>Formules flash :</strong> 1 octet = 8 bits • débit = quantité / durée • durée = quantité / débit • n bits → 2ⁿ combinaisons</p></div>
+</section>
+
+<section id="quiz-binaire" class="section">
+<div class="section-heading"><div><p class="eyebrow">Auto-évaluation</p><h2>Quiz — Binaire & débit</h2></div></div>
+<form id="binary-quiz" class="full-quiz">
+<fieldset data-correct="182"><legend><span>1</span> 10110110₂ vaut en décimal…</legend>
+<label><input type="radio" name="b1" value="174"> 174</label>
+<label><input type="radio" name="b1" value="182"> 182</label>
+<label><input type="radio" name="b1" value="214"> 214</label></fieldset>
+<fieldset data-correct="01011110"><legend><span>2</span> 94₁₀ s'écrit sur 8 bits…</legend>
+<label><input type="radio" name="b2" value="01011110"> 01011110</label>
+<label><input type="radio" name="b2" value="01101110"> 01101110</label>
+<label><input type="radio" name="b2" value="01011010"> 01011010</label></fieldset>
+<fieldset data-correct="165"><legend><span>3</span> A5₁₆ vaut en décimal…</legend>
+<label><input type="radio" name="b3" value="155"> 155</label>
+<label><input type="radio" name="b3" value="165"> 165</label>
+<label><input type="radio" name="b3" value="175"> 175</label></fieldset>
+<fieldset data-correct="20"><legend><span>4</span> 75 Mo à 30 Mbit/s prennent théoriquement…</legend>
+<label><input type="radio" name="b4" value="2.5"> 2,5 s</label>
+<label><input type="radio" name="b4" value="20"> 20 s</label>
+<label><input type="radio" name="b4" value="200"> 200 s</label></fieldset>
+<fieldset data-correct="8"><legend><span>5</span> Un octet contient…</legend>
+<label><input type="radio" name="b5" value="4"> 4 bits</label>
+<label><input type="radio" name="b5" value="8"> 8 bits</label>
+<label><input type="radio" name="b5" value="16"> 16 bits</label></fieldset>
+<div class="quiz-submit no-print"><button class="btn btn-primary" type="submit">Corriger mon quiz</button><button class="btn btn-secondary" type="reset">Recommencer</button></div>
+<div id="binary-score" class="score-box" aria-live="polite"></div>
+</form>
+</section>
+
+<section class="section sources">
+<div class="section-heading"><div><p class="eyebrow">Document associé</p><h2>Fiche élève</h2></div></div>
+<div class="resource-list"><a href="../documents/seconde-snt/cours-binaire-bases-debit-eleve.docx"><strong>Binaire, bases numériques et débit</strong><span>Version élève 2026–2027.</span></a></div>
+</section>
+
+<div class="chapter-nav no-print"><a href="internet.html">← Retour au thème Internet</a><a href="../index.html">Accueil →</a></div>
+</main>
+<footer><div class="footer-inner"><p><strong>Lycée Marie Rivier</strong> • SNT Seconde</p><p>Christophe Delcourt • 2026–2027</p></div></footer>
+<script src="../script.js"></script>
+</body>
+</html>

@@ -345,4 +345,54 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
+  const sntDecimal=document.getElementById("snt-decimal");
+  const sntDecimalBtn=document.getElementById("snt-convert-decimal");
+  const sntDecimalResult=document.getElementById("snt-decimal-result");
+  if(sntDecimal&&sntDecimalBtn&&sntDecimalResult){
+    sntDecimalBtn.addEventListener("click",()=>{
+      const v=Number(sntDecimal.value),o=sntDecimalResult.querySelectorAll("strong");
+      if(!Number.isInteger(v)||v<0||v>255){o[0].textContent="0 à 255";o[1].textContent="0 à 255";return;}
+      o[0].textContent=v.toString(2).padStart(8,"0");
+      o[1].textContent=v.toString(16).toUpperCase().padStart(2,"0");
+    });
+  }
+
+  const sntBinary=document.getElementById("snt-binary");
+  const sntBinaryBtn=document.getElementById("snt-convert-binary");
+  const sntBinaryResult=document.getElementById("snt-binary-result");
+  if(sntBinary&&sntBinaryBtn&&sntBinaryResult){
+    sntBinaryBtn.addEventListener("click",()=>{
+      const raw=sntBinary.value.trim(),o=sntBinaryResult.querySelectorAll("strong");
+      if(!/^[01]{1,8}$/.test(raw)){o[0].textContent="Binaire invalide";o[1].textContent="Binaire invalide";return;}
+      const v=parseInt(raw,2);o[0].textContent=v;o[1].textContent=v.toString(16).toUpperCase().padStart(2,"0");
+    });
+  }
+
+  const sizeMo=document.getElementById("snt-size-mo");
+  const speed=document.getElementById("snt-speed");
+  const transferBtn=document.getElementById("snt-transfer-calc");
+  const transferResult=document.getElementById("snt-transfer-result");
+  if(sizeMo&&speed&&transferBtn&&transferResult){
+    transferBtn.addEventListener("click",()=>{
+      const s=Number(sizeMo.value),d=Number(speed.value),o=transferResult.querySelector("strong");
+      if(!(s>=0)||!(d>0)){o.textContent="Valeurs invalides";return;}
+      const sec=s*8/d;
+      o.textContent=sec<60?`${sec.toFixed(1)} s`:`${Math.floor(sec/60)} min ${Math.round(sec%60)} s`;
+    });
+  }
+
+  const binaryQuiz=document.getElementById("binary-quiz");
+  const binaryScore=document.getElementById("binary-score");
+  if(binaryQuiz&&binaryScore){
+    binaryQuiz.addEventListener("submit",(e)=>{
+      e.preventDefault();const qs=[...binaryQuiz.querySelectorAll("fieldset[data-correct]")];
+      let score=0,answered=0;
+      qs.forEach(f=>{f.classList.remove("correct","incorrect");const s=f.querySelector("input[type='radio']:checked");if(!s)return;answered++;if(s.value===f.dataset.correct){score++;f.classList.add("correct")}else f.classList.add("incorrect")});
+      binaryScore.classList.add("visible");
+      binaryScore.textContent=answered<qs.length?`Tu as répondu à ${answered}/${qs.length}. Score : ${score}/${qs.length}.`:score===qs.length?`Excellent : ${score}/${qs.length}.`:`Score : ${score}/${qs.length}.`;
+    });
+    binaryQuiz.addEventListener("reset",()=>{binaryQuiz.querySelectorAll("fieldset").forEach(f=>f.classList.remove("correct","incorrect"));binaryScore.textContent="";binaryScore.classList.remove("visible")});
+  }
+
 });
