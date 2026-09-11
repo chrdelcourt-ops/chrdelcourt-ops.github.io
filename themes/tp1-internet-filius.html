@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TP 1 Filius – Internet et réseaux | SNT Seconde</title>
+<meta name="description" content="TP SNT Seconde avec Filius : LAN, sous-réseaux, routage, passerelles, DNS, serveur Web et diagnostic réseau.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Christophe Delcourt">
+<link rel="canonical" href="https://chrdelcourt-ops.github.io/themes/tp1-internet-filius.html">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header compact-header">
+<div class="header-inner">
+<a href="../index.html" class="brand"><img src="../assets/logo-marie-rivier.png" alt="Logo Marie Rivier" class="logo"></a>
+<div class="header-title">
+<p class="eyebrow">SNT • Seconde • Internet</p>
+<h1>🖧 TP 1 — Construire et tester un mini-réseau avec Filius</h1>
+<p class="subtitle">Christophe Delcourt • Lycée Marie Rivier • 2026–2027</p>
+</div>
+</div>
+</header>
+
+<nav class="main-nav"><div class="nav-inner">
+<a href="internet.html">← Internet</a>
+<a href="#lan">LAN</a>
+<a href="#routage">Routage</a>
+<a href="#dns">DNS</a>
+<a href="#web">Web</a>
+<a href="#diagnostic">Diagnostic</a>
+<a href="#retenir">À retenir</a>
+</div></nav>
+
+<main id="contenu">
+<section class="chapter-hero filius-hero">
+<div>
+<span class="badge">TP 1 • FILIUS 2.x</span>
+<h2>Construire un réseau, le faire communiquer, puis trouver les pannes</h2>
+<p>Tu vas créer un LAN, relier deux sous-réseaux, configurer un routeur, un DNS et un serveur Web, puis terminer par un diagnostic méthodique.</p>
+<div class="hero-actions no-print">
+<a class="btn btn-primary" href="#lan">Commencer le TP</a>
+<a class="btn btn-secondary" href="../documents/seconde-snt/tp1-internet-filius-eleve.docx">Fiche élève Word</a>
+<button class="btn btn-secondary" type="button" onclick="window.print()">Imprimer / PDF</button>
+</div>
+</div>
+<aside class="chapter-summary">
+<p class="eyebrow">Fichiers à conserver</p>
+<ul class="check-list">
+<li>TP1_LAN.fls</li>
+<li>TP1_ROUTAGE.fls</li>
+<li>TP1_DNS_WEB.fls</li>
+</ul>
+<p class="tp-note">Les captures demandées servent de preuves dans le compte rendu.</p>
+</aside>
+</section>
+
+<section class="section">
+<div class="section-heading"><div><p class="eyebrow">Objectif</p><h2>Comprendre les éléments essentiels d'un réseau IP</h2></div></div>
+<div class="objectives-grid">
+<div class="objective"><span>01</span><p>Configurer une <strong>adresse IP</strong>, un masque et une passerelle.</p></div>
+<div class="objective"><span>02</span><p>Tester avec <strong>ipconfig</strong> et <strong>ping</strong>.</p></div>
+<div class="objective"><span>03</span><p>Comprendre le rôle du <strong>switch</strong> et du <strong>routeur</strong>.</p></div>
+<div class="objective"><span>04</span><p>Utiliser un <strong>serveur DNS</strong>.</p></div>
+<div class="objective"><span>05</span><p>Accéder à une page Web avec un <strong>nom symbolique</strong>.</p></div>
+<div class="objective"><span>06</span><p>Diagnostiquer méthodiquement une panne simple.</p></div>
+</div>
+</section>
+
+<section id="lan" class="section">
+<div class="section-heading"><div><p class="eyebrow">Étape 1</p><h2>Construire un premier réseau local (LAN)</h2></div></div>
+<div class="tp-step"><div class="tp-step-number">1</div><div class="tp-step-content"><ol>
+<li>Placer trois ordinateurs et un switch.</li>
+<li>Relier chaque ordinateur au switch.</li>
+<li>Configurer les adresses IP ci-dessous.</li>
+<li>Passer en mode simulation et ouvrir la ligne de commande de P1.</li>
+<li>Exécuter <code>ipconfig</code>, puis <code>ping 192.168.1.12</code>.</li>
+</ol></div></div>
+
+<div class="table-wrap"><table class="network-table">
+<thead><tr><th>Machine</th><th>Adresse IP</th><th>Masque</th><th>Passerelle</th><th>DNS</th></tr></thead>
+<tbody>
+<tr><td>P1</td><td>192.168.1.10</td><td>255.255.255.0</td><td>—</td><td>—</td></tr>
+<tr><td>P2</td><td>192.168.1.11</td><td>255.255.255.0</td><td>—</td><td>—</td></tr>
+<tr><td>P3</td><td>192.168.1.12</td><td>255.255.255.0</td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+
+<div class="questions-box">
+<h3>Questions</h3>
+<p><strong>Q1.</strong> À quoi sert <code>ipconfig</code> ? Relever l'adresse IP et le masque de P1.</p>
+<p><strong>Q2.</strong> À quoi sert <code>ping</code> ? Quel résultat obtenez-vous entre P1 et P3 ?</p>
+<p><strong>Q3.</strong> Quel est le rôle du switch ? A-t-il besoin d'une adresse IP pour cette fonction dans Filius ?</p>
+</div>
+<div class="capture-box"><strong>CAPTURE N°1</strong><span>Ping réussi de P1 vers P3.</span></div>
+<div class="callout success-callout"><strong>À retenir :</strong> un LAN regroupe des équipements proches. Des machines d'un même sous-réseau peuvent communiquer directement, sans routeur.</div>
+</section>
+
+<section class="section">
+<div class="section-heading"><div><p class="eyebrow">Étape 2</p><h2>Tester deux sous-réseaux différents</h2></div></div>
+<div class="tp-step"><div class="tp-step-number">2</div><div class="tp-step-content"><ol>
+<li>Conserver le LAN A en <strong>192.168.1.0/24</strong>.</li>
+<li>Créer un LAN B : T1 = <strong>192.168.2.10/24</strong> et T2 = <strong>192.168.2.11/24</strong>.</li>
+<li>Relier provisoirement les deux switches.</li>
+<li>Depuis P1, lancer <code>ping 192.168.2.10</code>.</li>
+</ol></div></div>
+<div class="questions-box">
+<p><strong>Q4.</strong> Le ping de P1 vers T1 fonctionne-t-il ? Justifier avec les adresses IP et le masque.</p>
+<p><strong>Q5.</strong> Quel équipement faut-il ajouter pour permettre la communication entre les deux sous-réseaux ?</p>
+</div>
+<div class="capture-box"><strong>CAPTURE N°2</strong><span>Ping en échec de P1 vers T1.</span></div>
+<div class="callout warning"><strong>Point important :</strong> deux réseaux différents ont besoin d'un routeur et de passerelles correctement configurées pour communiquer.</div>
+</section>
+
+<section id="routage" class="section">
+<div class="section-heading"><div><p class="eyebrow">Étape 3</p><h2>Mettre en place le routage et les passerelles</h2></div></div>
+<div class="tp-step"><div class="tp-step-number">3</div><div class="tp-step-content"><ol>
+<li>Supprimer le câble direct entre les switches.</li>
+<li>Placer un routeur R1 entre SW-A et SW-B.</li>
+<li>Interface LAN A : <strong>192.168.1.254/24</strong>.</li>
+<li>Interface LAN B : <strong>192.168.2.254/24</strong>.</li>
+<li>Passerelle P1/P2/P3 : <strong>192.168.1.254</strong>.</li>
+<li>Passerelle T1/T2 : <strong>192.168.2.254</strong>.</li>
+<li>Tester à nouveau <code>ping 192.168.2.10</code>.</li>
+</ol></div></div>
+<div class="questions-box">
+<p><strong>Q6.</strong> Qu'est-ce qu'une passerelle par défaut ?</p>
+<p><strong>Q7.</strong> Décrire le chemin suivi par un paquet de P1 vers T1.</p>
+<p><strong>Q8.</strong> Débrancher temporairement le lien entre R1 et SW-B puis relancer le ping. Que montre cette expérience ?</p>
+</div>
+<div class="capture-box"><strong>CAPTURE N°3</strong><span>Ping réussi après configuration des passerelles.</span></div>
+<div class="callout success-callout"><strong>À retenir :</strong> le routeur relie des réseaux IP différents. La passerelle indique vers quel routeur envoyer un paquet qui sort du réseau local.</div>
+</section>
+
+<section id="dns" class="section">
+<div class="section-heading"><div><p class="eyebrow">Étape 4</p><h2>Ajouter un serveur DNS</h2></div></div>
+<div class="tp-step"><div class="tp-step-number">4</div><div class="tp-step-content"><ol>
+<li>Ajouter <strong>Serveur_DNS</strong> : 192.168.2.20/24, passerelle 192.168.2.254.</li>
+<li>Installer puis démarrer l'application Serveur DNS.</li>
+<li>Ajouter : <strong>www.snt-lab.fr → 192.168.2.30</strong>.</li>
+<li>Configurer 192.168.2.20 comme DNS sur les postes.</li>
+<li>Depuis P1, utiliser <code>nslookup www.snt-lab.fr</code> ou <code>host</code>.</li>
+</ol></div></div>
+<div class="questions-box">
+<p><strong>Q9.</strong> Quel est le rôle d'un serveur DNS ?</p>
+<p><strong>Q10.</strong> Pourquoi le serveur DNS a-t-il lui aussi besoin d'une passerelle ?</p>
+<p><strong>Q11.</strong> Quel résultat doit afficher <code>nslookup www.snt-lab.fr</code> ?</p>
+</div>
+<div class="capture-box"><strong>CAPTURE N°4</strong><span>Résolution DNS avec nslookup ou host.</span></div>
+<div class="callout success-callout"><strong>À retenir :</strong> le DNS fait le lien entre un nom symbolique et une adresse IP.</div>
+</section>
+
+<section id="web" class="section">
+<div class="section-heading"><div><p class="eyebrow">Étape 5</p><h2>Héberger et consulter une page Web</h2></div></div>
+<div class="tp-step"><div class="tp-step-number">5</div><div class="tp-step-content"><ol>
+<li>Ajouter <strong>Serveur_WEB</strong> : 192.168.2.30/24.</li>
+<li>Passerelle : 192.168.2.254 ; DNS : 192.168.2.20.</li>
+<li>Installer Webserver et Text Editor.</li>
+<li>Démarrer le serveur Web et modifier légèrement <code>index.html</code>.</li>
+<li>Sur P1, installer Webbrowser puis saisir <strong>http://www.snt-lab.fr</strong>.</li>
+</ol></div></div>
+
+<div class="protocol-flow">
+<div><strong>1. DNS</strong><span>nom → adresse IP</span></div><div class="timeline-arrow">→</div>
+<div><strong>2. IP</strong><span>adressage et routage</span></div><div class="timeline-arrow">→</div>
+<div><strong>3. TCP</strong><span>transport fiable</span></div><div class="timeline-arrow">→</div>
+<div><strong>4. HTTP</strong><span>échange Web</span></div>
+</div>
+
+<div class="questions-box">
+<p><strong>Q12.</strong> Quelles sont les deux grandes étapes quand P1 ouvre http://www.snt-lab.fr ?</p>
+<p><strong>Q13.</strong> Associer IP / TCP / HTTP à leur rôle.</p>
+<p><strong>Q14.</strong> Le ping utilise-t-il TCP ? Pourquoi est-il utile malgré tout ?</p>
+</div>
+<div class="capture-box"><strong>CAPTURE N°5</strong><span>Page affichée via http://www.snt-lab.fr.</span></div>
+</section>
+
+<section id="diagnostic" class="section">
+<div class="section-heading"><div><p class="eyebrow">Étape 6</p><h2>Diagnostic : trouver la panne</h2></div></div>
+<div class="problem-card"><span class="problem-label">MISSION</span><h3>Le professeur modifie un seul paramètre dans le réseau.</h3><p>Localiser l'erreur avec une méthode de diagnostic, sans reconstruire le réseau.</p></div>
+
+<div class="diagnostic-sequence">
+<article><span>1</span><div><strong>Poste</strong><p>Adresse IP et masque avec ipconfig.</p></div></article>
+<article><span>2</span><div><strong>LAN</strong><p>Ping vers une machine du même LAN.</p></div></article>
+<article><span>3</span><div><strong>Passerelle</strong><p>Ping vers le routeur local.</p></div></article>
+<article><span>4</span><div><strong>Routage</strong><p>Ping vers une machine de l'autre LAN.</p></div></article>
+<article><span>5</span><div><strong>Services</strong><p>DNS puis serveur Web par son nom.</p></div></article>
+</div>
+
+<div class="questions-box">
+<p><strong>Q15.</strong> Pourquoi faut-il tester dans cet ordre ?</p>
+<p><strong>Q16.</strong> Donner trois erreurs possibles et le symptôme associé.</p>
+</div>
+</section>
+
+<section id="retenir" class="section">
+<div class="section-heading"><div><p class="eyebrow">Synthèse</p><h2>Ce que je dois retenir</h2></div></div>
+<div class="table-wrap"><table class="network-table retain-network-table">
+<thead><tr><th>Notion</th><th>Définition essentielle</th></tr></thead>
+<tbody>
+<tr><td><strong>LAN</strong></td><td>Réseau local reliant des équipements proches.</td></tr>
+<tr><td><strong>Adresse IP</strong></td><td>Identifie une interface sur un réseau IP.</td></tr>
+<tr><td><strong>Masque /24</strong></td><td>Permet de déterminer quelle partie de l'adresse correspond au réseau.</td></tr>
+<tr><td><strong>Switch</strong></td><td>Relie les équipements d'un même LAN et commute les trames.</td></tr>
+<tr><td><strong>Routeur</strong></td><td>Relie plusieurs réseaux IP et transmet les paquets.</td></tr>
+<tr><td><strong>Passerelle</strong></td><td>Adresse du routeur utilisée pour sortir du sous-réseau local.</td></tr>
+<tr><td><strong>DNS</strong></td><td>Traduit un nom symbolique en adresse IP.</td></tr>
+<tr><td><strong>IP / TCP</strong></td><td>IP adresse et route ; TCP fiabilise le transport.</td></tr>
+<tr><td><strong>HTTP</strong></td><td>Protocole utilisé entre navigateur et serveur Web.</td></tr>
+</tbody></table></div>
+
+<div class="big-summary"><p><strong>Méthode de diagnostic :</strong> Poste → LAN → Passerelle → Routage → DNS → Web</p></div>
+
+<div class="know-list">
+<label><input type="checkbox"> Je sais configurer une adresse IP, un masque et une passerelle.</label>
+<label><input type="checkbox"> Je sais tester un réseau avec ipconfig et ping.</label>
+<label><input type="checkbox"> Je sais expliquer le rôle du routeur et du DNS.</label>
+<label><input type="checkbox"> Je sais diagnostiquer une panne simple.</label>
+<label><input type="checkbox"> Je distingue les rôles de IP, TCP et HTTP.</label>
+</div>
+</section>
+
+<section class="section sources">
+<div class="section-heading"><div><p class="eyebrow">Document de travail</p><h2>Fiche élève</h2></div></div>
+<div class="resource-list"><a href="../documents/seconde-snt/tp1-internet-filius-eleve.docx"><strong>TP 1 — Construire et tester un mini-réseau avec Filius</strong><span>Version élève 2026–2027.</span></a></div>
+</section>
+
+<div class="chapter-nav no-print"><a href="internet.html">← Retour au cours Internet</a><a href="binaire-bases-debit.html">Binaire & débit →</a></div>
+</main>
+
+<footer><div class="footer-inner"><p><strong>Lycée Marie Rivier</strong> • SNT Seconde • Internet</p><p>Christophe Delcourt • 2026–2027</p></div></footer>
+</body>
+</html>
