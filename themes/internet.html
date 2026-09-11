@@ -96,6 +96,7 @@
       <a href="../index.html">← Accueil</a>
       <a href="#objectifs">Objectifs</a>
       <a href="#cours">Cours</a>
+      <a href="#animation-routage">Animation routage</a>
       <a href="#activites">Activités</a>
       <a href="#retenir">À retenir</a>
       <a href="#quiz-internet">Quiz</a>
@@ -252,6 +253,59 @@
           <div class="node">R2</div>
           <div class="route-line"></div>
           <div class="node end">B</div>
+        </div>
+      </div>
+
+      <div id="animation-routage" class="routing-animation">
+        <div class="routing-animation-header">
+          <div>
+            <p class="eyebrow">Animation interactive</p>
+            <h3>Suivre un paquet de routeur en routeur</h3>
+            <p>Observe comment un paquet avance d'un équipement au suivant et comment le trajet peut changer lorsqu'un lien devient indisponible.</p>
+          </div>
+          <span class="routing-sim-label">SIMULATION PÉDAGOGIQUE</span>
+        </div>
+
+        <div class="routing-stage">
+          <svg class="routing-svg" viewBox="0 0 900 360" role="img" aria-label="Routage simplifié entre deux ordinateurs et trois routeurs">
+            <g class="routing-links">
+              <line id="route-link-a-r1" x1="90" y1="180" x2="265" y2="180"></line>
+              <line id="route-link-r1-r2" x1="305" y1="170" x2="485" y2="90"></line>
+              <line id="route-link-r2-b" x1="525" y1="90" x2="790" y2="170"></line>
+              <line id="route-link-r1-r3" x1="305" y1="190" x2="485" y2="270"></line>
+              <line id="route-link-r3-b" x1="525" y1="270" x2="790" y2="190"></line>
+            </g>
+            <g class="routing-node routing-host" data-node="A" transform="translate(70 180)"><rect x="-48" y="-31" width="96" height="62" rx="14"></rect><text x="0" y="-5" text-anchor="middle">Ordinateur A</text><text x="0" y="16" text-anchor="middle" class="routing-ip">192.168.1.10</text></g>
+            <g class="routing-node" data-node="R1" transform="translate(285 180)"><circle r="38"></circle><text x="0" y="6" text-anchor="middle">R1</text></g>
+            <g class="routing-node" data-node="R2" transform="translate(505 90)"><circle r="38"></circle><text x="0" y="6" text-anchor="middle">R2</text></g>
+            <g class="routing-node" data-node="R3" transform="translate(505 270)"><circle r="38"></circle><text x="0" y="6" text-anchor="middle">R3</text></g>
+            <g class="routing-node routing-host" data-node="B" transform="translate(810 180)"><rect x="-48" y="-31" width="96" height="62" rx="14"></rect><text x="0" y="-5" text-anchor="middle">Ordinateur B</text><text x="0" y="16" text-anchor="middle" class="routing-ip">203.0.113.20</text></g>
+            <g id="routing-failure-x" class="routing-failure-x"><line x1="385" y1="105" x2="425" y2="145"></line><line x1="425" y1="105" x2="385" y2="145"></line></g>
+            <circle id="routing-packet-1" class="routing-packet packet-one" cx="70" cy="180" r="12"></circle>
+            <circle id="routing-packet-2" class="routing-packet packet-two" cx="70" cy="180" r="10"></circle>
+            <circle id="routing-packet-3" class="routing-packet packet-three" cx="70" cy="180" r="10"></circle>
+            <text class="routing-caption" x="70" y="245" text-anchor="middle">Départ</text>
+            <text class="routing-caption" x="810" y="245" text-anchor="middle">Destination</text>
+          </svg>
+        </div>
+
+        <div class="routing-controls no-print">
+          <button type="button" class="btn btn-primary" id="routing-normal">▶ Trajet normal</button>
+          <button type="button" class="btn btn-secondary" id="routing-failure">⚠ Simuler une panne</button>
+          <button type="button" class="btn btn-secondary" id="routing-multi">●●● Plusieurs paquets</button>
+          <button type="button" class="btn btn-secondary" id="routing-reset">↺ Recommencer</button>
+        </div>
+
+        <div class="routing-explanation" aria-live="polite">
+          <div class="routing-step-number" id="routing-step-number">0</div>
+          <div><strong id="routing-step-title">Choisis une animation</strong><p id="routing-step-text">Le paquet part de A. Chaque routeur décide ensuite du prochain saut en fonction de la destination.</p></div>
+        </div>
+
+        <div class="routing-lessons">
+          <article><strong>Le paquet connaît sa destination</strong><span>L'adresse IP de destination accompagne le paquet.</span></article>
+          <article><strong>Chaque routeur choisit le prochain saut</strong><span>Il consulte ses informations de routage puis transmet le paquet.</span></article>
+          <article><strong>Le chemin peut changer</strong><span>Si une route est indisponible et qu'une autre existe, le trafic peut être réorienté.</span></article>
+          <article><strong>Les paquets peuvent suivre des chemins différents</strong><span>Internet n'est pas une route unique entre deux machines.</span></article>
         </div>
       </div>
 

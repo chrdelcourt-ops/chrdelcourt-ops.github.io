@@ -395,4 +395,34 @@ document.addEventListener("DOMContentLoaded", () => {
     binaryQuiz.addEventListener("reset",()=>{binaryQuiz.querySelectorAll("fieldset").forEach(f=>f.classList.remove("correct","incorrect"));binaryScore.textContent="";binaryScore.classList.remove("visible")});
   }
 
+
+
+  // ===== Animation pédagogique du routage =====
+  const routingNormal=document.getElementById("routing-normal");
+  const routingFailure=document.getElementById("routing-failure");
+  const routingMulti=document.getElementById("routing-multi");
+  const routingReset=document.getElementById("routing-reset");
+  if(routingNormal&&routingFailure&&routingMulti&&routingReset){
+    const p1=document.getElementById("routing-packet-1"),p2=document.getElementById("routing-packet-2"),p3=document.getElementById("routing-packet-3");
+    const stepN=document.getElementById("routing-step-number"),stepT=document.getElementById("routing-step-title"),stepX=document.getElementById("routing-step-text"),failX=document.getElementById("routing-failure-x");
+    const links={ar1:document.getElementById("route-link-a-r1"),r1r2:document.getElementById("route-link-r1-r2"),r2b:document.getElementById("route-link-r2-b"),r1r3:document.getElementById("route-link-r1-r3"),r3b:document.getElementById("route-link-r3-b")};
+    const pts={A:[70,180],R1:[285,180],R2:[505,90],R3:[505,270],B:[810,180]};
+    const normal=["A","R1","R2","B"],alternate=["A","R1","R3","B"];
+    let run=0;
+    const node=(name)=>document.querySelector(`.routing-node[data-node="${name}"]`);
+    function msg(n,t,x){stepN.textContent=n;stepT.textContent=t;stepX.textContent=x}
+    function reset(show=true){run++;[p1,p2,p3].forEach(p=>{p.classList.remove("visible");p.setAttribute("cx",70);p.setAttribute("cy",180)});Object.values(links).forEach(l=>l.classList.remove("active","broken"));failX.classList.remove("visible");document.querySelectorAll(".routing-node.current").forEach(n=>n.classList.remove("current"));if(show)msg("0","Choisis une animation","Le paquet part de A. Chaque routeur décide ensuite du prochain saut en fonction de la destination.")}
+    function highlight(name){document.querySelectorAll(".routing-node.current").forEach(n=>n.classList.remove("current"));const n=node(name);if(n)n.classList.add("current")}
+    function link(from,to){const map={"A-R1":"ar1","R1-R2":"r1r2","R2-B":"r2b","R1-R3":"r1r3","R3-B":"r3b"};const k=map[`${from}-${to}`];if(k)links[k].classList.add("active")}
+    function animate(packet,a,b,duration,myRun){return new Promise(resolve=>{const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(reduce)duration=80;const start=performance.now();function frame(now){if(myRun!==run)return resolve(false);const u=Math.min(1,(now-start)/duration);const e=u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2;packet.setAttribute("cx",a[0]+(b[0]-a[0])*e);packet.setAttribute("cy",a[1]+(b[1]-a[1])*e);if(u<1)requestAnimationFrame(frame);else resolve(true)}requestAnimationFrame(frame)})}
+    async function route(path,packet,scenario="normal",delay=0,explain=true){const myRun=run;if(delay){await new Promise(r=>setTimeout(r,delay));if(myRun!==run)return}packet.classList.add("visible");for(let i=0;i<path.length-1;i++){const from=path[i],to=path[i+1];link(from,to);if(explain){highlight(from);if(from==="A")msg("1","A prépare le paquet","L'adresse IP de B est dans le paquet. A l'envoie vers le premier routeur.");else if(from==="R1"&&scenario==="failure")msg("2","R1 choisit une autre route","Le lien vers R2 est en panne : R1 envoie le paquet vers R3.");else if(from==="R1")msg("2","R1 choisit le prochain saut","R1 consulte ses informations de routage et transmet le paquet vers R2.");else if(from==="R2")msg("3","R2 rapproche le paquet de B","R2 connaît une route permettant de rejoindre le réseau de B.");else if(from==="R3")msg("3","R3 prend le relais","R3 permet au paquet de continuer vers la destination malgré la panne.")}
+      const ok=await animate(packet,pts[from],pts[to],850,myRun);if(!ok)return;
+    }if(explain){highlight("B");msg("4","Le paquet arrive à destination","B reçoit le paquet après plusieurs décisions successives de routage.")}}
+    routingNormal.addEventListener("click",async()=>{reset(false);msg("1","Trajet normal","Chemin illustré : A → R1 → R2 → B.");await route(normal,p1,"normal",150,true)});
+    routingFailure.addEventListener("click",async()=>{reset(false);links.r1r2.classList.add("broken");failX.classList.add("visible");msg("1","Un lien est en panne","La liaison R1 → R2 est indisponible. Une autre route est utilisée.");await route(alternate,p1,"failure",300,true)});
+    routingMulti.addEventListener("click",async()=>{reset(false);msg("1","Plusieurs paquets sont envoyés","Observe que plusieurs paquets peuvent emprunter des chemins différents.");const myRun=run;await Promise.all([route(normal,p1,"normal",100,false),route(alternate,p2,"normal",450,false),route(normal,p3,"normal",800,false)]);if(myRun===run){highlight("B");msg("4","Les paquets arrivent à B","Ils ont pu emprunter des chemins différents avant d'atteindre la même destination.")}});
+    routingReset.addEventListener("click",()=>reset(true));
+    reset(true);
+  }
+
 });
