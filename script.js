@@ -427,153 +427,94 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // ===== Convertisseur universel SNT : base 2 / 10 / 16 =====
-  const baseSource = document.getElementById("base-source");
-  const baseValue = document.getElementById("base-value");
-  const baseConvert = document.getElementById("base-convert");
-  const baseClear = document.getElementById("base-clear");
-  const resultDecimal = document.getElementById("base-result-decimal");
-  const resultBinary = document.getElementById("base-result-binary");
-  const resultHex = document.getElementById("base-result-hex");
-  const baseMethod = document.getElementById("base-method");
-  const baseError = document.getElementById("base-error");
+  // ===== Convertisseur simple SNT : décimal -> bases 2 / 10 / 16 =====
+  // Utilise BigInt pour accepter des entiers arbitrairement grands.
+  const simpleDecimal = document.getElementById("simple-decimal");
+  const simpleConvert = document.getElementById("simple-convert");
+  const simpleClear = document.getElementById("simple-clear");
+  const simpleResultDecimal = document.getElementById("simple-result-decimal");
+  const simpleResultBinary = document.getElementById("simple-result-binary");
+  const simpleResultHex = document.getElementById("simple-result-hex");
+  const simpleResultBits = document.getElementById("simple-result-bits");
+  const simpleResultBytes = document.getElementById("simple-result-bytes");
+  const simpleMethod = document.getElementById("simple-method");
+  const simpleError = document.getElementById("simple-error");
 
-  function showBaseError(message) {
-    if (!baseError) return;
-    baseError.textContent = message;
-    baseError.classList.toggle("visible", Boolean(message));
-  }
-
-  function resetBaseResults() {
-    if (resultDecimal) resultDecimal.textContent = "—";
-    if (resultBinary) resultBinary.textContent = "—";
-    if (resultHex) resultHex.textContent = "—";
-    if (baseMethod) {
-      baseMethod.innerHTML = "<strong>Comment faire ?</strong><p>Choisis une base, saisis une valeur puis clique sur « Convertir ».</p>";
+  function resetSimpleConverter() {
+    if (simpleResultDecimal) simpleResultDecimal.textContent = "—";
+    if (simpleResultBinary) simpleResultBinary.textContent = "—";
+    if (simpleResultHex) simpleResultHex.textContent = "—";
+    if (simpleResultBits) simpleResultBits.textContent = "—";
+    if (simpleResultBytes) simpleResultBytes.textContent = "—";
+    if (simpleMethod) {
+      simpleMethod.innerHTML = "<strong>Exemple</strong><p>45₁₀ = 101101₂ = 2D₁₆</p>";
     }
-    showBaseError("");
-  }
-
-  function validateBaseValue(raw, base) {
-    if (!raw) return false;
-    if (base === 2) return /^[01]+$/.test(raw);
-    if (base === 10) return /^\d+$/.test(raw);
-    if (base === 16) return /^[0-9a-f]+$/i.test(raw);
-    return false;
-  }
-
-  function binaryDecomposition(value) {
-    if (value === 0) return "0";
-    const terms = [];
-    for (let power = Math.floor(Math.log2(value)); power >= 0; power--) {
-      const weight = 2 ** power;
-      if ((value & weight) !== 0) terms.push(String(weight));
+    if (simpleError) {
+      simpleError.textContent = "";
+      simpleError.classList.remove("visible");
     }
-    return terms.join(" + ");
   }
 
-  function decimalToBinarySteps(value) {
-    if (value === 0) return "0₁₀ = 0₂";
-    const binary = value.toString(2);
-    const decomposition = binaryDecomposition(value);
-    return `${value} = ${decomposition}, donc ${value}₁₀ = ${binary}₂.`;
-  }
+  function runSimpleConverter() {
+    if (!simpleDecimal) return;
 
-  function binaryToDecimalSteps(raw, value) {
-    const bits = raw.split("");
-    const maxPower = bits.length - 1;
-    const terms = [];
-    bits.forEach((bit, index) => {
-      if (bit === "1") terms.push(String(2 ** (maxPower - index)));
-    });
-    const sum = terms.length ? terms.join(" + ") : "0";
-    return `${raw}₂ = ${sum} = ${value}₁₀.`;
-  }
+    const raw = simpleDecimal.value.trim().replace(/\s+/g, "");
 
-  function hexToExplanation(raw, value) {
-    const binaryGroups = raw.toUpperCase().split("").map((digit) =>
-      parseInt(digit, 16).toString(2).padStart(4, "0")
-    );
-    return `Chaque chiffre hexadécimal correspond à 4 bits : ${raw.toUpperCase()}₁₆ = ${binaryGroups.join(" ")}₂ = ${value}₁₀.`;
-  }
-
-  function runBaseConversion() {
-    if (!baseSource || !baseValue) return;
-    const base = Number(baseSource.value);
-    const raw = baseValue.value.trim().replace(/\s+/g, "");
-
-    showBaseError("");
-
-    if (!validateBaseValue(raw, base)) {
-      const expected = base === 2
-        ? "uniquement des 0 et des 1"
-        : base === 10
-          ? "uniquement des chiffres de 0 à 9"
-          : "des chiffres de 0 à 9 et les lettres A à F";
-      resetBaseResults();
-      showBaseError(`Valeur invalide en base ${base} : utilise ${expected}.`);
+    if (!/^\d+$/.test(raw)) {
+      resetSimpleConverter();
+      if (simpleError) {
+        simpleError.textContent = "Saisis un entier positif ou nul, sans virgule ni signe.";
+        simpleError.classList.add("visible");
+      }
       return;
     }
 
-    const value = parseInt(raw, base);
-    if (!Number.isSafeInteger(value) || value < 0 || value > 65535) {
-      resetBaseResults();
-      showBaseError("Pour cet outil de Seconde, utilise une valeur comprise entre 0 et 65 535.");
+    let value;
+    try {
+      value = BigInt(raw);
+    } catch (error) {
+      resetSimpleConverter();
+      if (simpleError) {
+        simpleError.textContent = "Ce nombre ne peut pas être converti.";
+        simpleError.classList.add("visible");
+      }
       return;
     }
 
     const binary = value.toString(2);
-    const paddedBinary = value <= 255 ? binary.padStart(8, "0") : binary;
-    const hexValue = value.toString(16).toUpperCase();
+    const hex = value.toString(16).toUpperCase();
 
-    resultDecimal.textContent = value.toString(10);
-    resultBinary.textContent = paddedBinary;
-    resultHex.textContent = hexValue;
+    // 0 a besoin d'au moins 1 bit pour être écrit "0".
+    const bits = value === 0n ? 1 : binary.length;
+    const bytes = Math.ceil(bits / 8);
 
-    let explanation = "";
-    if (base === 2) {
-      explanation = binaryToDecimalSteps(raw, value);
-    } else if (base === 10) {
-      explanation = decimalToBinarySteps(value);
-    } else {
-      explanation = hexToExplanation(raw, value);
+    simpleResultDecimal.textContent = value.toString(10);
+    simpleResultBinary.textContent = binary;
+    simpleResultHex.textContent = hex;
+    simpleResultBits.textContent = bits.toLocaleString("fr-FR");
+    simpleResultBytes.textContent = bytes.toLocaleString("fr-FR");
+
+    simpleMethod.innerHTML =
+      `<strong>Résultat</strong><p>${value.toString(10)}₁₀ = ${binary}₂ = ${hex}₁₆</p>`;
+
+    if (simpleError) {
+      simpleError.textContent = "";
+      simpleError.classList.remove("visible");
     }
-
-    baseMethod.innerHTML = `<strong>Méthode</strong><p>${explanation}</p>`;
   }
 
-  if (baseConvert && baseSource && baseValue) {
-    baseConvert.addEventListener("click", runBaseConversion);
-    baseValue.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") runBaseConversion();
-    });
-
-    baseSource.addEventListener("change", () => {
-      const placeholders = {
-        "2": "Ex. 10110110",
-        "10": "Ex. 173",
-        "16": "Ex. A5"
-      };
-      baseValue.placeholder = placeholders[baseSource.value] || "Valeur";
-      baseValue.value = "";
-      resetBaseResults();
-      baseValue.focus();
-    });
-
-    document.querySelectorAll("[data-base-example]").forEach((button) => {
-      button.addEventListener("click", () => {
-        baseSource.value = button.dataset.baseExample;
-        baseValue.value = button.dataset.valueExample;
-        runBaseConversion();
-      });
+  if (simpleConvert && simpleDecimal) {
+    simpleConvert.addEventListener("click", runSimpleConverter);
+    simpleDecimal.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") runSimpleConverter();
     });
   }
 
-  if (baseClear) {
-    baseClear.addEventListener("click", () => {
-      if (baseValue) baseValue.value = "";
-      resetBaseResults();
-      if (baseValue) baseValue.focus();
+  if (simpleClear) {
+    simpleClear.addEventListener("click", () => {
+      simpleDecimal.value = "";
+      resetSimpleConverter();
+      simpleDecimal.focus();
     });
   }
 

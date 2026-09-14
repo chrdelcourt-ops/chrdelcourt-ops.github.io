@@ -1630,3 +1630,99 @@ background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;b
     grid-template-columns:1fr;
   }
 }
+
+
+/* ===== V19 : convertisseur simplifié ===== */
+.simple-base-converter{
+  background:linear-gradient(135deg,#f4fbfc,#fff);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:24px;
+  box-shadow:var(--shadow);
+}
+.simple-base-converter>label{
+  display:block;
+  font-weight:900;
+  margin-bottom:8px;
+}
+.simple-converter-row{
+  display:grid;
+  grid-template-columns:minmax(180px,1fr) auto auto;
+  gap:10px;
+  align-items:center;
+}
+.simple-converter-row input{
+  width:100%;
+  min-height:46px;
+  border:1px solid #c8d8dd;
+  border-radius:11px;
+  padding:10px 12px;
+  background:#fff;
+  color:var(--text);
+  font:inherit;
+  font-size:1.05rem;
+  font-weight:800;
+}
+.simple-converter-results{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+.simple-converter-results article{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
+  box-shadow:var(--shadow-soft);
+}
+.simple-converter-results span,
+.simple-converter-results strong,
+.simple-converter-results small{display:block}
+.simple-converter-results span{
+  font-size:.78rem;
+  color:var(--muted);
+  font-weight:900;
+  text-transform:uppercase;
+}
+.simple-converter-results strong{
+  margin:8px 0 5px;
+  color:var(--primary-dark);
+  font-family:"SFMono-Regular",Consolas,monospace;
+  font-size:clamp(1.25rem,3vw,1.8rem);
+}
+.simple-converter-results small{color:var(--muted)}
+.simple-converter-method{
+  margin-top:14px;
+  padding:14px 16px;
+  background:#eef7f9;
+  border-left:5px solid var(--primary);
+  border-radius:12px;
+}
+.simple-converter-method strong{display:block;margin-bottom:4px}
+.simple-converter-method p{margin:0;color:var(--muted)}
+@media(max-width:700px){
+  .simple-converter-row{grid-template-columns:1fr}
+  .simple-converter-results{grid-template-columns:1fr}
+}
+
+
+/* ===== V20 : grands nombres dans le convertisseur ===== */
+.simple-size-info{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:12px;
+}
+.simple-size-info span{
+  background:#eef7f9;
+  border:1px solid #d5e8ec;
+  border-radius:999px;
+  padding:7px 11px;
+  font-size:.82rem;
+  color:var(--muted);
+}
+.simple-size-info strong{
+  color:var(--primary-dark);
+}

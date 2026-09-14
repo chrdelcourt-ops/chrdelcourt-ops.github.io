@@ -180,65 +180,52 @@
   <div class="section-heading">
     <div>
       <p class="eyebrow">Outil interactif</p>
-      <h2>Convertisseur binaire • décimal • hexadécimal</h2>
+      <h2>Convertisseur simple</h2>
     </div>
     <p class="section-intro">
-      Saisis une valeur dans la base de départ : l'outil affiche immédiatement les trois écritures
-      et une explication adaptée au niveau Seconde.
+      Saisis un entier décimal positif ou nul, quelle que soit sa taille : l'outil affiche son écriture dans les bases vues en cours.
     </p>
   </div>
 
-  <div class="universal-converter">
-    <div class="converter-controls">
-      <div>
-        <label for="base-source">Base de départ</label>
-        <select id="base-source">
-          <option value="10">Décimal (base 10)</option>
-          <option value="2">Binaire (base 2)</option>
-          <option value="16">Hexadécimal (base 16)</option>
-        </select>
-      </div>
-
-      <div class="converter-value-field">
-        <label for="base-value">Valeur à convertir</label>
-        <input id="base-value" type="text" inputmode="text" autocomplete="off" placeholder="Ex. 173">
-      </div>
-
-      <button class="btn btn-primary" type="button" id="base-convert">Convertir</button>
-      <button class="btn btn-secondary" type="button" id="base-clear">Effacer</button>
+  <div class="simple-base-converter">
+    <label for="simple-decimal">Nombre décimal</label>
+    <div class="simple-converter-row">
+      <input id="simple-decimal" type="text" inputmode="numeric" autocomplete="off" placeholder="Ex. 45, 1024 ou 123456789">
+      <button class="btn btn-primary" type="button" id="simple-convert">Convertir</button>
+      <button class="btn btn-secondary" type="button" id="simple-clear">Effacer</button>
     </div>
 
-    <div class="converter-examples no-print" aria-label="Exemples rapides">
-      <span>Essayer :</span>
-      <button type="button" data-base-example="10" data-value-example="173">173₁₀</button>
-      <button type="button" data-base-example="2" data-value-example="10110110">10110110₂</button>
-      <button type="button" data-base-example="16" data-value-example="A5">A5₁₆</button>
-    </div>
+    <div class="simple-converter-results" id="simple-results" aria-live="polite">
+      <article>
+        <span>Base 10</span>
+        <strong id="simple-result-decimal">—</strong>
+        <small>Décimal</small>
+      </article>
 
-    <div class="converter-results" id="base-results" aria-live="polite">
       <article>
-        <span>Décimal</span>
-        <strong id="base-result-decimal">—</strong>
-        <small>base 10</small>
+        <span>Base 2</span>
+        <strong id="simple-result-binary">—</strong>
+        <small>Binaire sur 8 bits</small>
       </article>
+
       <article>
-        <span>Binaire</span>
-        <strong id="base-result-binary">—</strong>
-        <small>base 2</small>
-      </article>
-      <article>
-        <span>Hexadécimal</span>
-        <strong id="base-result-hex">—</strong>
-        <small>base 16</small>
+        <span>Base 16</span>
+        <strong id="simple-result-hex">—</strong>
+        <small>Hexadécimal</small>
       </article>
     </div>
 
-    <div class="converter-method" id="base-method">
-      <strong>Comment faire ?</strong>
-      <p>Choisis une base, saisis une valeur puis clique sur « Convertir ».</p>
+    <div class="simple-size-info" id="simple-size-info">
+      <span><strong id="simple-result-bits">—</strong> bit(s) nécessaires</span>
+      <span><strong id="simple-result-bytes">—</strong> octet(s) nécessaires</span>
     </div>
 
-    <div class="converter-error" id="base-error" role="alert"></div>
+    <div class="simple-converter-method" id="simple-method">
+      <strong>Exemple</strong>
+      <p>45₁₀ = 00101101₂ = 2D₁₆</p>
+    </div>
+
+    <div class="converter-error" id="simple-error" role="alert"></div>
   </div>
 
   <div class="tool-grid converter-secondary-tools">
