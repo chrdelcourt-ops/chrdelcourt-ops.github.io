@@ -425,4 +425,182 @@ document.addEventListener("DOMContentLoaded", () => {
     reset(true);
   }
 
+
+
+  // ===== Convertisseur universel SNT : base 2 / 10 / 16 =====
+  const baseSource = document.getElementById("base-source");
+  const baseValue = document.getElementById("base-value");
+  const baseConvert = document.getElementById("base-convert");
+  const baseClear = document.getElementById("base-clear");
+  const resultDecimal = document.getElementById("base-result-decimal");
+  const resultBinary = document.getElementById("base-result-binary");
+  const resultHex = document.getElementById("base-result-hex");
+  const baseMethod = document.getElementById("base-method");
+  const baseError = document.getElementById("base-error");
+
+  function showBaseError(message) {
+    if (!baseError) return;
+    baseError.textContent = message;
+    baseError.classList.toggle("visible", Boolean(message));
+  }
+
+  function resetBaseResults() {
+    if (resultDecimal) resultDecimal.textContent = "—";
+    if (resultBinary) resultBinary.textContent = "—";
+    if (resultHex) resultHex.textContent = "—";
+    if (baseMethod) {
+      baseMethod.innerHTML = "<strong>Comment faire ?</strong><p>Choisis une base, saisis une valeur puis clique sur « Convertir ».</p>";
+    }
+    showBaseError("");
+  }
+
+  function validateBaseValue(raw, base) {
+    if (!raw) return false;
+    if (base === 2) return /^[01]+$/.test(raw);
+    if (base === 10) return /^\d+$/.test(raw);
+    if (base === 16) return /^[0-9a-f]+$/i.test(raw);
+    return false;
+  }
+
+  function binaryDecomposition(value) {
+    if (value === 0) return "0";
+    const terms = [];
+    for (let power = Math.floor(Math.log2(value)); power >= 0; power--) {
+      const weight = 2 ** power;
+      if ((value & weight) !== 0) terms.push(String(weight));
+    }
+    return terms.join(" + ");
+  }
+
+  function decimalToBinarySteps(value) {
+    if (value === 0) return "0₁₀ = 0₂";
+    const binary = value.toString(2);
+    const decomposition = binaryDecomposition(value);
+    return `${value} = ${decomposition}, donc ${value}₁₀ = ${binary}₂.`;
+  }
+
+  function binaryToDecimalSteps(raw, value) {
+    const bits = raw.split("");
+    const maxPower = bits.length - 1;
+    const terms = [];
+    bits.forEach((bit, index) => {
+      if (bit === "1") terms.push(String(2 ** (maxPower - index)));
+    });
+    const sum = terms.length ? terms.join(" + ") : "0";
+    return `${raw}₂ = ${sum} = ${value}₁₀.`;
+  }
+
+  function hexToExplanation(raw, value) {
+    const binaryGroups = raw.toUpperCase().split("").map((digit) =>
+      parseInt(digit, 16).toString(2).padStart(4, "0")
+    );
+    return `Chaque chiffre hexadécimal correspond à 4 bits : ${raw.toUpperCase()}₁₆ = ${binaryGroups.join(" ")}₂ = ${value}₁₀.`;
+  }
+
+  function runBaseConversion() {
+    if (!baseSource || !baseValue) return;
+    const base = Number(baseSource.value);
+    const raw = baseValue.value.trim().replace(/\s+/g, "");
+
+    showBaseError("");
+
+    if (!validateBaseValue(raw, base)) {
+      const expected = base === 2
+        ? "uniquement des 0 et des 1"
+        : base === 10
+          ? "uniquement des chiffres de 0 à 9"
+          : "des chiffres de 0 à 9 et les lettres A à F";
+      resetBaseResults();
+      showBaseError(`Valeur invalide en base ${base} : utilise ${expected}.`);
+      return;
+    }
+
+    const value = parseInt(raw, base);
+    if (!Number.isSafeInteger(value) || value < 0 || value > 65535) {
+      resetBaseResults();
+      showBaseError("Pour cet outil de Seconde, utilise une valeur comprise entre 0 et 65 535.");
+      return;
+    }
+
+    const binary = value.toString(2);
+    const paddedBinary = value <= 255 ? binary.padStart(8, "0") : binary;
+    const hexValue = value.toString(16).toUpperCase();
+
+    resultDecimal.textContent = value.toString(10);
+    resultBinary.textContent = paddedBinary;
+    resultHex.textContent = hexValue;
+
+    let explanation = "";
+    if (base === 2) {
+      explanation = binaryToDecimalSteps(raw, value);
+    } else if (base === 10) {
+      explanation = decimalToBinarySteps(value);
+    } else {
+      explanation = hexToExplanation(raw, value);
+    }
+
+    baseMethod.innerHTML = `<strong>Méthode</strong><p>${explanation}</p>`;
+  }
+
+  if (baseConvert && baseSource && baseValue) {
+    baseConvert.addEventListener("click", runBaseConversion);
+    baseValue.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") runBaseConversion();
+    });
+
+    baseSource.addEventListener("change", () => {
+      const placeholders = {
+        "2": "Ex. 10110110",
+        "10": "Ex. 173",
+        "16": "Ex. A5"
+      };
+      baseValue.placeholder = placeholders[baseSource.value] || "Valeur";
+      baseValue.value = "";
+      resetBaseResults();
+      baseValue.focus();
+    });
+
+    document.querySelectorAll("[data-base-example]").forEach((button) => {
+      button.addEventListener("click", () => {
+        baseSource.value = button.dataset.baseExample;
+        baseValue.value = button.dataset.valueExample;
+        runBaseConversion();
+      });
+    });
+  }
+
+  if (baseClear) {
+    baseClear.addEventListener("click", () => {
+      if (baseValue) baseValue.value = "";
+      resetBaseResults();
+      if (baseValue) baseValue.focus();
+    });
+  }
+
+  // Bits ↔ octets
+  const dataValue = document.getElementById("data-value");
+  const dataUnit = document.getElementById("data-unit");
+  const dataConvert = document.getElementById("data-convert");
+  const dataResult = document.getElementById("data-result");
+
+  if (dataValue && dataUnit && dataConvert && dataResult) {
+    dataConvert.addEventListener("click", () => {
+      const value = Number(dataValue.value);
+      const output = dataResult.querySelector("strong");
+
+      if (!Number.isFinite(value) || value < 0) {
+        output.textContent = "Valeur invalide";
+        return;
+      }
+
+      if (dataUnit.value === "bits") {
+        const octets = value / 8;
+        output.textContent = `${value} bits = ${octets.toLocaleString("fr-FR")} octet${octets > 1 ? "s" : ""}`;
+      } else {
+        const bits = value * 8;
+        output.textContent = `${value} octet${value > 1 ? "s" : ""} = ${bits.toLocaleString("fr-FR")} bits`;
+      }
+    });
+  }
+
 });

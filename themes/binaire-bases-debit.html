@@ -30,6 +30,7 @@
 <a href="#hexadecimal">Hexadécimal</a>
 <a href="#codage">Codage</a>
 <a href="#debit">Débit</a>
+<a href="#outils-binaires">Convertisseur</a>
 <a href="#retenir">À retenir</a>
 <a href="#quiz-binaire">Quiz</a>
 </div></nav>
@@ -42,6 +43,7 @@
 <p>Comprendre les bases 10, 2 et 16, le rôle du bit et de l'octet, le codage des caractères et la relation entre taille de fichier, débit et temps de transfert.</p>
 <div class="hero-actions no-print">
 <a class="btn btn-primary" href="#bases">Commencer</a>
+<a class="btn btn-secondary" href="#outils-binaires">Ouvrir le convertisseur</a>
 <a class="btn btn-secondary" href="../documents/seconde-snt/cours-binaire-bases-debit-eleve.docx">Fiche élève Word</a>
 <button class="btn btn-secondary" type="button" onclick="window.print()">Imprimer / PDF</button>
 </div>
@@ -175,30 +177,100 @@
 </section>
 
 <section id="outils-binaires" class="section">
-<div class="section-heading"><div><p class="eyebrow">Outils interactifs</p><h2>Vérifier mes conversions</h2></div></div>
-<div class="tool-grid">
-<div class="interactive-tool">
-<h3>Décimal → binaire / hexa</h3>
-<label for="snt-decimal">Nombre décimal (0 à 255)</label>
-<input id="snt-decimal" type="number" min="0" max="255" step="1" placeholder="Ex. 173">
-<button class="btn btn-primary" type="button" id="snt-convert-decimal">Convertir</button>
-<div class="tool-result" id="snt-decimal-result"><div><span>Binaire 8 bits</span><strong>—</strong></div><div><span>Hexadécimal</span><strong>—</strong></div></div>
-</div>
-<div class="interactive-tool">
-<h3>Binaire → décimal</h3>
-<label for="snt-binary">Binaire sur 8 bits</label>
-<input id="snt-binary" type="text" maxlength="8" placeholder="Ex. 10101101">
-<button class="btn btn-primary" type="button" id="snt-convert-binary">Convertir</button>
-<div class="tool-result" id="snt-binary-result"><div><span>Décimal</span><strong>—</strong></div><div><span>Hexadécimal</span><strong>—</strong></div></div>
-</div>
-<div class="interactive-tool">
-<h3>Temps de transfert</h3>
-<label for="snt-size-mo">Taille (Mo)</label><input id="snt-size-mo" type="number" min="0" step="0.1" placeholder="Ex. 150">
-<label for="snt-speed">Débit (Mbit/s)</label><input id="snt-speed" type="number" min="0.1" step="0.1" placeholder="Ex. 50">
-<button class="btn btn-primary" type="button" id="snt-transfer-calc">Calculer</button>
-<div class="tool-result" id="snt-transfer-result"><div><span>Durée théorique</span><strong>—</strong></div></div>
-</div>
-</div>
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Outil interactif</p>
+      <h2>Convertisseur binaire • décimal • hexadécimal</h2>
+    </div>
+    <p class="section-intro">
+      Saisis une valeur dans la base de départ : l'outil affiche immédiatement les trois écritures
+      et une explication adaptée au niveau Seconde.
+    </p>
+  </div>
+
+  <div class="universal-converter">
+    <div class="converter-controls">
+      <div>
+        <label for="base-source">Base de départ</label>
+        <select id="base-source">
+          <option value="10">Décimal (base 10)</option>
+          <option value="2">Binaire (base 2)</option>
+          <option value="16">Hexadécimal (base 16)</option>
+        </select>
+      </div>
+
+      <div class="converter-value-field">
+        <label for="base-value">Valeur à convertir</label>
+        <input id="base-value" type="text" inputmode="text" autocomplete="off" placeholder="Ex. 173">
+      </div>
+
+      <button class="btn btn-primary" type="button" id="base-convert">Convertir</button>
+      <button class="btn btn-secondary" type="button" id="base-clear">Effacer</button>
+    </div>
+
+    <div class="converter-examples no-print" aria-label="Exemples rapides">
+      <span>Essayer :</span>
+      <button type="button" data-base-example="10" data-value-example="173">173₁₀</button>
+      <button type="button" data-base-example="2" data-value-example="10110110">10110110₂</button>
+      <button type="button" data-base-example="16" data-value-example="A5">A5₁₆</button>
+    </div>
+
+    <div class="converter-results" id="base-results" aria-live="polite">
+      <article>
+        <span>Décimal</span>
+        <strong id="base-result-decimal">—</strong>
+        <small>base 10</small>
+      </article>
+      <article>
+        <span>Binaire</span>
+        <strong id="base-result-binary">—</strong>
+        <small>base 2</small>
+      </article>
+      <article>
+        <span>Hexadécimal</span>
+        <strong id="base-result-hex">—</strong>
+        <small>base 16</small>
+      </article>
+    </div>
+
+    <div class="converter-method" id="base-method">
+      <strong>Comment faire ?</strong>
+      <p>Choisis une base, saisis une valeur puis clique sur « Convertir ».</p>
+    </div>
+
+    <div class="converter-error" id="base-error" role="alert"></div>
+  </div>
+
+  <div class="tool-grid converter-secondary-tools">
+    <div class="interactive-tool">
+      <h3>Bits ↔ octets</h3>
+      <label for="data-value">Quantité</label>
+      <input id="data-value" type="number" min="0" step="1" placeholder="Ex. 32">
+      <label for="data-unit">Unité de départ</label>
+      <select id="data-unit">
+        <option value="bits">bits</option>
+        <option value="octets">octets</option>
+      </select>
+      <button class="btn btn-primary" type="button" id="data-convert">Convertir</button>
+      <div class="tool-result" id="data-result">
+        <div><span>Résultat</span><strong>—</strong></div>
+      </div>
+      <p class="tool-hint">Rappel : 1 octet = 8 bits.</p>
+    </div>
+
+    <div class="interactive-tool">
+      <h3>Temps de transfert</h3>
+      <label for="snt-size-mo">Taille du fichier (Mo)</label>
+      <input id="snt-size-mo" type="number" min="0" step="0.1" placeholder="Ex. 150">
+      <label for="snt-speed">Débit (Mbit/s)</label>
+      <input id="snt-speed" type="number" min="0.1" step="0.1" placeholder="Ex. 50">
+      <button class="btn btn-primary" type="button" id="snt-transfer-calc">Calculer</button>
+      <div class="tool-result" id="snt-transfer-result">
+        <div><span>Durée théorique</span><strong>—</strong></div>
+      </div>
+      <p class="tool-hint">La taille est convertie de Mo en Mbit avant le calcul.</p>
+    </div>
+  </div>
 </section>
 
 <section id="retenir" class="section">

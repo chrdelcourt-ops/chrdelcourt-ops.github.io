@@ -1481,3 +1481,152 @@ background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;b
 .routing-lessons article{padding:14px;border:1px solid var(--border);border-radius:13px;background:#fff}.routing-lessons strong,.routing-lessons span{display:block}.routing-lessons strong{font-size:.88rem;color:var(--primary-dark);margin-bottom:5px}.routing-lessons span{font-size:.79rem;color:var(--muted);line-height:1.45}
 @media(max-width:900px){.routing-animation-header{display:block}.routing-sim-label{display:inline-block;margin-top:12px}.routing-lessons{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.routing-stage{margin:0 10px}.routing-controls,.routing-lessons{padding-left:14px;padding-right:14px}.routing-explanation{margin-left:14px;margin-right:14px}.routing-lessons{grid-template-columns:1fr}}
+
+
+/* ===== V18 : convertisseur universel SNT ===== */
+.universal-converter{
+  background:
+    radial-gradient(circle at 96% 8%,rgba(242,170,25,.15),transparent 24%),
+    linear-gradient(135deg,#f4fbfc,#fff);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:var(--shadow);
+}
+.converter-controls{
+  display:grid;
+  grid-template-columns:190px minmax(220px,1fr) auto auto;
+  gap:12px;
+  align-items:end;
+}
+.converter-controls label,
+.interactive-tool label{
+  display:block;
+  font-size:.84rem;
+  font-weight:850;
+  margin-bottom:7px;
+  color:var(--muted);
+}
+.converter-controls select,
+.converter-controls input,
+.interactive-tool select{
+  width:100%;
+  min-height:44px;
+  border:1px solid #c8d8dd;
+  border-radius:11px;
+  padding:10px 12px;
+  background:#fff;
+  color:var(--text);
+  font:inherit;
+}
+.converter-value-field input{
+  font-family:"SFMono-Regular",Consolas,monospace;
+  font-size:1.05rem;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+.converter-examples{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:15px;
+}
+.converter-examples>span{
+  font-size:.8rem;
+  font-weight:850;
+  color:var(--muted);
+}
+.converter-examples button{
+  border:1px solid #c9dadd;
+  border-radius:999px;
+  background:#fff;
+  padding:6px 10px;
+  cursor:pointer;
+  font:inherit;
+  font-size:.8rem;
+  font-weight:800;
+  transition:transform .15s ease,border-color .15s ease,background .15s ease;
+}
+.converter-examples button:hover{
+  transform:translateY(-1px);
+  border-color:#71c5d3;
+  background:var(--primary-soft);
+}
+.converter-results{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:20px;
+}
+.converter-results article{
+  min-width:0;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  box-shadow:var(--shadow-soft);
+}
+.converter-results span,
+.converter-results strong,
+.converter-results small{display:block}
+.converter-results span{
+  font-size:.78rem;
+  color:var(--muted);
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.converter-results strong{
+  margin:7px 0 4px;
+  color:var(--primary-dark);
+  font-family:"SFMono-Regular",Consolas,monospace;
+  font-size:clamp(1.15rem,2.8vw,1.65rem);
+  overflow-wrap:anywhere;
+}
+.converter-results small{color:var(--muted)}
+.converter-method{
+  margin-top:14px;
+  padding:15px 17px;
+  border-radius:13px;
+  background:#eef7f9;
+  border-left:5px solid var(--primary);
+}
+.converter-method strong{display:block;margin-bottom:4px}
+.converter-method p{margin:0;color:var(--muted);line-height:1.55}
+.converter-method code{font-weight:800}
+.converter-error{
+  min-height:0;
+  margin-top:0;
+  color:#a02a38;
+  font-weight:800;
+}
+.converter-error.visible{
+  min-height:auto;
+  margin-top:12px;
+  padding:11px 13px;
+  background:#fff0f1;
+  border:1px solid #ecc5ca;
+  border-radius:10px;
+}
+.converter-secondary-tools{
+  grid-template-columns:1fr 1fr;
+  margin-top:18px;
+}
+.tool-hint{
+  margin:12px 0 0;
+  color:var(--muted);
+  font-size:.8rem;
+}
+@media(max-width:900px){
+  .converter-controls{
+    grid-template-columns:1fr 1fr;
+  }
+  .converter-results{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+  .converter-controls,
+  .converter-secondary-tools{
+    grid-template-columns:1fr;
+  }
+}

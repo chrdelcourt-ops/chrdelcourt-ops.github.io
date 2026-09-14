@@ -75,3 +75,13 @@ Ajouts :
 - lien vers la fiche élève d'origine ;
 - ajout de l'activité sur la page Première STI2D ;
 - ajout au sitemap Google.
+
+## Version 18 — Convertisseur SNT Seconde
+
+Ajouts dans « Binaire, bases numériques & débit » :
+- convertisseur universel base 2 / base 10 / base 16 ;
+- résultats simultanés en décimal, binaire et hexadécimal ;
+- explication de la méthode de conversion ;
+- exemples rapides ;
+- outil bits ↔ octets ;
+- accès direct au convertisseur depuis le menu et le bandeau du chapitre.
