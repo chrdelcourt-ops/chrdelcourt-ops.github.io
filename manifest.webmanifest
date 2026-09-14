@@ -1,0 +1,54 @@
+{
+  "id": "/",
+  "name": "SNT & STI2D – Marie Rivier",
+  "short_name": "SNT STI2D",
+  "description": "Cours, activités, TP, quiz et outils SNT et STI2D du Lycée Marie Rivier.",
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#0b8ea5",
+  "categories": [
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "/assets/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/app-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Seconde SNT",
+      "short_name": "SNT",
+      "url": "/#themes"
+    },
+    {
+      "name": "Première STI2D",
+      "short_name": "Première",
+      "url": "/classes/premiere-sti2d.html"
+    },
+    {
+      "name": "Terminale STI2D",
+      "short_name": "Terminale",
+      "url": "/classes/terminale-sti2d.html"
+    }
+  ]
+}

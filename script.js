@@ -697,3 +697,73 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+
+// ===== V22 : installation PWA =====
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/service-worker.js").catch(() => {
+      // Le site continue de fonctionner même si l'enregistrement échoue.
+    });
+  });
+}
+
+let deferredInstallPrompt = null;
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+
+  const installButton = document.getElementById("install-app-button");
+  const status = document.getElementById("install-status");
+
+  if (installButton) installButton.hidden = false;
+  if (status) status.textContent = "L'application peut être installée sur cet appareil.";
+});
+
+window.addEventListener("appinstalled", () => {
+  const installButton = document.getElementById("install-app-button");
+  const status = document.getElementById("install-status");
+
+  if (installButton) installButton.hidden = true;
+  if (status) status.textContent = "Application installée.";
+  deferredInstallPrompt = null;
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const installButton = document.getElementById("install-app-button");
+  const helpButton = document.getElementById("install-help-button");
+  const help = document.getElementById("install-help");
+  const status = document.getElementById("install-status");
+
+  const standalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
+
+  if (standalone && status) {
+    status.textContent = "Vous utilisez déjà la version installée de l'application.";
+    if (installButton) installButton.hidden = true;
+  }
+
+  if (installButton) {
+    installButton.addEventListener("click", async () => {
+      if (!deferredInstallPrompt) {
+        if (help) help.hidden = false;
+        if (status) status.textContent = "Utilisez le menu du navigateur puis « Installer l'application ».";
+        return;
+      }
+
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      installButton.hidden = true;
+    });
+  }
+
+  if (helpButton && help) {
+    helpButton.addEventListener("click", () => {
+      help.hidden = !help.hidden;
+      helpButton.textContent = help.hidden ? "Comment l'installer ?" : "Masquer les instructions";
+    });
+  }
+});

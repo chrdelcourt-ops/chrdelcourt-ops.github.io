@@ -85,3 +85,24 @@ Ajouts dans « Binaire, bases numériques & débit » :
 - exemples rapides ;
 - outil bits ↔ octets ;
 - accès direct au convertisseur depuis le menu et le bandeau du chapitre.
+
+
+## Version 22 — Application PWA installable
+
+Le site est maintenant une Progressive Web App (PWA) :
+- installation directe sur Android sans Google Play ;
+- icône d'application Marie Rivier ;
+- ouverture en mode application ;
+- cache des ressources essentielles ;
+- pages déjà consultées disponibles hors connexion quand elles ont été mises en cache ;
+- mise à jour des cours depuis le site quand une connexion est disponible ;
+- bouton et instructions d'installation sur la page d'accueil.
+
+Fichiers PWA ajoutés :
+- manifest.webmanifest
+- service-worker.js
+- offline.html
+- assets/app-icon-192.png
+- assets/app-icon-512.png
+- assets/app-icon-maskable-512.png
+- assets/apple-touch-icon.png

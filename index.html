@@ -108,6 +108,14 @@
 </script>
 
 <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#0b8ea5">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="SNT STI2D">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -165,6 +173,38 @@
         <span class="hero-class-level">Terminale</span>
         <strong>STI2D • SIN</strong>
       </a>
+    </section>
+
+
+    <section id="install-app-section" class="section app-install-section">
+      <div class="app-install-card">
+        <div class="app-install-icon">
+          <img src="assets/app-icon-192.png" alt="" aria-hidden="true">
+        </div>
+        <div class="app-install-content">
+          <p class="eyebrow">Application Android • sans Play Store</p>
+          <h2>Installer SNT & STI2D sur le téléphone</h2>
+          <p>
+            L'application s'installe directement depuis ce site. Elle s'ouvre ensuite comme une application,
+            avec son icône sur l'écran d'accueil. Les contenus se mettent à jour depuis le site.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" type="button" id="install-app-button" hidden>Installer l'application</button>
+            <button class="btn btn-secondary" type="button" id="install-help-button">Comment l'installer ?</button>
+          </div>
+          <p class="install-status" id="install-status" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="install-help" id="install-help" hidden>
+        <strong>Sur Android avec Chrome :</strong>
+        <ol>
+          <li>Ouvrir ce site dans Chrome.</li>
+          <li>Appuyer sur le menu ⋮ en haut à droite.</li>
+          <li>Choisir <strong>Installer l'application</strong> ou <strong>Ajouter à l'écran d'accueil</strong>.</li>
+          <li>Valider l'installation.</li>
+        </ol>
+      </div>
     </section>
 
     <section id="niveaux" class="section">
