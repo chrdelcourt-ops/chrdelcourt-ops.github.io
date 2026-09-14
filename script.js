@@ -369,16 +369,168 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const sizeMo=document.getElementById("snt-size-mo");
-  const speed=document.getElementById("snt-speed");
-  const transferBtn=document.getElementById("snt-transfer-calc");
-  const transferResult=document.getElementById("snt-transfer-result");
-  if(sizeMo&&speed&&transferBtn&&transferResult){
-    transferBtn.addEventListener("click",()=>{
-      const s=Number(sizeMo.value),d=Number(speed.value),o=transferResult.querySelector("strong");
-      if(!(s>=0)||!(d>0)){o.textContent="Valeurs invalides";return;}
-      const sec=s*8/d;
-      o.textContent=sec<60?`${sec.toFixed(1)} s`:`${Math.floor(sec/60)} min ${Math.round(sec%60)} s`;
+
+
+  // ===== Calculs réseau SNT : durée et débit =====
+  const sizeFactors = {
+    Ko: 1e3,
+    Mo: 1e6,
+    Go: 1e9,
+    To: 1e12
+  };
+
+  const rateFactors = {
+    kbit: 1e3,
+    Mbit: 1e6,
+    Gbit: 1e9
+  };
+
+  const timeFactors = {
+    s: 1,
+    min: 60,
+    h: 3600
+  };
+
+  function readPositiveDecimal(input) {
+    if (!input) return NaN;
+    const raw = input.value.trim().replace(",", ".");
+    if (raw === "") return NaN;
+    const value = Number(raw);
+    return Number.isFinite(value) && value > 0 ? value : NaN;
+  }
+
+  function formatFrenchNumber(value, maxDigits = 2) {
+    if (!Number.isFinite(value)) return "—";
+    if (value !== 0 && (Math.abs(value) >= 1e12 || Math.abs(value) < 0.001)) {
+      return value.toExponential(3).replace(".", ",");
+    }
+    return value.toLocaleString("fr-FR", {
+      maximumFractionDigits: maxDigits
+    });
+  }
+
+  function formatDuration(seconds) {
+    if (!Number.isFinite(seconds) || seconds < 0) return "—";
+    if (seconds < 1) return `${formatFrenchNumber(seconds, 3)} s`;
+
+    if (seconds < 60) {
+      return `${formatFrenchNumber(seconds, 2)} s`;
+    }
+
+    if (seconds < 3600) {
+      const minutes = Math.floor(seconds / 60);
+      const remaining = Math.round(seconds - minutes * 60);
+      return remaining === 60
+        ? `${minutes + 1} min`
+        : `${minutes} min ${remaining} s`;
+    }
+
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds - hours * 3600) / 60);
+    const remaining = Math.round(seconds - hours * 3600 - minutes * 60);
+
+    const parts = [`${hours} h`];
+    if (minutes) parts.push(`${minutes} min`);
+    if (remaining) parts.push(`${remaining} s`);
+    return parts.join(" ");
+  }
+
+  function bestRate(bitsPerSecond) {
+    if (bitsPerSecond >= 1e9) {
+      return `${formatFrenchNumber(bitsPerSecond / 1e9, 3)} Gbit/s`;
+    }
+    if (bitsPerSecond >= 1e6) {
+      return `${formatFrenchNumber(bitsPerSecond / 1e6, 3)} Mbit/s`;
+    }
+    if (bitsPerSecond >= 1e3) {
+      return `${formatFrenchNumber(bitsPerSecond / 1e3, 3)} kbit/s`;
+    }
+    return `${formatFrenchNumber(bitsPerSecond, 3)} bit/s`;
+  }
+
+  const durationSize = document.getElementById("duration-size");
+  const durationSizeUnit = document.getElementById("duration-size-unit");
+  const durationRate = document.getElementById("duration-rate");
+  const durationRateUnit = document.getElementById("duration-rate-unit");
+  const durationCalc = document.getElementById("duration-calc");
+  const durationResult = document.getElementById("duration-result");
+  const durationDetail = document.getElementById("duration-detail");
+  const durationError = document.getElementById("duration-error");
+
+  function calculateDuration() {
+    const size = readPositiveDecimal(durationSize);
+    const rate = readPositiveDecimal(durationRate);
+
+    if (!Number.isFinite(size) || !Number.isFinite(rate)) {
+      durationResult.querySelector("strong").textContent = "—";
+      durationDetail.textContent = "Taille × 8 ÷ débit";
+      durationError.textContent = "Saisis une taille et un débit strictement positifs.";
+      durationError.classList.add("visible");
+      return;
+    }
+
+    const bytes = size * sizeFactors[durationSizeUnit.value];
+    const bits = bytes * 8;
+    const bitsPerSecond = rate * rateFactors[durationRateUnit.value];
+    const seconds = bits / bitsPerSecond;
+
+    durationResult.querySelector("strong").textContent = formatDuration(seconds);
+    durationDetail.textContent =
+      `${formatFrenchNumber(size, 3)} ${durationSizeUnit.value} = ${formatFrenchNumber(bits / 1e6, 3)} Mbit ; ` +
+      `${formatFrenchNumber(bits / 1e6, 3)} ÷ ${formatFrenchNumber(bitsPerSecond / 1e6, 3)} = ${formatFrenchNumber(seconds, 3)} s`;
+    durationError.textContent = "";
+    durationError.classList.remove("visible");
+  }
+
+  if (durationCalc) {
+    durationCalc.addEventListener("click", calculateDuration);
+    [durationSize, durationRate].forEach((input) => {
+      if (input) input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") calculateDuration();
+      });
+    });
+  }
+
+  const rateSize = document.getElementById("rate-size");
+  const rateSizeUnit = document.getElementById("rate-size-unit");
+  const rateTime = document.getElementById("rate-time");
+  const rateTimeUnit = document.getElementById("rate-time-unit");
+  const rateCalc = document.getElementById("rate-calc");
+  const rateResult = document.getElementById("rate-result");
+  const rateDetail = document.getElementById("rate-detail");
+  const rateError = document.getElementById("rate-error");
+
+  function calculateRate() {
+    const size = readPositiveDecimal(rateSize);
+    const time = readPositiveDecimal(rateTime);
+
+    if (!Number.isFinite(size) || !Number.isFinite(time)) {
+      rateResult.querySelector("strong").textContent = "—";
+      rateDetail.textContent = "Taille × 8 ÷ durée";
+      rateError.textContent = "Saisis une taille et une durée strictement positives.";
+      rateError.classList.add("visible");
+      return;
+    }
+
+    const bytes = size * sizeFactors[rateSizeUnit.value];
+    const bits = bytes * 8;
+    const seconds = time * timeFactors[rateTimeUnit.value];
+    const bitsPerSecond = bits / seconds;
+
+    rateResult.querySelector("strong").textContent = bestRate(bitsPerSecond);
+    rateDetail.textContent =
+      `${formatFrenchNumber(size, 3)} ${rateSizeUnit.value} = ${formatFrenchNumber(bits / 1e6, 3)} Mbit ; ` +
+      `${formatFrenchNumber(bits / 1e6, 3)} ÷ ${formatFrenchNumber(seconds, 3)} = ${formatFrenchNumber(bitsPerSecond / 1e6, 3)} Mbit/s`;
+    rateError.textContent = "";
+    rateError.classList.remove("visible");
+  }
+
+  if (rateCalc) {
+    rateCalc.addEventListener("click", calculateRate);
+    [rateSize, rateTime].forEach((input) => {
+      if (input) input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") calculateRate();
+      });
     });
   }
 

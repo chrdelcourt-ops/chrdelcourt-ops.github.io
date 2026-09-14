@@ -228,11 +228,11 @@
     <div class="converter-error" id="simple-error" role="alert"></div>
   </div>
 
-  <div class="tool-grid converter-secondary-tools">
+  <div class="tool-grid converter-secondary-tools network-calc-grid">
     <div class="interactive-tool">
       <h3>Bits ↔ octets</h3>
       <label for="data-value">Quantité</label>
-      <input id="data-value" type="number" min="0" step="1" placeholder="Ex. 32">
+      <input id="data-value" type="number" min="0" step="any" placeholder="Ex. 32">
       <label for="data-unit">Unité de départ</label>
       <select id="data-unit">
         <option value="bits">bits</option>
@@ -245,17 +245,74 @@
       <p class="tool-hint">Rappel : 1 octet = 8 bits.</p>
     </div>
 
-    <div class="interactive-tool">
-      <h3>Temps de transfert</h3>
-      <label for="snt-size-mo">Taille du fichier (Mo)</label>
-      <input id="snt-size-mo" type="number" min="0" step="0.1" placeholder="Ex. 150">
-      <label for="snt-speed">Débit (Mbit/s)</label>
-      <input id="snt-speed" type="number" min="0.1" step="0.1" placeholder="Ex. 50">
-      <button class="btn btn-primary" type="button" id="snt-transfer-calc">Calculer</button>
-      <div class="tool-result" id="snt-transfer-result">
-        <div><span>Durée théorique</span><strong>—</strong></div>
+    <div class="interactive-tool network-calculator">
+      <h3>Calculer la durée</h3>
+      <p class="tool-hint top-hint">Je connais la taille du fichier et le débit.</p>
+
+      <label for="duration-size">Taille du fichier</label>
+      <div class="value-unit-row">
+        <input id="duration-size" type="text" inputmode="decimal" placeholder="Ex. 750">
+        <select id="duration-size-unit" aria-label="Unité de taille">
+          <option value="Ko">Ko</option>
+          <option value="Mo" selected>Mo</option>
+          <option value="Go">Go</option>
+          <option value="To">To</option>
+        </select>
       </div>
-      <p class="tool-hint">La taille est convertie de Mo en Mbit avant le calcul.</p>
+
+      <label for="duration-rate">Débit</label>
+      <div class="value-unit-row">
+        <input id="duration-rate" type="text" inputmode="decimal" placeholder="Ex. 100">
+        <select id="duration-rate-unit" aria-label="Unité de débit">
+          <option value="kbit">kbit/s</option>
+          <option value="Mbit" selected>Mbit/s</option>
+          <option value="Gbit">Gbit/s</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" type="button" id="duration-calc">Calculer la durée</button>
+
+      <div class="network-calc-result" id="duration-result" aria-live="polite">
+        <span>Durée théorique</span>
+        <strong>—</strong>
+        <small id="duration-detail">Taille × 8 ÷ débit</small>
+      </div>
+      <div class="converter-error" id="duration-error" role="alert"></div>
+    </div>
+
+    <div class="interactive-tool network-calculator">
+      <h3>Calculer le débit</h3>
+      <p class="tool-hint top-hint">Je connais la taille du fichier et la durée du transfert.</p>
+
+      <label for="rate-size">Taille du fichier</label>
+      <div class="value-unit-row">
+        <input id="rate-size" type="text" inputmode="decimal" placeholder="Ex. 750">
+        <select id="rate-size-unit" aria-label="Unité de taille">
+          <option value="Ko">Ko</option>
+          <option value="Mo" selected>Mo</option>
+          <option value="Go">Go</option>
+          <option value="To">To</option>
+        </select>
+      </div>
+
+      <label for="rate-time">Durée</label>
+      <div class="value-unit-row">
+        <input id="rate-time" type="text" inputmode="decimal" placeholder="Ex. 60">
+        <select id="rate-time-unit" aria-label="Unité de durée">
+          <option value="s" selected>seconde(s)</option>
+          <option value="min">minute(s)</option>
+          <option value="h">heure(s)</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" type="button" id="rate-calc">Calculer le débit</button>
+
+      <div class="network-calc-result" id="rate-result" aria-live="polite">
+        <span>Débit théorique</span>
+        <strong>—</strong>
+        <small id="rate-detail">Taille × 8 ÷ durée</small>
+      </div>
+      <div class="converter-error" id="rate-error" role="alert"></div>
     </div>
   </div>
 </section>

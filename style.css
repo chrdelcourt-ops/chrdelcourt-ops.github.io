@@ -1726,3 +1726,73 @@ background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;b
 .simple-size-info strong{
   color:var(--primary-dark);
 }
+
+
+/* ===== V21 : calculateurs débit et durée ===== */
+.network-calc-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.network-calculator{
+  display:flex;
+  flex-direction:column;
+}
+.network-calculator .top-hint{
+  min-height:2.5em;
+  margin-top:-2px;
+}
+.value-unit-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 110px;
+  gap:8px;
+  margin-bottom:12px;
+}
+.value-unit-row input,
+.value-unit-row select{
+  width:100%;
+  min-height:44px;
+  border:1px solid #c8d8dd;
+  border-radius:11px;
+  padding:10px 12px;
+  background:#fff;
+  color:var(--text);
+  font:inherit;
+}
+.network-calculator>.btn{
+  margin-top:auto;
+}
+.network-calc-result{
+  margin-top:14px;
+  padding:14px;
+  border-radius:13px;
+  background:#eef7f9;
+  border:1px solid #d4e7eb;
+}
+.network-calc-result span,
+.network-calc-result strong,
+.network-calc-result small{
+  display:block;
+}
+.network-calc-result span{
+  color:var(--muted);
+  font-size:.78rem;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.network-calc-result strong{
+  margin:5px 0;
+  color:var(--primary-dark);
+  font-size:1.35rem;
+}
+.network-calc-result small{
+  color:var(--muted);
+  line-height:1.4;
+}
+@media(max-width:1050px){
+  .network-calc-grid{grid-template-columns:1fr 1fr}
+  .network-calc-grid>.interactive-tool:first-child{grid-column:1/-1}
+}
+@media(max-width:700px){
+  .network-calc-grid{grid-template-columns:1fr}
+  .network-calc-grid>.interactive-tool:first-child{grid-column:auto}
+}
