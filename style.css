@@ -2021,3 +2021,35 @@ background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;b
   .sorter-control{grid-template-columns:1fr}
   .flow-node.decision{transform:none;border-radius:12px}
 }
+
+
+/* ===== V24 : contraste du code Terminale Algorithmique ===== */
+/* Neutralise les styles génériques de <code> à l'intérieur des blocs sombres. */
+.algo-code-card pre code,
+.program-lab pre code,
+.debug-correction pre code{
+  color:#e8f2f5 !important;
+  background:transparent !important;
+  padding:0 !important;
+  margin:0 !important;
+  border-radius:0 !important;
+  display:inline !important;
+  font-size:inherit !important;
+  font-weight:400 !important;
+  text-align:left !important;
+  white-space:pre !important;
+}
+
+/* Le texte des blocs de code hérite bien du fond sombre. */
+.algo-code-card pre,
+.program-lab pre,
+.debug-correction pre{
+  color:#e8f2f5 !important;
+  background:#101922 !important;
+}
+
+/* Conserve les petits <code> dans le texte courant lisibles sur fond clair. */
+.debug-correction p code,
+.section code:not(pre code){
+  color:#183541;
+}
