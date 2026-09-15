@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Algorithmique & programmation embarquée – Terminale STI2D SIN | Marie Rivier</title>
+  <meta name="description" content="Cours interactif de Terminale STI2D SIN : algorithmes, algorigrammes, variables, conditions, boucles, fonctions, Python, C++, débogage et simulations.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Christophe Delcourt">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/classes/terminale-algorithmique.html">
+  <link rel="stylesheet" href="../style.css">
+
+  <meta name="theme-color" content="#0b8ea5">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="SNT STI2D">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header compact-header">
+  <div class="header-inner">
+    <a href="../index.html" class="brand">
+      <img src="../assets/logo-marie-rivier.png" alt="Logo du Lycée Marie Rivier" class="logo">
+    </a>
+    <div class="header-title">
+      <p class="eyebrow">Terminale STI2D • SIN</p>
+      <h1>Algorithmique & programmation embarquée</h1>
+      <p class="subtitle">Christophe Delcourt • Lycée Marie Rivier • 2026–2027</p>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav algo-nav" aria-label="Navigation du cours">
+  <div class="nav-inner">
+    <a href="terminale-sti2d.html">← Terminale</a>
+    <a href="#serre">Serre</a>
+    <a href="#bases">Bases</a>
+    <a href="#sequence">Séquence</a>
+    <a href="#condition">Condition</a>
+    <a href="#boucles">Boucles</a>
+    <a href="#fonctions">Fonctions</a>
+    <a href="#programmes">Programmes</a>
+    <a href="#debug">Débogage</a>
+    <a href="#quiz">Quiz</a>
+  </div>
+</nav>
+
+<main id="contenu">
+  <section class="chapter-hero algo-hero">
+    <div>
+      <span class="badge">COURS INTERACTIF • PARTIES 1 & 2</span>
+      <h2>De l'exigence à un programme qui fonctionne</h2>
+      <p>
+        Comprendre une logique, la représenter, la traduire en Python ou C++,
+        puis vérifier son comportement par des tests et des simulations.
+      </p>
+      <div class="hero-actions no-print">
+        <a class="btn btn-primary" href="#serre">Commencer</a>
+        <a class="btn btn-secondary" href="#programmes">Voir les programmes fonctionner</a>
+        <a class="btn btn-secondary" href="../documents/terminale-sti2d/algorithmique-terminale-sti2d-sin-2026-eleve.pptx">Support élève PowerPoint</a>
+      </div>
+    </div>
+
+    <aside class="chapter-summary">
+      <p class="eyebrow">Fil conducteur</p>
+      <div class="algo-chain">
+        <span>Capteurs</span><b>→</b><span>Algorithme</span><b>→</b><span>Actionneurs</span>
+      </div>
+      <ul class="check-list">
+        <li>Variables et opérateurs</li>
+        <li>Séquences et conditions</li>
+        <li>WHILE • DO…WHILE • FOR</li>
+        <li>Fonctions et sous-programmes</li>
+        <li>Tests et débogage</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section id="serre" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Mise en situation</p>
+        <h2>Défi : piloter une serre connectée</h2>
+      </div>
+      <p class="section-intro">
+        Température et humidité entrent dans le programme. Le microcontrôleur décide ensuite
+        d'activer ou non le ventilateur et la pompe.
+      </p>
+    </div>
+
+    <div class="greenhouse-lab">
+      <div class="greenhouse-controls">
+        <div class="sensor-control">
+          <label for="green-temp">🌡️ Température : <strong><span id="green-temp-value">26</span> °C</strong></label>
+          <input id="green-temp" type="range" min="15" max="40" value="26" step="1">
+        </div>
+        <div class="sensor-control">
+          <label for="green-hum">💧 Humidité : <strong><span id="green-hum-value">45</span> %</strong></label>
+          <input id="green-hum" type="range" min="10" max="80" value="45" step="1">
+        </div>
+        <button class="btn btn-primary" type="button" id="green-run">▶ Exécuter l'algorithme</button>
+      </div>
+
+      <div class="greenhouse-flow" aria-label="Chaîne capteurs traitement actionneurs">
+        <div class="algo-device">
+          <span>CAPTEURS</span>
+          <strong>Température<br>Humidité</strong>
+        </div>
+        <div class="algo-arrow">→</div>
+        <div class="algo-device processor">
+          <span>ESP32 / µC</span>
+          <strong>Algorithme<br>de décision</strong>
+        </div>
+        <div class="algo-arrow">→</div>
+        <div class="actuator-stack">
+          <div class="algo-device actuator" id="fan-card">
+            <span>VENTILATEUR</span>
+            <strong id="fan-state">OFF</strong>
+          </div>
+          <div class="algo-device actuator" id="pump-card">
+            <span>POMPE</span>
+            <strong id="pump-state">OFF</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="algo-code-card">
+        <div class="code-title"><span>Python</span><strong>commander_serre()</strong></div>
+<pre><code>def commander_serre(temperature, humidite):
+    ventilateur = temperature &gt;= 28
+    pompe = humidite &lt; 35
+    return ventilateur, pompe</code></pre>
+        <div class="program-output">
+          <span>Sortie</span>
+          <strong id="green-output">Clique sur « Exécuter l'algorithme ».</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bases" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Notions essentielles</p>
+        <h2>Algorithme, algorigramme et programme</h2>
+      </div>
+    </div>
+
+    <div class="algo-definition-grid">
+      <article>
+        <span class="definition-icon">🧠</span>
+        <h3>Algorithme</h3>
+        <p>Suite <strong>ordonnée et finie</strong> d'instructions permettant de résoudre un problème.</p>
+      </article>
+      <article>
+        <span class="definition-icon">🔀</span>
+        <h3>Algorigramme</h3>
+        <p>Représentation <strong>graphique</strong> de l'enchaînement des opérations et des décisions.</p>
+      </article>
+      <article>
+        <span class="definition-icon">💻</span>
+        <h3>Programme</h3>
+        <p>Traduction <strong>exécutable</strong> de l'algorithme dans un langage comme Python ou C++.</p>
+      </article>
+    </div>
+
+    <div class="algo-method">
+      <div class="method-step" data-method="1"><b>1</b><span>EXIGENCE</span><small>Ce que le système doit faire</small></div>
+      <div class="method-arrow">→</div>
+      <div class="method-step" data-method="2"><b>2</b><span>ALGORITHME</span><small>La logique indépendante du langage</small></div>
+      <div class="method-arrow">→</div>
+      <div class="method-step" data-method="3"><b>3</b><span>CODE</span><small>Python ou C++</small></div>
+      <div class="method-arrow">→</div>
+      <div class="method-step" data-method="4"><b>4</b><span>TESTS</span><small>Cas normaux, limites et erreurs</small></div>
+    </div>
+    <div class="center-action no-print">
+      <button class="btn btn-secondary" id="method-play" type="button">▶ Animer la méthode</button>
+    </div>
+
+    <div class="algo-flowchart-panel">
+      <div class="section-subheading">
+        <h3>Animation d'un algorigramme</h3>
+        <p>Teste la décision « température ≥ 28 °C ? ».</p>
+      </div>
+
+      <div class="flow-input">
+        <label for="flow-temp">Température :</label>
+        <input id="flow-temp" type="number" min="-20" max="80" value="31">
+        <span>°C</span>
+        <button class="btn btn-primary" type="button" id="flow-run">▶ Lancer</button>
+      </div>
+
+      <div class="flowchart">
+        <div class="flow-node terminator" id="flow-start">DÉBUT</div>
+        <div class="flow-line">↓</div>
+        <div class="flow-node io" id="flow-read">Lire T</div>
+        <div class="flow-line">↓</div>
+        <div class="flow-node decision" id="flow-test">T ≥ 28 ?</div>
+        <div class="flow-branches">
+          <div>
+            <span>VRAI</span>
+            <div class="flow-node process" id="flow-on">Ventilateur = ON</div>
+          </div>
+          <div>
+            <span>FAUX</span>
+            <div class="flow-node process" id="flow-off">Ventilateur = OFF</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-output">
+        <span>Résultat</span>
+        <strong id="flow-output">Prêt.</strong>
+      </div>
+    </div>
+
+    <div class="variables-panel">
+      <div>
+        <p class="eyebrow">Variables</p>
+        <h3>Une variable possède un nom, un type et une valeur</h3>
+      </div>
+      <div class="variable-cards">
+        <article><code>temperature = 28.4</code><span>float • réel</span></article>
+        <article><code>compteur = 3</code><span>int • entier</span></article>
+        <article><code>presence = True</code><span>bool • logique</span></article>
+        <article><code>etat = "AUTO"</code><span>str / String • texte</span></article>
+      </div>
+    </div>
+
+    <div class="operators-strip">
+      <span><code>==</code> égal</span>
+      <span><code>!=</code> différent</span>
+      <span><code>&gt;=</code> supérieur ou égal</span>
+      <span><code>and</code> ET</span>
+      <span><code>or</code> OU</span>
+      <span><code>not</code> NON</span>
+      <span><code>=</code> affectation</span>
+    </div>
+  </section>
+
+  <section id="sequence" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Structure séquentielle</p>
+        <h2>Exécuter les actions dans l'ordre</h2>
+      </div>
+      <p class="section-intro">Exemple : passage piéton intelligent. L'animation est accélérée mais respecte l'ordre logique du scénario.</p>
+    </div>
+
+    <div class="traffic-lab">
+      <div class="traffic-visual">
+        <div class="traffic-unit">
+          <strong>Voitures</strong>
+          <div class="traffic-light">
+            <i class="light red" id="car-red"></i>
+            <i class="light amber" id="car-amber"></i>
+            <i class="light green on" id="car-green"></i>
+          </div>
+        </div>
+        <div class="traffic-road">🚗　🚗　🚗</div>
+        <div class="traffic-unit pedestrian">
+          <strong>Piétons</strong>
+          <div class="ped-light">
+            <i class="light red on" id="ped-red"></i>
+            <i class="light green" id="ped-green"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="traffic-steps">
+        <ol>
+          <li id="traffic-step-1">Voitures orange pendant 3 s</li>
+          <li id="traffic-step-2">Voitures rouge</li>
+          <li id="traffic-step-3">Piétons vert pendant 8 s</li>
+          <li id="traffic-step-4">Piétons rouge</li>
+          <li id="traffic-step-5">Voitures vert</li>
+        </ol>
+        <button class="btn btn-primary" type="button" id="traffic-run">▶ Lancer la séquence</button>
+        <p id="traffic-status" class="sim-status">Prêt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="condition" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Structure alternative</p>
+        <h2>Choisir une branche selon une condition</h2>
+      </div>
+    </div>
+
+    <div class="sorter-lab">
+      <div class="sorter-control">
+        <label for="package-mass">Masse du colis : <strong><span id="package-mass-value">1.5</span> kg</strong></label>
+        <input id="package-mass" type="range" min="0.1" max="5" step="0.1" value="1.5">
+        <button class="btn btn-primary" type="button" id="sorter-run">▶ Trier le colis</button>
+      </div>
+
+      <div class="sorter-track">
+        <div class="package" id="package-box">📦</div>
+        <div class="sorter-junction">m ≤ 2 kg ?</div>
+        <div class="conveyor-grid">
+          <div class="conveyor" id="conveyor-a"><strong>Convoyeur A</strong><span>m ≤ 2 kg</span></div>
+          <div class="conveyor" id="conveyor-b"><strong>Convoyeur B</strong><span>m &gt; 2 kg</span></div>
+        </div>
+      </div>
+
+      <div class="algo-code-card compact-code">
+<pre><code>if masse &lt;= 2:
+    convoyeur_A = True
+else:
+    convoyeur_B = True</code></pre>
+        <div class="program-output"><span>Décision</span><strong id="sorter-output">—</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="boucles" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Structures itératives</p>
+        <h2>Répéter : WHILE, DO…WHILE et FOR</h2>
+      </div>
+    </div>
+
+    <div class="loop-choice-grid">
+      <article><strong>WHILE / TANT QUE</strong><span>Test avant • nombre de tours inconnu</span></article>
+      <article><strong>DO…WHILE / RÉPÉTER</strong><span>Test après • au moins une exécution</span></article>
+      <article><strong>FOR / POUR</strong><span>Nombre de répétitions connu</span></article>
+    </div>
+
+    <div class="loop-lab-grid">
+      <div class="loop-lab">
+        <p class="eyebrow">WHILE</p>
+        <h3>Recharge d'un vélo électrique</h3>
+        <p>Charger jusqu'à 80 %, puis arrêter le chargeur.</p>
+
+        <label for="soc-start">SOC de départ : <strong><span id="soc-value">64</span> %</strong></label>
+        <input id="soc-start" type="range" min="50" max="90" value="64" step="1">
+
+        <div class="battery">
+          <div class="battery-fill" id="battery-fill" style="width:64%"></div>
+          <span id="battery-text">64 %</span>
+        </div>
+
+        <button class="btn btn-primary" type="button" id="soc-run">▶ Exécuter la boucle</button>
+        <div class="program-output"><span>État</span><strong id="soc-output">Prêt.</strong></div>
+      </div>
+
+      <div class="loop-lab">
+        <p class="eyebrow">FOR</p>
+        <h3>Moyenne de 5 mesures</h3>
+        <div class="measure-list">
+          <span>21,8 °C</span><span>22,1 °C</span><span>21,9 °C</span><span>22,2 °C</span><span>22,0 °C</span>
+        </div>
+        <div class="accumulator">
+          <span>Somme</span>
+          <strong id="average-sum">0</strong>
+        </div>
+        <button class="btn btn-primary" type="button" id="average-run">▶ Exécuter le FOR</button>
+        <div class="program-output"><span>Sortie</span><strong id="average-output">—</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fonctions" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Sous-programmes</p>
+        <h2>Fonctions et procédures</h2>
+      </div>
+      <p class="section-intro">
+        Une fonction reçoit des paramètres et peut retourner une valeur. Une procédure réalise une action sans retourner de résultat.
+      </p>
+    </div>
+
+    <div class="function-flow">
+      <div><span>ENTRÉES</span><strong>température<br>seuil</strong></div>
+      <b>→</b>
+      <div class="function-box"><span>FONCTION</span><strong>doit_ventiler()</strong></div>
+      <b>→</b>
+      <div><span>SORTIE</span><strong>VRAI / FAUX</strong></div>
+    </div>
+
+    <div class="language-compare">
+      <div class="algo-code-card">
+        <div class="code-title"><span>Python</span><strong>Condition fumée / température</strong></div>
+<pre><code>if fumee or temperature &gt;= 60:
+    alarme = True
+else:
+    alarme = False</code></pre>
+      </div>
+      <div class="algo-code-card">
+        <div class="code-title"><span>C++</span><strong>Même logique</strong></div>
+<pre><code>if (fumee || temperature &gt;= 60) {
+  alarme = true;
+} else {
+  alarme = false;
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="programmes" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Laboratoire</p>
+        <h2>Voir les programmes fonctionner</h2>
+      </div>
+      <p class="section-intro">
+        Le navigateur simule fidèlement la logique des exemples Python du cours et affiche leurs sorties.
+      </p>
+    </div>
+
+    <div class="program-labs">
+      <article class="program-lab">
+        <div class="program-lab-head">
+          <span class="program-number">01</span>
+          <div><h3>Ventilation selon un seuil</h3><p>Tester la condition avec différentes valeurs.</p></div>
+        </div>
+
+        <div class="program-inputs">
+          <label>Température <input id="vent-temp" type="number" value="31" step="0.1"> °C</label>
+          <label>Seuil <input id="vent-threshold" type="number" value="28" step="0.1"> °C</label>
+        </div>
+
+<pre><code>temperature = 31
+seuil = 28
+
+if temperature &gt;= seuil:
+    print("Ventilation ON")
+else:
+    print("Ventilation OFF")</code></pre>
+
+        <button class="btn btn-primary" type="button" id="vent-run">▶ Exécuter</button>
+        <div class="console-output"><span>Console</span><strong id="vent-console">&gt; prêt</strong></div>
+      </article>
+
+      <article class="program-lab">
+        <div class="program-lab-head">
+          <span class="program-number">02</span>
+          <div><h3>Moyenne d'une série de mesures</h3><p>La boucle parcourt les cinq valeurs.</p></div>
+        </div>
+
+<pre><code>mesures = [21.8, 22.1, 21.9, 22.2, 22.0]
+somme = 0
+
+for mesure in mesures:
+    somme = somme + mesure
+
+moyenne = somme / len(mesures)
+print(moyenne)</code></pre>
+
+        <button class="btn btn-primary" type="button" id="average-code-run">▶ Exécuter</button>
+        <div class="console-output"><span>Console</span><strong id="average-console">&gt; prêt</strong></div>
+      </article>
+
+      <article class="program-lab">
+        <div class="program-lab-head">
+          <span class="program-number">03</span>
+          <div><h3>Commande complète de la serre</h3><p>Deux décisions indépendantes.</p></div>
+        </div>
+
+        <div class="program-inputs">
+          <label>Température <input id="serre-code-temp" type="number" value="30" step="0.1"> °C</label>
+          <label>Humidité <input id="serre-code-hum" type="number" value="32" step="0.1"> %</label>
+        </div>
+
+<pre><code>def commander_serre(temperature, humidite):
+    ventilateur = temperature &gt;= 28
+    pompe = humidite &lt; 35
+    return ventilateur, pompe</code></pre>
+
+        <button class="btn btn-primary" type="button" id="serre-code-run">▶ Exécuter</button>
+        <div class="console-output"><span>Console</span><strong id="serre-code-console">&gt; prêt</strong></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="debug" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Débogage</p>
+        <h2>Repérer puis corriger les erreurs</h2>
+      </div>
+    </div>
+
+    <div class="debug-lab">
+      <div class="algo-code-card bug-code">
+        <div class="code-title"><span>Code à corriger</span><strong>2 erreurs</strong></div>
+<pre><code>temperature = 31
+seuil = 28
+
+if temperature &lt; seuil:
+    print("Ventilation ON")
+else
+    print("Ventilation OFF")</code></pre>
+      </div>
+
+      <div class="debug-actions">
+        <button class="btn btn-primary" type="button" id="debug-reveal">Afficher la correction</button>
+        <div id="debug-correction" class="debug-correction" hidden>
+          <p><strong>Erreur 1 :</strong> l'exigence demande ON pour <code>temperature &gt;= seuil</code>.</p>
+          <p><strong>Erreur 2 :</strong> il manque <code>:</code> après <code>else</code>.</p>
+<pre><code>if temperature &gt;= seuil:
+    print("Ventilation ON")
+else:
+    print("Ventilation OFF")</code></pre>
+          <div class="program-output"><span>Pour 31 °C et seuil 28 °C</span><strong>Ventilation ON</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trace-table-wrap">
+      <h3>Tester avec une table de traces</h3>
+      <table class="trace-table">
+        <thead><tr><th>Cas</th><th>Température</th><th>T ≥ 28</th><th>Sortie</th><th>Pourquoi ?</th></tr></thead>
+        <tbody>
+          <tr><td>Normal bas</td><td>25 °C</td><td>FAUX</td><td>OFF</td><td>25 &lt; 28</td></tr>
+          <tr><td>Limite</td><td>28 °C</td><td>VRAI</td><td>ON</td><td>28 est inclus par ≥</td></tr>
+          <tr><td>Normal haut</td><td>31 °C</td><td>VRAI</td><td>ON</td><td>31 &gt; 28</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="retenir" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Essentiel</p><h2>Ce que je dois retenir</h2></div>
+    </div>
+
+    <div class="retain-grid algo-retain-grid">
+      <article><span>1</span><p>Un algorithme décrit une solution <strong>indépendante du langage</strong>.</p></article>
+      <article><span>2</span><p>L'algorigramme représente les <strong>opérations, décisions et le sens d'exécution</strong>.</p></article>
+      <article><span>3</span><p><strong>SI</strong> choisit une branche ; <strong>WHILE, DO…WHILE et FOR</strong> répètent des actions.</p></article>
+      <article><span>4</span><p>Une fonction reçoit des <strong>paramètres</strong> et peut retourner une <strong>valeur</strong>.</p></article>
+      <article><span>5</span><p>Python et C++ traduisent la <strong>même logique</strong> avec des syntaxes différentes.</p></article>
+      <article><span>6</span><p>Un test pertinent couvre les cas <strong>normaux, limites et erreurs</strong>.</p></article>
+    </div>
+  </section>
+
+  <section id="quiz" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Autoévaluation</p><h2>Quiz de fin de cours</h2></div>
+    </div>
+
+    <form id="algo-quiz" class="quiz-form algo-quiz">
+      <fieldset data-correct="b">
+        <legend>1. Quelle boucle choisir pour exactement 10 mesures ?</legend>
+        <label><input type="radio" name="aq1" value="a"> WHILE</label>
+        <label><input type="radio" name="aq1" value="b"> FOR</label>
+        <label><input type="radio" name="aq1" value="c"> IF</label>
+      </fieldset>
+
+      <fieldset data-correct="b">
+        <legend>2. Quel opérateur Python signifie « égal à » ?</legend>
+        <label><input type="radio" name="aq2" value="a"> =</label>
+        <label><input type="radio" name="aq2" value="b"> ==</label>
+        <label><input type="radio" name="aq2" value="c"> !=</label>
+      </fieldset>
+
+      <fieldset data-correct="b">
+        <legend>3. Un test d'algorigramme possède combien de sorties ?</legend>
+        <label><input type="radio" name="aq3" value="a"> 1</label>
+        <label><input type="radio" name="aq3" value="b"> 2</label>
+        <label><input type="radio" name="aq3" value="c"> 3</label>
+      </fieldset>
+
+      <fieldset data-correct="b">
+        <legend>4. Quel cas vérifie le mieux l'opérateur ≥ 28 ?</legend>
+        <label><input type="radio" name="aq4" value="a"> 10</label>
+        <label><input type="radio" name="aq4" value="b"> 28</label>
+        <label><input type="radio" name="aq4" value="c"> 40</label>
+      </fieldset>
+
+      <fieldset data-correct="a">
+        <legend>5. Pourquoi relire un capteur dans une boucle WHILE ?</legend>
+        <label><input type="radio" name="aq5" value="a"> Actualiser la condition</label>
+        <label><input type="radio" name="aq5" value="b"> Ralentir le programme</label>
+        <label><input type="radio" name="aq5" value="c"> Changer le type de variable</label>
+      </fieldset>
+
+      <div class="quiz-actions">
+        <button class="btn btn-primary" type="submit">Corriger le quiz</button>
+        <button class="btn btn-secondary" type="reset">Recommencer</button>
+      </div>
+      <div id="algo-quiz-score" class="quiz-score" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <section class="section sources">
+    <div class="section-heading">
+      <div><p class="eyebrow">Support de cours</p><h2>Document élève</h2></div>
+    </div>
+    <div class="resource-list">
+      <a href="../documents/terminale-sti2d/algorithmique-terminale-sti2d-sin-2026-eleve.pptx">
+        <strong>Algorithmique – Terminale STI2D / SIN</strong>
+        <span>Support élève 2026–2027.</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="chapter-nav no-print">
+    <a href="terminale-sti2d.html">← Retour à Terminale STI2D</a>
+    <a href="terminale-numeration.html">Numération et codage →</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p><strong>Lycée Marie Rivier</strong> • Terminale STI2D / SIN</p>
+    <p>Christophe Delcourt • 2026–2027</p>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+<script src="terminale-algorithmique.js"></script>
+</body>
+</html>

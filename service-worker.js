@@ -1,4 +1,4 @@
-const CACHE_NAME = "marie-rivier-pwa-v22";
+const CACHE_NAME = "marie-rivier-pwa-v23";
 const CORE = [
   "/",
   "/index.html",
@@ -14,7 +14,9 @@ const CORE = [
   "/themes/binaire-bases-debit.html",
   "/themes/web.html",
   "/classes/premiere-sti2d.html",
-  "/classes/terminale-sti2d.html"
+  "/classes/terminale-sti2d.html",
+  "/classes/terminale-algorithmique.html",
+  "/classes/terminale-algorithmique.js"
 ];
 
 self.addEventListener("install", (event) => {

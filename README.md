@@ -106,3 +106,22 @@ Fichiers PWA ajoutés :
 - assets/app-icon-512.png
 - assets/app-icon-maskable-512.png
 - assets/apple-touch-icon.png
+
+## Version 23 — Terminale STI2D/SIN : Algorithmique interactive
+
+Ajout du cours `classes/terminale-algorithmique.html` basé sur le support élève 2026–2027 :
+- serre connectée interactive (température, humidité, ventilateur, pompe) ;
+- animation de la méthode Exigence → Algorithme → Code → Tests ;
+- algorigramme animé pour une décision de ventilation ;
+- passage piéton séquentiel animé ;
+- tri de colis par condition ;
+- boucle WHILE simulant une recharge jusqu’à 80 % ;
+- boucle FOR et calcul animé d’une moyenne de mesures ;
+- comparaison Python / C++ ;
+- trois programmes Python dont le comportement est simulé dans le navigateur ;
+- débogage interactif et table de traces ;
+- quiz de fin de cours ;
+- support élève PowerPoint téléchargeable.
+
+Les simulations de code reproduisent la logique des exemples pédagogiques dans JavaScript local :
+aucun interpréteur Python externe n’est nécessaire.
