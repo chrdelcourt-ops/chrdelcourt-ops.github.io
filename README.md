@@ -125,3 +125,19 @@ Ajout du cours `classes/terminale-algorithmique.html` basé sur le support élè
 
 Les simulations de code reproduisent la logique des exemples pédagogiques dans JavaScript local :
 aucun interpréteur Python externe n’est nécessaire.
+
+## Version 25 — Terminale STI2D / EE
+
+Ajout d'un espace EE parallèle à l'espace SIN :
+- cours interactif « Algorithmique appliquée à la gestion de l'énergie » ;
+- gestion d'un bâtiment : température, puissance, PAC et batterie ;
+- algorigramme animé de délestage au-dessus de 6 kW ;
+- démarrage séquentiel d'une pompe à chaleur ;
+- orientation de l'énergie photovoltaïque ;
+- boucle WHILE sur un stockage thermique ;
+- boucle FOR sur une moyenne de puissance ;
+- comparaison Python / C++ ;
+- programmes simulés dans le navigateur ;
+- débogage du chauffage ;
+- quiz et support élève PowerPoint ;
+- accès EE ajouté depuis la page Terminale STI2D.
