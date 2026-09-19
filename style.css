@@ -2305,3 +2305,9 @@ background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;b
   display:block;
   text-align:center;
 }
+
+
+/* ===== V34 : accueil sans bandeau de navigation ===== */
+body > main#contenu{
+  padding-top:18px;
+}
