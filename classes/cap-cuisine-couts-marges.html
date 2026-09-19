@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Coût matière, marge et remise | CAP Cuisine 2e année</title>
+  <meta name="description" content="Cours interactif CAP Cuisine 2e année : coût matière, coût par portion, ventes HT, marge simplifiée et remise fournisseur.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/classes/cap-cuisine-couts-marges.html">
+  <link rel="stylesheet" href="../style.css">
+  <meta name="theme-color" content="#0b8ea5">
+  <link rel="manifest" href="/manifest.webmanifest">
+</head>
+<body>
+<header class="site-header compact-header">
+  <div class="header-inner">
+    <a href="../index.html" class="brand"><img src="../assets/logo-marie-rivier.png" alt="Logo Marie Rivier" class="logo"></a>
+    <div class="header-title"><p class="eyebrow">UFA • CAP Cuisine 2e année</p><h1>Calculer le coût matière, la marge et une remise</h1><p class="subtitle">Mathématiques • Apprentissage</p></div>
+  </div>
+</header>
+
+<nav class="main-nav"><div class="nav-inner">
+<a href="cap-cuisine-2e.html">← CAP Cuisine</a><a href="#cout">Coût matière</a><a href="#marge">Marge</a><a href="#remise">Remise</a><a href="#calculateur-cap">Calculateur</a>
+</div></nav>
+
+<main id="contenu">
+<section class="chapter-hero cap-hero">
+  <div>
+    <span class="badge">SÉQUENCE • 2 H 30</span>
+    <h2>Chiffrer une fiche technique et interpréter un bon de commande</h2>
+    <p>Les prix utilisés sont fictifs et donnés hors taxes. La marge simplifiée étudiée ici n'est pas le bénéfice du restaurant.</p>
+    <div class="hero-actions"><a class="btn btn-primary" href="#cout">Commencer</a><a class="btn btn-secondary" href="../documents/cap-cuisine/cap-cuisine-couts-marges-remise-eleve.pdf">PDF élève</a></div>
+  </div>
+  <aside class="chapter-summary"><ul class="check-list"><li>Coût d'un ingrédient</li><li>Coût matière total</li><li>Coût par portion</li><li>Ventes HT</li><li>Marge simplifiée</li><li>Remise fournisseur</li></ul></aside>
+</section>
+
+<section id="cout" class="section">
+  <div class="section-heading"><div><p class="eyebrow">Méthode 1</p><h2>Calculer le coût matière</h2></div></div>
+  <div class="formula-box">Coût d'un ingrédient = quantité × prix unitaire HT</div>
+  <div class="table-wrap"><table class="network-table">
+    <thead><tr><th>Ingrédient</th><th>Quantité</th><th>Prix unitaire HT</th><th>Coût HT</th></tr></thead>
+    <tbody><tr><td>Poulet</td><td>3 kg</td><td>9,00 €/kg</td><td>27,00 €</td></tr><tr><td>Riz</td><td>1,2 kg</td><td>3,00 €/kg</td><td>3,60 €</td></tr><tr><td>Légumes</td><td>2,5 kg</td><td>2,40 €/kg</td><td>6,00 €</td></tr><tr><td>Sauce</td><td>1,5 L</td><td>2,00 €/L</td><td>3,00 €</td></tr></tbody>
+  </table></div>
+  <div class="big-summary"><p><strong>Coût matière des 20 portions :</strong> 39,60 € HT • <strong>par portion :</strong> 1,98 € HT</p></div>
+</section>
+
+<section id="marge" class="section">
+  <div class="section-heading"><div><p class="eyebrow">Méthode 2</p><h2>Lire une marge simplifiée</h2></div></div>
+  <div class="formula-reminders">
+    <div><strong>Ventes HT</strong><span>nombre de portions × prix de vente HT</span></div>
+    <div><strong>Marge simplifiée</strong><span>ventes HT − coût matière HT</span></div>
+  </div>
+  <div class="callout warning"><strong>Attention :</strong> la marge simplifiée n'est pas le bénéfice. Elle ne retire pas les salaires, l'énergie, le loyer et les autres charges.</div>
+</section>
+
+<section id="remise" class="section">
+  <div class="section-heading"><div><p class="eyebrow">Méthode 3</p><h2>Calculer une remise</h2></div></div>
+  <div class="formula-reminders">
+    <div><strong>Montant de la remise</strong><span>prix initial × taux</span></div>
+    <div><strong>Prix net HT</strong><span>prix initial − remise</span></div>
+  </div>
+  <div class="problem-card"><span class="problem-label">EXEMPLE</span><h3>39,60 € HT avec 6 % de remise</h3><p>Remise : 39,60 × 0,06 = 2,376 €, soit 2,38 €. Prix net HT : 39,60 − 2,38 = 37,22 €.</p></div>
+</section>
+
+<section id="calculateur-cap" class="section">
+  <div class="section-heading"><div><p class="eyebrow">Outils interactifs</p><h2>Vérifier mes calculs</h2></div></div>
+  <div class="cap-calc-grid">
+    <div class="interactive-tool"><h3>Coût d'un ingrédient</h3><label>Quantité<input id="cost-qty" type="text" inputmode="decimal" value="3"></label><label>Prix unitaire HT<input id="cost-unit" type="text" inputmode="decimal" value="9"></label><button class="btn btn-primary" id="cost-run">Calculer</button><div class="tool-result"><div><span>Coût HT</span><strong id="cost-result">—</strong></div></div></div>
+    <div class="interactive-tool"><h3>Coût par portion</h3><label>Coût matière total HT<input id="portion-total" type="text" inputmode="decimal" value="39,60"></label><label>Nombre de portions<input id="portion-count" type="number" min="1" value="20"></label><button class="btn btn-primary" id="portion-run">Calculer</button><div class="tool-result"><div><span>Par portion</span><strong id="portion-result">—</strong></div></div></div>
+    <div class="interactive-tool"><h3>Marge simplifiée</h3><label>Nombre de portions<input id="margin-count" type="number" min="1" value="20"></label><label>Prix de vente HT / portion<input id="margin-price" type="text" inputmode="decimal" value="8"></label><label>Coût matière total HT<input id="margin-cost" type="text" inputmode="decimal" value="39,60"></label><button class="btn btn-primary" id="margin-run">Calculer</button><div class="tool-result"><div><span>Marge</span><strong id="margin-result">—</strong></div></div></div>
+    <div class="interactive-tool"><h3>Remise fournisseur</h3><label>Prix initial HT<input id="discount-price" type="text" inputmode="decimal" value="39,60"></label><label>Remise (%)<input id="discount-rate" type="text" inputmode="decimal" value="6"></label><button class="btn btn-primary" id="discount-run">Calculer</button><div class="tool-result"><div><span>Prix net HT</span><strong id="discount-result">—</strong></div></div><p class="tool-hint" id="discount-detail">—</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-heading"><div><p class="eyebrow">Questions / réponses</p><h2>Je vérifie que j'ai compris</h2></div></div>
+  <div class="qa-grid">
+    <article class="qa-card"><div class="qa-number">Q1</div><h3>Pourquoi la marge simplifiée n'est-elle pas le bénéfice ?</h3><div class="qa-answer" hidden><p>Parce qu'elle ne déduit pas les autres charges : salaires, énergie, loyer, etc.</p></div><div class="qa-actions"><button class="btn btn-secondary qa-toggle">Voir la réponse</button></div></article>
+    <article class="qa-card"><div class="qa-number">Q2</div><h3>Que faut-il faire pour calculer un coût matière par portion ?</h3><div class="qa-answer" hidden><p>Diviser le coût matière total par le nombre de portions.</p></div><div class="qa-actions"><button class="btn btn-secondary qa-toggle">Voir la réponse</button></div></article>
+    <article class="qa-card"><div class="qa-number">Q3</div><h3>Une remise de 5 % signifie-t-elle enlever 5 € ?</h3><div class="qa-answer" hidden><p>Non. On enlève 5 % du prix initial : prix initial × 0,05.</p></div><div class="qa-actions"><button class="btn btn-secondary qa-toggle">Voir la réponse</button></div></article>
+    <article class="qa-card"><div class="qa-number">Q4</div><h3>Une commande de 100 € HT bénéficie de 5 % de remise. Quel est le prix net HT ?</h3><div class="qa-answer" hidden><p>Remise = 5 €. Prix net = <strong>95 € HT</strong>.</p></div><div class="qa-actions"><button class="btn btn-secondary qa-toggle">Voir la réponse</button></div></article>
+  </div>
+</section>
+
+<div class="chapter-nav no-print"><a href="cap-cuisine-revisions.html">← Révisions</a><a href="cap-cuisine-2e.html">Retour CAP Cuisine →</a></div>
+</main>
+
+<footer><div class="footer-inner"><p><strong>Lycée Marie Rivier</strong> • UFA • CAP Cuisine</p><p>Christophe Delcourt • 2026–2027</p></div></footer>
+<script src="../script.js"></script>
+<script src="cap-cuisine-couts-marges.js"></script>
+</body>
+</html>

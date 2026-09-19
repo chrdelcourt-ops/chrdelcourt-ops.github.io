@@ -2,7 +2,7 @@
 <ns0:urlset xmlns:ns0="http://www.sitemaps.org/schemas/sitemap/0.9">
   <ns0:url>
     <ns0:loc>https://chrdelcourt-ops.github.io/</ns0:loc>
-    <ns0:lastmod>2026-09-14</ns0:lastmod>
+    <ns0:lastmod>2026-09-19</ns0:lastmod>
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://chrdelcourt-ops.github.io/themes/internet.html</ns0:loc>
@@ -54,6 +54,18 @@
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://chrdelcourt-ops.github.io/themes/revisions-binaire-debit.html</ns0:loc>
+    <ns0:lastmod>2026-09-19</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://chrdelcourt-ops.github.io/classes/cap-cuisine-2e.html</ns0:loc>
+    <ns0:lastmod>2026-09-19</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://chrdelcourt-ops.github.io/classes/cap-cuisine-revisions.html</ns0:loc>
+    <ns0:lastmod>2026-09-19</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://chrdelcourt-ops.github.io/classes/cap-cuisine-couts-marges.html</ns0:loc>
     <ns0:lastmod>2026-09-19</ns0:lastmod>
   </ns0:url>
 </ns0:urlset>

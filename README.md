@@ -153,3 +153,20 @@ Ajout d'un espace de révisions pour « Binaire, bases numériques & débit » :
 - question aléatoire, priorisant les points à revoir ;
 - accès direct depuis le cours Binaire & débit ;
 - ajout au cache PWA et au sitemap.
+
+## Version 28 — UFA CAP Cuisine 2e année
+
+Ajout d'un nouvel espace de classe :
+- page d'accueil UFA CAP Cuisine 2e année ;
+- cours interactif « Révisions de rentrée » ;
+- 12 questions/réponses avec progression « Je maîtrise / À revoir » ;
+- convertisseur cuisine kg/g/L/cL/mL ;
+- outil d'adaptation d'une recette ;
+- outil pertes/rendement ;
+- cours interactif « Coût matière, marge et remise » ;
+- calculateurs coût ingrédient, coût par portion, marge simplifiée et remise ;
+- PDF élève téléchargeables ;
+- ajout d'un quatrième bouton de classe sur l'accueil ;
+- intégration au sitemap et à la PWA.
+
+Les versions professeur servent à vérifier les corrections mais ne sont pas publiées dans l'espace élève.
