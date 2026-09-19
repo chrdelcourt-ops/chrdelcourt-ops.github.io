@@ -2311,3 +2311,157 @@ background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;b
 body > main#contenu{
   padding-top:18px;
 }
+
+
+/* ===== V35 : accueil compact, couleurs du logo Marie Rivier ===== */
+:root{
+  --mr-cyan:#00a9c0;
+  --mr-cyan-dark:#087f92;
+  --mr-yellow:#ffbe1a;
+  --mr-lime:#d4db00;
+  --mr-red:#ef3c59;
+  --mr-grey:#a7a8a5;
+  --mr-ink:#172934;
+}
+
+/* Bandeau d'accueil plus petit et centré */
+.mr-home-hero{
+  position:relative;
+  min-height:0 !important;
+  padding:30px 38px !important;
+  border-radius:18px !important;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      110deg,
+      rgba(0,169,192,.13) 0%,
+      rgba(255,255,255,.96) 47%,
+      rgba(255,190,26,.16) 100%
+    ) !important;
+  border:1px solid rgba(0,169,192,.12) !important;
+  box-shadow:0 8px 22px rgba(23,41,52,.06) !important;
+}
+
+/* Petit rappel des quatre couleurs du logo */
+.mr-home-hero::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:5px;
+  background:linear-gradient(
+    90deg,
+    var(--mr-yellow) 0 25%,
+    var(--mr-red) 25% 50%,
+    var(--mr-cyan) 50% 75%,
+    var(--mr-lime) 75% 100%
+  );
+}
+
+.mr-home-hero .hero-content{
+  width:100%;
+  max-width:860px !important;
+  margin:0 auto;
+  text-align:center;
+}
+
+.mr-home-badge{
+  display:inline-block;
+  margin-bottom:8px;
+  background:#fff !important;
+  color:#54656d !important;
+  border:1px solid #dce4e7 !important;
+  border-radius:999px !important;
+  padding:6px 12px !important;
+  font-size:.72rem !important;
+  letter-spacing:.055em;
+}
+
+.mr-home-hero h2{
+  margin:4px 0 7px !important;
+  color:var(--mr-ink) !important;
+  font-size:clamp(2rem,4vw,3.25rem) !important;
+  line-height:1.05 !important;
+  letter-spacing:-.035em;
+  text-align:center;
+}
+
+.mr-home-subtitle{
+  margin:0 0 12px !important;
+  color:var(--mr-cyan-dark) !important;
+  font-size:1rem !important;
+  font-weight:800;
+  letter-spacing:.02em;
+  text-align:center;
+}
+
+.mr-home-text{
+  max-width:670px !important;
+  margin:0 auto !important;
+  color:#566a73 !important;
+  font-size:.98rem !important;
+  line-height:1.55 !important;
+  text-align:center;
+}
+
+/* Les accès rapides reprennent les quatre couleurs du logo */
+.hero-classes-row .hero-class-link{
+  box-shadow:0 4px 12px rgba(23,41,52,.045) !important;
+}
+.hero-classes-row .hero-class-link:nth-child(1){
+  border-top:4px solid var(--mr-cyan) !important;
+}
+.hero-classes-row .hero-class-link:nth-child(2){
+  border-top:4px solid var(--mr-yellow) !important;
+}
+.hero-classes-row .hero-class-link:nth-child(3){
+  border-top:4px solid var(--mr-lime) !important;
+}
+.hero-classes-row .hero-class-link:nth-child(4){
+  border-top:4px solid var(--mr-red) !important;
+}
+.hero-classes-row .hero-class-level{
+  color:var(--mr-cyan-dark) !important;
+}
+
+/* Même palette pour les grandes cartes de classe */
+.level-grid .level-card:nth-child(1){
+  border-top:4px solid var(--mr-cyan) !important;
+}
+.level-grid .level-card:nth-child(2){
+  border-top:4px solid var(--mr-yellow) !important;
+}
+.level-grid .level-card:nth-child(3){
+  border-top:4px solid var(--mr-lime) !important;
+}
+.level-grid .level-card:nth-child(4){
+  border-top:4px solid var(--mr-red) !important;
+}
+
+/* Quelques accents du site harmonisés au logo */
+a,
+.card-link,
+.level-arrow{
+  --link-accent:var(--mr-cyan-dark);
+}
+.btn-primary{
+  background:var(--mr-cyan) !important;
+  border-color:var(--mr-cyan) !important;
+}
+.btn-primary:hover{
+  background:var(--mr-cyan-dark) !important;
+  border-color:var(--mr-cyan-dark) !important;
+}
+
+@media(max-width:700px){
+  .mr-home-hero{
+    padding:25px 18px !important;
+  }
+  .mr-home-hero h2{
+    font-size:2.15rem !important;
+  }
+  .mr-home-subtitle{
+    font-size:.9rem !important;
+  }
+}
