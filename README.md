@@ -171,29 +171,17 @@ Ajout d'un nouvel espace de classe :
 
 Les versions professeur servent à vérifier les corrections mais ne sont pas publiées dans l'espace élève.
 
-## Version 29 — Refonte visuelle « site de professeur »
+## Version 31 — Retour au style d'origine, retravaillé
 
-Objectif : conserver les outils interactifs tout en supprimant l'aspect trop « landing page / IA ».
-- suppression des grands dégradés et des cartes très arrondies ;
-- ombres fortement réduites ;
-- palette plus institutionnelle (blanc, bleu ardoise, turquoise Marie Rivier) ;
-- boutons plus simples et rectangulaires ;
-- badges transformés en petits libellés ;
-- page d'accueil réécrite comme un espace pédagogique ;
-- accès aux quatre classes présentés comme un sommaire ;
-- bloc d'installation mobile rendu plus discret ;
-- page Terminale refondue avec trois parcours clairs : commun, SIN, EE ;
-- suppression des emojis décoratifs sur les portails et sommaires ;
-- contenus, quiz, animations et calculateurs conservés.
-
-## Version 30 — Accueil totalement refondu
-
-La page d'accueil n'utilise plus de grand hero, de cartes arrondies, de dégradés ou d'icônes décoratives.
-Elle adopte une présentation volontairement proche d'un site enseignant / ENT :
-- en-tête institutionnel avec logo, nom du professeur et année scolaire ;
-- navigation simple ;
-- classes présentées sous forme de répertoire en lignes ;
-- ressources SNT présentées sous forme de tableau/listing ;
-- listes simples pour Première, Terminale et CAP ;
-- installation mobile reléguée en note utilitaire discrète ;
-- aucune carte CAP isolée : les quatre classes ont exactement la même présentation.
+La base visuelle de la V28 est conservée.
+Modifications volontairement limitées :
+- hero d'origine conservé avec texte plus personnel et moins promotionnel ;
+- dégradé Marie Rivier conservé mais plus léger ;
+- boutons et cartes légèrement moins arrondis ;
+- ombres atténuées ;
+- quatre classes présentées de manière identique ;
+- CAP Cuisine n'est plus isolé du reste ;
+- suppression des emojis dans les cartes de classes ;
+- grille des classes équilibrée en 2 × 2 ;
+- badges et installation mobile rendus plus discrets ;
+- contenus interactifs et pages de cours inchangés.
