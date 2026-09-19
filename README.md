@@ -141,3 +141,15 @@ Ajout d'un espace EE parallèle à l'espace SIN :
 - débogage du chauffage ;
 - quiz et support élève PowerPoint ;
 - accès EE ajouté depuis la page Terminale STI2D.
+
+## Version 27 — Révisions DST SNT
+
+Ajout d'un espace de révisions pour « Binaire, bases numériques & débit » :
+- 18 questions/réponses couvrant les compétences du devoir ;
+- valeurs d'entraînement différentes de celles du DST ;
+- réponses et méthodes affichables à la demande ;
+- boutons « Je maîtrise » / « À revoir » ;
+- barre de progression ;
+- question aléatoire, priorisant les points à revoir ;
+- accès direct depuis le cours Binaire & débit ;
+- ajout au cache PWA et au sitemap.

@@ -1,4 +1,4 @@
-const CACHE_NAME = "marie-rivier-pwa-v25";
+const CACHE_NAME = "marie-rivier-pwa-v27";
 const CORE = [
   "/",
   "/index.html",
@@ -12,6 +12,8 @@ const CORE = [
   "/assets/app-icon-maskable-512.png",
   "/themes/internet.html",
   "/themes/binaire-bases-debit.html",
+  "/themes/revisions-binaire-debit.html",
+  "/themes/revisions-binaire-debit.js",
   "/themes/web.html",
   "/classes/premiere-sti2d.html",
   "/classes/terminale-sti2d.html",
