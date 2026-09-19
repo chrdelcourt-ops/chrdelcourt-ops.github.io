@@ -2282,3 +2282,26 @@ background:#fff;border:1px solid var(--border);border-radius:16px;padding:18px;b
 .level-grid.level-grid-four .level-card{
   height:100%;
 }
+
+
+/* ===== V33 : titre principal centré ===== */
+.v31-hero .hero-content{
+  max-width:none !important;
+  width:100%;
+  text-align:center;
+}
+.v31-hero h2{
+  text-align:center;
+}
+.v31-hero-subtitle{
+  text-align:center;
+}
+.v31-hero .hero-content > p:not(.v31-hero-subtitle){
+  max-width:760px;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.v31-badge{
+  display:block;
+  text-align:center;
+}
