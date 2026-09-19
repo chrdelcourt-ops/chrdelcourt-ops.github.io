@@ -170,18 +170,3 @@ Ajout d'un nouvel espace de classe :
 - intégration au sitemap et à la PWA.
 
 Les versions professeur servent à vérifier les corrections mais ne sont pas publiées dans l'espace élève.
-
-## Version 31 — Retour au style d'origine, retravaillé
-
-La base visuelle de la V28 est conservée.
-Modifications volontairement limitées :
-- hero d'origine conservé avec texte plus personnel et moins promotionnel ;
-- dégradé Marie Rivier conservé mais plus léger ;
-- boutons et cartes légèrement moins arrondis ;
-- ombres atténuées ;
-- quatre classes présentées de manière identique ;
-- CAP Cuisine n'est plus isolé du reste ;
-- suppression des emojis dans les cartes de classes ;
-- grille des classes équilibrée en 2 × 2 ;
-- badges et installation mobile rendus plus discrets ;
-- contenus interactifs et pages de cours inchangés.
