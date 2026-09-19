@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Révisions DST – Binaire, bases & débit | SNT Seconde</title>
+  <meta name="description" content="Espace de révisions en questions-réponses pour préparer le devoir de SNT sur le binaire, les bases numériques, le codage, les bits, les octets et le débit.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Christophe Delcourt">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/themes/revisions-binaire-debit.html">
+  <link rel="stylesheet" href="../style.css">
+  <meta name="theme-color" content="#0b8ea5">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+<body>
+
+<header class="site-header compact-header">
+  <div class="header-inner">
+    <a href="../index.html" class="brand"><img src="../assets/logo-marie-rivier.png" alt="Logo Marie Rivier" class="logo"></a>
+    <div class="header-title">
+      <p class="eyebrow">SNT • Seconde • Révisions</p>
+      <h1>🎯 Préparer le devoir — Binaire, bases & débit</h1>
+      <p class="subtitle">Christophe Delcourt • Lycée Marie Rivier • 2026–2027</p>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a href="binaire-bases-debit.html">← Cours</a>
+    <a href="#bases-rev">Bases</a>
+    <a href="#bin-dec">Binaire → décimal</a>
+    <a href="#dec-bin">Décimal → binaire</a>
+    <a href="#hexa-rev">Hexa</a>
+    <a href="#debit-rev">Débit</a>
+  </div>
+</nav>
+
+<main id="contenu">
+  <section class="chapter-hero revision-hero">
+    <div>
+      <span class="badge">ENTRAÎNEMENT • QUESTIONS / RÉPONSES</span>
+      <h2>Réviser les mêmes compétences avec d'autres valeurs</h2>
+      <p>
+        Essaie d'abord de répondre sans aide. Clique ensuite sur <strong>Voir la réponse</strong>
+        pour vérifier ta méthode. Les nombres utilisés ici sont différents de ceux du devoir.
+      </p>
+      <div class="hero-actions no-print">
+        <button class="btn btn-primary" type="button" id="random-question">🎲 Question au hasard</button>
+        <button class="btn btn-secondary" type="button" id="hide-all">Masquer toutes les réponses</button>
+        <button class="btn btn-secondary" type="button" id="show-all">Afficher toutes les réponses</button>
+      </div>
+    </div>
+
+    <aside class="chapter-summary revision-progress-card">
+      <p class="eyebrow">Ma progression</p>
+      <div class="revision-progress">
+        <div class="revision-progress-bar"><span id="mastered-bar"></span></div>
+        <strong><span id="mastered-count">0</span> / <span id="question-count">18</span> maîtrisées</strong>
+      </div>
+      <p class="tp-note">Les boutons « Je maîtrise » restent actifs pendant cette session.</p>
+    </aside>
+  </section>
+
+  <section class="section revision-howto">
+    <div class="section-heading">
+      <div><p class="eyebrow">Méthode</p><h2>Comment utiliser cet espace ?</h2></div>
+    </div>
+    <div class="revision-method-grid">
+      <article><span>1</span><strong>Je cherche</strong><p>Je fais le calcul sur une feuille avant de regarder la réponse.</p></article>
+      <article><span>2</span><strong>Je vérifie</strong><p>J'ouvre la réponse et je compare surtout la méthode.</p></article>
+      <article><span>3</span><strong>Je classe</strong><p>Je clique sur « Je maîtrise » ou « À revoir ».</p></article>
+      <article><span>4</span><strong>Je recommence</strong><p>Je reviens sur les questions « À revoir » jusqu'à réussir seul.</p></article>
+    </div>
+  </section>
+
+  <section id="bases-rev" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Bloc 1</p><h2>Bases numériques, bit et octet</h2></div>
+      <p class="section-intro">Objectif : connaître le vocabulaire avant de commencer les conversions.</p>
+    </div>
+
+    <div class="qa-grid">
+      <article class="qa-card" data-question="1">
+        <div class="qa-number">Q1</div>
+        <h3>Quels symboles utilise la base 2 ? Et quels symboles supplémentaires trouve-t-on en base 16 ?</h3>
+        <div class="qa-answer" hidden>
+          <strong>Réponse</strong>
+          <p>Base 2 : <code>0</code> et <code>1</code>. Base 16 : chiffres <code>0 à 9</code> puis lettres <code>A, B, C, D, E, F</code>, qui valent 10 à 15.</p>
+        </div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="2">
+        <div class="qa-number">Q2</div>
+        <h3>Quelle est la différence entre un bit et un octet ?</h3>
+        <div class="qa-answer" hidden>
+          <strong>Réponse</strong>
+          <p>Un <strong>bit</strong> prend deux valeurs : 0 ou 1. Un <strong>octet</strong> contient 8 bits.</p>
+        </div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="3">
+        <div class="qa-number">Q3</div>
+        <h3>Combien de valeurs différentes peut-on coder avec 8 bits ?</h3>
+        <div class="qa-answer" hidden>
+          <strong>Réponse</strong>
+          <p><code>2⁸ = 256</code> valeurs différentes.</p>
+          <p>Elles vont de <code>00000000₂</code> à <code>11111111₂</code>.</p>
+        </div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="4">
+        <div class="qa-number">Q4</div>
+        <h3>Pourquoi la valeur maximale sur un octet non signé est-elle 255 ?</h3>
+        <div class="qa-answer" hidden>
+          <strong>Réponse</strong>
+          <p>Il y a bien <strong>256 valeurs</strong>, mais la première est 0. On compte donc de 0 à 255.</p>
+          <div class="answer-formula">128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255</div>
+        </div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="bin-dec" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Bloc 2</p><h2>Binaire → décimal</h2></div>
+      <p class="section-intro">Utilise les poids 128, 64, 32, 16, 8, 4, 2 et 1.</p>
+    </div>
+
+    <div class="binary-weight-reminder">
+      <span>128</span><span>64</span><span>32</span><span>16</span><span>8</span><span>4</span><span>2</span><span>1</span>
+    </div>
+
+    <div class="qa-grid">
+      <article class="qa-card" data-question="5">
+        <div class="qa-number">Q5</div>
+        <h3>Convertir <code>00101101₂</code> en décimal.</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p><code>32 + 8 + 4 + 1 = 45</code></p><div class="answer-formula">00101101₂ = 45₁₀</div></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="6">
+        <div class="qa-number">Q6</div>
+        <h3>Convertir <code>11001010₂</code> en décimal.</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p><code>128 + 64 + 8 + 2 = 202</code></p><div class="answer-formula">11001010₂ = 202₁₀</div></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="7">
+        <div class="qa-number">Q7</div>
+        <h3>Pourquoi chaque nombre d'une adresse IPv4 peut-il être compris entre 0 et 255 ?</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p>Chaque nombre d'une adresse IPv4 correspond à un <strong>octet</strong>, donc 8 bits. Un octet non signé permet les valeurs de 0 à 255.</p></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="dec-bin" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Bloc 3</p><h2>Décimal → binaire</h2></div>
+      <p class="section-intro">Écris les résultats sur 8 bits.</p>
+    </div>
+
+    <div class="qa-grid">
+      <article class="qa-card" data-question="8">
+        <div class="qa-number">Q8</div>
+        <h3>Convertir <code>42₁₀</code> en binaire sur 8 bits.</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p><code>42 = 32 + 8 + 2</code></p><div class="answer-formula">42₁₀ = 00101010₂</div></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="9">
+        <div class="qa-number">Q9</div>
+        <h3>Convertir <code>100₁₀</code> en binaire sur 8 bits.</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p><code>100 = 64 + 32 + 4</code></p><div class="answer-formula">100₁₀ = 01100100₂</div></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="10">
+        <div class="qa-number">Q10</div>
+        <h3>Convertir <code>200₁₀</code> en binaire sur 8 bits.</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p><code>200 = 128 + 64 + 8</code></p><div class="answer-formula">200₁₀ = 11001000₂</div></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="hexa-rev" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Bloc 4</p><h2>Hexadécimal et codage</h2></div>
+    </div>
+
+    <div class="hex-reminder">
+      <span>A = 10</span><span>B = 11</span><span>C = 12</span><span>D = 13</span><span>E = 14</span><span>F = 15</span>
+      <strong>1 chiffre hexadécimal = 4 bits</strong>
+    </div>
+
+    <div class="qa-grid">
+      <article class="qa-card" data-question="11">
+        <div class="qa-number">Q11</div>
+        <h3>Convertir <code>4B₁₆</code> en décimal.</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p><code>4 × 16 + 11 = 64 + 11 = 75</code></p><div class="answer-formula">4B₁₆ = 75₁₀</div></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="12">
+        <div class="qa-number">Q12</div>
+        <h3>Convertir <code>D2₁₆</code> en binaire.</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p><code>D = 1101</code> et <code>2 = 0010</code>.</p><div class="answer-formula">D2₁₆ = 11010010₂</div></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="13">
+        <div class="qa-number">Q13</div>
+        <h3>Écrire <code>10101111₂</code> en hexadécimal.</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p>On découpe en groupes de 4 bits : <code>1010 1111</code>.</p><p><code>1010 = A</code> et <code>1111 = F</code>.</p><div class="answer-formula">10101111₂ = AF₁₆</div></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="14">
+        <div class="qa-number">Q14</div>
+        <h3>Le code ASCII de « B » vaut 66. Donner son écriture binaire sur 8 bits.</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p><code>66 = 64 + 2</code>.</p><div class="answer-formula">66₁₀ = 01000010₂</div></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="debit-rev" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Bloc 5</p><h2>Bits, octets, débit et durée</h2></div>
+      <p class="section-intro">Rappels : 1 octet = 8 bits • durée = quantité de données ÷ débit.</p>
+    </div>
+
+    <div class="formula-reminders">
+      <div><strong>Octets → bits</strong><span>× 8</span></div>
+      <div><strong>Bits → octets</strong><span>÷ 8</span></div>
+      <div><strong>Durée</strong><span>données ÷ débit</span></div>
+      <div><strong>Débit</strong><span>données ÷ durée</span></div>
+    </div>
+
+    <div class="qa-grid">
+      <article class="qa-card" data-question="15">
+        <div class="qa-number">Q15</div>
+        <h3>Convertir <code>25 Mo</code> en Mbit.</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p><code>25 × 8 = 200</code></p><div class="answer-formula">25 Mo = 200 Mbit</div></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="16">
+        <div class="qa-number">Q16</div>
+        <h3>Convertir <code>960 Mbit</code> en Mo.</h3>
+        <div class="qa-answer" hidden><strong>Réponse</strong><p><code>960 ÷ 8 = 120</code></p><div class="answer-formula">960 Mbit = 120 Mo</div></div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="17">
+        <div class="qa-number">Q17</div>
+        <h3>Un fichier de <code>200 Mo</code> est téléchargé à <code>40 Mbit/s</code>. Calculer la durée théorique.</h3>
+        <div class="qa-answer" hidden>
+          <strong>Réponse</strong>
+          <p>1. <code>200 Mo × 8 = 1600 Mbit</code></p>
+          <p>2. <code>1600 ÷ 40 = 40 s</code></p>
+          <div class="answer-formula">Durée = 40 secondes</div>
+        </div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+
+      <article class="qa-card" data-question="18">
+        <div class="qa-number">Q18</div>
+        <h3>Une connexion transfère <code>450 Mo</code> en <code>30 s</code>. Calculer le débit moyen en Mbit/s.</h3>
+        <div class="qa-answer" hidden>
+          <strong>Réponse</strong>
+          <p>1. <code>450 Mo × 8 = 3600 Mbit</code></p>
+          <p>2. <code>3600 ÷ 30 = 120 Mbit/s</code></p>
+          <div class="answer-formula">Débit = 120 Mbit/s</div>
+        </div>
+        <div class="qa-actions"><button class="btn btn-secondary qa-toggle" type="button">Voir la réponse</button><button class="qa-master" type="button">✓ Je maîtrise</button><button class="qa-review" type="button">↺ À revoir</button></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section revision-final">
+    <div class="revision-final-card">
+      <div>
+        <p class="eyebrow">Avant le devoir</p>
+        <h2>Je suis prêt si…</h2>
+        <ul class="check-list">
+          <li>je sais expliquer bit, octet et 256 valeurs ;</li>
+          <li>je sais convertir binaire ↔ décimal sur 8 bits ;</li>
+          <li>je sais utiliser l'hexadécimal ;</li>
+          <li>je sais convertir Mo ↔ Mbit ;</li>
+          <li>je sais calculer une durée ou un débit en écrivant les unités.</li>
+        </ul>
+      </div>
+      <div class="revision-final-score">
+        <span>Maîtrisées</span>
+        <strong id="final-mastered">0 / 18</strong>
+      </div>
+    </div>
+  </section>
+
+  <div class="chapter-nav no-print">
+    <a href="binaire-bases-debit.html">← Retour au cours</a>
+    <a href="#contenu">Revenir en haut ↑</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p><strong>Lycée Marie Rivier</strong> • SNT Seconde • Révisions</p>
+    <p>Christophe Delcourt • 2026–2027</p>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+<script src="revisions-binaire-debit.js"></script>
+</body>
+</html>

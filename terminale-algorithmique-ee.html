@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithmique appliquée à la gestion de l'énergie – Terminale STI2D EE | Marie Rivier</title>
+  <meta name="description" content="Cours interactif de Terminale STI2D EE : algorithmique appliquée à la gestion de l'énergie, chaîne d'énergie, conditions, boucles, fonctions, Python, C++ et simulations.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Christophe Delcourt">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/classes/terminale-algorithmique-ee.html">
+  <link rel="stylesheet" href="../style.css">
+  <meta name="theme-color" content="#0b8ea5">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="SNT STI2D">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header compact-header">
+  <div class="header-inner">
+    <a href="../index.html" class="brand"><img src="../assets/logo-marie-rivier.png" alt="Logo Marie Rivier" class="logo"></a>
+    <div class="header-title">
+      <p class="eyebrow">Terminale STI2D • EE</p>
+      <h1>Algorithmique appliquée à la gestion de l'énergie</h1>
+      <p class="subtitle">Christophe Delcourt • Lycée Marie Rivier • 2026–2027</p>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav algo-nav">
+  <div class="nav-inner">
+    <a href="terminale-sti2d.html">← Terminale</a>
+    <a href="#batiment">Bâtiment</a>
+    <a href="#bases">Bases</a>
+    <a href="#sequence">Séquence</a>
+    <a href="#condition">Condition</a>
+    <a href="#boucles">Boucles</a>
+    <a href="#fonctions">Fonctions</a>
+    <a href="#programmes">Programmes</a>
+    <a href="#debug">Débogage</a>
+    <a href="#quiz">Quiz</a>
+  </div>
+</nav>
+
+<main id="contenu">
+  <section class="chapter-hero algo-hero ee-hero">
+    <div>
+      <span class="badge">TERMINALE EE • COURS INTERACTIF</span>
+      <h2>Mesurer → décider → convertir / stocker</h2>
+      <p>
+        L'objectif est d'utiliser l'algorithmique pour gérer une chaîne d'énergie :
+        mesurer les grandeurs utiles, prendre une décision automatique puis vérifier
+        que la performance énergétique reste compatible avec le service rendu.
+      </p>
+      <div class="hero-actions no-print">
+        <a class="btn btn-primary" href="#batiment">Commencer</a>
+        <a class="btn btn-secondary" href="#programmes">Voir les programmes fonctionner</a>
+        <a class="btn btn-secondary" href="../documents/terminale-sti2d/algorithmique-terminale-sti2d-ee-2026-eleve.pptx">Support élève PowerPoint</a>
+      </div>
+    </div>
+    <aside class="chapter-summary">
+      <p class="eyebrow">Fil conducteur EE</p>
+      <div class="algo-chain">
+        <span>Mesures</span><b>→</b><span>Décision</span><b>→</b><span>Énergie</span>
+      </div>
+      <ul class="check-list">
+        <li>Température et puissance</li>
+        <li>PAC et batterie</li>
+        <li>Production photovoltaïque</li>
+        <li>Stockage et délestage</li>
+        <li>Validation des performances</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section id="batiment" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Mise en situation</p><h2>Gérer l'énergie d'un bâtiment</h2></div>
+      <p class="section-intro">Le gestionnaire doit maintenir le confort tout en limitant la puissance appelée au réseau.</p>
+    </div>
+
+    <div class="ee-building-lab">
+      <div class="ee-building-controls">
+        <div class="sensor-control">
+          <label for="ee-temp">🌡️ Température : <strong><span id="ee-temp-value">18</span> °C</strong></label>
+          <input id="ee-temp" type="range" min="12" max="26" value="18" step="1">
+        </div>
+        <div class="sensor-control">
+          <label for="ee-power">⚡ Puissance appelée : <strong><span id="ee-power-value">5.2</span> kW</strong></label>
+          <input id="ee-power" type="range" min="1" max="10" value="5.2" step="0.1">
+        </div>
+        <button class="btn btn-primary" type="button" id="ee-building-run">▶ Exécuter l'algorithme</button>
+      </div>
+
+      <div class="greenhouse-flow">
+        <div class="algo-device"><span>MESURES</span><strong>Température<br>Puissance</strong></div>
+        <div class="algo-arrow">→</div>
+        <div class="algo-device processor"><span>GESTIONNAIRE</span><strong>Algorithme<br>de décision</strong></div>
+        <div class="algo-arrow">→</div>
+        <div class="actuator-stack">
+          <div class="algo-device actuator" id="pac-card"><span>PAC</span><strong id="pac-state">OFF</strong></div>
+          <div class="algo-device actuator" id="battery-card"><span>BATTERIE</span><strong id="battery-state-ee">ATTENTE</strong></div>
+        </div>
+      </div>
+
+      <div class="algo-code-card">
+        <div class="code-title"><span>Python</span><strong>gestion_batiment()</strong></div>
+<pre><code>def gestion_batiment(temperature, puissance):
+    pac = temperature &lt; 19
+    batterie = puissance &gt; 6
+    return pac, batterie</code></pre>
+        <div class="program-output"><span>Sortie simulée</span><strong id="ee-building-output">Clique sur « Exécuter l'algorithme ».</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bases" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Notions</p><h2>Algorithme, algorigramme et programme</h2></div></div>
+
+    <div class="algo-definition-grid">
+      <article><span class="definition-icon">🧠</span><h3>Algorithme</h3><p>Suite <strong>ordonnée et finie</strong> d'instructions qui résout un problème.</p></article>
+      <article><span class="definition-icon">🔀</span><h3>Algorigramme</h3><p>Représentation <strong>graphique</strong> des opérations et des décisions.</p></article>
+      <article><span class="definition-icon">💻</span><h3>Programme</h3><p>Traduction <strong>exécutable</strong> de l'algorithme dans un langage précis.</p></article>
+    </div>
+
+    <div class="algo-method">
+      <div class="method-step ee-method"><b>1</b><span>EXIGENCE</span><small>Service à assurer</small></div>
+      <div class="method-arrow">→</div>
+      <div class="method-step ee-method"><b>2</b><span>ALGORITHME</span><small>Logique énergétique</small></div>
+      <div class="method-arrow">→</div>
+      <div class="method-step ee-method"><b>3</b><span>CODE</span><small>Python ou C++</small></div>
+      <div class="method-arrow">→</div>
+      <div class="method-step ee-method"><b>4</b><span>TESTS</span><small>Cas normaux et limites</small></div>
+    </div>
+    <div class="center-action no-print"><button class="btn btn-secondary" id="ee-method-play" type="button">▶ Animer la méthode</button></div>
+
+    <div class="algo-flowchart-panel">
+      <div class="section-subheading"><h3>Algorigramme : dépassement de puissance</h3><p>Teste la décision « P &gt; 6 kW ? ».</p></div>
+      <div class="flow-input">
+        <label for="ee-flow-power">Puissance :</label>
+        <input id="ee-flow-power" type="number" min="0" max="20" value="7.2" step="0.1"><span>kW</span>
+        <button class="btn btn-primary" type="button" id="ee-flow-run">▶ Lancer</button>
+      </div>
+      <div class="flowchart">
+        <div class="flow-node terminator" id="eef-start">DÉBUT</div>
+        <div class="flow-line">↓</div>
+        <div class="flow-node io" id="eef-read">Lire P</div>
+        <div class="flow-line">↓</div>
+        <div class="flow-node decision" id="eef-test">P &gt; 6 kW ?</div>
+        <div class="flow-branches">
+          <div><span>VRAI</span><div class="flow-node process" id="eef-off">Délester chauffe-eau</div></div>
+          <div><span>FAUX</span><div class="flow-node process" id="eef-on">Maintenir chauffe-eau</div></div>
+        </div>
+      </div>
+      <div class="program-output"><span>Résultat</span><strong id="ee-flow-output">Prêt.</strong></div>
+    </div>
+
+    <div class="variables-panel">
+      <div><p class="eyebrow">Variables</p><h3>Nom, type et valeur</h3></div>
+      <div class="variable-cards">
+        <article><code>puissance = 3.45</code><span>float • réel</span></article>
+        <article><code>compteur = 3</code><span>int • entier</span></article>
+        <article><code>charge = True</code><span>bool • logique</span></article>
+        <article><code>mode = "AUTO"</code><span>str / String • texte</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="sequence" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Structure séquentielle</p><h2>Démarrage progressif d'une pompe à chaleur</h2></div>
+      <p class="section-intro">Vérifier les sécurités, démarrer le circulateur, attendre 5 s puis démarrer le compresseur.</p>
+    </div>
+
+    <div class="ee-pac-lab">
+      <div class="ee-pac-visual">
+        <div class="ee-device" id="pac-sec"><span>1</span><strong>Sécurités</strong><small>à vérifier</small></div>
+        <div class="algo-arrow">→</div>
+        <div class="ee-device" id="pac-circ"><span>2</span><strong>Circulateur</strong><small>OFF</small></div>
+        <div class="algo-arrow">→</div>
+        <div class="ee-device" id="pac-delay"><span>3</span><strong>Attendre</strong><small>5 s</small></div>
+        <div class="algo-arrow">→</div>
+        <div class="ee-device" id="pac-comp"><span>4</span><strong>Compresseur</strong><small>OFF</small></div>
+      </div>
+      <button class="btn btn-primary" type="button" id="pac-run">▶ Lancer la séquence</button>
+      <p id="pac-status" class="sim-status">Prêt.</p>
+    </div>
+  </section>
+
+  <section id="condition" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Condition</p><h2>Orienter l'énergie photovoltaïque</h2></div></div>
+
+    <div class="pv-lab">
+      <div class="pv-controls">
+        <label>Production PV : <strong><span id="pv-prod-value">4.5</span> kW</strong>
+          <input id="pv-prod" type="range" min="0" max="10" step="0.1" value="4.5">
+        </label>
+        <label>Besoin : <strong><span id="pv-need-value">3.2</span> kW</strong>
+          <input id="pv-need" type="range" min="0" max="10" step="0.1" value="3.2">
+        </label>
+        <button class="btn btn-primary" type="button" id="pv-run">▶ Décider</button>
+      </div>
+
+      <div class="pv-flow">
+        <div class="ee-energy-source">☀️<strong>Production PV</strong></div>
+        <div class="ee-energy-arrow" id="pv-arrow">→</div>
+        <div class="ee-energy-target" id="pv-battery"><strong>Batterie</strong><span>charge</span></div>
+        <div class="ee-energy-target" id="pv-grid"><strong>Réseau</strong><span>complément</span></div>
+      </div>
+
+      <div class="algo-code-card compact-code">
+<pre><code>if Ppv &gt;= Pbesoin:
+    charger_batterie = True
+else:
+    fournir_energie_manquante = True</code></pre>
+        <div class="program-output"><span>Décision</span><strong id="pv-output">—</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="boucles" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Boucles</p><h2>Répéter, surveiller, accumuler</h2></div></div>
+
+    <div class="loop-choice-grid">
+      <article><strong>WHILE</strong><span>Test avant • nombre de tours inconnu</span></article>
+      <article><strong>DO…WHILE</strong><span>Test après • au moins une exécution</span></article>
+      <article><strong>FOR</strong><span>Nombre de répétitions connu</span></article>
+    </div>
+
+    <div class="loop-lab-grid">
+      <div class="loop-lab">
+        <p class="eyebrow">WHILE</p>
+        <h3>Remplir un stockage thermique</h3>
+        <p>Chauffer jusqu'à 60 °C avec une durée maximale de sécurité.</p>
+        <label for="thermal-start">Température de départ : <strong><span id="thermal-value">48</span> °C</strong></label>
+        <input id="thermal-start" type="range" min="40" max="65" value="48" step="1">
+        <div class="thermal-gauge"><div class="thermal-fill" id="thermal-fill" style="width:40%"></div><span id="thermal-text">48 °C</span></div>
+        <button class="btn btn-primary" type="button" id="thermal-run">▶ Exécuter le WHILE</button>
+        <div class="program-output"><span>État</span><strong id="thermal-output">Prêt.</strong></div>
+      </div>
+
+      <div class="loop-lab">
+        <p class="eyebrow">FOR</p>
+        <h3>Puissance moyenne sur 5 mesures</h3>
+        <div class="measure-list"><span>920 W</span><span>980 W</span><span>950 W</span><span>1020 W</span><span>930 W</span></div>
+        <div class="accumulator"><span>Somme</span><strong id="ee-average-sum">0 W</strong></div>
+        <button class="btn btn-primary" type="button" id="ee-average-run">▶ Exécuter le FOR</button>
+        <div class="program-output"><span>Sortie</span><strong id="ee-average-output">—</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fonctions" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Sous-programmes</p><h2>Fonctions et procédures</h2></div>
+      <p class="section-intro">Une fonction reçoit des paramètres et peut retourner une valeur.</p>
+    </div>
+
+    <div class="function-flow">
+      <div><span>ENTRÉES</span><strong>température<br>consigne</strong></div><b>→</b>
+      <div class="function-box"><span>FONCTION</span><strong>doit_chauffer()</strong></div><b>→</b>
+      <div><span>SORTIE</span><strong>VRAI / FAUX</strong></div>
+    </div>
+
+    <div class="language-compare">
+      <div class="algo-code-card">
+        <div class="code-title"><span>Python</span><strong>Délestage</strong></div>
+<pre><code>if puissance &gt; 6000:
+    chauffe_eau = False
+else:
+    chauffe_eau = True</code></pre>
+      </div>
+      <div class="algo-code-card">
+        <div class="code-title"><span>C++</span><strong>Même logique</strong></div>
+<pre><code>if (puissance &gt; 6000) {
+  chauffeEau = false;
+} else {
+  chauffeEau = true;
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="programmes" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Laboratoire</p><h2>Voir les programmes fonctionner</h2></div>
+      <p class="section-intro">Le navigateur simule la logique des exemples Python du cours EE et affiche les sorties.</p>
+    </div>
+
+    <div class="program-labs">
+      <article class="program-lab">
+        <div class="program-lab-head"><span class="program-number">01</span><div><h3>Chauffage selon une consigne</h3><p>Tester température et consigne.</p></div></div>
+        <div class="program-inputs">
+          <label>Température <input id="heat-temp" type="number" value="18" step="0.1"> °C</label>
+          <label>Consigne <input id="heat-setpoint" type="number" value="19" step="0.1"> °C</label>
+        </div>
+<pre><code>if temperature &lt; consigne:
+    print("Chauffage ON")
+else:
+    print("Chauffage OFF")</code></pre>
+        <button class="btn btn-primary" type="button" id="heat-run">▶ Exécuter</button>
+        <div class="console-output"><span>Console</span><strong id="heat-console">&gt; prêt</strong></div>
+      </article>
+
+      <article class="program-lab">
+        <div class="program-lab-head"><span class="program-number">02</span><div><h3>Puissance moyenne</h3><p>Parcourir 5 mesures avec FOR.</p></div></div>
+<pre><code>mesures = [920, 980, 950, 1020, 930]
+somme = 0
+for mesure in mesures:
+    somme = somme + mesure
+moyenne = somme / len(mesures)
+print(moyenne)</code></pre>
+        <button class="btn btn-primary" type="button" id="power-code-run">▶ Exécuter</button>
+        <div class="console-output"><span>Console</span><strong id="power-console">&gt; prêt</strong></div>
+      </article>
+
+      <article class="program-lab">
+        <div class="program-lab-head"><span class="program-number">03</span><div><h3>Gestion photovoltaïque</h3><p>Surplus, déficit et état de charge.</p></div></div>
+        <div class="program-inputs ee-three-inputs">
+          <label>Production <input id="energy-prod" type="number" value="5" step="0.1"> kW</label>
+          <label>Besoin <input id="energy-need" type="number" value="3.5" step="0.1"> kW</label>
+          <label>SOC <input id="energy-soc" type="number" value="70" step="1"> %</label>
+        </div>
+<pre><code>surplus = production - besoin
+charge = surplus &gt; 0 and soc &lt; 95
+decharge = surplus &lt; 0 and soc &gt; 20
+reseau = surplus &lt; 0 and not decharge</code></pre>
+        <button class="btn btn-primary" type="button" id="energy-run">▶ Exécuter</button>
+        <div class="console-output"><span>Console</span><strong id="energy-console">&gt; prêt</strong></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="debug" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Débogage</p><h2>Corriger le chauffage</h2></div></div>
+
+    <div class="debug-lab">
+      <div class="algo-code-card bug-code">
+        <div class="code-title"><span>Code à corriger</span><strong>2 erreurs</strong></div>
+<pre><code>temperature = 18
+consigne = 19
+
+if temperature &gt; consigne:
+    print("Chauffage ON")
+else
+    print("Chauffage OFF")</code></pre>
+      </div>
+
+      <div class="debug-actions">
+        <button class="btn btn-primary" type="button" id="ee-debug-reveal">Afficher la correction</button>
+        <div id="ee-debug-correction" class="debug-correction" hidden>
+          <p><strong>Erreur 1 :</strong> l'exigence demande ON lorsque <code>temperature &lt; consigne</code>.</p>
+          <p><strong>Erreur 2 :</strong> il manque <code>:</code> après <code>else</code>.</p>
+<pre><code>if temperature &lt; consigne:
+    print("Chauffage ON")
+else:
+    print("Chauffage OFF")</code></pre>
+          <div class="program-output"><span>Pour 18 °C et consigne 19 °C</span><strong>Chauffage ON</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trace-table-wrap">
+      <h3>Table de traces</h3>
+      <table class="trace-table">
+        <thead><tr><th>Cas</th><th>Température</th><th>T &lt; 19</th><th>Sortie</th><th>Pourquoi ?</th></tr></thead>
+        <tbody>
+          <tr><td>Normal bas</td><td>18 °C</td><td>VRAI</td><td>ON</td><td>18 &lt; 19</td></tr>
+          <tr><td>Limite</td><td>19 °C</td><td>FAUX</td><td>OFF</td><td>19 n'est pas &lt; 19</td></tr>
+          <tr><td>Normal haut</td><td>21 °C</td><td>FAUX</td><td>OFF</td><td>21 &gt; 19</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="retenir" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Essentiel</p><h2>Ce que je dois retenir</h2></div></div>
+    <div class="retain-grid algo-retain-grid">
+      <article><span>1</span><p>Un algorithme décrit une solution <strong>indépendante du langage</strong>.</p></article>
+      <article><span>2</span><p>L'algorigramme montre les <strong>opérations, décisions et le sens d'exécution</strong>.</p></article>
+      <article><span>3</span><p><strong>SI</strong> choisit une branche ; les boucles répètent des actions.</p></article>
+      <article><span>4</span><p>Une fonction reçoit des <strong>paramètres</strong> et peut retourner une <strong>valeur</strong>.</p></article>
+      <article><span>5</span><p>Python et C++ traduisent la <strong>même logique</strong>.</p></article>
+      <article><span>6</span><p>En EE, la méthode est : <strong>mesurer → modéliser → décider → tester → améliorer</strong>.</p></article>
+    </div>
+  </section>
+
+  <section id="quiz" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Autoévaluation</p><h2>Quiz de fin de cours</h2></div></div>
+    <form id="ee-algo-quiz" class="quiz-form algo-quiz">
+      <fieldset data-correct="b"><legend>1. Quelle boucle choisir pour exactement 10 mesures ?</legend>
+        <label><input type="radio" name="eeq1" value="a"> WHILE</label>
+        <label><input type="radio" name="eeq1" value="b"> FOR</label>
+        <label><input type="radio" name="eeq1" value="c"> IF</label>
+      </fieldset>
+      <fieldset data-correct="b"><legend>2. Quel opérateur Python signifie « égal à » ?</legend>
+        <label><input type="radio" name="eeq2" value="a"> =</label>
+        <label><input type="radio" name="eeq2" value="b"> ==</label>
+        <label><input type="radio" name="eeq2" value="c"> !=</label>
+      </fieldset>
+      <fieldset data-correct="b"><legend>3. Un test d'algorigramme possède combien de sorties ?</legend>
+        <label><input type="radio" name="eeq3" value="a"> 1</label>
+        <label><input type="radio" name="eeq3" value="b"> 2</label>
+        <label><input type="radio" name="eeq3" value="c"> 3</label>
+      </fieldset>
+      <fieldset data-correct="b"><legend>4. Quel cas teste le mieux la limite « puissance &gt; 6000 W » ?</legend>
+        <label><input type="radio" name="eeq4" value="a"> 5000 W</label>
+        <label><input type="radio" name="eeq4" value="b"> 6000 W</label>
+        <label><input type="radio" name="eeq4" value="c"> 8000 W</label>
+      </fieldset>
+      <fieldset data-correct="a"><legend>5. Pourquoi relire un capteur dans une boucle WHILE ?</legend>
+        <label><input type="radio" name="eeq5" value="a"> Actualiser la condition</label>
+        <label><input type="radio" name="eeq5" value="b"> Ralentir le programme</label>
+        <label><input type="radio" name="eeq5" value="c"> Changer le type</label>
+      </fieldset>
+      <div class="quiz-actions">
+        <button class="btn btn-primary" type="submit">Corriger le quiz</button>
+        <button class="btn btn-secondary" type="reset">Recommencer</button>
+      </div>
+      <div id="ee-algo-score" class="quiz-score" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <section class="section sources">
+    <div class="section-heading"><div><p class="eyebrow">Support de cours</p><h2>Document élève EE</h2></div></div>
+    <div class="resource-list">
+      <a href="../documents/terminale-sti2d/algorithmique-terminale-sti2d-ee-2026-eleve.pptx">
+        <strong>Algorithmique appliquée à la gestion de l'énergie</strong>
+        <span>Terminale STI2D / EE • version élève 2026–2027.</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="chapter-nav no-print">
+    <a href="terminale-sti2d.html">← Retour à Terminale STI2D</a>
+    <a href="terminale-algorithmique.html">Voir la version SIN →</a>
+  </div>
+</main>
+
+<footer><div class="footer-inner"><p><strong>Lycée Marie Rivier</strong> • Terminale STI2D / EE</p><p>Christophe Delcourt • 2026–2027</p></div></footer>
+<script src="../script.js"></script>
+<script src="terminale-algorithmique-ee.js"></script>
+</body>
+</html>

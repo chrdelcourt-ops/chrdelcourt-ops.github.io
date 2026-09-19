@@ -170,3 +170,18 @@ Ajout d'un nouvel espace de classe :
 - intégration au sitemap et à la PWA.
 
 Les versions professeur servent à vérifier les corrections mais ne sont pas publiées dans l'espace élève.
+
+## Version 29 — Refonte visuelle « site de professeur »
+
+Objectif : conserver les outils interactifs tout en supprimant l'aspect trop « landing page / IA ».
+- suppression des grands dégradés et des cartes très arrondies ;
+- ombres fortement réduites ;
+- palette plus institutionnelle (blanc, bleu ardoise, turquoise Marie Rivier) ;
+- boutons plus simples et rectangulaires ;
+- badges transformés en petits libellés ;
+- page d'accueil réécrite comme un espace pédagogique ;
+- accès aux quatre classes présentés comme un sommaire ;
+- bloc d'installation mobile rendu plus discret ;
+- page Terminale refondue avec trois parcours clairs : commun, SIN, EE ;
+- suppression des emojis décoratifs sur les portails et sommaires ;
+- contenus, quiz, animations et calculateurs conservés.
