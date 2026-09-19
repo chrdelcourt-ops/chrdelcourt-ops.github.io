@@ -117,274 +117,236 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/app-icon-192.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 </head>
-<body>
-  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="index.html" class="brand" aria-label="Accueil">
-        <img src="assets/logo-marie-rivier.png" alt="Logo du Lycée Marie Rivier" class="logo">
-      </a>
-      <div class="header-title">
-        <p class="eyebrow">Lycée Marie Rivier</p>
-        <h1>Espace pédagogique — Numérique & Technologie</h1>
-        <p class="subtitle">Christophe Delcourt • Année scolaire 2026–2027</p>
-      </div>
+<body class="teacher-site">
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="school-header">
+  <div class="school-header-inner">
+    <a href="index.html" class="school-logo-link">
+      <img src="assets/logo-marie-rivier.png" alt="Lycée Marie Rivier" class="school-logo">
+    </a>
+    <div class="school-identity">
+      <p class="school-name">Lycée Marie Rivier</p>
+      <h1>Espace pédagogique de Christophe Delcourt</h1>
+      <p class="school-year">SNT • STI2D • UFA CAP Cuisine — Année scolaire 2026–2027</p>
     </div>
-  </header>
+  </div>
+</header>
 
-  <nav class="main-nav" aria-label="Navigation principale">
-    <div class="nav-inner">
-      <a class="active" href="index.html">Accueil</a>
-      <a href="#niveaux">Mes classes</a>
-      <a href="#themes">SNT — 7 thèmes</a>
-      <a href="#python">Python</a>
-      <a href="#ressources">Ressources</a>
+<nav class="teacher-nav" aria-label="Navigation principale">
+  <div class="teacher-nav-inner">
+    <a href="#classes">Mes classes</a>
+    <a href="#snt">Seconde SNT</a>
+    <a href="classes/premiere-sti2d.html">Première STI2D</a>
+    <a href="classes/terminale-sti2d.html">Terminale STI2D</a>
+    <a href="classes/cap-cuisine-2e.html">UFA CAP Cuisine</a>
+  </div>
+</nav>
+
+<main id="contenu" class="teacher-main">
+  <section class="teacher-intro">
+    <h2>Cours et documents de travail</h2>
+    <p>
+      Ce site regroupe les supports utilisés en classe : cours, activités, travaux pratiques,
+      exercices, révisions et documents à télécharger.
+    </p>
+    <p class="teacher-intro-note">
+      Les ressources sont ajoutées au fur et à mesure de l'année.
+    </p>
+  </section>
+
+  <section id="classes" class="teacher-section">
+    <div class="teacher-section-title">
+      <h2>Accès par classe</h2>
+      <p>Choisissez votre niveau pour accéder aux cours.</p>
     </div>
-  </nav>
 
-  <main id="contenu">
-    <section class="hero portal-hero teacher-hero">
-      <div class="hero-content">
-        <p class="teacher-kicker">Année scolaire 2026–2027</p>
-        <h2>Ressources pédagogiques</h2>
-        <p class="teacher-lead">
-          Cours, activités, TP et révisions utilisés avec mes classes au Lycée Marie Rivier.
-        </p>
-        <p class="teacher-note">
-          Les contenus sont ajoutés et mis à jour au fil de l'année.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#niveaux">Accéder aux classes</a>
-          <a class="btn btn-secondary" href="#themes">Voir les ressources SNT</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="hero-classes-row teacher-class-row" aria-label="Classes disponibles">
-      <a class="hero-class-link" href="#themes">
-        <span class="hero-class-level">Seconde</span>
-        <strong>SNT</strong>
+    <div class="class-directory">
+      <a class="class-directory-row" href="#snt">
+        <span class="directory-level">Seconde</span>
+        <strong class="directory-title">SNT</strong>
+        <span class="directory-desc">Internet, Web, données, réseaux sociaux, objets connectés, photographie numérique.</span>
+        <span class="directory-link">Accéder</span>
       </a>
-      <a class="hero-class-link" href="classes/premiere-sti2d.html">
-        <span class="hero-class-level">Première</span>
-        <strong>STI2D</strong>
+
+      <a class="class-directory-row" href="classes/premiere-sti2d.html">
+        <span class="directory-level">Première</span>
+        <strong class="directory-title">STI2D</strong>
+        <span class="directory-desc">Cours, activités, idéation, études de produits et évaluations.</span>
+        <span class="directory-link">Accéder</span>
       </a>
-      <a class="hero-class-link" href="classes/terminale-sti2d.html">
-        <span class="hero-class-level">Terminale</span>
-        <strong>STI2D — SIN / EE</strong>
+
+      <a class="class-directory-row" href="classes/terminale-sti2d.html">
+        <span class="directory-level">Terminale</span>
+        <strong class="directory-title">STI2D — SIN / EE</strong>
+        <span class="directory-desc">Numération, algorithmique, programmation, énergie, TP et révisions.</span>
+        <span class="directory-link">Accéder</span>
       </a>
-      <a class="hero-class-link" href="classes/cap-cuisine-2e.html">
-        <span class="hero-class-level">UFA</span>
-        <strong>CAP Cuisine 2e année</strong>
+
+      <a class="class-directory-row" href="classes/cap-cuisine-2e.html">
+        <span class="directory-level">UFA</span>
+        <strong class="directory-title">CAP Cuisine 2e année</strong>
+        <span class="directory-desc">Mathématiques appliquées : conversions, recettes, coûts, marges et remises.</span>
+        <span class="directory-link">Accéder</span>
       </a>
-    </section>
+    </div>
+  </section>
 
-
-    <section id="install-app-section" class="section app-install-section">
-      <div class="app-install-card">
-        <div class="app-install-icon">
-          <img src="assets/app-icon-192.png" alt="" aria-hidden="true">
-        </div>
-        <div class="app-install-content">
-          <p class="eyebrow">Accès mobile</p>
-          <h2>Installer ce site sur un téléphone</h2>
-          <p>
-            Le site peut être ajouté à l’écran d’accueil d’un téléphone Android pour un accès plus rapide.
-          </p>
-          <div class="hero-actions">
-            <button class="btn btn-primary" type="button" id="install-app-button" hidden>Installer l'application</button>
-            <button class="btn btn-secondary" type="button" id="install-help-button">Comment l'installer ?</button>
-          </div>
-          <p class="install-status" id="install-status" aria-live="polite"></p>
-        </div>
-      </div>
-
-      <div class="install-help" id="install-help" hidden>
-        <strong>Sur Android avec Chrome :</strong>
-        <ol>
-          <li>Ouvrir ce site dans Chrome.</li>
-          <li>Appuyer sur le menu ⋮ en haut à droite.</li>
-          <li>Choisir <strong>Installer l'application</strong> ou <strong>Ajouter à l'écran d'accueil</strong>.</li>
-          <li>Valider l'installation.</li>
-        </ol>
-      </div>
-    </section>
-
-    <section id="niveaux" class="section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Accès rapide</p>
-          <h2>Mes classes</h2>
-        </div>
-        <p class="section-intro">Cours et documents classés par niveau.</p>
-      </div>
-
-      <div class="level-grid">
-        <a class="level-card level-snt" href="#themes">
-          
-          <div>
-            <p class="level-label">SECONDE</p>
-            <h3>SNT</h3>
-            <p>Internet, Web, réseaux sociaux, données, localisation, objets connectés et photographie numérique.</p>
-          </div>
-          <span class="level-arrow">→</span>
-        </a>
-
-        <a class="level-card" href="classes/premiere-sti2d.html">
-          
-          <div>
-            <p class="level-label">PREMIÈRE</p>
-            <h3>STI2D</h3>
-            <p>Espace pour les cours, TP, activités, projets et évaluations de Première STI2D.</p>
-          </div>
-          <span class="level-arrow">→</span>
-        </a>
-
-        <a class="level-card" href="classes/terminale-sti2d.html">
-          
-          <div>
-            <p class="level-label">TERMINALE</p>
-            <h3>STI2D</h3>
-            <p>Espace pour les cours, TP, projets, révisions et préparation aux épreuves.</p>
-          </div>
-          <span class="level-arrow">→</span>
-        </a>
-      <a class="class-card" href="classes/cap-cuisine-2e.html">
-          <span class="class-tag">UFA</span>
-          <h3>CAP Cuisine 2e année</h3>
-          <p>Mathématiques appliquées au métier : conversions, recettes, coûts, marges et remises.</p>
-          <span class="card-link">Ouvrir l'espace →</span>
-        </a>
-</div>
-    </section>
-
-    <section id="themes" class="section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Seconde SNT</p>
-          <h2>Les 7 thèmes</h2>
-        </div>
-        <p class="section-intro">
-          Les chapitres Internet et Web sont déjà complets. Les autres seront ajoutés progressivement.
-        </p>
-      </div>
-
-      <div class="cards">
-        <a class="card card-featured" href="themes/internet.html">
-          <div class="card-top">
-            
-            <span class="status status-ready">Cours disponible</span>
-          </div>
-          <h3>Internet</h3>
-          <p>Adresses IP, DNS, paquets, routage, TCP, pair-à-pair et réseaux physiques.</p>
-          <span class="card-link">Ouvrir le chapitre →</span>
-        </a>
-<a class="card card-featured" href="themes/tp1-internet-filius.html">
-<div class="card-top"><span class="status status-ready">TP disponible</span></div>
-<h3>TP 1 — Filius</h3>
-<p>LAN, routage, passerelles, DNS, serveur Web et diagnostic réseau.</p>
-<span class="card-link">Ouvrir le TP →</span>
-</a>
-
-<a class="card card-featured" href="themes/binaire-bases-debit.html">
-<div class="card-top"><span class="status status-ready">Cours disponible</span></div>
-<h3>Binaire & débit</h3>
-<p>Base 2, hexadécimal, bit/octet, ASCII et calcul d'un temps de transfert.</p>
-<span class="card-link">Ouvrir le cours →</span>
-</a>
-
-
-        <a class="card card-featured" href="themes/web.html">
-          <div class="card-top">
-            
-            <span class="status status-ready">Cours disponible</span>
-          </div>
-          <h3>Le Web</h3>
-          <p>HTML, CSS, URL, HTTP/HTTPS, client-serveur, moteurs de recherche et confidentialité.</p>
-          <span class="card-link">Ouvrir le chapitre →</span>
-        </a>
-
-        <a class="card" href="themes/reseaux-sociaux.html">
-          <div class="card-top"><span class="status">À venir</span></div>
-          <h3>Réseaux sociaux</h3>
-          <p>Graphes, communautés, recommandations, identité numérique et cyberviolence.</p>
-          <span class="card-link">Voir la page →</span>
-        </a>
-
-        <a class="card" href="themes/donnees.html">
-          <div class="card-top"><span class="status">À venir</span></div>
-          <h3>Données structurées</h3>
-          <p>Tables, CSV, descripteurs, recherche, tri, traitement et données ouvertes.</p>
-          <span class="card-link">Voir la page →</span>
-        </a>
-
-        <a class="card" href="themes/localisation.html">
-          <div class="card-top"><span class="status">À venir</span></div>
-          <h3>Localisation, cartographie et mobilité</h3>
-          <p>GPS, coordonnées, cartes numériques, itinéraires et géolocalisation.</p>
-          <span class="card-link">Voir la page →</span>
-        </a>
-
-        <a class="card" href="themes/objets-connectes.html">
-          <div class="card-top"><span class="status">À venir</span></div>
-          <h3>Informatique embarquée et objets connectés</h3>
-          <p>Capteurs, actionneurs, microcontrôleurs, communications et sécurité.</p>
-          <span class="card-link">Voir la page →</span>
-        </a>
-
-        <a class="card" href="themes/photo-numerique.html">
-          <div class="card-top"><span class="status">À venir</span></div>
-          <h3>Photographie numérique</h3>
-          <p>Pixels, couleurs RVB, définition, résolution, métadonnées et traitement.</p>
-          <span class="card-link">Voir la page →</span>
-        </a>
-      </div>
-    </section>
-
-    <section id="python" class="feature">
+  <section id="snt" class="teacher-section">
+    <div class="teacher-section-title">
       <div>
-        <p class="eyebrow">Programmation transversale</p>
-        <h2>Python</h2>
-        <p>
-          Un espace commun pourra regrouper les bases de programmation et les exercices utiles en SNT et STI2D.
-        </p>
-        <span class="status status-soon">Espace Python en préparation</span>
+        <p class="teacher-section-label">Seconde</p>
+        <h2>Sciences numériques et technologie</h2>
       </div>
-      <div class="code-card" aria-label="Exemple Python">
-<pre><code>classe = "SNT"
-for numero in range(1, 4):
-    print(numero, classe)</code></pre>
-      </div>
-    </section>
-
-    <section id="ressources" class="section">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Références</p>
-          <h2>Ressources officielles</h2>
-        </div>
-      </div>
-      <div class="resource-list">
-        <a href="https://eduscol.education.gouv.fr/5841/programmes-et-ressources-en-sciences-numeriques-et-technologie-voie-gt" target="_blank" rel="noopener">
-          <strong>Éduscol — SNT</strong>
-          <span>Programme en vigueur et ressources d'accompagnement.</span>
-        </a>
-        <a href="https://eduscol.education.gouv.fr/5856/programmes-et-ressources-en-serie-sti2d" target="_blank" rel="noopener">
-          <strong>Éduscol — STI2D</strong>
-          <span>Programmes et ressources pour la série STI2D.</span>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <p><strong>Lycée Marie Rivier</strong> • Espace pédagogique Numérique & Technologie</p>
-      <p>Christophe Delcourt • 2026–2027</p>
+      <p>Ressources actuellement disponibles.</p>
     </div>
-  </footer>
 
-  <script src="script.js"></script>
+    <div class="resource-directory">
+      <div class="resource-directory-head">
+        <span>Chapitre / ressource</span>
+        <span>Type</span>
+        <span>État</span>
+        <span></span>
+      </div>
+
+      <a class="resource-directory-row" href="themes/internet.html">
+        <strong>Internet</strong>
+        <span>Cours</span>
+        <span class="resource-state ready">Disponible</span>
+        <span class="directory-link">Ouvrir</span>
+      </a>
+
+      <a class="resource-directory-row" href="themes/tp1-internet-filius.html">
+        <strong>TP 1 — Réseaux avec Filius</strong>
+        <span>TP</span>
+        <span class="resource-state ready">Disponible</span>
+        <span class="directory-link">Ouvrir</span>
+      </a>
+
+      <a class="resource-directory-row" href="themes/binaire-bases-debit.html">
+        <strong>Binaire, bases numériques et débit</strong>
+        <span>Cours + outils</span>
+        <span class="resource-state ready">Disponible</span>
+        <span class="directory-link">Ouvrir</span>
+      </a>
+
+      <a class="resource-directory-row" href="themes/revisions-binaire-debit.html">
+        <strong>Révisions — Binaire et débit</strong>
+        <span>Questions / réponses</span>
+        <span class="resource-state ready">Disponible</span>
+        <span class="directory-link">Ouvrir</span>
+      </a>
+
+      <a class="resource-directory-row" href="themes/web.html">
+        <strong>Le Web</strong>
+        <span>Cours</span>
+        <span class="resource-state ready">Disponible</span>
+        <span class="directory-link">Ouvrir</span>
+      </a>
+
+      <div class="resource-directory-row is-muted">
+        <strong>Réseaux sociaux</strong>
+        <span>Cours</span>
+        <span class="resource-state">À venir</span>
+        <span></span>
+      </div>
+
+      <div class="resource-directory-row is-muted">
+        <strong>Données structurées</strong>
+        <span>Cours</span>
+        <span class="resource-state">À venir</span>
+        <span></span>
+      </div>
+
+      <div class="resource-directory-row is-muted">
+        <strong>Localisation, cartographie et mobilité</strong>
+        <span>Cours</span>
+        <span class="resource-state">À venir</span>
+        <span></span>
+      </div>
+
+      <div class="resource-directory-row is-muted">
+        <strong>Objets connectés</strong>
+        <span>Cours</span>
+        <span class="resource-state">À venir</span>
+        <span></span>
+      </div>
+
+      <div class="resource-directory-row is-muted">
+        <strong>Photographie numérique</strong>
+        <span>Cours</span>
+        <span class="resource-state">À venir</span>
+        <span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="teacher-section teacher-columns">
+    <div class="teacher-column">
+      <div class="teacher-section-title compact">
+        <h2>Première STI2D</h2>
+      </div>
+      <ul class="teacher-link-list">
+        <li><a href="classes/premiere-cours-1-objet-evolue.html">Comment un objet évolue-t-il ?</a></li>
+        <li><a href="classes/premiere-activite-1-robot-aspirateur.html">Activité — Robot aspirateur</a></li>
+        <li><a href="classes/premiere-ideation-brainstorming.html">Idéation et brainstorming</a></li>
+        <li><a href="classes/premiere-sti2d.html">Voir toutes les ressources de Première</a></li>
+      </ul>
+    </div>
+
+    <div class="teacher-column">
+      <div class="teacher-section-title compact">
+        <h2>Terminale STI2D</h2>
+      </div>
+      <ul class="teacher-link-list">
+        <li><a href="classes/terminale-numeration.html">Numération et codage de l'information</a></li>
+        <li><a href="classes/terminale-algorithmique.html">SIN — Algorithmique et programmation</a></li>
+        <li><a href="classes/terminale-algorithmique-ee.html">EE — Algorithmique et gestion de l'énergie</a></li>
+        <li><a href="classes/terminale-sti2d.html">Voir toutes les ressources de Terminale</a></li>
+      </ul>
+    </div>
+
+    <div class="teacher-column">
+      <div class="teacher-section-title compact">
+        <h2>UFA CAP Cuisine</h2>
+      </div>
+      <ul class="teacher-link-list">
+        <li><a href="classes/cap-cuisine-revisions.html">Révisions de rentrée</a></li>
+        <li><a href="classes/cap-cuisine-couts-marges.html">Coût matière, marge et remise</a></li>
+        <li><a href="classes/cap-cuisine-2e.html">Voir l'espace CAP Cuisine</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="install-app-section" class="teacher-mobile-note">
+    <div>
+      <strong>Accès sur téléphone</strong>
+      <p>Ce site peut être ajouté à l'écran d'accueil d'un téléphone Android.</p>
+    </div>
+    <div class="teacher-mobile-actions">
+      <button class="plain-link-button" type="button" id="install-app-button" hidden>Installer</button>
+      <button class="plain-link-button" type="button" id="install-help-button">Voir la procédure</button>
+    </div>
+    <div class="install-help" id="install-help" hidden>
+      <ol>
+        <li>Ouvrir le site dans Chrome.</li>
+        <li>Ouvrir le menu ⋮.</li>
+        <li>Choisir « Installer l'application » ou « Ajouter à l'écran d'accueil ».</li>
+      </ol>
+    </div>
+    <p class="install-status" id="install-status" aria-live="polite"></p>
+  </section>
+</main>
+
+<footer class="teacher-footer">
+  <div>
+    <strong>Christophe Delcourt</strong><br>
+    Lycée Marie Rivier — Année scolaire 2026–2027
+  </div>
+  <a href="#contenu">Haut de page</a>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

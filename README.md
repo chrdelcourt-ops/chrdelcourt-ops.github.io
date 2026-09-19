@@ -185,3 +185,15 @@ Objectif : conserver les outils interactifs tout en supprimant l'aspect trop « 
 - page Terminale refondue avec trois parcours clairs : commun, SIN, EE ;
 - suppression des emojis décoratifs sur les portails et sommaires ;
 - contenus, quiz, animations et calculateurs conservés.
+
+## Version 30 — Accueil totalement refondu
+
+La page d'accueil n'utilise plus de grand hero, de cartes arrondies, de dégradés ou d'icônes décoratives.
+Elle adopte une présentation volontairement proche d'un site enseignant / ENT :
+- en-tête institutionnel avec logo, nom du professeur et année scolaire ;
+- navigation simple ;
+- classes présentées sous forme de répertoire en lignes ;
+- ressources SNT présentées sous forme de tableau/listing ;
+- listes simples pour Première, Terminale et CAP ;
+- installation mobile reléguée en note utilitaire discrète ;
+- aucune carte CAP isolée : les quatre classes ont exactement la même présentation.
