@@ -144,23 +144,24 @@
   </nav>
 
   <main id="contenu">
-    <section class="hero portal-hero">
+    <section class="hero portal-hero teacher-hero">
       <div class="hero-content">
-        <span class="badge">ESPACE PÉDAGOGIQUE • 2026–2027</span>
-        <h2>Cours & ressources<br>SNT • STI2D • SIN • EE • CAP</h2>
-        <p>
-          Un espace unique pour retrouver les cours, activités, travaux pratiques,
-          projets, quiz et fiches de révision de mes classes.
+        <p class="teacher-kicker">Année scolaire 2026–2027</p>
+        <h2>Ressources pédagogiques</h2>
+        <p class="teacher-lead">
+          Cours, activités, TP et révisions utilisés avec mes classes au Lycée Marie Rivier.
+        </p>
+        <p class="teacher-note">
+          Les contenus sont ajoutés et mis à jour au fil de l'année.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#niveaux">Choisir ma classe</a>
-          <a class="btn btn-secondary" href="classes/terminale-sti2d.html">Terminale STI2D / SIN / EE</a>
+          <a class="btn btn-primary" href="#niveaux">Accéder aux classes</a>
+          <a class="btn btn-secondary" href="#themes">Voir les ressources SNT</a>
         </div>
       </div>
+    </section>
 
-      </section>
-
-    <section class="hero-classes-row" aria-label="Classes disponibles">
+    <section class="hero-classes-row teacher-class-row" aria-label="Classes disponibles">
       <a class="hero-class-link" href="#themes">
         <span class="hero-class-level">Seconde</span>
         <strong>SNT</strong>
@@ -171,11 +172,11 @@
       </a>
       <a class="hero-class-link" href="classes/terminale-sti2d.html">
         <span class="hero-class-level">Terminale</span>
-        <strong>STI2D • SIN • EE</strong>
+        <strong>STI2D — SIN / EE</strong>
       </a>
       <a class="hero-class-link" href="classes/cap-cuisine-2e.html">
         <span class="hero-class-level">UFA</span>
-        <strong>CAP Cuisine • 2e année</strong>
+        <strong>CAP Cuisine 2e année</strong>
       </a>
     </section>
 
@@ -186,11 +187,10 @@
           <img src="assets/app-icon-192.png" alt="" aria-hidden="true">
         </div>
         <div class="app-install-content">
-          <p class="eyebrow">Application Android • sans Play Store</p>
-          <h2>Installer SNT & STI2D sur le téléphone</h2>
+          <p class="eyebrow">Accès mobile</p>
+          <h2>Installer ce site sur un téléphone</h2>
           <p>
-            L'application s'installe directement depuis ce site. Elle s'ouvre ensuite comme une application,
-            avec son icône sur l'écran d'accueil. Les contenus se mettent à jour depuis le site.
+            Le site peut être ajouté à l’écran d’accueil d’un téléphone Android pour un accès plus rapide.
           </p>
           <div class="hero-actions">
             <button class="btn btn-primary" type="button" id="install-app-button" hidden>Installer l'application</button>
@@ -215,14 +215,14 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow">Accès rapide</p>
-          <h2>Choisir ma classe</h2>
+          <h2>Mes classes</h2>
         </div>
-        <p class="section-intro">Chaque niveau possède son propre espace et sera enrichi progressivement.</p>
+        <p class="section-intro">Cours et documents classés par niveau.</p>
       </div>
 
       <div class="level-grid">
         <a class="level-card level-snt" href="#themes">
-          <span class="level-icon">💻</span>
+          
           <div>
             <p class="level-label">SECONDE</p>
             <h3>SNT</h3>
@@ -232,7 +232,7 @@
         </a>
 
         <a class="level-card" href="classes/premiere-sti2d.html">
-          <span class="level-icon">⚙️</span>
+          
           <div>
             <p class="level-label">PREMIÈRE</p>
             <h3>STI2D</h3>
@@ -242,7 +242,7 @@
         </a>
 
         <a class="level-card" href="classes/terminale-sti2d.html">
-          <span class="level-icon">🛠️</span>
+          
           <div>
             <p class="level-label">TERMINALE</p>
             <h3>STI2D</h3>
@@ -273,7 +273,7 @@
       <div class="cards">
         <a class="card card-featured" href="themes/internet.html">
           <div class="card-top">
-            <span class="icon">🌐</span>
+            
             <span class="status status-ready">Cours disponible</span>
           </div>
           <h3>Internet</h3>
@@ -281,14 +281,14 @@
           <span class="card-link">Ouvrir le chapitre →</span>
         </a>
 <a class="card card-featured" href="themes/tp1-internet-filius.html">
-<div class="card-top"><span class="icon">🖧</span><span class="status status-ready">TP disponible</span></div>
+<div class="card-top"><span class="status status-ready">TP disponible</span></div>
 <h3>TP 1 — Filius</h3>
 <p>LAN, routage, passerelles, DNS, serveur Web et diagnostic réseau.</p>
 <span class="card-link">Ouvrir le TP →</span>
 </a>
 
 <a class="card card-featured" href="themes/binaire-bases-debit.html">
-<div class="card-top"><span class="icon">💾</span><span class="status status-ready">Cours disponible</span></div>
+<div class="card-top"><span class="status status-ready">Cours disponible</span></div>
 <h3>Binaire & débit</h3>
 <p>Base 2, hexadécimal, bit/octet, ASCII et calcul d'un temps de transfert.</p>
 <span class="card-link">Ouvrir le cours →</span>
@@ -297,7 +297,7 @@
 
         <a class="card card-featured" href="themes/web.html">
           <div class="card-top">
-            <span class="icon">🕸️</span>
+            
             <span class="status status-ready">Cours disponible</span>
           </div>
           <h3>Le Web</h3>
@@ -306,35 +306,35 @@
         </a>
 
         <a class="card" href="themes/reseaux-sociaux.html">
-          <div class="card-top"><span class="icon">👥</span><span class="status">À venir</span></div>
+          <div class="card-top"><span class="status">À venir</span></div>
           <h3>Réseaux sociaux</h3>
           <p>Graphes, communautés, recommandations, identité numérique et cyberviolence.</p>
           <span class="card-link">Voir la page →</span>
         </a>
 
         <a class="card" href="themes/donnees.html">
-          <div class="card-top"><span class="icon">📊</span><span class="status">À venir</span></div>
+          <div class="card-top"><span class="status">À venir</span></div>
           <h3>Données structurées</h3>
           <p>Tables, CSV, descripteurs, recherche, tri, traitement et données ouvertes.</p>
           <span class="card-link">Voir la page →</span>
         </a>
 
         <a class="card" href="themes/localisation.html">
-          <div class="card-top"><span class="icon">📍</span><span class="status">À venir</span></div>
+          <div class="card-top"><span class="status">À venir</span></div>
           <h3>Localisation, cartographie et mobilité</h3>
           <p>GPS, coordonnées, cartes numériques, itinéraires et géolocalisation.</p>
           <span class="card-link">Voir la page →</span>
         </a>
 
         <a class="card" href="themes/objets-connectes.html">
-          <div class="card-top"><span class="icon">🤖</span><span class="status">À venir</span></div>
+          <div class="card-top"><span class="status">À venir</span></div>
           <h3>Informatique embarquée et objets connectés</h3>
           <p>Capteurs, actionneurs, microcontrôleurs, communications et sécurité.</p>
           <span class="card-link">Voir la page →</span>
         </a>
 
         <a class="card" href="themes/photo-numerique.html">
-          <div class="card-top"><span class="icon">📷</span><span class="status">À venir</span></div>
+          <div class="card-top"><span class="status">À venir</span></div>
           <h3>Photographie numérique</h3>
           <p>Pixels, couleurs RVB, définition, résolution, métadonnées et traitement.</p>
           <span class="card-link">Voir la page →</span>
