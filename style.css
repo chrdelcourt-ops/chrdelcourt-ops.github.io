@@ -2465,3 +2465,448 @@ a,
     font-size:.9rem !important;
   }
 }
+
+
+/* ===== V36 : cours Gantt Première STI2D ===== */
+.gantt-hero{
+  background:
+    radial-gradient(circle at 92% 10%,rgba(212,219,0,.17),transparent 25%),
+    linear-gradient(130deg,rgba(0,169,192,.12),#fff 55%,rgba(255,190,26,.12)) !important;
+}
+.gantt-nav .nav-inner{gap:2px}
+.gantt-scenario{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:20px;
+  align-items:center;
+  padding:20px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:#fff;
+}
+.gantt-scenario h3{margin-top:0}
+.gantt-question{
+  padding:11px 13px;
+  background:#f0f8f9;
+  border-left:4px solid #00a9c0;
+  border-radius:8px;
+}
+.gantt-flow-mini{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.gantt-flow-mini span{
+  padding:9px 11px;
+  background:#fff;
+  border:1px solid #d8e2e5;
+  border-radius:10px;
+  font-size:.82rem;
+  font-weight:800;
+}
+.gantt-flow-mini b{color:#00a9c0}
+
+.gantt-def-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin-top:16px;
+}
+.gantt-def-grid article{
+  padding:17px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background:#fff;
+}
+.gantt-def-grid h3{margin:7px 0 5px;font-size:1rem}
+.gantt-def-grid p{margin:0;color:var(--muted);font-size:.84rem;line-height:1.5}
+.gantt-term{
+  color:#087f92;
+  font-size:.7rem;
+  font-weight:900;
+  letter-spacing:.07em;
+}
+.gantt-definition{
+  margin-top:16px;
+  padding:16px 18px;
+  border-radius:12px;
+  border:1px solid #cfe4e8;
+  background:#f2fafb;
+}
+.gantt-definition p{margin:5px 0 0}
+
+.gantt-demo-card,
+.gantt-interactive,
+.gantt-delay-lab{
+  padding:20px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:#fff;
+  box-shadow:var(--shadow-soft);
+}
+.gantt-demo-actions,
+.gantt-toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-bottom:16px;
+}
+
+.gantt-board{
+  display:grid;
+  border-top:1px solid #d8e1e4;
+  border-left:1px solid #d8e1e4;
+  overflow:auto;
+}
+.mini-board{
+  grid-template-columns:minmax(180px,1.7fr) repeat(5,minmax(64px,1fr));
+}
+.gantt-head,
+.gantt-task-name,
+.gantt-cell{
+  min-height:43px;
+  border-right:1px solid #d8e1e4;
+  border-bottom:1px solid #d8e1e4;
+}
+.gantt-head{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eef4f5;
+  color:#4e6169;
+  font-size:.77rem;
+  font-weight:850;
+}
+.gantt-head.task-col{justify-content:flex-start;padding-left:12px}
+.gantt-task-name{
+  display:flex;
+  align-items:center;
+  padding:0 12px;
+  background:#fff;
+  font-size:.84rem;
+  font-weight:750;
+}
+.gantt-cell{
+  position:relative;
+  background:
+    repeating-linear-gradient(135deg,#fff,#fff 7px,#fafbfb 7px,#fafbfb 8px);
+}
+.gantt-cell[data-step]::after{
+  content:"";
+  position:absolute;
+  inset:7px 4px;
+  border-radius:7px;
+  opacity:0;
+  transform:scaleX(.05);
+  transform-origin:left;
+  transition:opacity .25s ease,transform .55s ease;
+}
+.gantt-cell.mini-a::after{background:#00a9c0}
+.gantt-cell.mini-b::after{background:#d4db00}
+.gantt-cell[data-step].show::after{opacity:1;transform:scaleX(1)}
+.milestone-cell{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.gantt-milestone{
+  color:#ef3c59;
+  font-size:1.5rem;
+  opacity:0;
+  transform:scale(.2);
+  transition:.4s ease;
+}
+.milestone-cell.show .gantt-milestone{opacity:1;transform:scale(1)}
+
+.gantt-live-message{
+  margin-top:14px;
+  padding:12px 14px;
+  border-left:4px solid #00a9c0;
+  background:#f1f9fa;
+  border-radius:8px;
+  color:#42575f;
+}
+.gantt-questions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:14px;
+}
+.gantt-questions details,
+.gantt-software-steps details{
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:#fff;
+}
+.gantt-questions summary,
+.gantt-software-steps summary{
+  cursor:pointer;
+  padding:12px 14px;
+  font-weight:800;
+  color:#223b47;
+}
+.gantt-questions details p,
+.gantt-software-steps details p{
+  margin:0;
+  padding:0 14px 13px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.gantt-method{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+}
+.gantt-method article{
+  position:relative;
+  padding:16px 14px;
+  border:1px solid var(--border);
+  border-radius:13px;
+  background:#fff;
+}
+.gantt-method article span{
+  display:inline-flex;
+  width:30px;
+  height:30px;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#00a9c0;
+  color:#fff;
+  font-weight:900;
+}
+.gantt-method h3{margin:10px 0 5px;font-size:.92rem}
+.gantt-method p{margin:0;color:var(--muted);font-size:.78rem;line-height:1.45}
+
+.gantt-parallel{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  align-items:center;
+  margin-top:18px;
+  padding:18px;
+  border-radius:14px;
+  background:#fbfcfc;
+  border:1px solid var(--border);
+}
+.parallel-bars{display:grid;gap:12px}
+.parallel-bars div{
+  display:grid;
+  grid-template-columns:145px 1fr;
+  gap:10px;
+  align-items:center;
+  font-size:.8rem;
+}
+.parallel-bars i{
+  display:block;
+  width:var(--w);
+  height:17px;
+  border-radius:5px;
+  background:#00a9c0;
+}
+.parallel-bars div:nth-child(2) i{background:#d4db00}
+
+.gantt-project-table-wrap{overflow:auto;margin-bottom:15px}
+.gantt-project-table{
+  width:100%;
+  border-collapse:collapse;
+  background:#fff;
+}
+.gantt-project-table th,
+.gantt-project-table td{
+  padding:10px 12px;
+  border:1px solid #dce4e6;
+  text-align:left;
+  font-size:.85rem;
+}
+.gantt-project-table th{
+  background:#eef4f5;
+  color:#364e59;
+}
+.gantt-project-table td:first-child{
+  font-weight:900;
+  color:#087f92;
+  text-align:center;
+}
+
+.gantt-generated-wrap{
+  width:100%;
+  overflow-x:auto;
+  padding-bottom:5px;
+}
+.gantt-chart{
+  --days:10;
+  display:grid;
+  grid-template-columns:minmax(190px,1.65fr) repeat(var(--days),minmax(38px,1fr));
+  min-width:760px;
+  border-top:1px solid #dce4e6;
+  border-left:1px solid #dce4e6;
+}
+.gantt-chart-head,
+.gantt-chart-label,
+.gantt-chart-cell{
+  min-height:38px;
+  border-right:1px solid #dce4e6;
+  border-bottom:1px solid #dce4e6;
+}
+.gantt-chart-head{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#eff4f5;
+  color:#53676f;
+  font-size:.7rem;
+  font-weight:850;
+}
+.gantt-chart-task{justify-content:flex-start;padding-left:10px}
+.gantt-chart-label{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:0 10px;
+  font-size:.75rem;
+  background:#fff;
+  transition:.25s ease;
+}
+.gantt-chart-label strong{
+  color:#087f92;
+}
+.gantt-chart-label.current-task{
+  background:#fff8d9;
+}
+.gantt-chart-cell{
+  position:relative;
+  background:#fff;
+}
+.gantt-chart-cell.active::after{
+  content:"";
+  position:absolute;
+  inset:6px 2px;
+  border-radius:5px;
+  background:#00a9c0;
+  opacity:1;
+  transform:scaleX(1);
+  transform-origin:left;
+  transition:transform .45s ease,opacity .25s ease;
+}
+.gantt-chart-cell.active.waiting::after{
+  transform:scaleX(.05);
+  opacity:.12;
+}
+.gantt-chart-cell.active.critical::after{
+  background:#ef3c59;
+}
+.gantt-chart-label.critical-task{
+  border-left:4px solid #ef3c59;
+  padding-left:6px;
+}
+
+.gantt-analysis{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:14px;
+}
+.gantt-analysis div{
+  padding:12px 13px;
+  border-radius:10px;
+  background:#f3f8f9;
+  border:1px solid #dce9eb;
+}
+.gantt-analysis span,
+.gantt-analysis strong{display:block}
+.gantt-analysis span{
+  color:var(--muted);
+  font-size:.72rem;
+  text-transform:uppercase;
+  font-weight:800;
+}
+.gantt-analysis strong{
+  margin-top:4px;
+  color:#223d48;
+}
+.gantt-explain{
+  margin:13px 0 0;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.delay-controls{
+  padding:14px;
+  margin-bottom:16px;
+  border-radius:12px;
+  background:#f7fafb;
+}
+.delay-controls label{
+  display:block;
+  margin-bottom:9px;
+}
+.delay-controls input[type="range"]{
+  width:100%;
+}
+.delay-presets{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+.delay-presets button{
+  border:1px solid #cbd9dd;
+  border-radius:999px;
+  padding:6px 10px;
+  background:#fff;
+  cursor:pointer;
+  font:inherit;
+  font-size:.78rem;
+  font-weight:750;
+}
+.delay-presets button:hover{
+  border-color:#00a9c0;
+  background:#f1fafb;
+}
+.solar-analysis{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.gantt-software-steps{
+  display:grid;
+  gap:9px;
+}
+.gantt-warning{
+  margin-top:15px;
+  padding:13px 15px;
+  border-left:4px solid #ffbe1a;
+  background:#fff9e6;
+  border-radius:8px;
+}
+.gantt-retain-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.gantt-quiz{
+  margin-top:22px;
+}
+.gantt-featured{
+  background:linear-gradient(135deg,#153f4f,#087f92) !important;
+}
+
+@media(max-width:1000px){
+  .gantt-def-grid{grid-template-columns:1fr 1fr}
+  .gantt-method{grid-template-columns:1fr 1fr}
+  .gantt-analysis,.solar-analysis{grid-template-columns:1fr 1fr}
+  .gantt-retain-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .gantt-scenario,
+  .gantt-parallel{grid-template-columns:1fr}
+  .gantt-def-grid,
+  .gantt-method,
+  .gantt-analysis,
+  .solar-analysis,
+  .gantt-retain-grid,
+  .gantt-questions{grid-template-columns:1fr}
+  .mini-board{
+    min-width:620px;
+  }
+}

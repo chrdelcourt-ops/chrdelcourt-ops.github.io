@@ -170,3 +170,20 @@ Ajout d'un nouvel espace de classe :
 - intégration au sitemap et à la PWA.
 
 Les versions professeur servent à vérifier les corrections mais ne sont pas publiées dans l'espace élève.
+
+
+## Version 36 — Première STI2D : cours Gantt interactif
+
+Ajout de `classes/premiere-gantt.html` à partir du support élève :
+- définition du diagramme de Gantt ;
+- tâches, durées, dépendances, tâches parallèles et jalons ;
+- animation du premier Gantt sur cinq jours ;
+- méthode de construction en cinq étapes ;
+- station météo connectée : Gantt animé et chemin critique ;
+- borne USB solaire : simulation interactive du retard de la tâche D ;
+- visualisation de la marge et du déplacement de la date finale ;
+- étapes d'utilisation de GanttProject ;
+- synthèse et quiz ;
+- support PowerPoint élève téléchargeable ;
+- accès ajouté depuis la page Première STI2D ;
+- ajout au sitemap et au cache PWA.
