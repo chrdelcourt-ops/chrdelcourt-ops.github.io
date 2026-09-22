@@ -205,3 +205,8 @@ Ajout de `classes/premiere-gantt.html` à partir du support élève :
 - suppression de l'ancien PowerPoint Gantt du site ;
 - conservation du document Word élève ;
 - suppression de la mention visible « environ 2 h » sur la page Gantt.
+
+## Version 44 — Gantt sans déroulement de séance
+
+- suppression complète du bloc « Déroulement / Organisation de la séance » ;
+- la page commence désormais directement par le contenu pédagogique.

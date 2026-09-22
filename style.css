@@ -2913,26 +2913,6 @@ a,
 
 
 /* ===== V42 : Gantt basé sur le nouveau document élève ===== */
-.gantt-session-line{
-  display:grid;
-  grid-template-columns:repeat(6,minmax(0,1fr));
-  gap:8px;
-}
-.gantt-session-line div{
-  padding:12px 10px;
-  border:1px solid var(--border);
-  border-top:4px solid #00a9c0;
-  border-radius:10px;
-  background:#fff;
-}
-.gantt-session-line div:nth-child(2){border-top-color:#ffbe1a}
-.gantt-session-line div:nth-child(3){border-top-color:#d4db00}
-.gantt-session-line div:nth-child(4){border-top-color:#ef3c59}
-.gantt-session-line div:nth-child(5){border-top-color:#00a9c0}
-.gantt-session-line div:nth-child(6){border-top-color:#9ea3a2}
-.gantt-session-line strong,.gantt-session-line span{display:block}
-.gantt-session-line strong{font-size:.78rem;color:#29424d}
-.gantt-session-line span{margin-top:5px;font-size:.75rem;color:var(--muted);line-height:1.35}
 
 .gantt-def-grid-six{
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -3014,12 +2994,10 @@ a,
   line-height:1.45;
 }
 @media(max-width:1000px){
-  .gantt-session-line{grid-template-columns:repeat(3,1fr)}
   .gantt-def-grid-six,.gantt-method-six{grid-template-columns:1fr 1fr}
   .weather-analysis,.gantt-follow-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:650px){
-  .gantt-session-line,
   .gantt-def-grid-six,
   .gantt-method-six,
   .weather-analysis,
