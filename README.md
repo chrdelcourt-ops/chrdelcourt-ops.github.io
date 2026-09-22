@@ -187,3 +187,16 @@ Ajout de `classes/premiere-gantt.html` à partir du support élève :
 - support PowerPoint élève téléchargeable ;
 - accès ajouté depuis la page Première STI2D ;
 - ajout au sitemap et au cache PWA.
+
+## Version 42 — Gantt Première STI2D mis à jour depuis le nouveau document élève
+
+- vocabulaire enrichi : tâche, durée, dépendance, jalon, ressource, avancement ;
+- progression de séance 0–120 min ;
+- méthode de construction en 6 étapes ;
+- exemple station météo A à H, responsables et jalons ;
+- exemple borne USB solaire A à J ;
+- animation des deux Gantt ;
+- simulation du retard de la tâche D et recalcul de la date de présentation ;
+- partie « prévu / réel / écart / action » ;
+- synthèse et quiz ;
+- nouveau document Word élève téléchargeable.

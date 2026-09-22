@@ -1,248 +1,220 @@
 (() => {
   "use strict";
 
-  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
-  // ---------- Premier Gantt ----------
-  const miniPlay = document.getElementById("mini-gantt-play");
-  const miniReset = document.getElementById("mini-gantt-reset");
-  const miniMsg = document.getElementById("mini-gantt-message");
+  // Lecture du premier Gantt
+  const readPlay = document.getElementById("read-play");
+  const readReset = document.getElementById("read-reset");
+  const readMessage = document.getElementById("read-message");
 
-  function resetMini() {
-    document.querySelectorAll("#mini-gantt-board [data-step]").forEach((cell) => {
-      cell.classList.remove("show");
-    });
-    if (miniMsg) {
-      miniMsg.textContent = "Une barre indique quand une tâche commence et combien de jours elle occupe.";
+  const readTexts = {
+    1: "J1 : analyser le besoin.",
+    2: "J2 : choisir le capteur après l'analyse.",
+    3: "J3–J4 : câbler le capteur. C'est la tâche la plus longue de cet exemple.",
+    4: "J5 : tester la mesure, uniquement après la fin du câblage."
+  };
+
+  function resetRead() {
+    document.querySelectorAll("#read-board [data-read]").forEach(el => el.classList.remove("show"));
+    if (readMessage) readMessage.textContent = "Une barre colorée montre la période prévue pour réaliser une tâche.";
+  }
+
+  readPlay?.addEventListener("click", async () => {
+    resetRead();
+    readPlay.disabled = true;
+    for (let i = 1; i <= 4; i++) {
+      document.querySelectorAll(`#read-board [data-read="${i}"]`).forEach(el => el.classList.add("show"));
+      readMessage.textContent = readTexts[i];
+      await sleep(700);
     }
-  }
+    readPlay.disabled = false;
+  });
+  readReset?.addEventListener("click", resetRead);
 
-  if (miniPlay) {
-    miniPlay.addEventListener("click", async () => {
-      resetMini();
-      miniPlay.disabled = true;
-      const messages = {
-        1: "L'étude du besoin occupe lundi et mardi.",
-        2: "Le choix de la solution peut commencer mercredi après la fin de l'étude.",
-        3: "Le losange du vendredi représente un jalon : un événement de durée nulle."
-      };
-
-      for (let step = 1; step <= 3; step++) {
-        document.querySelectorAll(`#mini-gantt-board [data-step="${step}"]`).forEach((cell) => {
-          cell.classList.add("show");
-        });
-        miniMsg.textContent = messages[step];
-        await sleep(850);
-      }
-      miniPlay.disabled = false;
-    });
-  }
-
-  miniReset?.addEventListener("click", resetMini);
-
-  // ---------- Moteur de planification ----------
-  function scheduleTasks(tasks) {
-    const computed = {};
+  // Moteur de planification
+  function compute(tasks) {
+    const result = {};
     let pending = [...tasks];
-
     while (pending.length) {
       let progress = false;
-
-      pending = pending.filter((task) => {
+      pending = pending.filter(task => {
         const deps = task.after || [];
-        if (deps.every((dep) => computed[dep])) {
-          const start = deps.length
-            ? Math.max(...deps.map((dep) => computed[dep].end)) + 1
-            : 1;
+        if (deps.every(d => result[d])) {
+          const start = deps.length ? Math.max(...deps.map(d => result[d].end)) + 1 : 1;
           const end = start + task.duration - 1;
-          computed[task.id] = {...task, start, end};
+          result[task.id] = {...task, start, end};
           progress = true;
           return false;
         }
         return true;
       });
-
       if (!progress) break;
     }
-
-    return computed;
+    return result;
   }
 
-  function renderGantt(container, tasks, options = {}) {
-    if (!container) return;
-
-    const computed = scheduleTasks(tasks);
-    const maxDay = Math.max(...Object.values(computed).map((t) => t.end));
+  function render(container, tasks, options = {}) {
+    if (!container) return null;
+    const result = compute(tasks);
+    const maxDay = Math.max(...Object.values(result).map(t => t.end));
     const critical = new Set(options.critical || []);
 
     let html = `<div class="gantt-chart" style="--days:${maxDay}">`;
     html += `<div class="gantt-chart-head gantt-chart-task">Tâche</div>`;
-    for (let day = 1; day <= maxDay; day++) {
-      html += `<div class="gantt-chart-head">J${day}</div>`;
-    }
+    for (let d = 1; d <= maxDay; d++) html += `<div class="gantt-chart-head">J${d}</div>`;
 
-    tasks.forEach((task) => {
-      const item = computed[task.id];
-      const criticalClass = critical.has(task.id) ? " critical-task" : "";
-      html += `<div class="gantt-chart-label${criticalClass}" data-task="${task.id}"><strong>${task.id}</strong> ${task.name}</div>`;
-      for (let day = 1; day <= maxDay; day++) {
-        const active = day >= item.start && day <= item.end;
+    tasks.forEach(task => {
+      const t = result[task.id];
+      html += `<div class="gantt-chart-label${critical.has(task.id) ? " critical-task" : ""}" data-task="${task.id}"><strong>${task.id}</strong> ${task.name}</div>`;
+      for (let d = 1; d <= maxDay; d++) {
+        const active = d >= t.start && d <= t.end;
         const classes = [
           "gantt-chart-cell",
           active ? "active" : "",
           active && critical.has(task.id) ? "critical" : "",
           active && options.animate ? "waiting" : ""
         ].filter(Boolean).join(" ");
-        html += `<div class="${classes}" data-task="${task.id}" data-day="${day}"></div>`;
+        html += `<div class="${classes}" data-task="${task.id}" data-day="${d}"></div>`;
       }
     });
-
-    html += `</div>`;
+    html += "</div>";
     container.innerHTML = html;
-    return {computed, maxDay};
+    return {result, maxDay};
   }
 
-  async function animateGantt(container, tasks, critical = []) {
-    const result = renderGantt(container, tasks, {critical, animate:true});
-    if (!result) return;
+  async function animate(container, tasks) {
+    render(container, tasks, {animate:true});
     for (const task of tasks) {
-      const cells = container.querySelectorAll(`.gantt-chart-cell.active[data-task="${task.id}"]`);
-      cells.forEach((cell) => cell.classList.remove("waiting"));
       const label = container.querySelector(`.gantt-chart-label[data-task="${task.id}"]`);
       label?.classList.add("current-task");
-      await sleep(480);
+      container.querySelectorAll(`.gantt-chart-cell.active[data-task="${task.id}"]`).forEach(c => c.classList.remove("waiting"));
+      await sleep(420);
       label?.classList.remove("current-task");
     }
   }
 
-  // ---------- Station météo ----------
-  const weatherTasks = [
-    {id:"A", name:"Cahier des charges", duration:2, after:[]},
-    {id:"B", name:"Étude des capteurs", duration:3, after:["A"]},
-    {id:"C", name:"Carte électronique", duration:4, after:["B"]},
-    {id:"D", name:"Programme du capteur", duration:5, after:["C"]},
-    {id:"E", name:"Maquette du boîtier", duration:3, after:["B"]},
-    {id:"F", name:"Tests et validation", duration:2, after:["D","E"]}
+  // Station météo
+  const weather = [
+    {id:"A",name:"Analyser le besoin",duration:1,after:[]},
+    {id:"B",name:"Choisir les composants",duration:2,after:["A"]},
+    {id:"C",name:"Concevoir le boîtier",duration:2,after:["A"]},
+    {id:"D",name:"Programmer l'acquisition",duration:3,after:["B"]},
+    {id:"E",name:"Fabriquer le boîtier",duration:2,after:["C"]},
+    {id:"F",name:"Intégrer et câbler",duration:2,after:["D","E"]},
+    {id:"G",name:"Tester et valider",duration:2,after:["F"]},
+    {id:"H",name:"Présenter le résultat",duration:1,after:["G"]}
   ];
-  const weatherCritical = ["A","B","C","D","F"];
-  const weatherContainer = document.getElementById("weather-gantt");
+  const weatherCritical = ["A","B","D","F","G","H"];
+  const weatherBox = document.getElementById("weather-gantt");
 
-  renderGantt(weatherContainer, weatherTasks);
+  render(weatherBox, weather);
 
-  document.getElementById("weather-play")?.addEventListener("click", async (event) => {
-    event.currentTarget.disabled = true;
-    await animateGantt(weatherContainer, weatherTasks);
-    event.currentTarget.disabled = false;
+  document.getElementById("weather-play")?.addEventListener("click", async e => {
+    e.currentTarget.disabled = true;
+    await animate(weatherBox, weather);
+    e.currentTarget.disabled = false;
   });
-
   document.getElementById("weather-critical")?.addEventListener("click", () => {
-    renderGantt(weatherContainer, weatherTasks, {critical:weatherCritical});
+    render(weatherBox, weather, {critical:weatherCritical});
   });
-
   document.getElementById("weather-reset")?.addEventListener("click", () => {
-    renderGantt(weatherContainer, weatherTasks);
+    render(weatherBox, weather);
+    document.getElementById("weather-milestone-list").hidden = true;
+  });
+  document.getElementById("weather-milestones")?.addEventListener("click", () => {
+    const el = document.getElementById("weather-milestone-list");
+    el.hidden = !el.hidden;
   });
 
-  // ---------- Borne solaire ----------
-  const solarContainer = document.getElementById("solar-gantt");
-  const solarSlider = document.getElementById("solar-d-duration");
+  // Borne USB solaire
+  const solarBox = document.getElementById("solar-gantt");
+  const slider = document.getElementById("solar-d-duration");
 
-  function solarTasks(durationD) {
+  function solarTasks(dDuration) {
     return [
-      {id:"A", name:"Étude du besoin", duration:1, after:[]},
-      {id:"B", name:"Choix des composants", duration:2, after:["A"]},
-      {id:"C", name:"Schéma électrique", duration:2, after:["B"]},
-      {id:"D", name:"Modèle du support", duration:durationD, after:["A"]},
-      {id:"E", name:"Assemblage", duration:2, after:["C","D"]},
-      {id:"F", name:"Tests et validation", duration:2, after:["E"]},
-      {id:"G", name:"Présentation", duration:1, after:["F"]}
+      {id:"A",name:"Analyser besoin / contraintes",duration:1,after:[]},
+      {id:"B",name:"Choisir panneau / batterie",duration:2,after:["A"]},
+      {id:"C",name:"Modéliser chaîne d'énergie",duration:2,after:["A"]},
+      {id:"D",name:"Concevoir le boîtier",duration:dDuration,after:["A"]},
+      {id:"E",name:"Programmer suivi de charge",duration:2,after:["B"]},
+      {id:"F",name:"Assembler l'électronique",duration:2,after:["B","C"]},
+      {id:"G",name:"Fabriquer le support",duration:2,after:["D"]},
+      {id:"H",name:"Intégrer le système",duration:2,after:["E","F","G"]},
+      {id:"I",name:"Tester l'autonomie",duration:2,after:["H"]},
+      {id:"J",name:"Présenter la solution",duration:1,after:["I"]}
     ];
   }
 
-  function renderSolar() {
-    const dDuration = Number(solarSlider?.value || 3);
-    const tasks = solarTasks(dDuration);
-    const computed = scheduleTasks(tasks);
-    const initialEnd = 10;
-    const projectEnd = computed.G.end;
-    const delay = projectEnd - initialEnd;
+  function updateSolar() {
+    const durationD = Number(slider?.value || 3);
+    const tasks = solarTasks(durationD);
+    const calc = compute(tasks);
+    const baseEnd = 11;
+    const delay = calc.J.end - baseEnd;
 
-    // Chemin critique : initialement branche C ; au-delà de 4 j, branche D.
-    const critical = dDuration <= 4
-      ? ["A","B","C","E","F","G"]
-      : ["A","D","E","F","G"];
+    // La branche D-G est critique dans la situation initiale.
+    const critical = ["A","D","G","H","I","J"];
+    render(solarBox, tasks, {critical});
 
-    renderGantt(solarContainer, tasks, {critical});
-
-    document.getElementById("solar-d-duration-value").textContent = dDuration;
-    document.getElementById("solar-d-duration-label").textContent = `${dDuration} j`;
-    document.getElementById("solar-d-end").textContent = `J${computed.D.end}`;
-    document.getElementById("solar-e-start").textContent = `J${computed.E.start}`;
-    document.getElementById("solar-g-end").textContent = `J${projectEnd}`;
+    document.getElementById("solar-d-duration-value").textContent = durationD;
+    document.getElementById("solar-d-duration-label").textContent = `${durationD} j`;
+    document.getElementById("solar-d-end").textContent = `J${calc.D.end}`;
+    document.getElementById("solar-h-start").textContent = `J${calc.H.start}`;
+    document.getElementById("solar-j-end").textContent = `J${calc.J.end}`;
     document.getElementById("solar-project-delay").textContent =
       delay === 0 ? "0 jour" : `${delay} jour${delay > 1 ? "s" : ""}`;
 
-    const message = document.getElementById("solar-message");
-    if (dDuration === 3) {
-      message.textContent = "D finit J4. E attend aussi C, qui finit J5 : D possède donc 1 jour de marge.";
-    } else if (dDuration === 4) {
-      message.textContent = "D finit J5 comme C : la marge de D est consommée, mais E commence encore J6. La date finale ne change pas.";
-    } else if (dDuration === 5) {
-      message.textContent = "D finit J6. E ne peut commencer que J7 : D prend 2 jours de plus, mais le projet ne prend qu'1 jour de retard.";
+    const msg = document.getElementById("solar-message");
+    if (durationD === 3) {
+      msg.textContent = "Situation prévue : D finit J4, G occupe J5–J6, H commence J7 et la présentation a lieu J11.";
+    } else if (durationD === 4) {
+      msg.textContent = "D prend 1 jour de retard : G se décale à J6–J7, H commence J8 et la présentation passe à J12.";
     } else {
-      message.textContent = `D finit J${computed.D.end}. La branche D devient la branche qui fixe le début de E et la fin du projet.`;
+      msg.textContent = `D dure ${durationD} jours : la branche D → G décale H, puis I et J. La présentation passe à J${calc.J.end}.`;
     }
   }
 
-  solarSlider?.addEventListener("input", renderSolar);
-
-  document.querySelectorAll("[data-duration]").forEach((button) => {
-    button.addEventListener("click", () => {
-      if (!solarSlider) return;
-      solarSlider.value = button.dataset.duration;
-      renderSolar();
+  slider?.addEventListener("input", updateSolar);
+  document.querySelectorAll("[data-duration]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (!slider) return;
+      slider.value = btn.dataset.duration;
+      updateSolar();
     });
   });
+  updateSolar();
 
-  renderSolar();
-
-  // ---------- Quiz ----------
+  // Quiz
   const quiz = document.getElementById("gantt-quiz");
   const score = document.getElementById("gantt-quiz-score");
-
-  quiz?.addEventListener("submit", (event) => {
-    event.preventDefault();
+  quiz?.addEventListener("submit", e => {
+    e.preventDefault();
     const fields = [...quiz.querySelectorAll("fieldset[data-correct]")];
-    let points = 0;
+    let ok = 0;
     let answered = 0;
-
-    fields.forEach((field) => {
+    fields.forEach(field => {
       field.classList.remove("correct","incorrect");
-      const selected = field.querySelector("input[type='radio']:checked");
+      const selected = field.querySelector("input:checked");
       if (!selected) return;
       answered++;
       if (selected.value === field.dataset.correct) {
-        points++;
+        ok++;
         field.classList.add("correct");
       } else {
         field.classList.add("incorrect");
       }
     });
-
     score.classList.add("visible");
-    score.textContent =
-      answered < fields.length
-        ? `Tu as répondu à ${answered}/${fields.length}. Score : ${points}/${fields.length}.`
-        : `Score : ${points}/${fields.length}.`;
+    score.textContent = answered < fields.length
+      ? `Réponses : ${answered}/${fields.length} • Score : ${ok}/${fields.length}`
+      : `Score : ${ok}/${fields.length}`;
   });
-
   quiz?.addEventListener("reset", () => {
-    quiz.querySelectorAll("fieldset").forEach((field) => {
-      field.classList.remove("correct","incorrect");
-    });
+    quiz.querySelectorAll("fieldset").forEach(f => f.classList.remove("correct","incorrect"));
     score.textContent = "";
     score.classList.remove("visible");
   });
 
-  resetMini();
+  resetRead();
 })();

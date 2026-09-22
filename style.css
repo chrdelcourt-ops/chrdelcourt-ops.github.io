@@ -2910,3 +2910,118 @@ a,
     min-width:620px;
   }
 }
+
+
+/* ===== V42 : Gantt basé sur le nouveau document élève ===== */
+.gantt-session-line{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:8px;
+}
+.gantt-session-line div{
+  padding:12px 10px;
+  border:1px solid var(--border);
+  border-top:4px solid #00a9c0;
+  border-radius:10px;
+  background:#fff;
+}
+.gantt-session-line div:nth-child(2){border-top-color:#ffbe1a}
+.gantt-session-line div:nth-child(3){border-top-color:#d4db00}
+.gantt-session-line div:nth-child(4){border-top-color:#ef3c59}
+.gantt-session-line div:nth-child(5){border-top-color:#00a9c0}
+.gantt-session-line div:nth-child(6){border-top-color:#9ea3a2}
+.gantt-session-line strong,.gantt-session-line span{display:block}
+.gantt-session-line strong{font-size:.78rem;color:#29424d}
+.gantt-session-line span{margin-top:5px;font-size:.75rem;color:var(--muted);line-height:1.35}
+
+.gantt-def-grid-six{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.read-board{
+  grid-template-columns:minmax(190px,1.8fr) repeat(5,minmax(62px,1fr));
+}
+.gantt-cell.read-a::after{background:#00a9c0}
+.gantt-cell.read-b::after{background:#ffbe1a}
+.gantt-cell.read-c::after{background:#d4db00}
+.gantt-cell.read-d::after{background:#ef3c59}
+.gantt-cell[data-read]::after{
+  content:"";
+  position:absolute;
+  inset:7px 4px;
+  border-radius:7px;
+  opacity:0;
+  transform:scaleX(.05);
+  transform-origin:left;
+  transition:opacity .25s ease,transform .5s ease;
+}
+.gantt-cell[data-read].show::after{
+  opacity:1;
+  transform:scaleX(1);
+}
+.gantt-method-six{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.weather-analysis{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.gantt-milestone-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+  padding:12px;
+  border:1px solid #edd4d9;
+  background:#fff7f8;
+  border-radius:10px;
+}
+.gantt-milestone-list[hidden]{display:none}
+.gantt-milestone-list strong{
+  width:100%;
+  color:#9f3242;
+}
+.gantt-milestone-list span{
+  padding:6px 9px;
+  background:#fff;
+  border:1px solid #ead6da;
+  border-radius:999px;
+  font-size:.76rem;
+}
+.gantt-follow-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+.gantt-follow-grid article{
+  padding:16px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#fff;
+}
+.gantt-follow-grid article span{
+  color:#087f92;
+  font-size:.7rem;
+  font-weight:900;
+  letter-spacing:.07em;
+}
+.gantt-follow-grid h3{
+  margin:7px 0 5px;
+  font-size:.95rem;
+}
+.gantt-follow-grid p{
+  margin:0;
+  color:var(--muted);
+  font-size:.8rem;
+  line-height:1.45;
+}
+@media(max-width:1000px){
+  .gantt-session-line{grid-template-columns:repeat(3,1fr)}
+  .gantt-def-grid-six,.gantt-method-six{grid-template-columns:1fr 1fr}
+  .weather-analysis,.gantt-follow-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  .gantt-session-line,
+  .gantt-def-grid-six,
+  .gantt-method-six,
+  .weather-analysis,
+  .gantt-follow-grid{grid-template-columns:1fr}
+}
