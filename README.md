@@ -184,7 +184,6 @@ Ajout de `classes/premiere-gantt.html` à partir du support élève :
 - visualisation de la marge et du déplacement de la date finale ;
 - étapes d'utilisation de GanttProject ;
 - synthèse et quiz ;
-- support PowerPoint élève téléchargeable ;
 - accès ajouté depuis la page Première STI2D ;
 - ajout au sitemap et au cache PWA.
 
@@ -200,3 +199,9 @@ Ajout de `classes/premiere-gantt.html` à partir du support élève :
 - partie « prévu / réel / écart / action » ;
 - synthèse et quiz ;
 - nouveau document Word élève téléchargeable.
+
+## Version 43 — Gantt sans PowerPoint ni durée affichée
+
+- suppression de l'ancien PowerPoint Gantt du site ;
+- conservation du document Word élève ;
+- suppression de la mention visible « environ 2 h » sur la page Gantt.
