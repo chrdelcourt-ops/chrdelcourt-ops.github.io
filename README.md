@@ -210,3 +210,12 @@ Ajout de `classes/premiere-gantt.html` à partir du support élève :
 
 - suppression complète du bloc « Déroulement / Organisation de la séance » ;
 - la page commence désormais directement par le contenu pédagogique.
+
+## Version 45 — Google Analytics 4
+
+- identifiant GA4 : `G-QZ4KZNW6HN` ;
+- statistiques activées uniquement après accord de l'utilisateur ;
+- choix « Accepter / Refuser » mémorisé dans le navigateur ;
+- lien « Préférences statistiques » dans le pied de page ;
+- suivi chargé sur les pages publiques du site ;
+- page de vérification Google et page hors connexion exclues.

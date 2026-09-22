@@ -3003,3 +3003,76 @@ a,
   .weather-analysis,
   .gantt-follow-grid{grid-template-columns:1fr}
 }
+
+
+/* ===== V45 : Google Analytics avec consentement ===== */
+.analytics-consent{
+  position:fixed;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  max-width:980px;
+  margin:0 auto;
+  padding:16px 18px;
+  border:1px solid #cfdcdf;
+  border-top:4px solid #00a9c0;
+  border-radius:13px;
+  background:#fff;
+  box-shadow:0 12px 35px rgba(20,45,55,.18);
+}
+.analytics-consent-text{
+  min-width:0;
+}
+.analytics-consent-text strong{
+  display:block;
+  margin-bottom:4px;
+  color:#18313d;
+}
+.analytics-consent-text p{
+  margin:0;
+  color:#5b6d75;
+  font-size:.84rem;
+  line-height:1.45;
+}
+.analytics-consent-actions{
+  display:flex;
+  flex:0 0 auto;
+  gap:8px;
+}
+.analytics-preferences-wrap{
+  margin:5px 0 0;
+}
+.analytics-preferences{
+  border:0;
+  padding:0;
+  background:transparent;
+  color:inherit;
+  font:inherit;
+  font-size:.78rem;
+  text-decoration:underline;
+  cursor:pointer;
+  opacity:.82;
+}
+.analytics-preferences:hover{
+  opacity:1;
+}
+@media(max-width:680px){
+  .analytics-consent{
+    left:10px;
+    right:10px;
+    bottom:10px;
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .analytics-consent-actions{
+    width:100%;
+  }
+  .analytics-consent-actions .btn{
+    flex:1;
+  }
+}
