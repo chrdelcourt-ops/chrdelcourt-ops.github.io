@@ -216,3 +216,13 @@ Ajout de `contact.html` :
 - case visible « Je suis un humain » obligatoire ;
 - champ honeypot `_gotcha` pour filtrer une partie des robots ;
 - gestion des erreurs et de la limite de soumission Formspree.
+
+## Version 40 — Formspree AJAX officiel
+
+Correction du formulaire de contact :
+- abandon du `fetch` personnalisé ;
+- utilisation de la bibliothèque officielle `@formspree/ajax` ;
+- formulaire initialisé avec l'identifiant `xeaogldn` ;
+- gestion native des états d'envoi, succès et erreur ;
+- action HTML Formspree conservée comme solution de secours ;
+- case « Je suis un humain » toujours obligatoire.

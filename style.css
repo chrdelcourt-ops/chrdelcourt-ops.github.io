@@ -3192,3 +3192,14 @@ a,
   opacity:.7;
   cursor:wait;
 }
+
+
+/* ===== V40 : Formspree AJAX officiel ===== */
+[data-fs-success][hidden],
+[data-fs-error][hidden]{
+  display:none !important;
+}
+.contact-submit-state[data-fs-success],
+.contact-submit-state[data-fs-error]{
+  margin-top:2px;
+}
