@@ -2910,3 +2910,285 @@ a,
     min-width:620px;
   }
 }
+
+
+/* ===== V37 : espace contact ===== */
+.contact-hero{
+  background:
+    radial-gradient(circle at 90% 10%,rgba(255,190,26,.14),transparent 25%),
+    linear-gradient(130deg,rgba(0,169,192,.12),#fff 58%,rgba(212,219,0,.10)) !important;
+}
+.contact-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.6fr) minmax(260px,.7fr);
+  gap:20px;
+  align-items:start;
+}
+.contact-panel,
+.contact-info-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:20px;
+  box-shadow:var(--shadow-soft);
+}
+.contact-info-panel{
+  display:grid;
+  gap:14px;
+}
+.contact-info-card h3{
+  margin:5px 0 8px;
+}
+.contact-info-card p{
+  color:var(--muted);
+  line-height:1.55;
+}
+.contact-privacy{
+  border-top:4px solid #d4db00;
+}
+.contact-form{
+  display:grid;
+  gap:14px;
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.contact-form label{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  font-size:.84rem;
+  color:#465b65;
+  font-weight:800;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea{
+  width:100%;
+  border:1px solid #c8d8dd;
+  border-radius:9px;
+  background:#fff;
+  padding:10px 11px;
+  font:inherit;
+  color:var(--text);
+}
+.contact-form textarea{
+  resize:vertical;
+  min-height:150px;
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus{
+  outline:3px solid rgba(0,169,192,.12);
+  border-color:#00a9c0;
+}
+.contact-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  align-items:center;
+}
+.contact-preview-section{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:20px;
+}
+.contact-preview{
+  border:1px solid #dce5e8;
+  border-radius:11px;
+  overflow:hidden;
+  margin-bottom:14px;
+}
+.contact-preview > div{
+  padding:12px 14px;
+  background:#f1f7f8;
+  border-bottom:1px solid #dce5e8;
+}
+.contact-preview span,
+.contact-preview strong{
+  display:block;
+}
+.contact-preview span{
+  color:var(--muted);
+  font-size:.72rem;
+  text-transform:uppercase;
+  font-weight:850;
+}
+.contact-preview strong{
+  margin-top:3px;
+}
+.contact-preview pre{
+  margin:0;
+  padding:15px;
+  white-space:pre-wrap;
+  font:inherit;
+  line-height:1.55;
+  background:#fff;
+}
+.contact-status{
+  color:#087f92;
+  font-weight:750;
+}
+.contact-note{
+  color:var(--muted);
+  font-size:.82rem;
+  line-height:1.5;
+}
+.home-contact{
+  margin-top:24px;
+}
+.home-contact-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:18px 20px;
+  background:#f7fbfb;
+  border:1px solid #d9e5e8;
+  border-left:4px solid #00a9c0;
+  border-radius:12px;
+}
+.home-contact-inner h2{
+  margin:3px 0 5px;
+  font-size:1.25rem;
+}
+.home-contact-inner p{
+  margin:0;
+  max-width:720px;
+  color:var(--muted);
+}
+.footer-contact-link{
+  width:100%;
+  text-align:center;
+  padding-top:8px;
+  margin-top:8px;
+  border-top:1px solid rgba(128,145,152,.22);
+}
+.footer-contact-link a{
+  color:inherit;
+  font-weight:750;
+}
+@media(max-width:800px){
+  .contact-layout,
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+  .home-contact-inner{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+
+
+/* ===== V38 : email contact ===== */
+.contact-email{
+  margin-top:12px !important;
+  padding-top:10px;
+  border-top:1px solid #e1e7e9;
+}
+.contact-email a{
+  color:#087f92;
+  font-weight:800;
+  word-break:break-word;
+}
+
+
+/* ===== V39 : envoi Formspree direct ===== */
+.contact-honeypot{
+  position:absolute !important;
+  left:-9999px !important;
+  width:1px !important;
+  height:1px !important;
+  overflow:hidden !important;
+}
+
+.human-check{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center;
+  gap:12px !important;
+  max-width:330px;
+  padding:12px 14px;
+  border:1px solid #cbdadd;
+  border-radius:10px;
+  background:#f9fbfb;
+  cursor:pointer;
+  user-select:none;
+}
+.human-check input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+.human-check-box{
+  position:relative;
+  flex:0 0 26px;
+  width:26px;
+  height:26px;
+  border:2px solid #9aaeb5;
+  border-radius:5px;
+  background:#fff;
+}
+.human-check input:checked + .human-check-box{
+  border-color:#00a9c0;
+  background:#00a9c0;
+}
+.human-check input:checked + .human-check-box::after{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:3px;
+  width:7px;
+  height:13px;
+  border:solid #fff;
+  border-width:0 3px 3px 0;
+  transform:rotate(45deg);
+}
+.human-check input:focus-visible + .human-check-box{
+  outline:3px solid rgba(0,169,192,.2);
+  outline-offset:2px;
+}
+.human-check > span:last-child{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.human-check strong{
+  color:#263b45;
+  font-size:.94rem;
+}
+.human-check small{
+  color:var(--muted);
+  font-size:.72rem;
+  font-weight:500;
+}
+
+.contact-submit-state{
+  min-height:1.5em;
+  font-size:.9rem;
+  font-weight:750;
+}
+.contact-submit-state.sending{
+  color:#5e7078;
+}
+.contact-submit-state.success{
+  padding:11px 13px;
+  border-radius:8px;
+  background:#edf8f0;
+  border:1px solid #a8d5b1;
+  color:#2f6e3d;
+}
+.contact-submit-state.error{
+  padding:11px 13px;
+  border-radius:8px;
+  background:#fff1f2;
+  border:1px solid #e3a6ad;
+  color:#9b3440;
+}
+#contact-send:disabled{
+  opacity:.7;
+  cursor:wait;
+}
