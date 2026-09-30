@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Opérations booléennes – Première STI2D | Lycée Marie Rivier</title>
+  <meta name="description" content="Première STI2D : exemples interactifs, ce qu'il faut retenir et exercices sur les opérations booléennes, tables de vérité, simplification, De Morgan, Karnaugh et circuits logiques.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Christophe Delcourt">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/classes/premiere-operations-booleennes.html">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../analytics.js" defer></script>
+
+  <meta name="theme-color" content="#00a9c0">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header compact-header">
+  <div class="header-inner">
+    <a href="../index.html" class="brand">
+      <img src="../assets/logo-marie-rivier.png" alt="Logo du Lycée Marie Rivier" class="logo">
+    </a>
+    <div class="header-title">
+      <p class="eyebrow">Première STI2D • Logique combinatoire</p>
+      <h1>Opérations booléennes</h1>
+      <p class="subtitle">Exemples • À retenir • Exercices</p>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav boolean-nav" aria-label="Navigation de la page">
+  <div class="nav-inner">
+    <a href="premiere-sti2d.html">← Première</a>
+    <a href="#exemples">Exemples</a>
+    <a href="#retenir">À retenir</a>
+    <a href="#exercices">Exercices</a>
+  </div>
+</nav>
+
+<main id="contenu">
+  <section class="chapter-hero boolean-hero">
+    <div>
+      <span class="badge">PREMIÈRE STI2D</span>
+      <h2>Comprendre la logique en manipulant</h2>
+      <p>
+        Pas de cours long ici : quelques exemples pour voir fonctionner les portes logiques,
+        une fiche « ce que je dois retenir », puis des exercices progressifs.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#exemples">Voir les exemples</a>
+        <a class="btn btn-secondary" href="#exercices">Passer aux exercices</a>
+      </div>
+    </div>
+
+    <aside class="chapter-summary">
+      <p class="eyebrow">Objectifs</p>
+      <ul class="check-list">
+        <li>Lire une table de vérité</li>
+        <li>Utiliser NON, ET, OU, NAND, NOR et XOR</li>
+        <li>Calculer une expression logique</li>
+        <li>Simplifier une expression</li>
+        <li>Lire une carte de Karnaugh simple</li>
+        <li>Relier expression et circuit logique</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section id="exemples" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Exemples interactifs</p>
+        <h2>1. Tester les portes logiques</h2>
+      </div>
+      <p class="section-intro">
+        Modifie A et B : les sorties sont recalculées immédiatement.
+      </p>
+    </div>
+
+    <div class="boolean-lab">
+      <div class="boolean-inputs" role="group" aria-label="Entrées logiques">
+        <button type="button" class="logic-toggle" id="logic-a" aria-pressed="false">
+          <span>A</span><strong>0</strong>
+        </button>
+        <button type="button" class="logic-toggle" id="logic-b" aria-pressed="false">
+          <span>B</span><strong>0</strong>
+        </button>
+      </div>
+
+      <div class="gate-grid" id="gate-grid">
+        <article data-gate="not"><span>NON A</span><strong id="out-not">1</strong><small>¬A</small></article>
+        <article data-gate="and"><span>ET</span><strong id="out-and">0</strong><small>A·B</small></article>
+        <article data-gate="or"><span>OU</span><strong id="out-or">0</strong><small>A+B</small></article>
+        <article data-gate="nand"><span>NAND</span><strong id="out-nand">1</strong><small>¬(A·B)</small></article>
+        <article data-gate="nor"><span>NOR</span><strong id="out-nor">1</strong><small>¬(A+B)</small></article>
+        <article data-gate="xor"><span>XOR</span><strong id="out-xor">0</strong><small>A⊕B</small></article>
+      </div>
+
+      <p class="boolean-live" id="logic-explain">
+        A=0 et B=0 : ET vaut 0, OU vaut 0 et XOR vaut 0.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Exemple guidé</p>
+        <h2>2. Calculer une expression</h2>
+      </div>
+    </div>
+
+    <div class="boolean-example">
+      <div>
+        <p class="eyebrow">Expression</p>
+        <div class="boolean-expression">F = ¬A + B·C</div>
+        <p>Lecture : <strong>(NON A) OU (B ET C)</strong>.</p>
+      </div>
+
+      <div class="boolean-example-steps">
+        <div><span>Entrées</span><strong>A=0 • B=1 • C=0</strong></div>
+        <div><span>Étape 1</span><strong>¬A = 1</strong></div>
+        <div><span>Étape 2</span><strong>B·C = 0</strong></div>
+        <div><span>Résultat</span><strong>F = 1 + 0 = 1</strong></div>
+      </div>
+    </div>
+
+    <div class="boolean-priority">
+      <span>Ordre de calcul à retenir</span>
+      <strong>Parenthèses → NON → ET → OU</strong>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Deux exemples rapides</p>
+        <h2>3. Simplifier et reconnaître une loi</h2>
+      </div>
+    </div>
+
+    <div class="boolean-example-grid">
+      <article>
+        <p class="eyebrow">Complémentarité</p>
+        <div class="boolean-expression small">A·B + A·¬B</div>
+        <p>A·(B+¬B) = A·1 = <strong>A</strong>.</p>
+      </article>
+
+      <article>
+        <p class="eyebrow">De Morgan</p>
+        <div class="boolean-expression small">¬(A+B)</div>
+        <p>NON d'un OU devient ET des NON : <strong>¬A·¬B</strong>.</p>
+      </article>
+
+      <article>
+        <p class="eyebrow">Distributivité</p>
+        <div class="boolean-expression small">(A+B)·(A+C)</div>
+        <p>La forme réduite est <strong>A+B·C</strong>.</p>
+      </article>
+
+      <article>
+        <p class="eyebrow">XOR</p>
+        <div class="boolean-expression small">A⊕B</div>
+        <p>Vaut 1 uniquement si A et B sont <strong>différents</strong>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="retenir" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Essentiel</p>
+        <h2>Ce que je dois retenir</h2>
+      </div>
+    </div>
+
+    <div class="boolean-retain">
+      <article>
+        <span>01</span>
+        <p>Une variable booléenne vaut uniquement <strong>0 ou 1</strong>.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <p>Une table de vérité possède <strong>2ⁿ lignes</strong> pour n entrées.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <p><strong>NON</strong> inverse l'état logique.</p>
+      </article>
+      <article>
+        <span>04</span>
+        <p><strong>ET</strong> vaut 1 seulement si toutes les entrées valent 1.</p>
+      </article>
+      <article>
+        <span>05</span>
+        <p><strong>OU</strong> vaut 1 si au moins une entrée vaut 1.</p>
+      </article>
+      <article>
+        <span>06</span>
+        <p><strong>XOR</strong> vaut 1 si les deux entrées sont différentes.</p>
+      </article>
+      <article>
+        <span>07</span>
+        <p><strong>NAND</strong> et <strong>NOR</strong> sont les inversions de ET et OU.</p>
+      </article>
+      <article>
+        <span>08</span>
+        <p>De Morgan : <strong>¬(A·B)=¬A+¬B</strong> et <strong>¬(A+B)=¬A·¬B</strong>.</p>
+      </article>
+      <article>
+        <span>09</span>
+        <p>Une carte de Karnaugh regroupe les 1 par paquets de <strong>1, 2, 4, 8…</strong>.</p>
+      </article>
+      <article>
+        <span>10</span>
+        <p>Un circuit logique doit reproduire <strong>toutes les lignes</strong> de sa table de vérité.</p>
+      </article>
+    </div>
+
+    <div class="truth-table-card">
+      <h3>Table de vérité essentielle</h3>
+      <div class="table-scroll">
+        <table class="truth-table">
+          <thead>
+            <tr><th>A</th><th>B</th><th>ET</th><th>OU</th><th>NAND</th><th>NOR</th><th>XOR</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+            <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+            <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+            <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="exercices" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Entraînement</p>
+        <h2>Exercices progressifs</h2>
+      </div>
+      <p class="section-intro">
+        Fais d'abord l'exercice sur feuille. Ouvre ensuite la correction pour vérifier.
+      </p>
+    </div>
+
+    <div class="boolean-exercises">
+      <article class="exercise-card">
+        <div class="exercise-head">
+          <div><span>EXERCICE 1</span><h3>Table de vérité</h3></div>
+          <strong>/4</strong>
+        </div>
+        <p>Compléter la table de vérité de <strong>F = ¬A + (B·C)</strong>.</p>
+
+        <div class="table-scroll">
+          <table class="truth-table exercise-table">
+            <thead><tr><th>A</th><th>B</th><th>C</th><th>¬A</th><th>B·C</th><th>F</th></tr></thead>
+            <tbody id="ex1-table">
+              <tr data-a="0" data-b="0" data-c="0"><td>0</td><td>0</td><td>0</td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td></tr>
+              <tr data-a="0" data-b="0" data-c="1"><td>0</td><td>0</td><td>1</td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td></tr>
+              <tr data-a="0" data-b="1" data-c="0"><td>0</td><td>1</td><td>0</td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td></tr>
+              <tr data-a="0" data-b="1" data-c="1"><td>0</td><td>1</td><td>1</td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td></tr>
+              <tr data-a="1" data-b="0" data-c="0"><td>1</td><td>0</td><td>0</td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td></tr>
+              <tr data-a="1" data-b="0" data-c="1"><td>1</td><td>0</td><td>1</td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td></tr>
+              <tr data-a="1" data-b="1" data-c="0"><td>1</td><td>1</td><td>0</td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td></tr>
+              <tr data-a="1" data-b="1" data-c="1"><td>1</td><td>1</td><td>1</td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td><td><input inputmode="numeric" maxlength="1"></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="exercise-actions">
+          <button class="btn btn-primary" type="button" id="check-ex1">Vérifier</button>
+          <button class="btn btn-secondary" type="button" id="reset-ex1">Effacer</button>
+          <span class="exercise-result" id="result-ex1" aria-live="polite"></span>
+        </div>
+      </article>
+
+      <article class="exercise-card">
+        <div class="exercise-head">
+          <div><span>EXERCICE 2</span><h3>Simplifier</h3></div>
+          <strong>/6</strong>
+        </div>
+        <p>Simplifier chaque expression et nommer la propriété utilisée.</p>
+        <div class="expression-list">
+          <div><strong>P = A·B + A·¬B</strong></div>
+          <div><strong>Q = (A+B)·(A+¬B)</strong></div>
+          <div><strong>R = ¬(A+B)</strong></div>
+        </div>
+        <details class="exercise-correction">
+          <summary>Afficher la correction</summary>
+          <p><strong>P = A</strong> : mise en facteur puis complémentarité B+¬B=1.</p>
+          <p><strong>Q = A</strong> : distributivité / identité (A+B)(A+¬B)=A+B·¬B=A.</p>
+          <p><strong>R = ¬A·¬B</strong> : loi de De Morgan.</p>
+        </details>
+      </article>
+
+      <article class="exercise-card">
+        <div class="exercise-head">
+          <div><span>EXERCICE 3</span><h3>Carte de Karnaugh</h3></div>
+          <strong>/6</strong>
+        </div>
+        <p>G(A,B,C)=1 pour les mintermes <strong>m(1,3,6,7)</strong>.</p>
+        <p>Compléter mentalement ou sur feuille la carte, former les groupes puis chercher une expression minimale.</p>
+
+        <div class="karnaugh-wrap">
+          <table class="karnaugh-table">
+            <thead><tr><th>A \ BC</th><th>00</th><th>01</th><th>11</th><th>10</th></tr></thead>
+            <tbody>
+              <tr><th>0</th><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+              <tr><th>1</th><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="exercise-correction">
+          <summary>Afficher une correction possible</summary>
+          <p>On peut former deux groupes de 2 : m(1,3) donne <strong>¬A·C</strong> et m(6,7) donne <strong>A·B</strong>.</p>
+          <p>Expression minimale : <strong>G = ¬A·C + A·B</strong>.</p>
+        </details>
+      </article>
+
+      <article class="exercise-card">
+        <div class="exercise-head">
+          <div><span>EXERCICE 4</span><h3>Simplifier et représenter</h3></div>
+          <strong>/4</strong>
+        </div>
+        <p><strong>T = (A+B)·(A+C)</strong></p>
+        <ol>
+          <li>Simplifier T.</li>
+          <li>Décrire le circuit associé à l'expression réduite.</li>
+          <li>Vérifier T pour A=0, B=1 et C=1.</li>
+        </ol>
+
+        <details class="exercise-correction">
+          <summary>Afficher la correction</summary>
+          <p><strong>T = A + B·C</strong>.</p>
+          <p>Circuit réduit : une porte ET pour B et C, puis une porte OU entre A et la sortie de cette porte ET.</p>
+          <p>Pour A=0, B=1, C=1 : B·C=1 puis T=0+1=<strong>1</strong>.</p>
+        </details>
+      </article>
+    </div>
+
+    <div class="boolean-score-note">
+      <strong>Barème proposé :</strong> exercice 1 /4 • exercice 2 /6 • exercice 3 /6 • exercice 4 /4 = <strong>/20</strong>
+    </div>
+  </section>
+
+  <div class="chapter-nav no-print">
+    <a href="premiere-sti2d.html">← Retour à Première STI2D</a>
+    <a href="#contenu">Revenir en haut ↑</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p><strong>Lycée Marie Rivier</strong> • Première STI2D • Logique combinatoire</p>
+    <p>Christophe Delcourt • 2026–2027</p>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+<script src="premiere-operations-booleennes.js"></script>
+</body>
+</html>

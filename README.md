@@ -219,3 +219,17 @@ Ajout de `classes/premiere-gantt.html` à partir du support élève :
 - lien « Préférences statistiques » dans le pied de page ;
 - suivi chargé sur les pages publiques du site ;
 - page de vérification Google et page hors connexion exclues.
+
+## Version 46 — Opérations booléennes Première STI2D
+
+Nouvelle page `classes/premiere-operations-booleennes.html` :
+- pas de cours long ;
+- exemples interactifs des portes NON, ET, OU, NAND, NOR et XOR ;
+- exemple de calcul d'une expression logique ;
+- exemples de simplification, De Morgan et XOR ;
+- bloc « Ce que je dois retenir » ;
+- table de vérité essentielle ;
+- quatre exercices progressifs issus du support élève ;
+- exercice 1 interactif avec correction automatique ;
+- corrections dépliables pour les autres exercices ;
+- ajout sur la page Première STI2D, au sitemap et au cache PWA.
