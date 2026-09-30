@@ -237,3 +237,11 @@ Nouvelle page `classes/premiere-operations-booleennes.html` :
 ## Version 47 — Opérations booléennes
 
 - suppression du bloc visible « Barème proposé » en bas des exercices.
+
+## Version 48 — Animations opérations booléennes
+
+- animation d'une porte ET sur les quatre combinaisons d'entrées ;
+- animation d'une porte XOR ;
+- animation pas à pas de F = ¬A + (B·C) ;
+- visualisation des signaux, de la porte et de la sortie ;
+- animations compatibles mobile et réduction des mouvements.

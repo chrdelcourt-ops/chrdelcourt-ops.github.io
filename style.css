@@ -3456,3 +3456,258 @@ a,
 @media(max-width:480px){
   .gate-grid{grid-template-columns:1fr 1fr}
 }
+
+
+/* ===== V48 : animations opérations booléennes ===== */
+.boolean-animation-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.logic-animation-card{
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:15px;
+  background:#fff;
+  box-shadow:var(--shadow-soft);
+}
+.logic-animation-card.wide{
+  grid-column:1 / -1;
+}
+.logic-animation-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  margin-bottom:16px;
+}
+.logic-animation-head span{
+  color:#087f92;
+  font-size:.68rem;
+  font-weight:900;
+  letter-spacing:.06em;
+}
+.logic-animation-head h3{
+  margin:4px 0 0;
+}
+.logic-circuit-demo{
+  display:grid;
+  grid-template-columns:92px minmax(70px,1fr) 90px minmax(70px,1fr) 70px;
+  grid-template-rows:54px 54px;
+  align-items:center;
+  gap:0 8px;
+  min-width:0;
+}
+.logic-source-row{
+  display:contents;
+}
+.logic-source-row:nth-child(1) .logic-source{grid-column:1;grid-row:1}
+.logic-source-row:nth-child(1) .logic-wire{grid-column:2;grid-row:1}
+.logic-source-row:nth-child(2) .logic-source{grid-column:1;grid-row:2}
+.logic-source-row:nth-child(2) .logic-wire{grid-column:2;grid-row:2}
+.logic-gate-shape{
+  grid-column:3;
+  grid-row:1 / 3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:74px;
+  height:74px;
+  margin:auto;
+  border:3px solid #536870;
+  border-radius:14px 38px 38px 14px;
+  background:#f7fafb;
+  color:#29434e;
+  font-weight:900;
+}
+.logic-gate-shape.xor-shape{
+  border-radius:40% 55% 55% 40%;
+}
+.logic-wire{
+  position:relative;
+  height:4px;
+  border-radius:999px;
+  background:#c9d4d7;
+  overflow:hidden;
+}
+.logic-wire::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  width:38%;
+  border-radius:inherit;
+  background:#00a9c0;
+  transform:translateX(-120%);
+  opacity:0;
+}
+.logic-wire.signal-on{
+  background:rgba(0,169,192,.28);
+}
+.logic-wire.pulse::after{
+  opacity:1;
+  animation:booleanPulse .62s linear forwards;
+}
+.output-wire{
+  grid-column:4;
+  grid-row:1 / 3;
+}
+.logic-lamp{
+  grid-column:5;
+  grid-row:1 / 3;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width:58px;
+  height:58px;
+  margin:auto;
+  border:2px solid #adbcc1;
+  border-radius:50%;
+  background:#f3f6f7;
+}
+.logic-lamp span{
+  font-size:.68rem;
+  font-weight:850;
+  color:#64767d;
+}
+.logic-lamp strong{
+  font-size:1.1rem;
+}
+.logic-lamp.signal-on{
+  border-color:#00a9c0;
+  background:#dff7fa;
+  box-shadow:0 0 0 5px rgba(0,169,192,.12);
+}
+.logic-source{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:8px 10px;
+  border:2px solid #ccd9dc;
+  border-radius:10px;
+  background:#fff;
+  transition:.25s ease;
+}
+.logic-source span{
+  font-size:.74rem;
+  font-weight:850;
+  color:#5b6e76;
+}
+.logic-source strong{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:#e8eef0;
+}
+.logic-source.signal-on{
+  border-color:#00a9c0;
+  background:#effafb;
+}
+.logic-source.signal-on strong{
+  background:#00a9c0;
+  color:#fff;
+}
+.logic-demo-caption{
+  margin-top:15px;
+  padding:10px 12px;
+  min-height:44px;
+  border-left:4px solid #00a9c0;
+  border-radius:8px;
+  background:#f2fafb;
+  color:#4e626b;
+  line-height:1.45;
+}
+.logic-expression-demo{
+  padding:15px;
+  border:1px solid #e0e7e9;
+  border-radius:12px;
+  background:#fafcfc;
+}
+.expr-inputs{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-bottom:16px;
+}
+.expr-inputs .logic-source{
+  min-width:94px;
+}
+.expr-stage{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.expr-box{
+  min-width:140px;
+  padding:13px 15px;
+  border:2px solid #d3dfe2;
+  border-radius:11px;
+  background:#fff;
+  text-align:center;
+  transition:.35s ease;
+}
+.expr-box small,
+.expr-box strong{
+  display:block;
+}
+.expr-box small{
+  margin-bottom:5px;
+  color:#6e7f86;
+  font-size:.67rem;
+  font-weight:900;
+  letter-spacing:.06em;
+}
+.expr-box.active{
+  border-color:#00a9c0;
+  background:#eaf9fb;
+  transform:translateY(-2px);
+}
+.expr-box.final.active{
+  border-color:#d4db00;
+  background:#fbfce5;
+}
+.expr-arrow{
+  color:#7d8d93;
+  font-size:1.4rem;
+  font-weight:800;
+}
+@keyframes booleanPulse{
+  from{transform:translateX(-120%)}
+  to{transform:translateX(300%)}
+}
+@media(prefers-reduced-motion:reduce){
+  .logic-wire.pulse::after{animation:none;opacity:.7;transform:none}
+  .expr-box.active{transform:none}
+}
+@media(max-width:900px){
+  .boolean-animation-grid{grid-template-columns:1fr}
+  .logic-animation-card.wide{grid-column:auto}
+}
+@media(max-width:620px){
+  .logic-circuit-demo{
+    grid-template-columns:78px minmax(38px,1fr) 66px minmax(38px,1fr) 54px;
+    gap:0 5px;
+  }
+  .logic-gate-shape{
+    width:58px;
+    height:58px;
+    font-size:.8rem;
+  }
+  .logic-lamp{
+    width:48px;
+    height:48px;
+  }
+  .expr-stage{
+    flex-direction:column;
+  }
+  .expr-arrow{
+    transform:rotate(90deg);
+  }
+}

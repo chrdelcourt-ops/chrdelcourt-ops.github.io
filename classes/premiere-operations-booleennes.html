@@ -38,6 +38,7 @@
   <div class="nav-inner">
     <a href="premiere-sti2d.html">← Première</a>
     <a href="#exemples">Exemples</a>
+    <a href="#animations">Animations</a>
     <a href="#retenir">À retenir</a>
     <a href="#exercices">Exercices</a>
   </div>
@@ -167,6 +168,107 @@
         <p class="eyebrow">XOR</p>
         <div class="boolean-expression small">A⊕B</div>
         <p>Vaut 1 uniquement si A et B sont <strong>différents</strong>.</p>
+      </article>
+    </div>
+  </section>
+
+
+  <section id="animations" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Animations</p>
+        <h2>Voir la logique fonctionner</h2>
+      </div>
+      <p class="section-intro">
+        Trois animations pour visualiser le passage des entrées vers la sortie.
+      </p>
+    </div>
+
+    <div class="boolean-animation-grid">
+      <article class="logic-animation-card">
+        <div class="logic-animation-head">
+          <div>
+            <span>ANIMATION 1</span>
+            <h3>Porte ET</h3>
+          </div>
+          <button class="btn btn-secondary logic-demo-run" type="button" data-demo="and">▶ Lancer</button>
+        </div>
+
+        <div class="logic-circuit-demo" id="demo-and">
+          <div class="logic-source-row">
+            <div class="logic-source" data-node="a"><span>A</span><strong>0</strong></div>
+            <div class="logic-wire horizontal" data-wire="a"></div>
+          </div>
+          <div class="logic-source-row">
+            <div class="logic-source" data-node="b"><span>B</span><strong>0</strong></div>
+            <div class="logic-wire horizontal" data-wire="b"></div>
+          </div>
+          <div class="logic-gate-shape">ET</div>
+          <div class="logic-wire output-wire" data-wire="out"></div>
+          <div class="logic-lamp" data-lamp="out"><span>S</span><strong>0</strong></div>
+        </div>
+
+        <div class="logic-demo-caption" id="caption-and">
+          Pour ET, la sortie vaut 1 uniquement lorsque A=1 et B=1.
+        </div>
+      </article>
+
+      <article class="logic-animation-card">
+        <div class="logic-animation-head">
+          <div>
+            <span>ANIMATION 2</span>
+            <h3>Porte XOR</h3>
+          </div>
+          <button class="btn btn-secondary logic-demo-run" type="button" data-demo="xor">▶ Lancer</button>
+        </div>
+
+        <div class="logic-circuit-demo" id="demo-xor">
+          <div class="logic-source-row">
+            <div class="logic-source" data-node="a"><span>A</span><strong>0</strong></div>
+            <div class="logic-wire horizontal" data-wire="a"></div>
+          </div>
+          <div class="logic-source-row">
+            <div class="logic-source" data-node="b"><span>B</span><strong>0</strong></div>
+            <div class="logic-wire horizontal" data-wire="b"></div>
+          </div>
+          <div class="logic-gate-shape xor-shape">XOR</div>
+          <div class="logic-wire output-wire" data-wire="out"></div>
+          <div class="logic-lamp" data-lamp="out"><span>S</span><strong>0</strong></div>
+        </div>
+
+        <div class="logic-demo-caption" id="caption-xor">
+          Pour XOR, la sortie vaut 1 lorsque les deux entrées sont différentes.
+        </div>
+      </article>
+
+      <article class="logic-animation-card wide">
+        <div class="logic-animation-head">
+          <div>
+            <span>ANIMATION 3</span>
+            <h3>Expression F = ¬A + (B·C)</h3>
+          </div>
+          <button class="btn btn-secondary logic-demo-run" type="button" data-demo="expr">▶ Lancer</button>
+        </div>
+
+        <div class="logic-expression-demo" id="demo-expr">
+          <div class="expr-inputs">
+            <div class="logic-source" data-node="a"><span>A</span><strong>0</strong></div>
+            <div class="logic-source" data-node="b"><span>B</span><strong>1</strong></div>
+            <div class="logic-source" data-node="c"><span>C</span><strong>0</strong></div>
+          </div>
+
+          <div class="expr-stage">
+            <div class="expr-box" data-stage="not"><small>NON</small><strong>¬A = 1</strong></div>
+            <div class="expr-arrow">→</div>
+            <div class="expr-box" data-stage="and"><small>ET</small><strong>B·C = 0</strong></div>
+            <div class="expr-arrow">→</div>
+            <div class="expr-box final" data-stage="or"><small>OU</small><strong>F = 1</strong></div>
+          </div>
+        </div>
+
+        <div class="logic-demo-caption" id="caption-expr">
+          On calcule d'abord ¬A et B·C, puis on applique le OU.
+        </div>
       </article>
     </div>
   </section>

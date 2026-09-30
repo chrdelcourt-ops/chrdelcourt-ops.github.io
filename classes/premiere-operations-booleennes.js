@@ -115,5 +115,114 @@
     }
   });
 
+
+  // ---------- Animations pédagogiques ----------
+  const demoButtons = [...document.querySelectorAll(".logic-demo-run")];
+
+  const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+  function setNode(card, name, value) {
+    const node = card.querySelector(`[data-node="${name}"]`);
+    if (!node) return;
+    const strong = node.querySelector("strong");
+    if (strong) strong.textContent = value;
+    node.classList.toggle("signal-on", value === 1);
+  }
+
+  function pulseWire(card, name, on) {
+    const wire = card.querySelector(`[data-wire="${name}"]`);
+    if (!wire) return;
+    wire.classList.remove("pulse", "signal-on");
+    void wire.offsetWidth;
+    if (on) wire.classList.add("signal-on");
+    wire.classList.add("pulse");
+  }
+
+  function setLamp(card, value) {
+    const lamp = card.querySelector('[data-lamp="out"]');
+    if (!lamp) return;
+    const strong = lamp.querySelector("strong");
+    if (strong) strong.textContent = value;
+    lamp.classList.toggle("signal-on", value === 1);
+  }
+
+  async function runGateDemo(type, button) {
+    const card = document.getElementById(`demo-${type}`);
+    const caption = document.getElementById(`caption-${type}`);
+    if (!card || !caption) return;
+
+    const combos = [[0,0],[0,1],[1,0],[1,1]];
+    button.disabled = true;
+
+    for (const [a,b] of combos) {
+      const out = type === "and"
+        ? (a && b ? 1 : 0)
+        : (a !== b ? 1 : 0);
+
+      setNode(card, "a", a);
+      setNode(card, "b", b);
+      setLamp(card, 0);
+
+      pulseWire(card, "a", a);
+      pulseWire(card, "b", b);
+      caption.textContent = `A=${a}, B=${b} : les deux entrées arrivent à la porte ${type === "and" ? "ET" : "XOR"}…`;
+      await wait(650);
+
+      pulseWire(card, "out", out);
+      setLamp(card, out);
+      caption.textContent = type === "and"
+        ? `A=${a}, B=${b} → ET = ${out}. La sortie vaut 1 seulement pour 1 et 1.`
+        : `A=${a}, B=${b} → XOR = ${out}. La sortie vaut 1 seulement si les entrées sont différentes.`;
+      await wait(900);
+    }
+
+    button.disabled = false;
+  }
+
+  async function runExpressionDemo(button) {
+    const card = document.getElementById("demo-expr");
+    const caption = document.getElementById("caption-expr");
+    if (!card || !caption) return;
+
+    button.disabled = true;
+    const stages = [...card.querySelectorAll("[data-stage]")];
+    stages.forEach(s => s.classList.remove("active"));
+
+    setNode(card, "a", 0);
+    setNode(card, "b", 1);
+    setNode(card, "c", 0);
+
+    caption.textContent = "Entrées choisies : A=0, B=1, C=0.";
+    await wait(700);
+
+    const notStage = card.querySelector('[data-stage="not"]');
+    notStage?.classList.add("active");
+    caption.textContent = "Étape 1 : NON A. Comme A=0, ¬A=1.";
+    await wait(950);
+
+    const andStage = card.querySelector('[data-stage="and"]');
+    andStage?.classList.add("active");
+    caption.textContent = "Étape 2 : B ET C. 1 ET 0 donne 0.";
+    await wait(950);
+
+    const orStage = card.querySelector('[data-stage="or"]');
+    orStage?.classList.add("active");
+    caption.textContent = "Étape 3 : ¬A OU (B·C). 1 OU 0 donne F=1.";
+    await wait(1100);
+
+    button.disabled = false;
+  }
+
+  demoButtons.forEach(button => {
+    button.addEventListener("click", async () => {
+      const demo = button.dataset.demo;
+      if (demo === "and" || demo === "xor") {
+        await runGateDemo(demo, button);
+      } else if (demo === "expr") {
+        await runExpressionDemo(button);
+      }
+    });
+  });
+
   updateLogic();
 })();
