@@ -1,4 +1,4 @@
-const CACHE_NAME = "marie-rivier-pwa-v46";
+const CACHE_NAME = "marie-rivier-pwa-v47";
 const CORE = [
   "/",
   "/index.html",

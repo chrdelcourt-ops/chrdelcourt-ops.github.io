@@ -3443,13 +3443,6 @@ a,
   font-size:1.05rem;
   font-weight:850;
 }
-.boolean-score-note{
-  margin-top:16px;
-  padding:13px 15px;
-  border-left:4px solid #d4db00;
-  border-radius:9px;
-  background:#fbfce9;
-}
 @media(max-width:1000px){
   .gate-grid{grid-template-columns:repeat(3,1fr)}
   .boolean-example-grid{grid-template-columns:1fr 1fr}

@@ -233,3 +233,7 @@ Nouvelle page `classes/premiere-operations-booleennes.html` :
 - exercice 1 interactif avec correction automatique ;
 - corrections dépliables pour les autres exercices ;
 - ajout sur la page Première STI2D, au sitemap et au cache PWA.
+
+## Version 47 — Opérations booléennes
+
+- suppression du bloc visible « Barème proposé » en bas des exercices.
