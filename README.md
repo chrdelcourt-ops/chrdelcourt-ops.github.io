@@ -245,3 +245,17 @@ Nouvelle page `classes/premiere-operations-booleennes.html` :
 - animation pas à pas de F = ¬A + (B·C) ;
 - visualisation des signaux, de la porte et de la sortie ;
 - animations compatibles mobile et réduction des mouvements.
+
+## Version 49 — PERT Première STI2D
+
+Nouvelle page `classes/premiere-pert.html` :
+- pas de reprise du cours complet ;
+- calculateur de durée attendue PERT ;
+- animation du réseau de la station météo ;
+- visualisation des tâches parallèles et de la convergence ;
+- mise en évidence du chemin critique ;
+- affichage des dates au plus tôt ;
+- simulateur de retard sur la tâche B ;
+- bloc « Ce que je dois retenir » ;
+- cinq exercices avec corrections dépliables ;
+- ajout sur la page Première STI2D, au sitemap et au cache PWA.

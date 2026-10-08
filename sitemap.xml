@@ -22,7 +22,7 @@
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://chrdelcourt-ops.github.io/classes/premiere-sti2d.html</ns0:loc>
-    <ns0:lastmod>2026-09-30</ns0:lastmod>
+    <ns0:lastmod>2026-10-08</ns0:lastmod>
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://chrdelcourt-ops.github.io/classes/premiere-cours-1-objet-evolue.html</ns0:loc>
@@ -75,5 +75,9 @@
   <ns0:url>
     <ns0:loc>https://chrdelcourt-ops.github.io/classes/premiere-operations-booleennes.html</ns0:loc>
     <ns0:lastmod>2026-09-30</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://chrdelcourt-ops.github.io/classes/premiere-pert.html</ns0:loc>
+    <ns0:lastmod>2026-10-08</ns0:lastmod>
   </ns0:url>
 </ns0:urlset>

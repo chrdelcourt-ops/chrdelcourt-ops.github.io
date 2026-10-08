@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PERT – Première STI2D | Lycée Marie Rivier</title>
+  <meta name="description" content="Première STI2D : exemples, animations et exercices sur la méthode PERT, les antériorités, la durée attendue et le chemin critique.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Christophe Delcourt">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/classes/premiere-pert.html">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../analytics.js" defer></script>
+
+  <meta name="theme-color" content="#00a9c0">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header compact-header">
+  <div class="header-inner">
+    <a href="../index.html" class="brand">
+      <img src="../assets/logo-marie-rivier.png" alt="Logo du Lycée Marie Rivier" class="logo">
+    </a>
+    <div class="header-title">
+      <p class="eyebrow">Première STI2D • Planification de projet</p>
+      <h1>La méthode PERT</h1>
+      <p class="subtitle">Exemples • Animations • À retenir • Exercices</p>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav pert-nav" aria-label="Navigation de la page">
+  <div class="nav-inner">
+    <a href="premiere-sti2d.html">← Première</a>
+    <a href="#exemples">Exemples</a>
+    <a href="#animations">Animations</a>
+    <a href="#retenir">À retenir</a>
+    <a href="#exercices">Exercices</a>
+  </div>
+</nav>
+
+<main id="contenu">
+  <section class="chapter-hero pert-hero">
+    <div>
+      <span class="badge">PREMIÈRE STI2D</span>
+      <h2>Comprendre les dépendances et le chemin critique</h2>
+      <p>
+        Cette page ne reprend pas le cours complet. Elle propose des exemples,
+        des animations et des exercices pour manipuler un réseau PERT.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#animations">Voir les animations</a>
+        <a class="btn btn-secondary" href="#exercices">Faire les exercices</a>
+      </div>
+    </div>
+
+    <aside class="chapter-summary">
+      <p class="eyebrow">Objectifs</p>
+      <ul class="check-list">
+        <li>Repérer les antériorités</li>
+        <li>Calculer une durée attendue</li>
+        <li>Lire un réseau PERT</li>
+        <li>Identifier les tâches parallèles</li>
+        <li>Repérer le chemin critique</li>
+        <li>Comprendre l'effet d'un retard</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section id="exemples" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Exemple 1</p>
+        <h2>Calculer une durée attendue</h2>
+      </div>
+      <p class="section-intro">
+        PERT utilise trois estimations : optimiste a, la plus probable m et pessimiste b.
+      </p>
+    </div>
+
+    <div class="pert-duration-card">
+      <div class="pert-formula">
+        <span>Durée attendue</span>
+        <strong>te = (a + 4m + b) / 6</strong>
+      </div>
+
+      <div class="pert-duration-controls">
+        <label>
+          Optimiste a
+          <input type="number" id="pert-a" min="0" step="1" value="1">
+        </label>
+        <label>
+          Plus probable m
+          <input type="number" id="pert-m" min="0" step="1" value="3">
+        </label>
+        <label>
+          Pessimiste b
+          <input type="number" id="pert-b" min="0" step="1" value="5">
+        </label>
+      </div>
+
+      <div class="pert-duration-result">
+        <span>Calcul</span>
+        <strong id="pert-duration-calc">(1 + 4 × 3 + 5) / 6</strong>
+        <div><span>te =</span> <strong id="pert-duration-result">3</strong> jours</div>
+      </div>
+
+      <p class="pert-note">
+        La durée la plus probable compte quatre fois dans le calcul.
+      </p>
+    </div>
+  </section>
+
+  <section id="animations" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Animations</p>
+        <h2>Voir le réseau PERT se construire</h2>
+      </div>
+      <p class="section-intro">
+        Exemple : station météo connectée. Les tâches sont portées par les flèches
+        et les événements sont représentés par des cercles numérotés.
+      </p>
+    </div>
+
+    <div class="pert-network-card">
+      <div class="pert-toolbar no-print">
+        <button class="btn btn-primary" type="button" id="pert-build">▶ Construire le réseau</button>
+        <button class="btn btn-secondary" type="button" id="pert-critical">Chemin critique</button>
+        <button class="btn btn-secondary" type="button" id="pert-dates">Dates au plus tôt</button>
+        <button class="btn btn-secondary" type="button" id="pert-reset">Réinitialiser</button>
+      </div>
+
+      <div class="pert-network-wrap">
+        <svg id="pert-network" class="pert-network" viewBox="0 0 940 420" role="img" aria-labelledby="pert-network-title pert-network-desc">
+          <title id="pert-network-title">Réseau PERT de la station météo connectée</title>
+          <desc id="pert-network-desc">
+            Réseau de huit événements. A va de 1 à 2. B va de 2 à 3. C va de 2 à 4.
+            D va de 3 à 5. E va de 4 à 5. F va de 5 à 6. G va de 6 à 7. H va de 7 à 8.
+          </desc>
+          <defs>
+            <marker id="pert-arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L9,3 z"></path>
+            </marker>
+          </defs>
+
+          <g class="pert-edge" data-step="1" data-task="A" data-critical="1">
+            <line x1="95" y1="210" x2="235" y2="210"></line>
+            <text x="165" y="190">A • 2 j</text>
+          </g>
+
+          <g class="pert-edge" data-step="2" data-task="B">
+            <line x1="275" y1="195" x2="405" y2="115"></line>
+            <text x="333" y="140">B • 2 j</text>
+          </g>
+          <g class="pert-edge" data-step="2" data-task="C" data-critical="1">
+            <line x1="275" y1="225" x2="405" y2="305"></line>
+            <text x="333" y="292">C • 3 j</text>
+          </g>
+
+          <g class="pert-edge" data-step="3" data-task="D">
+            <line x1="445" y1="115" x2="575" y2="195"></line>
+            <text x="505" y="142">D • 2 j</text>
+          </g>
+          <g class="pert-edge" data-step="3" data-task="E" data-critical="1">
+            <line x1="445" y1="305" x2="575" y2="225"></line>
+            <text x="505" y="293">E • 2 j</text>
+          </g>
+
+          <g class="pert-edge" data-step="4" data-task="F" data-critical="1">
+            <line x1="615" y1="210" x2="705" y2="210"></line>
+            <text x="660" y="190">F • 2 j</text>
+          </g>
+          <g class="pert-edge" data-step="5" data-task="G" data-critical="1">
+            <line x1="745" y1="210" x2="815" y2="210"></line>
+            <text x="780" y="190">G • 3 j</text>
+          </g>
+          <g class="pert-edge" data-step="6" data-task="H" data-critical="1">
+            <line x1="855" y1="210" x2="905" y2="210"></line>
+            <text x="880" y="190">H • 2 j</text>
+          </g>
+
+          <g class="pert-event" data-event="1"><circle cx="70" cy="210" r="25"></circle><text x="70" y="216">1</text><text class="pert-date" x="70" y="252">0</text></g>
+          <g class="pert-event" data-event="2"><circle cx="250" cy="210" r="25"></circle><text x="250" y="216">2</text><text class="pert-date" x="250" y="252">2</text></g>
+          <g class="pert-event" data-event="3"><circle cx="420" cy="105" r="25"></circle><text x="420" y="111">3</text><text class="pert-date" x="420" y="72">4</text></g>
+          <g class="pert-event" data-event="4"><circle cx="420" cy="315" r="25"></circle><text x="420" y="321">4</text><text class="pert-date" x="420" y="358">5</text></g>
+          <g class="pert-event" data-event="5"><circle cx="600" cy="210" r="25"></circle><text x="600" y="216">5</text><text class="pert-date" x="600" y="252">7</text></g>
+          <g class="pert-event" data-event="6"><circle cx="730" cy="210" r="25"></circle><text x="730" y="216">6</text><text class="pert-date" x="730" y="252">9</text></g>
+          <g class="pert-event" data-event="7"><circle cx="840" cy="210" r="25"></circle><text x="840" y="216">7</text><text class="pert-date" x="840" y="252">12</text></g>
+          <g class="pert-event" data-event="8"><circle cx="920" cy="210" r="20"></circle><text x="920" y="216">8</text><text class="pert-date" x="920" y="252">14</text></g>
+        </svg>
+      </div>
+
+      <div class="pert-network-caption" id="pert-network-caption">
+        A démarre le projet. Après A, les branches B→D et C→E peuvent avancer en parallèle.
+      </div>
+
+      <div class="pert-network-summary">
+        <div><span>Durée estimée</span><strong>14 jours</strong></div>
+        <div><span>Chemin critique</span><strong>A → C → E → F → G → H</strong></div>
+        <div><span>Branche non critique</span><strong>B → D</strong></div>
+        <div><span>Marge de cette branche</span><strong>1 jour</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Animation retard</p>
+        <h2>Que se passe-t-il si B prend du retard ?</h2>
+      </div>
+      <p class="section-intro">
+        La branche B→D dispose d'une marge d'un jour avant de retarder la convergence vers F.
+      </p>
+    </div>
+
+    <div class="pert-delay-card">
+      <div class="pert-delay-controls">
+        <label for="pert-delay">
+          Retard ajouté à B :
+          <strong><span id="pert-delay-value">0</span> jour</strong>
+        </label>
+        <input id="pert-delay" type="range" min="0" max="3" step="1" value="0">
+      </div>
+
+      <div class="pert-delay-bars">
+        <div>
+          <span>Branche B → D</span>
+          <div class="pert-bar-track"><i id="pert-branch-b"></i></div>
+          <strong id="pert-branch-b-label">4 j</strong>
+        </div>
+        <div>
+          <span>Branche C → E</span>
+          <div class="pert-bar-track"><i id="pert-branch-c"></i></div>
+          <strong>5 j</strong>
+        </div>
+      </div>
+
+      <div class="pert-delay-result">
+        <div><span>Convergence avant F</span><strong id="pert-convergence">J7</strong></div>
+        <div><span>Durée totale</span><strong id="pert-total">14 jours</strong></div>
+        <div><span>Impact</span><strong id="pert-impact">Aucun retard final</strong></div>
+      </div>
+
+      <p class="pert-delay-message" id="pert-delay-message">
+        Sans retard, C→E est la branche la plus longue avant F.
+      </p>
+    </div>
+  </section>
+
+  <section id="retenir" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Essentiel</p>
+        <h2>Ce que je dois retenir</h2>
+      </div>
+    </div>
+
+    <div class="pert-retain">
+      <article><span>01</span><p>PERT représente les <strong>dépendances</strong> entre les tâches sous forme de réseau.</p></article>
+      <article><span>02</span><p>Dans le réseau étudié, les <strong>flèches</strong> représentent les tâches et les <strong>cercles</strong> les événements.</p></article>
+      <article><span>03</span><p>Durée attendue : <strong>te = (a + 4m + b) / 6</strong>.</p></article>
+      <article><span>04</span><p>Deux tâches peuvent avancer en <strong>parallèle</strong> si leurs antériorités le permettent.</p></article>
+      <article><span>05</span><p>Une tâche qui attend plusieurs branches commence seulement après leur <strong>convergence</strong>.</p></article>
+      <article><span>06</span><p>Le <strong>chemin critique</strong> est le chemin le plus long : il fixe la durée minimale estimée du projet.</p></article>
+      <article><span>07</span><p>Une tâche hors chemin critique peut avoir une <strong>marge</strong>.</p></article>
+      <article><span>08</span><p>PERT aide à raisonner sur les dépendances ; <strong>Gantt</strong> place les tâches sur un calendrier.</p></article>
+    </div>
+  </section>
+
+  <section id="exercices" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Entraînement</p>
+        <h2>Exercices</h2>
+      </div>
+      <p class="section-intro">
+        Réponds d'abord sans ouvrir la correction.
+      </p>
+    </div>
+
+    <div class="pert-exercises">
+      <article class="exercise-card">
+        <div class="exercise-head"><div><span>EXERCICE 1</span><h3>Durées attendues</h3></div></div>
+        <p>Calculer te pour les tâches suivantes :</p>
+        <div class="pert-exercise-grid">
+          <div><strong>A</strong><span>a=1 • m=2 • b=3</span></div>
+          <div><strong>C</strong><span>a=2 • m=3 • b=4</span></div>
+          <div><strong>G</strong><span>a=1 • m=3 • b=5</span></div>
+        </div>
+        <details class="exercise-correction">
+          <summary>Afficher la correction</summary>
+          <p>A : (1+4×2+3)/6 = <strong>2 jours</strong>.</p>
+          <p>C : (2+4×3+4)/6 = <strong>3 jours</strong>.</p>
+          <p>G : (1+4×3+5)/6 = <strong>3 jours</strong>.</p>
+        </details>
+      </article>
+
+      <article class="exercise-card">
+        <div class="exercise-head"><div><span>EXERCICE 2</span><h3>Antériorités</h3></div></div>
+        <ol>
+          <li>Quelles tâches commencent juste après A ?</li>
+          <li>Pourquoi F doit-elle attendre D et E ?</li>
+          <li>Quelles tâches sont réalisées en parallèle dans le réseau ?</li>
+        </ol>
+        <details class="exercise-correction">
+          <summary>Afficher la correction</summary>
+          <p>Après A, <strong>B et C</strong> peuvent commencer.</p>
+          <p>F attend <strong>D et E</strong> car l'intégration nécessite la fin des deux branches.</p>
+          <p>Les branches <strong>B→D</strong> et <strong>C→E</strong> progressent en parallèle jusqu'à la convergence.</p>
+        </details>
+      </article>
+
+      <article class="exercise-card">
+        <div class="exercise-head"><div><span>EXERCICE 3</span><h3>Chemin critique</h3></div></div>
+        <p>À partir du réseau animé, déterminer le chemin critique et la durée totale estimée.</p>
+        <details class="exercise-correction">
+          <summary>Afficher la correction</summary>
+          <p>Le chemin critique est <strong>A → C → E → F → G → H</strong>.</p>
+          <p>Durée : 2 + 3 + 2 + 2 + 3 + 2 = <strong>14 jours</strong>.</p>
+        </details>
+      </article>
+
+      <article class="exercise-card">
+        <div class="exercise-head"><div><span>EXERCICE 4</span><h3>Effet d'un retard</h3></div></div>
+        <ol>
+          <li>B prend 1 jour de plus. Le projet finit-il plus tard ?</li>
+          <li>B prend 2 jours de plus. Quelle devient la durée du projet ?</li>
+        </ol>
+        <details class="exercise-correction">
+          <summary>Afficher la correction</summary>
+          <p>Avec <strong>+1 jour</strong> sur B, la branche B→D atteint 5 jours : elle rejoint C→E. Le projet reste à <strong>14 jours</strong>.</p>
+          <p>Avec <strong>+2 jours</strong>, la branche B→D atteint 6 jours : la convergence est décalée d'un jour. Le projet passe à <strong>15 jours</strong>.</p>
+        </details>
+      </article>
+
+      <article class="exercise-card">
+        <div class="exercise-head"><div><span>EXERCICE 5</span><h3>PERT ou Gantt ?</h3></div></div>
+        <p>Compléter la phrase : « PERT sert surtout à … alors que Gantt sert surtout à … »</p>
+        <details class="exercise-correction">
+          <summary>Afficher une réponse possible</summary>
+          <p><strong>PERT</strong> sert surtout à représenter les dépendances et à repérer le chemin critique ; <strong>Gantt</strong> sert surtout à placer les tâches, leur début et leur fin sur un calendrier.</p>
+        </details>
+      </article>
+    </div>
+  </section>
+
+  <div class="chapter-nav no-print">
+    <a href="premiere-sti2d.html">← Retour à Première STI2D</a>
+    <a href="#contenu">Revenir en haut ↑</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p><strong>Lycée Marie Rivier</strong> • Première STI2D • PERT</p>
+    <p>Christophe Delcourt • 2026–2027</p>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+<script src="premiere-pert.js"></script>
+</body>
+</html>
