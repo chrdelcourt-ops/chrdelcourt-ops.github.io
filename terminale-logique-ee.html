@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Révision logique booléenne – Terminale STI2D EE | Marie Rivier</title>
+  <meta name="description" content="Révision des opérations booléennes pour Terminale STI2D EE : symboles européens IEC et américains ANSI/IEEE, tables de vérité, lois de Boole, Karnaugh et exercices de ventilation.">
+  <meta name="author" content="Christophe Delcourt">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/classes/terminale-logique-ee.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Révision des opérations booléennes – Terminale STI2D EE">
+  <meta property="og:description" content="Six portes logiques, deux conventions de symboles et des applications en Énergies et Environnement.">
+  <meta property="og:url" content="https://chrdelcourt-ops.github.io/classes/terminale-logique-ee.html">
+  <meta property="og:image" content="https://chrdelcourt-ops.github.io/assets/logo-marie-rivier.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="terminale-logique-ee.css">
+  <meta name="theme-color" content="#0b8ea5">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <script src="analytics.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+<header class="site-header compact-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand"><img src="assets/logo-marie-rivier.png" alt="Logo Marie Rivier" class="logo" width="1024" height="227"></a>
+    <div class="header-title">
+      <p class="eyebrow">Terminale STI2D • Énergies et Environnement</p>
+      <h1>Révision des opérations booléennes</h1>
+      <p class="subtitle">Christophe Delcourt • Lycée Marie Rivier • 2026–2027</p>
+    </div>
+  </div>
+</header>
+<nav class="main-nav algo-nav" aria-label="Navigation du cours">
+  <div class="nav-inner">
+    <a href="terminale-sti2d.html">← Terminale</a>
+    <a href="#bases">Rappels</a><a href="#symboles">Symboles</a><a href="#manipuler">Manipuler</a>
+    <a href="#simplifier">Simplifier</a><a href="#karnaugh">Karnaugh</a><a href="#exercices">Exercices</a><a href="#documents">Documents</a>
+  </div>
+</nav>
+<main id="contenu">
+  <section class="chapter-hero algo-hero ee-hero">
+    <div>
+      <span class="badge">TERMINALE EE • RÉVISION</span>
+      <h2>Des conditions à la commande</h2>
+      <p>Réviser la logique qui permet de commander un éclairage, un chauffage ou une ventilation. Reconnaître les portes dans les conventions <strong>européenne IEC</strong> et <strong>américaine ANSI/IEEE</strong>, puis vérifier que la commande répond aux conditions choisies.</p>
+      <div class="hero-actions no-print">
+        <a class="btn btn-primary" href="#symboles">Comparer les symboles</a>
+        <a class="btn btn-secondary" href="#exercices">M’entraîner</a>
+        <a class="btn btn-secondary" href="documents/terminale-sti2d/revision-logique-ee-eleve.pdf">Fiche élève PDF</a>
+      </div>
+    </div>
+    <aside class="chapter-summary">
+      <p class="eyebrow">Objectifs</p>
+      <ul class="check-list"><li>Lire une table de vérité</li><li>Reconnaître six portes logiques</li><li>Respecter les priorités</li><li>Simplifier une expression</li><li>Relier expression et circuit</li><li>Vérifier toutes les combinaisons</li></ul>
+    </aside>
+  </section>
+
+  <section id="bases" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Rappels</p><h2>1. Deux états : 0 et 1</h2></div><p class="section-intro">Une variable représente une condition vraie ou fausse.</p></div>
+    <div class="logic-columns">
+      <article class="logic-panel"><h3>Définir le sens des entrées</h3><p>Une mesure devient une condition : <strong>A = 1</strong> peut signifier « la température dépasse le seuil choisi ». Une fonction logique calcule une sortie à partir des entrées.</p><p>Les états 0 et 1 ne correspondent pas automatiquement à 0 V et 1 V : leur sens est défini pour chaque signal.</p></article>
+      <article class="logic-panel"><h3>Exemple d’éclairage automatique</h3><p><strong>P = 1</strong> : présence détectée. <strong>N = 1</strong> : luminosité insuffisante. On commande l’éclairage seulement si les deux conditions sont réunies.</p><p class="logic-formula">L = P·N</p><p>Pour P = 1 et N = 0, L = 0.</p></article>
+    </div>
+    <div class="logic-note"><p>Une table complète à <strong>n entrées</strong> contient <strong>2<sup>n</sup> lignes</strong>. Deux entrées donnent 4 combinaisons ; trois entrées, 8 ; quatre entrées, 16.</p></div>
+  </section>
+
+  <section id="symboles" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Deux conventions, mêmes fonctions</p><h2>2. Les symboles des six portes</h2></div><p class="section-intro">Entrées à gauche, sortie S à droite. NON possède une seule entrée ; les cinq autres portes sont représentées à deux entrées.</p></div>
+    <div class="logic-gate-grid"><article class="logic-gate-card"><h3>NON / NOT<span class="logic-formula">S = ¬A</span></h3><p>Inverse la valeur de A.</p><div class="logic-pair"><figure><figcaption>Européen IEC</figcaption><img src="assets/logique-ee-NOT_IEC.png" alt="Porte NON / NOT, symbole Européen IEC, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure><figure><figcaption>Américain ANSI/IEEE</figcaption><img src="assets/logique-ee-NOT_ANSI.png" alt="Porte NON / NOT, symbole Américain ANSI/IEEE, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure></div></article>
+<article class="logic-gate-card"><h3>ET / AND<span class="logic-formula">S = A·B</span></h3><p>Vaut 1 uniquement si A et B valent 1.</p><div class="logic-pair"><figure><figcaption>Européen IEC</figcaption><img src="assets/logique-ee-AND_IEC.png" alt="Porte ET / AND, symbole Européen IEC, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure><figure><figcaption>Américain ANSI/IEEE</figcaption><img src="assets/logique-ee-AND_ANSI.png" alt="Porte ET / AND, symbole Américain ANSI/IEEE, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure></div></article>
+<article class="logic-gate-card"><h3>OU / OR<span class="logic-formula">S = A+B</span></h3><p>Vaut 1 si au moins une entrée vaut 1, y compris 11.</p><div class="logic-pair"><figure><figcaption>Européen IEC</figcaption><img src="assets/logique-ee-OR_IEC.png" alt="Porte OU / OR, symbole Européen IEC, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure><figure><figcaption>Américain ANSI/IEEE</figcaption><img src="assets/logique-ee-OR_ANSI.png" alt="Porte OU / OR, symbole Américain ANSI/IEEE, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure></div></article>
+<article class="logic-gate-card"><h3>NON-ET / NAND<span class="logic-formula">S = ¬(A·B)</span></h3><p>Inverse la sortie de la porte ET.</p><div class="logic-pair"><figure><figcaption>Européen IEC</figcaption><img src="assets/logique-ee-NAND_IEC.png" alt="Porte NON-ET / NAND, symbole Européen IEC, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure><figure><figcaption>Américain ANSI/IEEE</figcaption><img src="assets/logique-ee-NAND_ANSI.png" alt="Porte NON-ET / NAND, symbole Américain ANSI/IEEE, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure></div></article>
+<article class="logic-gate-card"><h3>NON-OU / NOR<span class="logic-formula">S = ¬(A+B)</span></h3><p>Inverse la sortie de la porte OU.</p><div class="logic-pair"><figure><figcaption>Européen IEC</figcaption><img src="assets/logique-ee-NOR_IEC.png" alt="Porte NON-OU / NOR, symbole Européen IEC, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure><figure><figcaption>Américain ANSI/IEEE</figcaption><img src="assets/logique-ee-NOR_ANSI.png" alt="Porte NON-OU / NOR, symbole Américain ANSI/IEEE, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure></div></article>
+<article class="logic-gate-card"><h3>OU exclusif / XOR<span class="logic-formula">S = A⊕B</span></h3><p>Vaut 1 lorsque les deux entrées sont différentes.</p><div class="logic-pair"><figure><figcaption>Européen IEC</figcaption><img src="assets/logique-ee-XOR_IEC.png" alt="Porte OU exclusif / XOR, symbole Européen IEC, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure><figure><figcaption>Américain ANSI/IEEE</figcaption><img src="assets/logique-ee-XOR_ANSI.png" alt="Porte OU exclusif / XOR, symbole Américain ANSI/IEEE, entrées à gauche et sortie S à droite" loading="lazy" width="663" height="286"></figure></div></article></div>
+    <div class="logic-note"><p><strong>&amp;</strong> indique ET ; <strong>≥1</strong> indique OU ; <strong>=1</strong> indique XOR à deux entrées. Une <strong>bulle en sortie</strong> inverse le résultat. Le symbole américain XOR comporte un arc supplémentaire du côté des entrées.</p></div>
+    <p>Les dessins reprennent les fonctions et formes présentées dans les fiches techniques officielles Nexperia, diagrammes fonctionnels page 2. Les références sont en fin de cours.</p>
+  </section>
+
+  <section id="manipuler" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Manipulation</p><h2>3. Tester les sorties</h2></div><p class="section-intro">Coche une entrée pour la faire passer à 1. Compare notamment OU et XOR pour A = B = 1.</p></div>
+    <div class="logic-panel">
+      <div class="logic-switches" role="group" aria-label="Entrées des portes">
+        <label><input type="checkbox" id="ee-logic-a"> A = <span id="ee-a-state">0</span></label>
+        <label><input type="checkbox" id="ee-logic-b"> B = <span id="ee-b-state">0</span></label>
+      </div>
+      <div class="logic-outputs">
+        <article><span>NON A</span><strong id="ee-out-not">1</strong></article><article><span>ET</span><strong id="ee-out-and">0</strong></article>
+        <article><span>OU</span><strong id="ee-out-or">0</strong></article><article><span>NAND</span><strong id="ee-out-nand">1</strong></article>
+        <article><span>NOR</span><strong id="ee-out-nor">1</strong></article><article><span>XOR</span><strong id="ee-out-xor">0</strong></article>
+      </div>
+      <p class="logic-live" id="ee-gate-message" aria-live="polite">A = 0, B = 0 : ET = 0, OU = 0, XOR = 0.</p>
+      <noscript><p>Active JavaScript pour manipuler les entrées. La table ci-dessous donne toutes les sorties.</p></noscript>
+    </div>
+    <div class="logic-tables" tabindex="0" role="region" aria-label="Table des six portes, défilement horizontal possible">
+      <table class="logic-table" id="ee-gate-truth"><caption>Table de vérité complète à deux entrées</caption>
+        <thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">¬A</th><th scope="col">A·B</th><th scope="col">A+B</th><th scope="col">¬(A·B)</th><th scope="col">¬(A+B)</th><th scope="col">A⊕B</th></tr></thead>
+        <tbody><tr data-inputs="00"><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+<tr data-inputs="01"><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+<tr data-inputs="10"><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+<tr data-inputs="11"><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="ventilation" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Application EE</p><h2>4. Commander une ventilation</h2></div><p class="section-intro">Exemple pédagogique : un défaut bloque la commande.</p></div>
+    <p>A = 1 : le seuil de température est dépassé. B = 1 : la commande forcée est active. C = 1 : un défaut est détecté. On commande la ventilation si A ou B vaut 1, et seulement en absence de défaut.</p>
+    <p class="logic-formula">F = (A+B)·¬C</p>
+    <figure class="logic-circuit"><img src="assets/logique-ee-ventilation_deux_symboles.png" alt="Deux circuits équivalents IEC et ANSI/IEEE : A et B entrent dans une porte OU, C est inversé par NON, puis une porte ET fournit F." loading="lazy" width="2617" height="719"><figcaption>La même fonction, dessinée dans les deux conventions.</figcaption></figure>
+    <div class="logic-panel">
+      <div class="logic-switches" role="group" aria-label="Conditions de ventilation">
+        <label><input type="checkbox" id="ee-vent-a"> Seuil dépassé (A)</label><label><input type="checkbox" id="ee-vent-b"> Commande forcée (B)</label><label><input type="checkbox" id="ee-vent-c"> Défaut détecté (C)</label>
+      </div>
+      <div class="logic-status" id="ee-vent-result"><span>A+B = <b id="ee-vent-or">0</b></span><span>¬C = <b id="ee-vent-not">1</b></span><strong>Commande F = <span id="ee-vent-f">0</span></strong></div>
+      <p class="logic-live" id="ee-vent-message" aria-live="polite">F = 0 : aucune demande de ventilation.</p>
+    </div>
+  </section>
+
+  <section id="simplifier" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Méthode</p><h2>5. Calculer et simplifier</h2></div></div>
+    <div class="logic-note"><p><strong>Priorités : parenthèses → NON → ET → OU.</strong> Avec XOR, NAND ou NOR dans une expression composée, ajoute des parenthèses pour rendre le calcul sans ambiguïté.</p></div>
+    <p>F = ¬A+B·C se lit (¬A) OU (B ET C). Pour A = 0, B = 1 et C = 0 : ¬A = 1, B·C = 0, donc F = 1.</p>
+    <div class="logic-tables" tabindex="0" role="region" aria-label="Lois de Boole">
+      <table class="logic-table logic-laws"><caption>Lois de Boole</caption><thead><tr><th scope="col">Propriété</th><th scope="col">Identités</th></tr></thead><tbody>
+        <tr><td>Commutativité</td><td>A+B = B+A ; A·B = B·A</td></tr>
+        <tr><td>Associativité</td><td>(A+B)+C = A+(B+C) ; (A·B)·C = A·(B·C)</td></tr>
+        <tr><td>Neutre et absorbant</td><td>A+0 = A ; A·1 = A ; A+1 = 1 ; A·0 = 0</td></tr>
+        <tr><td>Idempotence</td><td>A+A = A ; A·A = A</td></tr>
+        <tr><td>Complément et double négation</td><td>A+¬A = 1 ; A·¬A = 0 ; ¬(¬A) = A</td></tr>
+        <tr><td>Absorption</td><td>A+A·B = A ; A·(A+B) = A</td></tr>
+        <tr><td>Distributivité</td><td>A·(B+C) = A·B+A·C ; A+B·C = (A+B)·(A+C)</td></tr>
+      </tbody></table>
+    </div>
+    <div class="logic-columns">
+      <article class="logic-panel"><h3>Lois de De Morgan</h3><p class="logic-formula">¬(A·B) = ¬A+¬B</p><p class="logic-formula">¬(A+B) = ¬A·¬B</p><p>Échanger ET et OU, puis inverser chaque terme.</p></article>
+      <article class="logic-panel"><h3>Exemple de réduction</h3><p>A·B+A·¬B = A·(B+¬B) = A·1 = A.</p><p>On factorise A, puis on applique la complémentarité et l’élément neutre.</p><p>Une simplification correcte conserve la sortie pour <strong>toutes</strong> les combinaisons d’entrées.</p></article>
+    </div>
+    <div class="logic-note"><p><strong>Chauffage :</strong> D = 1 signifie « demande présente » et X = 1 « défaut détecté ». La commande est <strong>C = D·¬X</strong>. Pour D = 1 et X = 1, C = 0.</p></div>
+  </section>
+
+  <section id="karnaugh" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Révision du cours fourni</p><h2>6. Utiliser une carte de Karnaugh</h2></div></div>
+    <p>Les lignes et colonnes suivent l’ordre Gray <strong>00, 01, 11, 10</strong>. Deux cases voisines diffèrent d’une seule variable ; les bords opposés sont aussi voisins.</p>
+    <ol><li>Reporter les valeurs de la table de vérité.</li><li>Former les plus grands groupes rectangulaires de 1, 2, 4, 8 ou 16 cases valant 1.</li><li>Couvrir tous les 1 ; un 1 peut appartenir à plusieurs groupes.</li><li>Garder les variables constantes dans chaque groupe, directes pour 1 ou inversées pour 0.</li><li>Réunir les termes par OU, puis vérifier le résultat.</li></ol>
+    <p>À trois variables, les mintermes m(1, 3, 5, 7) ont tous C = 1. Ils forment un groupe de quatre : <strong>F = C</strong>.</p>
+    <details class="logic-answer"><summary>Exemple à quatre variables : H(A,B,C,D)</summary>
+      <p>H vaut 1 pour les mintermes 0, 2, 8, 10, 12, 13, 14 et 15. A est le bit de poids fort ; D, le bit de poids faible.</p>
+      <div class="logic-kmap logic-tables"><table class="logic-table"><caption>AB en lignes, CD en colonnes</caption><thead><tr><th scope="col">AB / CD</th><th scope="col">00</th><th scope="col">01</th><th scope="col">11</th><th scope="col">10</th></tr></thead><tbody>
+        <tr><th scope="row">00</th><td class="group-corner">1</td><td>0</td><td>0</td><td class="group-corner">1</td></tr>
+        <tr><th scope="row">01</th><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><th scope="row">11</th><td class="group-line">1</td><td class="group-line">1</td><td class="group-line">1</td><td class="group-line">1</td></tr>
+        <tr><th scope="row">10</th><td class="group-corner">1</td><td>0</td><td>0</td><td class="group-corner">1</td></tr>
+      </tbody></table></div>
+      <p>Les <strong>quatre coins</strong> donnent ¬B·¬D. La <strong>ligne AB = 11</strong> donne A·B. C disparaît des deux groupes.</p><p class="logic-formula">H = ¬B·¬D+A·B</p>
+    </details>
+  </section>
+
+  <section id="circuits" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Expression → circuit</p><h2>7. Construire avec les portes</h2></div></div>
+    <p>Commencer par les opérations entre parenthèses, créer une porte par opération et relier les sorties intermédiaires. Comparer ensuite la sortie du circuit et l’expression sur toutes les lignes de la table.</p>
+    <div class="logic-tables"><table class="logic-table logic-laws"><caption>NAND est une porte universelle</caption><thead><tr><th scope="col">Fonction</th><th scope="col">Équivalent avec NAND</th></tr></thead><tbody>
+      <tr><td>NON A</td><td>¬A = NAND(A,A)</td></tr><tr><td>A ET B</td><td>A·B = NAND(NAND(A,B), NAND(A,B))</td></tr><tr><td>A OU B</td><td>A+B = NAND(NAND(A,A), NAND(B,B))</td></tr>
+    </tbody></table></div>
+  </section>
+
+  <section id="exercices" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Entraînement</p><h2>8. Vérifier mes connaissances</h2></div><p class="section-intro">Les quatre exercices sont repris dans la fiche élève, avec le barème du support sur 20.</p></div>
+    <article class="logic-exercise"><h3>Exercice 1 — Ventilation /4</h3><p>Pour F = (A+B)·¬C, complète les sorties. Dans la fiche Word ou PDF, calcule aussi les colonnes intermédiaires A+B et ¬C.</p>
+      <form id="ee-vent-exercise"><div class="logic-tables"><table class="logic-table"><caption>Compléter la commande F</caption><thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">F</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td><label class="logic-sr-only" for="ee-answer-000">Sortie F pour A=0, B=0, C=0</label><select id="ee-answer-000" data-inputs="000" aria-describedby="ee-feedback-000"><option value="">?</option><option value="0">0</option><option value="1">1</option></select><span id="ee-feedback-000" class="logic-cell-feedback"></span></td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td><label class="logic-sr-only" for="ee-answer-001">Sortie F pour A=0, B=0, C=1</label><select id="ee-answer-001" data-inputs="001" aria-describedby="ee-feedback-001"><option value="">?</option><option value="0">0</option><option value="1">1</option></select><span id="ee-feedback-001" class="logic-cell-feedback"></span></td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td><label class="logic-sr-only" for="ee-answer-010">Sortie F pour A=0, B=1, C=0</label><select id="ee-answer-010" data-inputs="010" aria-describedby="ee-feedback-010"><option value="">?</option><option value="0">0</option><option value="1">1</option></select><span id="ee-feedback-010" class="logic-cell-feedback"></span></td></tr>
+<tr><td>0</td><td>1</td><td>1</td><td><label class="logic-sr-only" for="ee-answer-011">Sortie F pour A=0, B=1, C=1</label><select id="ee-answer-011" data-inputs="011" aria-describedby="ee-feedback-011"><option value="">?</option><option value="0">0</option><option value="1">1</option></select><span id="ee-feedback-011" class="logic-cell-feedback"></span></td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td><label class="logic-sr-only" for="ee-answer-100">Sortie F pour A=1, B=0, C=0</label><select id="ee-answer-100" data-inputs="100" aria-describedby="ee-feedback-100"><option value="">?</option><option value="0">0</option><option value="1">1</option></select><span id="ee-feedback-100" class="logic-cell-feedback"></span></td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td><label class="logic-sr-only" for="ee-answer-101">Sortie F pour A=1, B=0, C=1</label><select id="ee-answer-101" data-inputs="101" aria-describedby="ee-feedback-101"><option value="">?</option><option value="0">0</option><option value="1">1</option></select><span id="ee-feedback-101" class="logic-cell-feedback"></span></td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td><label class="logic-sr-only" for="ee-answer-110">Sortie F pour A=1, B=1, C=0</label><select id="ee-answer-110" data-inputs="110" aria-describedby="ee-feedback-110"><option value="">?</option><option value="0">0</option><option value="1">1</option></select><span id="ee-feedback-110" class="logic-cell-feedback"></span></td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td><label class="logic-sr-only" for="ee-answer-111">Sortie F pour A=1, B=1, C=1</label><select id="ee-answer-111" data-inputs="111" aria-describedby="ee-feedback-111"><option value="">?</option><option value="0">0</option><option value="1">1</option></select><span id="ee-feedback-111" class="logic-cell-feedback"></span></td></tr></tbody></table></div>
+        <div class="hero-actions"><button class="btn btn-primary" type="submit">Vérifier mes sorties</button><button class="btn btn-secondary" type="reset">Recommencer</button></div><p id="ee-exercise-feedback" class="logic-feedback" aria-live="polite"></p>
+      </form>
+      <noscript><p>La vérification automatique nécessite JavaScript. La ventilation vaut 1 uniquement pour ABC = 010, 100 ou 110.</p></noscript>
+    </article>
+    <article class="logic-exercise"><h3>Exercice 2 — Simplifications justifiées /5</h3><p>Simplifie et cite les propriétés utilisées.</p><p class="logic-formula">P = A·B+A·¬B</p><p class="logic-formula">Q = (A+B)·(A+¬B)</p><p class="logic-formula">R = A+¬A·B</p>
+      <details class="logic-answer"><summary>Afficher la correction</summary><p><strong>P = A</strong> : factorisation, complémentarité, élément neutre (/2).</p><p><strong>Q = A</strong> : Q = A+B·¬B = A+0 = A, par distributivité de OU sur ET lue en sens inverse (/2).</p><p><strong>R = A+B</strong> : R = (A+¬A)·(A+B) = 1·(A+B) (/1).</p></details>
+    </article>
+    <article class="logic-exercise"><h3>Exercice 3 — Karnaugh /6</h3><p>Pour H(A,B,C,D) valant 1 aux mintermes 0, 2, 8, 10, 12, 13, 14 et 15, complète la carte vide de la fiche élève, forme les groupes et trouve l’expression minimale.</p><p>Valeurs /2 ; groupes /2 ; expression /2.</p><a href="#karnaugh">Vérifier avec l’exemple à quatre variables ↑</a></article>
+    <article class="logic-exercise"><h3>Exercice 4 — Circuit et NAND /5</h3><p>Pour H = ¬B·¬D+A·B, dessine un circuit avec NON, ET et OU, puis une réalisation uniquement avec NAND. Vérifie H pour A = 1, B = 0 et D = 1.</p>
+      <details class="logic-answer"><summary>Afficher les circuits et la vérification</summary>
+        <figure class="logic-circuit"><img src="assets/logique-ee-h_standard.png" alt="Circuit IEC : NON sur B et D, ET sur leurs inverses, ET sur A et B, puis OU en sortie H." loading="lazy" width="1618" height="688"><figcaption>Deux NON, deux ET et une OU. La convention américaine est aussi acceptée (/2).</figcaption></figure>
+        <p>Avec cinq NAND : ¬B = NAND(B,B), ¬D = NAND(D,D), T = NAND(¬B,¬D), U = NAND(A,B), puis H = NAND(T,U).</p>
+        <figure class="logic-circuit"><img src="assets/logique-ee-h_nand.png" alt="Circuit à cinq NAND : deux inverseurs sur B et D, une NAND sur NON B et NON D, une sur A et B et une NAND finale sur T et U." loading="lazy" width="1618" height="688"><figcaption>H = ¬(T·U) = ¬T+¬U = ¬B·¬D+A·B (/2).</figcaption></figure>
+        <p>Pour A = 1, B = 0 et D = 1 : H = 1·0+1·0 = <strong>0</strong> (/1).</p>
+      </details>
+    </article>
+  </section>
+
+  <section id="documents" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Supports à conserver</p><h2>Fiche de révision élève</h2></div></div>
+    <div class="logic-panel"><p>Rappels, symboles IEC et ANSI/IEEE, applications EE et espaces de réponse pour les quatre exercices. Logo Marie Rivier inclus.</p><div class="hero-actions logic-downloads">
+      <a class="btn btn-primary" href="documents/terminale-sti2d/revision-logique-ee-eleve.pdf" download>Télécharger le PDF élève</a>
+      <a class="btn btn-secondary" href="documents/terminale-sti2d/revision-logique-ee-eleve.docx" download>Télécharger le Word élève</a>
+    </div></div>
+  </section>
+  <section class="section logic-sources" id="references">
+    <div class="section-heading"><div><p class="eyebrow">Références</p><h2>Sources des symboles</h2></div></div>
+    <p>Nexperia, fiches techniques officielles, diagrammes fonctionnels page 2. Consultées le 10 octobre 2026.</p>
+    <ul>
+      <li><a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT04.pdf">NON : 74HC04 / 74HCT04</a> — 16 février 2024.</li>
+      <li><a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT08.pdf">ET : 74HC08 / 74HCT08</a> — 16 février 2024.</li>
+      <li><a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT32.pdf">OU : 74HC32 / 74HCT32</a> — 30 avril 2025.</li>
+      <li><a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT00.pdf">NAND : 74HC00 / 74HCT00</a> — 29 avril 2025.</li>
+      <li><a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT02.pdf">NOR : 74HC02 / 74HCT02</a> — 15 février 2024.</li>
+      <li><a href="https://assets.nexperia.com/documents/data-sheet/74HC_HCT86.pdf">XOR : 74HC86 / 74HCT86</a> — 2 avril 2024.</li>
+    </ul>
+    <p>Support de départ : « Révision des opérations booléennes », document fourni par l’enseignant. Les situations EE sont des exemples pédagogiques.</p>
+  </section>
+  <div class="chapter-nav no-print"><a href="terminale-sti2d.html">← Retour à Terminale STI2D</a><a href="terminale-algorithmique-ee.html">Algorithmique EE →</a></div>
+</main>
+<footer><div class="footer-inner"><p><strong>Lycée Marie Rivier</strong> • Terminale STI2D / EE</p><p>Christophe Delcourt • 2026–2027</p></div></footer>
+<script src="script.js"></script><script src="terminale-logique-ee.js"></script>
+</body>
+</html>

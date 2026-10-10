@@ -1,4 +1,4 @@
-const CACHE_NAME = "marie-rivier-pwa-v50";
+const CACHE_NAME = "marie-rivier-pwa-v51";
 const CORE = [
   "/",
   "/index.html",
@@ -35,7 +35,26 @@ const CORE = [
   "/classes/terminale-algorithmique.html",
   "/classes/terminale-algorithmique.js",
   "/classes/terminale-algorithmique-ee.html",
-  "/classes/terminale-algorithmique-ee.js"
+  "/classes/terminale-algorithmique-ee.js",
+  "/classes/terminale-logique-ee.html",
+  "/classes/terminale-logique-ee.js",
+  "/classes/terminale-logique-ee.css",
+  "/assets/logique-ee-NOT_IEC.png",
+  "/assets/logique-ee-NOT_ANSI.png",
+  "/assets/logique-ee-AND_IEC.png",
+  "/assets/logique-ee-AND_ANSI.png",
+  "/assets/logique-ee-OR_IEC.png",
+  "/assets/logique-ee-OR_ANSI.png",
+  "/assets/logique-ee-NAND_IEC.png",
+  "/assets/logique-ee-NAND_ANSI.png",
+  "/assets/logique-ee-NOR_IEC.png",
+  "/assets/logique-ee-NOR_ANSI.png",
+  "/assets/logique-ee-XOR_IEC.png",
+  "/assets/logique-ee-XOR_ANSI.png",
+  "/assets/logique-ee-ventilation_deux_symboles.png",
+  "/assets/logique-ee-h_standard.png",
+  "/assets/logique-ee-h_nand.png",
+  "/documents/terminale-sti2d/revision-logique-ee-eleve.pdf"
 ];
 
 self.addEventListener("install", (event) => {
@@ -93,3 +112,4 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
+
