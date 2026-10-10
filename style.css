@@ -4067,3 +4067,562 @@ a,
     grid-template-columns:1fr;
   }
 }
+
+
+/* ===== V50 : Physique-Chimie 5e conducteurs isolants ===== */
+.level-grid.level-grid-five{
+  grid-template-columns:repeat(5,minmax(0,1fr));
+}
+.level-grid.level-grid-five .level-card{
+  height:100%;
+  padding:18px;
+}
+.level-five{
+  border-top:4px solid var(--mr-yellow);
+  background:linear-gradient(145deg,#fff,#fff9e9);
+}
+.five-class-hero,
+.five-electric-hero{
+  background:
+    radial-gradient(circle at 90% 12%,rgba(255,190,26,.16),transparent 26%),
+    linear-gradient(130deg,rgba(0,169,192,.10),#fff 58%,rgba(212,219,0,.10)) !important;
+}
+.five-featured{
+  background:linear-gradient(135deg,#173f4d,#087f92) !important;
+}
+.electric-test-card,
+.materials-lab{
+  padding:20px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  background:#fff;
+  box-shadow:var(--shadow-soft);
+}
+.material-picker{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:18px;
+}
+.material-picker button,
+.hypothesis-buttons button{
+  border:1px solid #cbdadd;
+  border-radius:10px;
+  padding:10px 11px;
+  background:#fff;
+  color:#3c535d;
+  cursor:pointer;
+  font:inherit;
+  font-size:.8rem;
+  font-weight:800;
+}
+.material-picker button:hover,
+.hypothesis-buttons button:hover{
+  border-color:#00a9c0;
+  background:#f0fafb;
+}
+.material-picker button.selected,
+.hypothesis-buttons button.selected{
+  border-color:#00a9c0;
+  background:#eaf9fb;
+  color:#087f92;
+}
+.circuit-stage{
+  position:relative;
+  display:grid;
+  grid-template-columns:130px 1fr 155px 1fr 120px;
+  grid-template-rows:95px 120px 95px;
+  gap:8px;
+  align-items:center;
+  min-height:350px;
+  padding:22px;
+  overflow:hidden;
+  border:1px solid #dce6e8;
+  border-radius:14px;
+  background:#f9fcfc;
+}
+.circuit-battery{
+  grid-column:1;
+  grid-row:1 / 4;
+  align-self:center;
+  justify-self:center;
+  display:grid;
+  grid-template-columns:auto 50px auto;
+  align-items:center;
+  gap:5px;
+  text-align:center;
+}
+.battery-body{
+  display:block;
+  width:48px;
+  height:92px;
+  border:3px solid #536972;
+  border-radius:8px;
+  background:linear-gradient(180deg,#fff 0 22%,#ffbe1a 22% 100%);
+}
+.battery-plus,.battery-minus{
+  font-size:1.4rem;
+  font-weight:900;
+}
+.circuit-battery small{
+  grid-column:1 / -1;
+  margin-top:4px;
+  color:#64767e;
+  font-weight:800;
+}
+.circuit-wire{
+  position:relative;
+  height:6px;
+  border-radius:999px;
+  background:#82979f;
+}
+.wire-top{grid-column:2;grid-row:1}
+.switch-control{
+  grid-column:3;
+  grid-row:1;
+  position:relative;
+  height:78px;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+}
+.switch-base{
+  position:absolute;
+  left:15px;
+  right:15px;
+  top:34px;
+  height:6px;
+  border-radius:999px;
+  background:#6d8189;
+}
+.switch-arm{
+  position:absolute;
+  left:25px;
+  top:16px;
+  width:78px;
+  height:6px;
+  border-radius:999px;
+  background:#ef3c59;
+  transform-origin:left center;
+  transform:rotate(-24deg);
+  transition:transform .28s ease,background .28s ease;
+}
+.switch-control.closed .switch-arm{
+  transform:rotate(0);
+  background:#00a9c0;
+}
+.switch-control strong{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  color:#4a616a;
+  font-size:.72rem;
+}
+.wire-right{grid-column:4;grid-row:1}
+.lamp-visual{
+  grid-column:5;
+  grid-row:1 / 4;
+  justify-self:center;
+  text-align:center;
+}
+.lamp-bulb{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:78px;
+  height:78px;
+  border:3px solid #aebdc2;
+  border-radius:50%;
+  background:#eef2f3;
+  font-size:2.1rem;
+  filter:grayscale(1);
+  transition:.3s ease;
+}
+.lamp-visual.on .lamp-bulb{
+  border-color:#ffbe1a;
+  background:#fff8c8;
+  box-shadow:0 0 24px rgba(255,190,26,.55);
+  filter:none;
+}
+.lamp-visual strong{
+  display:block;
+  margin-top:7px;
+  color:#52676f;
+  font-size:.76rem;
+}
+.wire-bottom-right{grid-column:4;grid-row:3}
+.sample-zone{
+  grid-column:3;
+  grid-row:3;
+  text-align:center;
+}
+.sample-zone span,
+.sample-zone strong{
+  display:block;
+}
+.sample-zone span{
+  color:#76868c;
+  font-size:.67rem;
+  font-weight:850;
+  text-transform:uppercase;
+}
+.sample-zone strong{
+  margin:4px 0 8px;
+  font-size:.82rem;
+}
+.sample-piece{
+  width:110px;
+  height:12px;
+  margin:0 auto;
+  border-radius:999px;
+  background:#a9b4b7;
+  transition:.25s ease;
+}
+.sample-piece.conductor{
+  background:linear-gradient(90deg,#ad713c,#d08d50,#ad713c);
+  box-shadow:0 0 0 2px rgba(173,113,60,.14);
+}
+.sample-piece.insulator{
+  background:linear-gradient(90deg,#7888a4,#9aa9c5,#7888a4);
+}
+.wire-bottom-left{grid-column:2;grid-row:3}
+.electron{
+  position:absolute;
+  top:50%;
+  left:0;
+  width:9px;
+  height:9px;
+  margin-top:-4.5px;
+  border-radius:50%;
+  background:#00a9c0;
+  opacity:0;
+}
+.current-flow .circuit-wire .electron{
+  opacity:1;
+  animation:electronMove 1.15s linear infinite;
+}
+.current-flow .circuit-wire .e2{animation-delay:.36s}
+.current-flow .circuit-wire .e3{animation-delay:.72s}
+.current-flow .circuit-wire{
+  background:#00a9c0;
+}
+.blocked .wire-top,
+.blocked .wire-right,
+.blocked .wire-bottom-right{
+  background:#82979f;
+}
+@keyframes electronMove{
+  from{left:0}
+  to{left:calc(100% - 9px)}
+}
+.circuit-status{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:14px;
+}
+.circuit-status div{
+  padding:11px 12px;
+  border:1px solid #dce6e8;
+  border-radius:10px;
+  background:#f8fbfb;
+}
+.circuit-status span,
+.circuit-status strong{
+  display:block;
+}
+.circuit-status span{
+  color:#75858c;
+  font-size:.67rem;
+  font-weight:850;
+  text-transform:uppercase;
+}
+.circuit-status strong{
+  margin-top:4px;
+  color:#263f49;
+}
+.circuit-message{
+  margin:13px 0 0;
+  padding:11px 13px;
+  border-left:4px solid #00a9c0;
+  border-radius:8px;
+  background:#f0fafb;
+  color:#4b616a;
+}
+.materials-lab{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:18px;
+}
+.hypothesis-zone{
+  padding:15px;
+  border:1px solid #dce6e8;
+  border-radius:12px;
+  background:#fafcfc;
+}
+.hypothesis-zone > p:first-child{
+  margin-top:0;
+  font-weight:800;
+}
+.hypothesis-buttons{
+  display:grid;
+  gap:8px;
+  margin:12px 0;
+}
+.hypothesis-result{
+  min-height:1.4em;
+  margin:12px 0 0;
+  font-weight:800;
+  color:#51656d;
+}
+.hypothesis-result.success{color:#357044}
+.hypothesis-result.partial{color:#9b3440}
+.materials-results{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.materials-results article{
+  padding:13px;
+  border:2px solid #dce6e8;
+  border-radius:11px;
+  background:#fff;
+  transition:.3s ease;
+}
+.materials-results span,
+.materials-results strong{
+  display:block;
+}
+.materials-results span{
+  color:#60737b;
+  font-size:.76rem;
+}
+.materials-results strong{
+  margin-top:5px;
+}
+.materials-results article.tested-conductor{
+  border-color:#60aa72;
+  background:#eff8f1;
+  animation:testPop .45s ease;
+}
+.materials-results article.tested-insulator{
+  border-color:#8f9fab;
+  background:#f2f5f7;
+  animation:testPop .45s ease;
+}
+@keyframes testPop{
+  50%{transform:scale(1.025)}
+}
+.control-test-card{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr;
+  gap:12px;
+  align-items:center;
+}
+.control-step{
+  display:grid;
+  grid-template-columns:42px 1fr;
+  gap:10px;
+  padding:15px;
+  border:1px solid #dce6e8;
+  border-radius:12px;
+  background:#fff;
+}
+.control-step > span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:#eef4f5;
+  color:#51666e;
+  font-weight:900;
+}
+.control-step strong{
+  display:block;
+  margin-bottom:4px;
+}
+.control-step p{
+  margin:0;
+  color:#687980;
+  font-size:.8rem;
+  line-height:1.45;
+}
+.control-step.success{
+  border-color:#64a972;
+  background:#eff8f1;
+}
+.control-step.success > span{
+  background:#64a972;
+  color:#fff;
+}
+.control-arrow{
+  color:#829299;
+  font-size:1.4rem;
+  font-weight:900;
+}
+.five-retain{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.five-retain article{
+  display:grid;
+  grid-template-columns:42px 1fr;
+  gap:10px;
+  align-items:center;
+  padding:12px 14px;
+  border:1px solid #dce6e8;
+  border-radius:11px;
+  background:#fff;
+}
+.five-retain article span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  background:#eaf7f9;
+  color:#087f92;
+  font-size:.7rem;
+  font-weight:900;
+}
+.five-retain article p{
+  margin:0;
+  line-height:1.45;
+}
+.safety-note{
+  margin-top:15px;
+  padding:14px 16px;
+  border-left:5px solid #ef3c59;
+  border-radius:10px;
+  background:#fff2f4;
+}
+.safety-note strong{
+  color:#a92c40;
+}
+.safety-note p{
+  margin:5px 0 0;
+  color:#5d6669;
+  line-height:1.5;
+}
+.five-exercises{
+  display:grid;
+  gap:15px;
+}
+.test-choice-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin:14px 0;
+}
+.test-choice-grid button{
+  border:1px solid #cddadd;
+  border-radius:10px;
+  padding:10px 11px;
+  background:#fff;
+  color:#3b535e;
+  cursor:pointer;
+  font:inherit;
+  font-size:.79rem;
+  font-weight:800;
+}
+.test-choice-grid button.correct{
+  border-color:#64a972;
+  background:#eff8f1;
+}
+.test-choice-grid button.incorrect{
+  border-color:#d47f89;
+  background:#fff1f2;
+}
+.exercise-result.success{color:#357044}
+.exercise-result.partial{color:#9b3440}
+
+@media(min-width:1200px){
+  .level-grid.level-grid-five .level-card{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .level-grid.level-grid-five .level-icon{
+    font-size:2rem;
+  }
+  .level-grid.level-grid-five .level-arrow{
+    display:none;
+  }
+  .level-grid.level-grid-five .level-card h3{
+    font-size:1.22rem;
+  }
+  .level-grid.level-grid-five .level-card p:last-of-type{
+    font-size:.78rem;
+  }
+}
+@media(min-width:700px) and (max-width:1199px){
+  .level-grid.level-grid-five{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media(max-width:699px){
+  .level-grid.level-grid-five{
+    grid-template-columns:1fr;
+  }
+}
+@media(max-width:900px){
+  .materials-lab{
+    grid-template-columns:1fr;
+  }
+  .control-test-card{
+    grid-template-columns:1fr;
+  }
+  .control-arrow{
+    transform:rotate(90deg);
+    text-align:center;
+  }
+  .circuit-stage{
+    grid-template-columns:100px 1fr 120px;
+    grid-template-rows:90px 95px 95px 90px;
+    min-height:430px;
+  }
+  .circuit-battery{grid-column:1;grid-row:1 / 5}
+  .wire-top{grid-column:2;grid-row:1}
+  .switch-control{grid-column:3;grid-row:1}
+  .wire-right{grid-column:3;grid-row:2}
+  .lamp-visual{grid-column:3;grid-row:3 / 5}
+  .wire-bottom-right{grid-column:2;grid-row:4}
+  .sample-zone{grid-column:2;grid-row:3}
+  .wire-bottom-left{grid-column:2;grid-row:2}
+}
+@media(max-width:650px){
+  .material-picker,
+  .materials-results,
+  .circuit-status,
+  .five-retain,
+  .test-choice-grid{
+    grid-template-columns:1fr;
+  }
+  .circuit-stage{
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+  }
+  .circuit-wire{
+    width:75%;
+  }
+  .switch-control{
+    width:160px;
+  }
+  .circuit-battery{
+    display:grid;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .current-flow .circuit-wire .electron{
+    animation:none;
+  }
+  .materials-results article.tested-conductor,
+  .materials-results article.tested-insulator{
+    animation:none;
+  }
+}

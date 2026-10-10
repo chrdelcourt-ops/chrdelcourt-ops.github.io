@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Diagramme de Gantt – Première STI2D | Lycée Marie Rivier</title>
+  <meta name="description" content="Cours interactif de Première STI2D : diagramme de Gantt, tâches, durées, dépendances, responsables, jalons, chemin critique et suivi du réel.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Christophe Delcourt">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/classes/premiere-gantt.html">
+  <link rel="stylesheet" href="../style.css">
+
+  <meta name="theme-color" content="#00a9c0">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <script src="../analytics.js" defer></script>
+</head>
+
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header compact-header">
+  <div class="header-inner">
+    <a href="../index.html" class="brand">
+      <img src="../assets/logo-marie-rivier.png" alt="Logo du Lycée Marie Rivier" class="logo">
+    </a>
+    <div class="header-title">
+      <p class="eyebrow">Première STI2D • Innovation Technologique</p>
+      <h1>Planifier un projet avec le diagramme de Gantt</h1>
+      <p class="subtitle">Christophe Delcourt • Lycée Marie Rivier • 2026–2027</p>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav gantt-nav" aria-label="Navigation du cours">
+  <div class="nav-inner">
+    <a href="premiere-sti2d.html">← Première</a>
+    <a href="#comprendre">Comprendre</a>
+    <a href="#lire">Lire</a>
+    <a href="#construire">Construire</a>
+    <a href="#meteo">Station météo</a>
+    <a href="#solaire">Borne solaire</a>
+    <a href="#suivi">Suivre</a>
+    <a href="#retenir">À retenir</a>
+  </div>
+</nav>
+
+<main id="contenu">
+  <section class="chapter-hero gantt-hero">
+    <div>
+      <span class="badge">PREMIÈRE STI2D</span>
+      <h2>Voir ce qui doit être fait, dans quel ordre et pour quelle date</h2>
+      <p>
+        Le diagramme de Gantt représente les tâches d'un projet sous forme de barres
+        horizontales sur une chronologie. Il permet de visualiser les dates, les durées,
+        les dépendances, l'avancement et les tâches réalisées en parallèle.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#comprendre">Commencer le cours</a>
+        <a class="btn btn-secondary" href="../documents/premiere-sti2d/cours-gantt-1ere-sti2d-eleve.docx">Document élève</a>
+      </div>
+    </div>
+
+    <aside class="chapter-summary">
+      <p class="eyebrow">À la fin de la séance</p>
+      <ul class="check-list">
+        <li>Comprendre et lire un Gantt</li>
+        <li>Construire un planning à partir d'un tableau</li>
+        <li>Identifier tâches, durées, responsables et jalons</li>
+        <li>Placer les tâches parallèles</li>
+        <li>Repérer ce qui conditionne la date finale</li>
+        <li>Mettre à jour le planning après un retard</li>
+      </ul>
+    </aside>
+  </section>
+  <section id="comprendre" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">1 • Comprendre</p><h2>À quoi sert le Gantt ?</h2></div>
+      <p class="section-intro">
+        Une équipe doit réaliser une station météo connectée avec un délai limité.
+        Il faut savoir ce qui peut avancer en parallèle et quelle date annoncer.
+      </p>
+    </div>
+
+    <div class="gantt-definition">
+      <strong>Définition</strong>
+      <p>
+        Un diagramme de Gantt représente les tâches d'un projet sur une échelle de temps.
+        Chaque tâche est généralement représentée par une barre horizontale dont la position
+        indique le début et la fin prévus.
+      </p>
+    </div>
+
+    <div class="gantt-def-grid gantt-def-grid-six">
+      <article><span class="gantt-term">TÂCHE</span><h3>Action à réaliser</h3><p>Elle doit être observable et suffisamment précise pour être planifiée.</p></article>
+      <article><span class="gantt-term">DURÉE</span><h3>Temps prévu</h3><p>Elle indique combien d'unités de temps sont nécessaires pour réaliser la tâche.</p></article>
+      <article><span class="gantt-term">DÉPENDANCE</span><h3>Relation logique</h3><p>Une tâche peut devoir attendre la fin d'une autre avant de commencer.</p></article>
+      <article><span class="gantt-term">JALON</span><h3>Repère sans durée</h3><p>Validation, revue de projet, prototype validé ou présentation.</p></article>
+      <article><span class="gantt-term">RESSOURCE</span><h3>Moyen mobilisé</h3><p>Personne, équipe, matériel ou logiciel nécessaire à la tâche.</p></article>
+      <article><span class="gantt-term">AVANCEMENT</span><h3>État réel</h3><p>Permet de comparer ce qui était prévu avec ce qui est réellement réalisé.</p></article>
+    </div>
+  </section>
+
+  <section id="lire" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">2 • Lire</p><h2>Lire un premier Gantt</h2></div>
+      <p class="section-intro">Lance l'animation puis réponds aux questions.</p>
+    </div>
+
+    <div class="gantt-demo-card">
+      <div class="gantt-demo-actions no-print">
+        <button class="btn btn-primary" type="button" id="read-play">▶ Lire le planning</button>
+        <button class="btn btn-secondary" type="button" id="read-reset">Réinitialiser</button>
+      </div>
+
+      <div class="gantt-board read-board" id="read-board">
+        <div class="gantt-head task-col">Tâche</div>
+        <div class="gantt-head">J1</div><div class="gantt-head">J2</div><div class="gantt-head">J3</div><div class="gantt-head">J4</div><div class="gantt-head">J5</div>
+
+        <div class="gantt-task-name">Analyser le besoin</div>
+        <div class="gantt-cell read-a" data-read="1"></div><div class="gantt-cell"></div><div class="gantt-cell"></div><div class="gantt-cell"></div><div class="gantt-cell"></div>
+
+        <div class="gantt-task-name">Choisir le capteur</div>
+        <div class="gantt-cell"></div><div class="gantt-cell read-b" data-read="2"></div><div class="gantt-cell"></div><div class="gantt-cell"></div><div class="gantt-cell"></div>
+
+        <div class="gantt-task-name">Câbler le capteur</div>
+        <div class="gantt-cell"></div><div class="gantt-cell"></div><div class="gantt-cell read-c" data-read="3"></div><div class="gantt-cell read-c" data-read="3"></div><div class="gantt-cell"></div>
+
+        <div class="gantt-task-name">Tester la mesure</div>
+        <div class="gantt-cell"></div><div class="gantt-cell"></div><div class="gantt-cell"></div><div class="gantt-cell"></div><div class="gantt-cell read-d" data-read="4"></div>
+      </div>
+
+      <div class="gantt-live-message" id="read-message">
+        Une barre colorée montre la période prévue pour réaliser une tâche.
+      </div>
+
+      <div class="gantt-questions">
+        <details><summary>Quelle tâche dure le plus longtemps ?</summary><p>« Câbler le capteur » : elle occupe J3 et J4, soit 2 jours.</p></details>
+        <details><summary>Quelle tâche doit attendre la fin du câblage ?</summary><p>« Tester la mesure » ne peut commencer qu'après la fin du câblage.</p></details>
+        <details><summary>Peut-on commencer le test avant la fin du câblage ?</summary><p>Non, car le test dépend du câblage terminé.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="construire" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">3 • Construire</p><h2>La méthode en six étapes</h2></div>
+      <p class="section-intro">On ne commence pas par colorer des cases : on analyse d'abord le projet.</p>
+    </div>
+
+    <div class="gantt-method gantt-method-six">
+      <article><span>1</span><h3>Résultat attendu</h3><p>Quel prototype, quelle validation ou quelle présentation doit être obtenu ?</p></article>
+      <article><span>2</span><h3>Découper le projet</h3><p>Écrire des actions observables et assez précises.</p></article>
+      <article><span>3</span><h3>Estimer les durées</h3><p>Utiliser une même unité et une durée réaliste.</p></article>
+      <article><span>4</span><h3>Repérer les dépendances</h3><p>Indiquer ce qui doit être terminé avant chaque tâche.</p></article>
+      <article><span>5</span><h3>Tracer le planning</h3><p>Placer les tâches au plus tôt et montrer le parallèle.</p></article>
+      <article><span>6</span><h3>Suivre et actualiser</h3><p>Comparer prévu et réel puis décaler les tâches concernées.</p></article>
+    </div>
+
+    <div class="gantt-warning">
+      <strong>Bien formuler une tâche :</strong>
+      utiliser un verbe d'action : analyser le besoin, choisir un capteur,
+      programmer l'acquisition, fabriquer le support, tester l'autonomie…
+    </div>
+  </section>
+
+  <section id="meteo" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">4 • Exemple guidé</p><h2>Station météo connectée</h2></div>
+      <p class="section-intro">
+        Complète d'abord début et fin, puis observe la construction automatique du Gantt.
+      </p>
+    </div>
+
+    <div class="gantt-project-table-wrap">
+      <table class="gantt-project-table">
+        <thead><tr><th>ID</th><th>Tâche</th><th>Durée</th><th>Après</th><th>Responsable</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>Analyser le besoin</td><td>1 j</td><td>—</td><td>Chef de projet</td></tr>
+          <tr><td>B</td><td>Choisir les composants</td><td>2 j</td><td>A</td><td>Groupe information</td></tr>
+          <tr><td>C</td><td>Concevoir le boîtier</td><td>2 j</td><td>A</td><td>Groupe matière</td></tr>
+          <tr><td>D</td><td>Programmer l'acquisition</td><td>3 j</td><td>B</td><td>Groupe information</td></tr>
+          <tr><td>E</td><td>Fabriquer le boîtier</td><td>2 j</td><td>C</td><td>Groupe matière</td></tr>
+          <tr><td>F</td><td>Intégrer et câbler</td><td>2 j</td><td>D et E</td><td>Toute l'équipe</td></tr>
+          <tr><td>G</td><td>Tester et valider</td><td>2 j</td><td>F</td><td>Toute l'équipe</td></tr>
+          <tr><td>H</td><td>Présenter le résultat</td><td>1 j</td><td>G</td><td>Toute l'équipe</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="gantt-interactive">
+      <div class="gantt-toolbar no-print">
+        <button class="btn btn-primary" type="button" id="weather-play">▶ Construire le Gantt</button>
+        <button class="btn btn-secondary" type="button" id="weather-critical">Chemin critique</button>
+        <button class="btn btn-secondary" type="button" id="weather-milestones">Jalons</button>
+        <button class="btn btn-secondary" type="button" id="weather-reset">Réinitialiser</button>
+      </div>
+
+      <div class="gantt-generated-wrap" id="weather-gantt"></div>
+
+      <div class="gantt-analysis weather-analysis">
+        <div><span>Présentation</span><strong>J11</strong></div>
+        <div><span>Chemin critique</span><strong>A → B → D → F → G → H</strong></div>
+        <div><span>Parallèle</span><strong>B avec C • D avec E</strong></div>
+        <div><span>Convergence</span><strong>F attend D et E</strong></div>
+      </div>
+
+      <div class="gantt-milestone-list" id="weather-milestone-list" hidden>
+        <strong>Exemples de jalons</strong>
+        <span>J3 : choix des composants validé</span>
+        <span>J8 : prototype intégré</span>
+        <span>J10 : prototype validé</span>
+        <span>J11 : présentation</span>
+      </div>
+
+      <div class="gantt-questions">
+        <details><summary>Après quelle tâche B et C peuvent-elles commencer ?</summary><p>Après A, « Analyser le besoin ».</p></details>
+        <details><summary>Pourquoi B et C peuvent-elles être réalisées en parallèle ?</summary><p>Elles dépendent toutes les deux de A mais ne dépendent pas l'une de l'autre.</p></details>
+        <details><summary>Pourquoi F ne peut-elle pas commencer J4 ?</summary><p>Parce qu'elle doit attendre la fin de D et de E. D ne se termine que J6.</p></details>
+        <details><summary>Quel est le premier jour possible pour H ?</summary><p>J11, après la fin de G en J10.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="solaire" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">5 • Travail en binôme</p><h2>Borne USB solaire autonome</h2></div>
+      <p class="section-intro">
+        Construis le planning sur onze jours, puis utilise le simulateur pour tester un retard.
+      </p>
+    </div>
+
+    <div class="gantt-project-table-wrap">
+      <table class="gantt-project-table">
+        <thead><tr><th>ID</th><th>Tâche</th><th>Durée</th><th>Après</th><th>Responsable</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>Analyser le besoin et les contraintes</td><td>1 j</td><td>—</td><td>Chef de projet</td></tr>
+          <tr><td>B</td><td>Choisir le panneau et la batterie</td><td>2 j</td><td>A</td><td>Groupe énergie</td></tr>
+          <tr><td>C</td><td>Modéliser la chaîne d'énergie</td><td>2 j</td><td>A</td><td>Groupe énergie</td></tr>
+          <tr><td>D</td><td>Concevoir le boîtier</td><td><strong id="solar-d-duration-label">3 j</strong></td><td>A</td><td>Groupe matière</td></tr>
+          <tr><td>E</td><td>Programmer le suivi de charge</td><td>2 j</td><td>B</td><td>Groupe information</td></tr>
+          <tr><td>F</td><td>Assembler l'électronique</td><td>2 j</td><td>B et C</td><td>Groupe information</td></tr>
+          <tr><td>G</td><td>Fabriquer le support</td><td>2 j</td><td>D</td><td>Groupe matière</td></tr>
+          <tr><td>H</td><td>Intégrer le système</td><td>2 j</td><td>E, F et G</td><td>Toute l'équipe</td></tr>
+          <tr><td>I</td><td>Tester l'autonomie</td><td>2 j</td><td>H</td><td>Toute l'équipe</td></tr>
+          <tr><td>J</td><td>Présenter la solution</td><td>1 j</td><td>I</td><td>Toute l'équipe</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="gantt-delay-lab">
+      <div class="delay-controls">
+        <label for="solar-d-duration">
+          Durée réelle de D — Concevoir le boîtier :
+          <strong><span id="solar-d-duration-value">3</span> jours</strong>
+        </label>
+        <input id="solar-d-duration" type="range" min="3" max="6" value="3" step="1">
+        <div class="delay-presets no-print">
+          <button type="button" data-duration="3">Prévu : 3 j</button>
+          <button type="button" data-duration="4">+ 1 jour</button>
+          <button type="button" data-duration="5">+ 2 jours</button>
+        </div>
+      </div>
+
+      <div class="gantt-generated-wrap" id="solar-gantt"></div>
+
+      <div class="gantt-analysis solar-analysis">
+        <div><span>Fin de D</span><strong id="solar-d-end">J4</strong></div>
+        <div><span>Début de H</span><strong id="solar-h-start">J7</strong></div>
+        <div><span>Présentation</span><strong id="solar-j-end">J11</strong></div>
+        <div><span>Retard du projet</span><strong id="solar-project-delay">0 jour</strong></div>
+      </div>
+
+      <div class="gantt-live-message" id="solar-message">
+        D finit J4 puis G occupe J5–J6. H peut commencer J7.
+      </div>
+
+      <div class="gantt-questions">
+        <details><summary>Quels ensembles de tâches peuvent être réalisés en parallèle ?</summary><p>B, C et D démarrent après A. Puis E et F peuvent avancer pendant que G est réalisé.</p></details>
+        <details><summary>Quelle est la date prévue de présentation ?</summary><p>J11.</p></details>
+        <details><summary>Quel chemin critique peut-on proposer ?</summary><p>A → D → G → H → I → J.</p></details>
+        <details><summary>Que se passe-t-il si D prend un jour de retard ?</summary><p>D finit J5, G se décale à J6–J7, H commence J8 et la présentation passe de J11 à J12.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="suivi" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">6 • Suivre le projet</p><h2>Comparer le prévu et le réel</h2></div>
+      <p class="section-intro">Un planning n'est pas figé : il évolue avec l'avancement réel.</p>
+    </div>
+
+    <div class="gantt-follow-grid">
+      <article><span>PRÉVU</span><h3>Ce qui était planifié</h3><p>Dates et durées estimées avant le début du projet.</p></article>
+      <article><span>RÉEL</span><h3>Ce qui s'est passé</h3><p>Dates effectivement observées pendant la réalisation.</p></article>
+      <article><span>ÉCART</span><h3>La différence</h3><p>Retard, avance ou durée différente de la prévision.</p></article>
+      <article><span>ACTION</span><h3>La décision</h3><p>Décaler, réorganiser, ajouter une ressource ou réduire le périmètre.</p></article>
+    </div>
+
+    <div class="gantt-warning">
+      <strong>Outil numérique :</strong>
+      un tableur ou un logiciel de gestion de projet peut automatiser l'affichage du Gantt.
+      Il ne remplace pas l'analyse des contraintes, des ressources et des dépendances par l'équipe.
+    </div>
+  </section>
+
+  <section id="retenir" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">7 • Synthèse</p><h2>Ce que je dois retenir</h2></div>
+    </div>
+
+    <div class="retain-grid gantt-retain-grid">
+      <article><span>1</span><p>Le Gantt représente les <strong>tâches</strong> d'un projet sur une échelle de <strong>temps</strong>.</p></article>
+      <article><span>2</span><p>Une tâche est une action identifiable ; sa durée indique le temps prévu.</p></article>
+      <article><span>3</span><p>Une dépendance indique qu'une tâche doit en attendre une ou plusieurs autres.</p></article>
+      <article><span>4</span><p>Deux tâches peuvent avancer en <strong>parallèle</strong> si elles ne se bloquent pas et si les ressources sont disponibles.</p></article>
+      <article><span>5</span><p>Un <strong>jalon</strong> est un événement repère sans durée.</p></article>
+      <article><span>6</span><p>Le <strong>chemin critique</strong> conditionne la date finale du projet.</p></article>
+      <article><span>7</span><p>Le Gantt doit être <strong>actualisé</strong> avec les dates réelles et les décisions prises.</p></article>
+    </div>
+
+    <form id="gantt-quiz" class="quiz-form gantt-quiz">
+      <fieldset data-correct="b">
+        <legend>1. À quoi sert principalement un diagramme de Gantt ?</legend>
+        <label><input type="radio" name="q1" value="a"> À dessiner le prototype</label>
+        <label><input type="radio" name="q1" value="b"> À planifier les tâches dans le temps</label>
+        <label><input type="radio" name="q1" value="c"> À calculer le prix du produit</label>
+      </fieldset>
+
+      <fieldset data-correct="c">
+        <legend>2. Un jalon possède une durée de…</legend>
+        <label><input type="radio" name="q2" value="a"> 1 jour</label>
+        <label><input type="radio" name="q2" value="b"> 2 jours</label>
+        <label><input type="radio" name="q2" value="c"> 0 jour</label>
+      </fieldset>
+
+      <fieldset data-correct="a">
+        <legend>3. Dans la station météo, pourquoi F attend-elle D et E ?</legend>
+        <label><input type="radio" name="q3" value="a"> L'intégration nécessite le programme et le boîtier fabriqué</label>
+        <label><input type="radio" name="q3" value="b"> Parce que toutes les tâches sont successives</label>
+        <label><input type="radio" name="q3" value="c"> Parce que F est un jalon</label>
+      </fieldset>
+
+      <fieldset data-correct="b">
+        <legend>4. Dans la borne solaire, si D prend 1 jour de retard, la présentation passe à…</legend>
+        <label><input type="radio" name="q4" value="a"> J11</label>
+        <label><input type="radio" name="q4" value="b"> J12</label>
+        <label><input type="radio" name="q4" value="c"> J13</label>
+      </fieldset>
+
+      <fieldset data-correct="b">
+        <legend>5. Que faut-il faire lorsqu'un planning ne correspond plus à la réalité ?</legend>
+        <label><input type="radio" name="q5" value="a"> Le supprimer</label>
+        <label><input type="radio" name="q5" value="b"> Le mettre à jour avec le réel et les décisions</label>
+        <label><input type="radio" name="q5" value="c"> Ne rien modifier</label>
+      </fieldset>
+
+      <div class="quiz-actions">
+        <button class="btn btn-primary" type="submit">Corriger</button>
+        <button class="btn btn-secondary" type="reset">Recommencer</button>
+      </div>
+      <div id="gantt-quiz-score" class="quiz-score" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <section class="section sources">
+    <div class="section-heading">
+      <div><p class="eyebrow">Document élève</p><h2>Support du cours</h2></div>
+    </div>
+    <div class="resource-list">
+      <a href="../documents/premiere-sti2d/cours-gantt-1ere-sti2d-eleve.docx">
+        <strong>Cours Gantt Première STI2D – version élève</strong>
+        <span>Document Word à compléter en classe.</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="chapter-nav no-print">
+    <a href="premiere-sti2d.html">← Retour à Première STI2D</a>
+    <a href="#contenu">Revenir en haut ↑</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p><strong>Lycée Marie Rivier</strong> • Première STI2D • Planifier un projet</p>
+    <p>Christophe Delcourt • 2026–2027</p>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+<script src="premiere-gantt.js"></script>
+</body>
+</html>

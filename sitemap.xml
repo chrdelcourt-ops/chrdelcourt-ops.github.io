@@ -2,7 +2,7 @@
 <ns0:urlset xmlns:ns0="http://www.sitemaps.org/schemas/sitemap/0.9">
   <ns0:url>
     <ns0:loc>https://chrdelcourt-ops.github.io/</ns0:loc>
-    <ns0:lastmod>2026-09-19</ns0:lastmod>
+    <ns0:lastmod>2026-10-10</ns0:lastmod>
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://chrdelcourt-ops.github.io/themes/internet.html</ns0:loc>
@@ -79,5 +79,13 @@
   <ns0:url>
     <ns0:loc>https://chrdelcourt-ops.github.io/classes/premiere-pert.html</ns0:loc>
     <ns0:lastmod>2026-10-08</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://chrdelcourt-ops.github.io/classes/cinquieme-physique-chimie.html</ns0:loc>
+    <ns0:lastmod>2026-10-10</ns0:lastmod>
+  </ns0:url>
+  <ns0:url>
+    <ns0:loc>https://chrdelcourt-ops.github.io/classes/cinquieme-conducteurs-isolants.html</ns0:loc>
+    <ns0:lastmod>2026-10-10</ns0:lastmod>
   </ns0:url>
 </ns0:urlset>

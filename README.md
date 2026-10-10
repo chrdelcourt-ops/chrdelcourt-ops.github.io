@@ -259,3 +259,18 @@ Nouvelle page `classes/premiere-pert.html` :
 - bloc « Ce que je dois retenir » ;
 - cinq exercices avec corrections dépliables ;
 - ajout sur la page Première STI2D, au sitemap et au cache PWA.
+
+## Version 50 — Physique-Chimie 5e : conducteurs et isolants
+
+Nouvel espace `classes/cinquieme-physique-chimie.html` et activité
+`classes/cinquieme-conducteurs-isolants.html` :
+- pas de reprise du cours complet ;
+- circuit testeur animé avec pile 4,5 V, interrupteur, lampe et matériau ;
+- circulation animée du courant lorsqu'un conducteur ferme la boucle ;
+- six matériaux à tester : cuivre, acier, aluminium, plastique, bois sec, gomme ;
+- hypothèse avant test puis comparaison au résultat ;
+- animation de la vérification avec le cuivre témoin ;
+- bloc « Ce que je dois retenir » et rappel de sécurité ;
+- exercices interactifs ;
+- accès 5e ajouté sur l'accueil ;
+- ajout au sitemap, à Google Analytics existant et au cache PWA.

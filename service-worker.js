@@ -1,4 +1,4 @@
-const CACHE_NAME = "marie-rivier-pwa-v49";
+const CACHE_NAME = "marie-rivier-pwa-v50";
 const CORE = [
   "/",
   "/index.html",
@@ -16,6 +16,9 @@ const CORE = [
   "/themes/revisions-binaire-debit.html",
   "/themes/revisions-binaire-debit.js",
   "/themes/web.html",
+  "/classes/cinquieme-physique-chimie.html",
+  "/classes/cinquieme-conducteurs-isolants.html",
+  "/classes/cinquieme-conducteurs-isolants.js",
   "/classes/premiere-sti2d.html",
   "/classes/premiere-pert.html",
   "/classes/premiere-pert.js",
