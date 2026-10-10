@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Conducteurs et isolants – 5e | Lycée Marie Rivier</title>
+  <meta name="description" content="5e Physique-Chimie : animations interactives pour tester des matériaux dans un circuit électrique et les classer conducteur ou isolant.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Christophe Delcourt">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/classes/cinquieme-conducteurs-isolants.html">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../analytics.js" defer></script>
+
+  <meta name="theme-color" content="#00a9c0">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header compact-header">
+  <div class="header-inner">
+    <a href="../index.html" class="brand">
+      <img src="../assets/logo-marie-rivier.png" alt="Logo du Lycée Marie Rivier" class="logo">
+    </a>
+    <div class="header-title">
+      <p class="eyebrow">Physique-Chimie • 5e</p>
+      <h1>Conducteurs et isolants électriques</h1>
+      <p class="subtitle">Animations • Tests • À retenir • Exercices</p>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav five-nav" aria-label="Navigation de la page">
+  <div class="nav-inner">
+    <a href="cinquieme-physique-chimie.html">← 5e</a>
+    <a href="#animation">Circuit testeur</a>
+    <a href="#materiaux">Matériaux</a>
+    <a href="#retenir">À retenir</a>
+    <a href="#exercices">Exercices</a>
+  </div>
+</nav>
+
+<main id="contenu">
+  <section class="chapter-hero five-electric-hero">
+    <div>
+      <span class="badge">5e • PHYSIQUE-CHIMIE</span>
+      <h2>Quels matériaux laissent passer le courant électrique ?</h2>
+      <p>
+        Pas de cours long : choisis un matériau, réalise le test, observe la lampe
+        et conclus à partir de ce que tu vois.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#animation">Commencer le test</a>
+        <a class="btn btn-secondary" href="#exercices">Faire les exercices</a>
+      </div>
+    </div>
+
+    <aside class="chapter-summary">
+      <p class="eyebrow">Méthode</p>
+      <ul class="check-list">
+        <li>Je choisis un matériau</li>
+        <li>Je ferme l'interrupteur</li>
+        <li>J'observe la lampe</li>
+        <li>Je vérifie le montage si elle reste éteinte</li>
+        <li>Je conclus</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section id="animation" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Animation 1</p>
+        <h2>Le circuit testeur</h2>
+      </div>
+      <p class="section-intro">Sélectionne un matériau puis ferme l'interrupteur.</p>
+    </div>
+
+    <div class="electric-test-card">
+      <div class="material-picker" id="material-picker">
+        <button type="button" data-material="cuivre" class="selected">Fil de cuivre</button>
+        <button type="button" data-material="acier">Trombone en acier</button>
+        <button type="button" data-material="aluminium">Papier aluminium</button>
+        <button type="button" data-material="plastique">Règle en plastique</button>
+        <button type="button" data-material="bois">Bois sec</button>
+        <button type="button" data-material="gomme">Gomme</button>
+      </div>
+
+      <div class="circuit-stage" id="circuit-stage">
+        <div class="circuit-battery">
+          <span class="battery-plus">+</span>
+          <span class="battery-body"></span>
+          <span class="battery-minus">−</span>
+          <small>Pile 4,5 V</small>
+        </div>
+
+        <div class="circuit-wire wire-top">
+          <i class="electron e1"></i><i class="electron e2"></i><i class="electron e3"></i>
+        </div>
+
+        <button type="button" class="switch-control open" id="switch-control" aria-pressed="false">
+          <span class="switch-base"></span>
+          <span class="switch-arm"></span>
+          <strong>Interrupteur ouvert</strong>
+        </button>
+
+        <div class="circuit-wire wire-right">
+          <i class="electron e1"></i><i class="electron e2"></i>
+        </div>
+
+        <div class="lamp-visual" id="lamp-visual">
+          <div class="lamp-bulb">💡</div>
+          <strong>Lampe éteinte</strong>
+        </div>
+
+        <div class="circuit-wire wire-bottom-right">
+          <i class="electron e1"></i><i class="electron e2"></i>
+        </div>
+
+        <div class="sample-zone" id="sample-zone">
+          <span>Matériau testé</span>
+          <strong id="sample-name">Fil de cuivre</strong>
+          <div class="sample-piece conductor" id="sample-piece"></div>
+        </div>
+
+        <div class="circuit-wire wire-bottom-left">
+          <i class="electron e1"></i><i class="electron e2"></i>
+        </div>
+      </div>
+
+      <div class="circuit-status">
+        <div><span>Interrupteur</span><strong id="switch-state">OUVERT</strong></div>
+        <div><span>Lampe</span><strong id="lamp-state">ÉTEINTE</strong></div>
+        <div><span>Conclusion</span><strong id="material-conclusion">Ferme le circuit pour tester</strong></div>
+      </div>
+
+      <p class="circuit-message" id="circuit-message">
+        Le circuit est ouvert : le courant ne peut pas circuler.
+      </p>
+    </div>
+  </section>
+
+  <section id="materiaux" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Animation 2</p>
+        <h2>Teste les six matériaux</h2>
+      </div>
+      <p class="section-intro">
+        Fais une hypothèse, lance le test puis compare ta prédiction au résultat.
+      </p>
+    </div>
+
+    <div class="materials-lab">
+      <div class="hypothesis-zone">
+        <p>Pour le matériau choisi, je pense qu'il est :</p>
+        <div class="hypothesis-buttons">
+          <button type="button" data-hypothesis="conducteur">Conducteur</button>
+          <button type="button" data-hypothesis="isolant">Isolant</button>
+          <button type="button" data-hypothesis="inconnu">Je ne sais pas</button>
+        </div>
+        <button class="btn btn-primary" type="button" id="run-material-test">▶ Tester le matériau</button>
+        <p class="hypothesis-result" id="hypothesis-result" aria-live="polite"></p>
+      </div>
+
+      <div class="materials-results" id="materials-results">
+        <article data-result="cuivre"><span>Cuivre</span><strong>Non testé</strong></article>
+        <article data-result="acier"><span>Acier</span><strong>Non testé</strong></article>
+        <article data-result="aluminium"><span>Aluminium</span><strong>Non testé</strong></article>
+        <article data-result="plastique"><span>Plastique</span><strong>Non testé</strong></article>
+        <article data-result="bois"><span>Bois sec</span><strong>Non testé</strong></article>
+        <article data-result="gomme"><span>Gomme</span><strong>Non testé</strong></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Animation 3</p>
+        <h2>Pourquoi vérifier avec le cuivre ?</h2>
+      </div>
+    </div>
+
+    <div class="control-test-card">
+      <div class="control-step">
+        <span>1</span>
+        <div><strong>La lampe reste éteinte</strong><p>Ne conclus pas tout de suite que le matériau est isolant.</p></div>
+      </div>
+      <div class="control-arrow">→</div>
+      <div class="control-step">
+        <span>2</span>
+        <div><strong>Remets le cuivre</strong><p>Le cuivre sert de témoin pour vérifier le circuit et les contacts.</p></div>
+      </div>
+      <div class="control-arrow">→</div>
+      <div class="control-step success">
+        <span>3</span>
+        <div><strong>La lampe s'allume</strong><p>Le montage fonctionne : tu peux interpréter le test du matériau.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="retenir" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Essentiel</p>
+        <h2>Ce que je dois retenir</h2>
+      </div>
+    </div>
+
+    <div class="five-retain">
+      <article><span>01</span><p>Pour tester, le circuit doit être <strong>fermé</strong>.</p></article>
+      <article><span>02</span><p>Si la lampe s'allume, le courant circule : le matériau est <strong>conducteur</strong>.</p></article>
+      <article><span>03</span><p>Si la lampe reste éteinte après vérification du montage, le matériau est <strong>isolant</strong> dans les conditions du test.</p></article>
+      <article><span>04</span><p>Le cuivre, l'acier et l'aluminium sont conducteurs dans cette expérience.</p></article>
+      <article><span>05</span><p>Le plastique, le bois sec et la gomme sont isolants dans cette expérience.</p></article>
+      <article><span>06</span><p>Le courant conventionnel va de la borne <strong>+</strong> vers la borne <strong>−</strong> à l'extérieur du générateur.</p></article>
+    </div>
+
+    <div class="safety-note">
+      <strong>⚠️ Sécurité</strong>
+      <p>
+        Cette activité utilise uniquement une pile de 4,5 V. Ne jamais tester une prise,
+        le secteur, le corps humain, un liquide ou une boisson. Ouvrir l'interrupteur avant
+        de changer de matériau.
+      </p>
+    </div>
+  </section>
+
+  <section id="exercices" class="section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Entraînement</p>
+        <h2>Exercices rapides</h2>
+      </div>
+    </div>
+
+    <div class="five-exercises">
+      <article class="exercise-card">
+        <div class="exercise-head"><div><span>EXERCICE 1</span><h3>Observer puis conclure</h3></div></div>
+        <p>La lampe s'allume lorsque l'on place un trombone en acier entre les deux pinces. Que peut-on conclure ?</p>
+        <div class="test-choice-grid" data-answer="conducteur">
+          <button type="button" data-value="conducteur">Le trombone est conducteur</button>
+          <button type="button" data-value="isolant">Le trombone est isolant</button>
+        </div>
+        <p class="exercise-result" aria-live="polite"></p>
+      </article>
+
+      <article class="exercise-card">
+        <div class="exercise-head"><div><span>EXERCICE 2</span><h3>Avant de conclure</h3></div></div>
+        <p>La lampe reste éteinte avec une règle en plastique. Quelle vérification faut-il faire ?</p>
+        <div class="test-choice-grid" data-answer="cuivre">
+          <button type="button" data-value="cuivre">Retester le circuit avec le cuivre</button>
+          <button type="button" data-value="prise">Tester sur une prise électrique</button>
+          <button type="button" data-value="rien">Conclure immédiatement</button>
+        </div>
+        <p class="exercise-result" aria-live="polite"></p>
+      </article>
+
+      <article class="exercise-card">
+        <div class="exercise-head"><div><span>EXERCICE 3</span><h3>Classer</h3></div></div>
+        <p>Quel groupe contient uniquement des conducteurs testés dans l'activité ?</p>
+        <div class="test-choice-grid" data-answer="metaux">
+          <button type="button" data-value="metaux">Cuivre • acier • aluminium</button>
+          <button type="button" data-value="isolants">Plastique • bois sec • gomme</button>
+          <button type="button" data-value="mixte">Cuivre • gomme • plastique</button>
+        </div>
+        <p class="exercise-result" aria-live="polite"></p>
+      </article>
+    </div>
+  </section>
+
+  <div class="chapter-nav no-print">
+    <a href="cinquieme-physique-chimie.html">← Retour à la 5e</a>
+    <a href="#contenu">Revenir en haut ↑</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p><strong>Lycée Marie Rivier</strong> • Physique-Chimie • 5e</p>
+    <p>Christophe Delcourt • 2026–2027</p>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+<script src="cinquieme-conducteurs-isolants.js"></script>
+</body>
+</html>
