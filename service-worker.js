@@ -1,4 +1,4 @@
-const CACHE_NAME = "marie-rivier-pwa-v51";
+const CACHE_NAME = "marie-rivier-pwa-v52";
 const CORE = [
   "/",
   "/index.html",
@@ -12,6 +12,9 @@ const CORE = [
   "/assets/app-icon-512.png",
   "/assets/app-icon-maskable-512.png",
   "/themes/internet.html",
+  "/themes/revisions-internet-ds.html",
+  "/themes/revisions-internet-ds.css",
+  "/themes/revisions-internet-ds.js",
   "/themes/binaire-bases-debit.html",
   "/themes/revisions-binaire-debit.html",
   "/themes/revisions-binaire-debit.js",
@@ -54,7 +57,7 @@ const CORE = [
   "/assets/logique-ee-ventilation_deux_symboles.png",
   "/assets/logique-ee-h_standard.png",
   "/assets/logique-ee-h_nand.png",
-  "/documents/terminale-sti2d/revision-logique-ee-eleve.pdf"
+  "/documents/terminale-sti2d/revision-logique-ee-eleve.pdf",
 ];
 
 self.addEventListener("install", (event) => {
@@ -112,4 +115,3 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
-

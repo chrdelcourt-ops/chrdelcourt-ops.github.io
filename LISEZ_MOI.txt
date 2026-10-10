@@ -1,0 +1,6 @@
+Mise à jour V52 – Révisions Internet SNT Seconde
+
+Décompresser puis déposer le CONTENU du dossier dans la racine du dépôt GitHub en conservant les dossiers themes/.
+Les fichiers existants index.html, service-worker.js, sitemap.xml et les deux pages Internet/Filius doivent être remplacés.
+Les trois nouveaux fichiers revisions-internet-ds.* doivent être créés dans themes/.
+Après Commit changes, attendre le déploiement GitHub Pages puis faire Ctrl+F5.

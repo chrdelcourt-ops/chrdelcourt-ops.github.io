@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Révisions Internet – SNT Seconde | Préparation DS</title>
+  <meta name="description" content="Révisions interactives du thème Internet en SNT Seconde : IP, TCP, DNS, routage, Filius, commandes réseau et exercices pour préparer le futur DS.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Christophe Delcourt">
+  <link rel="canonical" href="https://chrdelcourt-ops.github.io/themes/revisions-internet-ds.html">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="revisions-internet-ds.css">
+  <script src="../analytics.js" defer></script>
+  <meta name="theme-color" content="#00a9c0">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/app-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+</head>
+<body>
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header compact-header">
+  <div class="header-inner">
+    <a href="../index.html" class="brand">
+      <img src="../assets/logo-marie-rivier.png" alt="Logo du Lycée Marie Rivier" class="logo">
+    </a>
+    <div class="header-title">
+      <p class="eyebrow">SNT • Seconde • Thème 1</p>
+      <h1>Révisions — Internet</h1>
+      <p class="subtitle">Préparation progressive au futur DS</p>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav internet-revision-nav" aria-label="Navigation des révisions">
+  <div class="nav-inner">
+    <a href="internet.html">← Cours Internet</a>
+    <a href="#essentiel">Essentiel</a>
+    <a href="#routage">Routage</a>
+    <a href="#dns">DNS & Web</a>
+    <a href="#filius">Filius</a>
+    <a href="#diagnostic">Diagnostic</a>
+    <a href="#entrainement">Entraînement</a>
+  </div>
+</nav>
+
+<main id="contenu">
+  <section class="chapter-hero internet-revision-hero">
+    <div>
+      <span class="badge">RÉVISIONS • FUTUR DS</span>
+      <h2>Revoir le thème Internet avec le cours et le TP Filius</h2>
+      <p>
+        Cette page sert à reprendre les notions essentielles, visualiser les mécanismes du réseau
+        et s'entraîner progressivement avant le devoir en classe.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#essentiel">Commencer les révisions</a>
+        <a class="btn btn-secondary" href="tp1-internet-filius.html">Revoir le TP Filius</a>
+      </div>
+    </div>
+    <aside class="chapter-summary">
+      <p class="eyebrow">Je dois savoir</p>
+      <ul class="check-list">
+        <li>Distinguer Internet et Web</li>
+        <li>Expliquer IP, TCP et les paquets</li>
+        <li>Distinguer switch et routeur</li>
+        <li>Comprendre passerelle et sous-réseaux</li>
+        <li>Expliquer le rôle du DNS</li>
+        <li>Utiliser les commandes vues avec Filius</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="section revision-dashboard">
+    <div class="section-heading">
+      <div><p class="eyebrow">Mon suivi</p><h2>Où j'en suis</h2></div>
+      <p class="section-intro">Coche ce que tu maîtrises. Les choix restent enregistrés sur cet appareil.</p>
+    </div>
+    <div class="revision-progress">
+      <div class="revision-progress-bar"><span id="revision-progress-fill"></span></div>
+      <strong id="revision-progress-text">0 / 10 maîtrisés</strong>
+    </div>
+    <div class="revision-check-grid" id="revision-check-grid">
+      <label><input type="checkbox" data-skill="internet-web"> Internet ≠ Web</label>
+      <label><input type="checkbox" data-skill="switch-routeur"> Switch / routeur</label>
+      <label><input type="checkbox" data-skill="ip"> Adresse IPv4 et réseau /24</label>
+      <label><input type="checkbox" data-skill="passerelle"> Passerelle par défaut</label>
+      <label><input type="checkbox" data-skill="paquets"> Paquets et routage</label>
+      <label><input type="checkbox" data-skill="tcp-ip"> IP / TCP</label>
+      <label><input type="checkbox" data-skill="dns"> DNS</label>
+      <label><input type="checkbox" data-skill="client"> Client / serveur et P2P</label>
+      <label><input type="checkbox" data-skill="commandes"> ipconfig / ping / tracert / nslookup</label>
+      <label><input type="checkbox" data-skill="diagnostic"> Diagnostic d'une panne simple</label>
+    </div>
+  </section>
+
+  <section id="essentiel" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Révision express</p><h2>Ce que je dois retenir</h2></div></div>
+    <div class="internet-essential-grid">
+      <article><span>01</span><h3>Internet ≠ Web</h3><p>Internet est le réseau de réseaux. Le Web est un service qui utilise Internet.</p></article>
+      <article><span>02</span><h3>Switch</h3><p>Il relie les équipements d'un même réseau local.</p></article>
+      <article><span>03</span><h3>Routeur</h3><p>Il relie des réseaux IP différents et choisit où transmettre les paquets.</p></article>
+      <article><span>04</span><h3>Adresse IP</h3><p>Elle identifie une interface sur un réseau. IPv4 = 32 bits ; IPv6 = 128 bits.</p></article>
+      <article><span>05</span><h3>Paquets</h3><p>Les données sont découpées en paquets qui peuvent suivre des chemins différents.</p></article>
+      <article><span>06</span><h3>IP / TCP</h3><p>IP adresse et achemine. TCP ajoute la fiabilité, la remise en ordre et la retransmission.</p></article>
+      <article><span>07</span><h3>DNS</h3><p>Il associe un nom de domaine à une adresse IP.</p></article>
+      <article><span>08</span><h3>Passerelle</h3><p>C'est l'adresse du routeur local utilisée pour joindre un autre réseau.</p></article>
+    </div>
+  </section>
+
+  <section id="routage" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Animation 1</p><h2>Suivre un paquet entre deux LAN</h2></div>
+      <p class="section-intro">Situation du TP Filius : P1 est dans 192.168.1.0/24 et T1 dans 192.168.2.0/24.</p>
+    </div>
+    <div class="route-lab">
+      <div class="route-toolbar">
+        <button class="btn btn-primary" type="button" id="route-play">▶ Envoyer un paquet</button>
+        <button class="btn btn-secondary" type="button" id="route-break">Couper le lien R1 → SW-B</button>
+        <button class="btn btn-secondary" type="button" id="route-reset">Réinitialiser</button>
+      </div>
+      <div class="route-network" id="route-network">
+        <div class="route-node computer" data-node="p1"><span>P1</span><strong>192.168.1.10</strong></div>
+        <div class="route-link" data-link="p1-sw"></div>
+        <div class="route-node switch" data-node="swa"><span>SW-A</span><strong>Switch</strong></div>
+        <div class="route-link" data-link="sw-r1"></div>
+        <div class="route-node router" data-node="r1"><span>R1</span><strong>.1.254 / .2.254</strong></div>
+        <div class="route-link" data-link="r1-sw"></div>
+        <div class="route-node switch" data-node="swb"><span>SW-B</span><strong>Switch</strong></div>
+        <div class="route-link" data-link="sw-t1"></div>
+        <div class="route-node computer" data-node="t1"><span>T1</span><strong>192.168.2.10</strong></div>
+        <div class="route-packet" id="route-packet">📦</div>
+      </div>
+      <p class="route-message" id="route-message">P1 et T1 appartiennent à deux sous-réseaux différents : le paquet doit passer par le routeur.</p>
+    </div>
+  </section>
+
+  <section id="dns" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Animation 2</p><h2>DNS puis serveur Web</h2></div>
+      <p class="section-intro">Que se passe-t-il quand P1 ouvre <strong>www.snt-lab.fr</strong> ?</p>
+    </div>
+    <div class="dns-lab">
+      <div class="dns-toolbar">
+        <button class="btn btn-primary" type="button" id="dns-play">▶ Lancer la résolution</button>
+        <button class="btn btn-secondary" type="button" id="dns-reset">Réinitialiser</button>
+      </div>
+      <div class="dns-flow" id="dns-flow">
+        <article data-dns-step="1"><span>1</span><strong>P1</strong><small>Demande : www.snt-lab.fr</small></article>
+        <div class="dns-arrow">→</div>
+        <article data-dns-step="2"><span>2</span><strong>Serveur DNS</strong><small>192.168.2.20</small></article>
+        <div class="dns-arrow">→</div>
+        <article data-dns-step="3"><span>3</span><strong>Réponse DNS</strong><small>192.168.2.30</small></article>
+        <div class="dns-arrow">→</div>
+        <article data-dns-step="4"><span>4</span><strong>Serveur Web</strong><small>Demande HTTP de la page</small></article>
+      </div>
+      <p class="dns-message" id="dns-message">D'abord le nom doit être traduit en adresse IP. Ensuite le navigateur contacte le serveur Web.</p>
+    </div>
+  </section>
+
+  <section id="filius" class="section">
+    <div class="section-heading"><div><p class="eyebrow">Réflexes Filius</p><h2>À quoi servent les commandes ?</h2></div></div>
+    <div class="command-lab">
+      <div class="command-buttons">
+        <button type="button" data-command="ipconfig">ipconfig</button>
+        <button type="button" data-command="ping-lan">ping P3</button>
+        <button type="button" data-command="ping-wan">ping T1</button>
+        <button type="button" data-command="tracert">tracert</button>
+        <button type="button" data-command="nslookup">nslookup</button>
+      </div>
+      <div class="command-screen">
+        <div class="command-title"><span>Terminal P1</span><strong id="command-title">Choisis une commande</strong></div>
+        <pre id="command-output">Clique sur une commande pour afficher un exemple.</pre>
+      </div>
+      <div class="command-explain" id="command-explain">Une commande de diagnostic répond à une question précise : configuration locale, connectivité, chemin ou DNS.</div>
+    </div>
+  </section>
+
+  <section id="diagnostic" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Animation 3</p><h2>Diagnostiquer une panne</h2></div>
+      <p class="section-intro">Choisis le meilleur premier réflexe pour chaque symptôme.</p>
+    </div>
+    <div class="diagnostic-grid">
+      <article class="diagnostic-card" data-answer="ipconfig">
+        <h3>Cas A</h3><p>P1 ne communique même plus avec P3 dans le même LAN.</p>
+        <div class="diagnostic-choices">
+          <button type="button" data-choice="nslookup">nslookup</button><button type="button" data-choice="ipconfig">Vérifier ipconfig</button><button type="button" data-choice="web">Redémarrer le serveur Web</button>
+        </div><p class="diagnostic-result"></p>
+      </article>
+      <article class="diagnostic-card" data-answer="gateway">
+        <h3>Cas B</h3><p>P1 atteint P3, mais pas T1 situé dans l'autre sous-réseau.</p>
+        <div class="diagnostic-choices">
+          <button type="button" data-choice="gateway">Tester la passerelle / le routage</button><button type="button" data-choice="dns">Changer le DNS</button><button type="button" data-choice="http">Tester uniquement HTTP</button>
+        </div><p class="diagnostic-result"></p>
+      </article>
+      <article class="diagnostic-card" data-answer="dns">
+        <h3>Cas C</h3><p>Le ping vers 192.168.2.30 fonctionne, mais www.snt-lab.fr ne fonctionne pas.</p>
+        <div class="diagnostic-choices">
+          <button type="button" data-choice="dns">Tester le DNS avec nslookup</button><button type="button" data-choice="switch">Remplacer le switch</button><button type="button" data-choice="ip">Changer l'adresse du serveur Web</button>
+        </div><p class="diagnostic-result"></p>
+      </article>
+      <article class="diagnostic-card" data-answer="web">
+        <h3>Cas D</h3><p>nslookup donne bien 192.168.2.30, mais la page ne s'affiche pas.</p>
+        <div class="diagnostic-choices">
+          <button type="button" data-choice="web">Vérifier le serveur Web / HTTP</button><button type="button" data-choice="mask">Changer le masque de P1</button><button type="button" data-choice="p2p">Activer le P2P</button>
+        </div><p class="diagnostic-result"></p>
+      </article>
+    </div>
+    <div class="diagnostic-order"><strong>Méthode à retenir</strong><span>Configuration locale → LAN → passerelle → autre réseau par IP → DNS → service Web</span></div>
+  </section>
+
+  <section id="entrainement" class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">Préparation DS</p><h2>Entraînement type contrôle</h2></div>
+      <p class="section-intro">12 questions. Corrige à la fin puis reprends les notions où tu hésites.</p>
+    </div>
+    <form id="internet-ds-quiz" class="internet-ds-quiz">
+      <fieldset data-correct="b"><legend>1. Internet est…</legend><label><input type="radio" name="q1" value="a"> uniquement le Web</label><label><input type="radio" name="q1" value="b"> un réseau mondial de réseaux interconnectés</label><label><input type="radio" name="q1" value="c"> un seul serveur central</label></fieldset>
+      <fieldset data-correct="a"><legend>2. Quel équipement relie principalement les machines d'un même LAN ?</legend><label><input type="radio" name="q2" value="a"> un switch</label><label><input type="radio" name="q2" value="b"> un DNS</label><label><input type="radio" name="q2" value="c"> un navigateur</label></fieldset>
+      <fieldset data-correct="c"><legend>3. P1 = 192.168.1.10/24 et T1 = 192.168.2.10/24. Pour communiquer, ils ont besoin…</legend><label><input type="radio" name="q3" value="a"> seulement d'un câble entre les switches</label><label><input type="radio" name="q3" value="b"> uniquement d'un DNS</label><label><input type="radio" name="q3" value="c"> d'un routeur et de passerelles correctement configurées</label></fieldset>
+      <fieldset data-correct="b"><legend>4. La passerelle par défaut sert à…</legend><label><input type="radio" name="q4" value="a"> traduire les noms de domaine</label><label><input type="radio" name="q4" value="b"> envoyer les paquets destinés à un autre réseau vers le routeur local</label><label><input type="radio" name="q4" value="c"> mesurer le débit Wi-Fi</label></fieldset>
+      <fieldset data-correct="a"><legend>5. Le rôle principal de IP est…</legend><label><input type="radio" name="q5" value="a"> adresser et acheminer les paquets</label><label><input type="radio" name="q5" value="b"> garantir un délai maximal</label><label><input type="radio" name="q5" value="c"> afficher une page Web</label></fieldset>
+      <fieldset data-correct="c"><legend>6. TCP ajoute notamment…</legend><label><input type="radio" name="q6" value="a"> une adresse MAC</label><label><input type="radio" name="q6" value="b"> un nom de domaine</label><label><input type="radio" name="q6" value="c"> retransmission et remise en ordre des données</label></fieldset>
+      <fieldset data-correct="b"><legend>7. Le DNS permet principalement…</legend><label><input type="radio" name="q7" value="a"> de remplacer un switch</label><label><input type="radio" name="q7" value="b"> d'associer un nom de domaine à une adresse IP</label><label><input type="radio" name="q7" value="c"> de chiffrer tous les paquets IP</label></fieldset>
+      <fieldset data-correct="a"><legend>8. Dans le TP, www.snt-lab.fr correspond à…</legend><label><input type="radio" name="q8" value="a"> 192.168.2.30</label><label><input type="radio" name="q8" value="b"> 192.168.2.20</label><label><input type="radio" name="q8" value="c"> 192.168.1.254</label></fieldset>
+      <fieldset data-correct="c"><legend>9. Quelle commande affiche la configuration réseau du poste ?</legend><label><input type="radio" name="q9" value="a"> ping</label><label><input type="radio" name="q9" value="b"> nslookup</label><label><input type="radio" name="q9" value="c"> ipconfig</label></fieldset>
+      <fieldset data-correct="a"><legend>10. Quelle commande sert à interroger le DNS ?</legend><label><input type="radio" name="q10" value="a"> nslookup</label><label><input type="radio" name="q10" value="b"> ipconfig</label><label><input type="radio" name="q10" value="c"> ping</label></fieldset>
+      <fieldset data-correct="b"><legend>11. IPv6 utilise des adresses de…</legend><label><input type="radio" name="q11" value="a"> 32 bits</label><label><input type="radio" name="q11" value="b"> 128 bits</label><label><input type="radio" name="q11" value="c"> 256 bits</label></fieldset>
+      <fieldset data-correct="c"><legend>12. Dans un réseau pair-à-pair…</legend><label><input type="radio" name="q12" value="a"> aucune machine ne peut envoyer de données</label><label><input type="radio" name="q12" value="b"> tout passe obligatoirement par un serveur unique</label><label><input type="radio" name="q12" value="c"> chaque pair peut demander et fournir des données</label></fieldset>
+      <div class="quiz-actions"><button class="btn btn-primary" type="submit">Corriger mes réponses</button><button class="btn btn-secondary" type="reset">Recommencer</button></div>
+      <div id="internet-ds-score" class="internet-ds-score" aria-live="polite"></div>
+    </form>
+
+    <div class="written-exercises">
+      <article><span>QUESTION RÉDIGÉE 1</span><h3>Expliquer le trajet P1 → T1</h3><p>Décris le chemin du paquet en utilisant P1, SW-A, R1, SW-B et T1.</p><details><summary>Voir une réponse possible</summary><p>P1 → SW-A → interface 192.168.1.254 du routeur R1 → interface 192.168.2.254 de R1 → SW-B → T1.</p></details></article>
+      <article><span>QUESTION RÉDIGÉE 2</span><h3>Pourquoi TCP ne garantit-il pas une communication rapide ?</h3><p>Explique la différence entre fiabilité et délai.</p><details><summary>Voir une réponse possible</summary><p>TCP peut retransmettre les données perdues et les remettre dans l'ordre, ce qui améliore la fiabilité. Mais il ne promet pas qu'elles arriveront avant une durée précise.</p></details></article>
+      <article><span>QUESTION RÉDIGÉE 3</span><h3>Que fait le navigateur pour ouvrir www.snt-lab.fr ?</h3><p>Donne les deux grandes étapes observées dans le TP.</p><details><summary>Voir une réponse possible</summary><p>Le poste interroge d'abord le DNS pour obtenir 192.168.2.30. Le navigateur contacte ensuite le serveur Web à cette adresse et demande la page.</p></details></article>
+    </div>
+  </section>
+
+  <div class="revision-next"><strong>Conseil :</strong> si une notion n'est pas claire, retourne au <a href="internet.html">cours Internet</a> ou au <a href="tp1-internet-filius.html">TP Filius</a>, puis refais l'exercice.</div>
+  <div class="chapter-nav no-print"><a href="internet.html">← Retour au thème Internet</a><a href="#contenu">Revenir en haut ↑</a></div>
+</main>
+
+<footer><div class="footer-inner"><p><strong>Lycée Marie Rivier</strong> • SNT Seconde • Révisions Internet</p><p>Christophe Delcourt • 2026–2027</p></div></footer>
+<script src="../script.js"></script>
+<script src="revisions-internet-ds.js"></script>
+</body>
+</html>
