@@ -275,13 +275,15 @@ Nouvel espace `classes/cinquieme-physique-chimie.html` et activité
 - accès 5e ajouté sur l'accueil ;
 - ajout au sitemap, à Google Analytics existant et au cache PWA.
 
+## Version 53 — direction éditoriale
 
-
-## Version 51 — Révision logique Terminale EE
-
-- Cours `classes/terminale-logique-ee.html`, accessible depuis l’accueil, l’espace Terminale et le cours d’algorithmique EE.
-- NON, ET, OU, NAND, NOR et XOR : symboles IEC et ANSI/IEEE côte à côte, références Nexperia 2024–2025.
-- Manipulation de deux entrées et simulation de la commande de ventilation ; table d’entraînement avec correction et remise à zéro.
-- Lois de Boole, De Morgan, Karnaugh et réalisation avec NAND.
-- Fiche élève Word et PDF, avec logo Marie Rivier.
-- Cache PWA v51 et plan du site mis à jour.
+Refonte visuelle sans toucher au contenu pédagogique :
+- accueil simplifié et moins promotionnel ;
+- suppression des doublons de navigation et de la plupart des éléments décoratifs ;
+- suppression des emojis décoratifs dans les grands titres ;
+- cartes plus plates, rayons plus discrets, disparition des grosses ombres et gradients ;
+- hiérarchie de cours plus proche d'un site documentaire / pédagogique ;
+- couleurs Marie Rivier utilisées comme accents et non comme décor permanent ;
+- pages de cours harmonisées ;
+- animations et outils interactifs conservés ;
+- installation PWA conservée mais rendue plus discrète.
