@@ -4629,689 +4629,431 @@ a,
 
 
 /* ==================================================================
-   V53 — Direction éditoriale
-   Inspiration : plateformes pédagogiques et documentaires sobres.
-   Objectif : moins "landing page", plus "site de professeur".
+   V54 — Design équilibré
+   Conserve l'identité du site, réduit les codes "template/IA"
+   sans transformer le site en document plat.
    ================================================================== */
 
-:root{
-  --bg:#ffffff;
-  --surface:#ffffff;
-  --text:#18282f;
-  --muted:#66777e;
-  --primary:#078da2;
-  --primary-dark:#086e80;
-  --primary-soft:#eef8fa;
-  --accent:#efb51f;
-  --accent-soft:#fff9e8;
-  --border:#dce4e6;
-  --dark:#172a33;
-  --success:#417b56;
-  --success-soft:#f0f7f2;
-  --warning:#8a641d;
-  --shadow:none;
-  --shadow-soft:none;
-  --radius:10px;
-}
-
 body{
-  background:#fff;
-  color:var(--text);
-  line-height:1.58;
-  letter-spacing:0;
+  background:#f7f8f7;
 }
 
 .site-header{
-  background:#fff;
-  border-bottom:1px solid #dfe6e8;
+  background:rgba(255,255,255,.98);
+  border-bottom:1px solid rgba(23,41,52,.08);
 }
 
 .header-inner{
-  max-width:1160px;
-  padding:15px 24px;
-  gap:24px;
-}
-
-.logo{
-  width:min(315px,34vw);
-  max-height:72px;
+  max-width:1180px;
 }
 
 .header-title h1{
-  margin:0 0 4px;
-  font-size:clamp(1.25rem,2.2vw,1.8rem);
   letter-spacing:-.02em;
 }
 
-.header-title .subtitle{
-  font-size:.86rem;
-  font-weight:550;
-}
-
-.eyebrow{
-  margin-bottom:5px;
-  color:#557078;
-  font-size:.68rem;
-  font-weight:800;
-  letter-spacing:.08em;
-}
-
-.main-nav{
-  background:#fff;
-  backdrop-filter:none;
-  border-bottom:1px solid #e2e8ea;
-}
-
-.nav-inner{
-  max-width:1160px;
-  padding:7px 24px;
-  gap:2px;
-}
-
-.main-nav a{
-  padding:7px 9px;
-  border-radius:5px;
-  font-size:.84rem;
-  font-weight:650;
-}
-
-.main-nav a:hover,
-.main-nav a.active{
-  background:#f2f6f7;
-  color:#0a6575;
-}
-
 main{
-  max-width:1160px;
-  padding:22px 24px 64px;
+  max-width:1180px;
 }
 
-.hero,
-.chapter-hero,
-.portal-hero,
-.coding-hero,
-.gantt-hero,
-.boolean-hero,
-.pert-hero,
-.five-class-hero,
-.five-electric-hero,
-.internet-revision-hero{
-  background:#fff !important;
-  box-shadow:none !important;
-  border:0;
-  border-radius:0;
-}
-
-.hero{
-  min-height:auto;
-  display:block;
-}
-
-.mr-home-hero{
-  padding:44px 0 36px !important;
-  margin:0;
+/* Accueil */
+.v54-home-hero{
+  position:relative;
+  min-height:0 !important;
+  margin-top:16px;
+  padding:42px 28px 38px !important;
+  overflow:hidden;
   text-align:center;
-  border-bottom:1px solid #e2e8ea !important;
+  border:1px solid rgba(23,41,52,.08);
+  border-radius:18px;
+  background:
+    linear-gradient(115deg,rgba(0,169,192,.10),rgba(255,255,255,.96) 48%,rgba(255,190,26,.11)) !important;
+  box-shadow:0 10px 30px rgba(23,41,52,.045) !important;
 }
 
-.editorial-home-hero .hero-content{
+.v54-home-hero::before{
+  content:"";
+  position:absolute;
+  inset:0 auto auto 0;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,#00a9c0 0 28%,#d4db00 28% 49%,#ffbe1a 49% 72%,#ef3c59 72% 100%);
+}
+
+.v54-home-hero .hero-content{
   max-width:820px;
   margin:0 auto;
 }
 
-.home-kicker{
-  margin:0 0 10px;
-  color:#078da2;
-  font-size:.75rem;
-  font-weight:800;
+.v54-kicker{
+  margin:0 0 8px;
+  color:#087f92;
+  font-size:.72rem;
+  font-weight:850;
   letter-spacing:.08em;
   text-transform:uppercase;
 }
 
-.mr-home-hero h2{
+.v54-home-hero h2{
   margin:0 0 10px !important;
-  font-size:clamp(2rem,4.7vw,3.6rem) !important;
-  line-height:1.03;
+  font-size:clamp(2.2rem,5vw,4rem) !important;
+  line-height:1;
   letter-spacing:-.045em;
 }
 
-.mr-home-subtitle{
+.v54-home-hero .mr-home-subtitle{
   margin:0 0 7px !important;
-  color:#304952 !important;
+  color:#304852 !important;
   font-size:1rem !important;
-  font-weight:700 !important;
+  font-weight:750 !important;
 }
 
-.mr-home-text{
-  max-width:660px !important;
+.v54-home-hero .mr-home-text{
+  max-width:620px !important;
   margin:0 auto !important;
-  color:#708087 !important;
-  font-size:.96rem !important;
+  color:#6d7c82 !important;
+  font-size:.94rem !important;
 }
 
-.section{
-  padding:44px 0 0;
+.v54-section-heading{
+  margin-bottom:17px;
 }
 
-.section + .section{
-  margin-top:0;
-}
-
-.section-heading{
-  align-items:flex-end;
-  margin-bottom:18px;
-  padding-top:4px;
-}
-
-.section-heading h2{
-  font-size:clamp(1.55rem,3vw,2.1rem);
+.v54-section-heading h2{
   letter-spacing:-.025em;
 }
 
-.section-intro{
-  max-width:520px;
-  color:#78878d;
-  font-size:.88rem;
-}
-
-.badge{
-  margin-bottom:12px;
-  padding:0;
-  border:0;
-  border-radius:0;
-  background:transparent;
-  box-shadow:none;
-  color:#087f92;
-  font-size:.69rem;
-  letter-spacing:.07em;
-  text-transform:uppercase;
-}
-
-.status{
-  padding:0;
-  border-radius:0;
-  background:transparent !important;
-  color:#718188 !important;
-  font-size:.68rem;
-  font-weight:750;
-  letter-spacing:.025em;
-  text-transform:none;
-}
-
-.btn{
-  min-height:40px;
-  padding:9px 14px;
-  border-radius:6px;
-  font-size:.86rem;
-  font-weight:750;
-  box-shadow:none !important;
-}
-
-.btn-primary{
-  background:#087f92;
-  color:#fff;
-}
-
-.btn-primary:hover{
-  background:#086b7b;
-}
-
-.btn-secondary{
-  background:#fff;
-  border-color:#cbd7da;
-}
-
-.hero-actions{
-  gap:8px;
-  margin-top:18px;
-}
-
-/* Accueil : niveaux */
-.editorial-levels,
-.level-grid.level-grid-five{
+/* Niveaux : cartes compactes, visuelles mais pas "marketing" */
+.v54-level-grid{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:repeat(5,minmax(0,1fr));
   gap:10px;
 }
 
-.editorial-levels .level-card,
-.level-grid.level-grid-five .level-card{
-  min-height:0;
-  display:block;
-  padding:18px 18px 19px;
-  border:1px solid #dce4e6;
-  border-top:3px solid #00a9c0;
-  border-radius:8px;
-  background:#fff !important;
-  box-shadow:none !important;
-  transform:none !important;
+.v54-level-card{
+  position:relative;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  min-height:88px;
+  padding:14px 14px;
+  border:1px solid #dde5e7;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 5px 16px rgba(23,41,52,.035);
+  text-decoration:none;
+  transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;
 }
 
-.editorial-levels .level-card:nth-child(1){border-top-color:#efb51f}
-.editorial-levels .level-card:nth-child(2){border-top-color:#00a9c0}
-.editorial-levels .level-card:nth-child(3){border-top-color:#d4db00}
-.editorial-levels .level-card:nth-child(4){border-top-color:#ef3c59}
-.editorial-levels .level-card:nth-child(5){border-top-color:#9ba3a4}
-
-.editorial-levels .level-card:hover{
-  border-color:#aebfc4;
-  background:#fbfcfc !important;
+.v54-level-card:hover{
+  transform:translateY(-2px);
+  border-color:#b9c8cc;
+  box-shadow:0 8px 22px rgba(23,41,52,.07);
 }
 
-.editorial-levels .level-label{
-  margin:0 0 4px;
-  color:#6c7c82;
-  font-size:.67rem;
-  letter-spacing:.06em;
-}
-
-.editorial-levels .level-card h3{
-  margin:0 0 7px;
-  font-size:1.18rem;
-  letter-spacing:-.015em;
-}
-
-.editorial-levels .level-card p:last-of-type{
-  margin:0;
-  color:#6f7f85;
+.v54-level-code{
+  display:flex;
+  flex:0 0 43px;
+  width:43px;
+  height:43px;
+  align-items:center;
+  justify-content:center;
+  border-radius:10px;
+  background:#eef4f5;
+  color:#2c4751;
   font-size:.8rem;
-  line-height:1.45;
+  font-weight:900;
 }
 
-/* Accueil : cours classés comme une vraie liste pédagogique */
-.home-course-groups{
+.v54-level-card strong,
+.v54-level-card small{
+  display:block;
+}
+
+.v54-level-card strong{
+  color:#1d333d;
+  font-size:.87rem;
+  line-height:1.22;
+}
+
+.v54-level-card small{
+  margin-top:3px;
+  color:#7a898f;
+  font-size:.68rem;
+  line-height:1.3;
+}
+
+.level-5e .v54-level-code{background:#fff4cf;color:#805d00}
+.level-2nde .v54-level-code{background:#e6f7fa;color:#087f92}
+.level-1re .v54-level-code{background:#f5f8d8;color:#657000}
+.level-tle .v54-level-code{background:#fff0f3;color:#b62f48}
+.level-cap .v54-level-code{background:#eef0f0;color:#5d696b}
+
+/* Ressources récentes : simple liste éditoriale */
+.v54-recent-list{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
+  gap:9px 14px;
 }
 
-.home-course-group{
-  padding:19px;
-  border:1px solid #dce4e6;
-  border-radius:8px;
+.v54-recent-list a{
+  display:grid;
+  gap:3px;
+  padding:13px 14px;
+  border:1px solid #dee6e8;
+  border-left:3px solid #00a9c0;
+  border-radius:9px;
   background:#fff;
-}
-
-.course-group-head{
-  padding-bottom:12px;
-  border-bottom:1px solid #e4e9eb;
-}
-
-.course-number{
-  margin:0 0 3px;
-  color:#087f92;
-  font-size:.66rem;
-  font-weight:800;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-}
-
-.course-group-head h3{
-  margin:0 0 5px;
-  font-size:1.2rem;
-}
-
-.course-group-head > p:last-child{
-  margin:0;
-  color:#75858b;
-  font-size:.8rem;
-}
-
-.course-link-list{
-  display:grid;
-}
-
-.course-link-list a{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:2px;
-  padding:11px 0;
-  border-bottom:1px solid #eef1f2;
   text-decoration:none;
 }
 
-.course-link-list a:last-child{
+.v54-recent-list a:nth-child(2){border-left-color:#ffbe1a}
+.v54-recent-list a:nth-child(3){border-left-color:#d4db00}
+.v54-recent-list a:nth-child(4){border-left-color:#ef3c59}
+
+.v54-recent-list span{
+  color:#7b898f;
+  font-size:.66rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.045em;
+}
+
+.v54-recent-list strong{
+  color:#263d47;
+  font-size:.86rem;
+  font-weight:800;
+}
+
+.v54-recent-list a:hover strong{
+  color:#087f92;
+}
+
+/* SNT : vraies "unités" pédagogiques */
+.v54-snt-layout{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.v54-topic-card{
+  position:relative;
+  padding:18px;
+  border:1px solid #dce5e7;
+  border-radius:13px;
+  background:#fff;
+  box-shadow:0 6px 18px rgba(23,41,52,.035);
+}
+
+.v54-topic-card::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:3px;
+  border-radius:13px 13px 0 0;
+  background:#00a9c0;
+}
+
+.topic-binary::before{background:#d4db00}
+.topic-web::before{background:#ef3c59}
+
+.v54-topic-head{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.v54-topic-number{
+  display:flex;
+  width:38px;
+  height:38px;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#f0f5f6;
+  color:#3c555f;
+  font-size:.72rem;
+  font-weight:900;
+}
+
+.v54-topic-head p{
+  margin:0;
+  color:#7d8b91;
+  font-size:.65rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+
+.v54-topic-head h3{
+  margin:1px 0 0;
+  font-size:1.16rem;
+  letter-spacing:-.015em;
+}
+
+.v54-topic-summary{
+  min-height:44px;
+  margin:13px 0 12px;
+  color:#6c7d84;
+  font-size:.79rem;
+  line-height:1.45;
+}
+
+.v54-resource-links{
+  display:grid;
+  border-top:1px solid #e8edef;
+}
+
+.v54-resource-links a{
+  display:grid;
+  grid-template-columns:78px 1fr;
+  gap:10px;
+  padding:9px 0;
+  border-bottom:1px solid #edf1f2;
+  text-decoration:none;
+}
+
+.v54-resource-links a:last-child{
   border-bottom:0;
   padding-bottom:0;
 }
 
-.course-link-list a:hover strong{
+.v54-resource-links strong{
   color:#087f92;
+  font-size:.73rem;
+  text-transform:uppercase;
+  letter-spacing:.03em;
 }
 
-.course-link-list strong{
-  font-size:.86rem;
+.v54-resource-links span{
+  color:#344d57;
+  font-size:.79rem;
+  font-weight:700;
 }
 
-.course-link-list span{
-  color:#7a898f;
+.v54-upcoming{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  margin-top:14px;
+  padding:13px 15px;
+  border:1px solid #e0e7e9;
+  border-radius:10px;
+  background:rgba(255,255,255,.65);
+}
+
+.v54-upcoming-title{
+  flex:0 0 auto;
+  margin:2px 0 0;
+  color:#89959a;
+  font-size:.69rem;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+
+.v54-upcoming > div{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 16px;
+}
+
+.v54-upcoming a{
+  color:#687a81;
   font-size:.76rem;
-  line-height:1.4;
+  font-weight:700;
+  text-decoration:none;
 }
 
-.muted-list a{
-  grid-template-columns:1fr auto;
-  align-items:center;
-}
-
-.muted-list span{
-  color:#9aa5a9;
-  font-size:.7rem;
-}
-
-/* Cartes génériques : réduction de l'effet "template" */
-.cards{
-  gap:11px;
-}
-
-.card,
-.course-slot,
-.objective,
-.protocol-card,
-.diagnostic-card,
-.resource-list a,
-.chapter-summary,
-.featured-course,
-.app-install-card{
-  box-shadow:none !important;
-}
-
-.card{
-  min-height:0;
-  padding:18px;
-  border-radius:8px;
-  border-color:#dce4e6;
-  transition:border-color .15s ease,background .15s ease;
-}
-
-.card:hover{
-  transform:none;
-  box-shadow:none;
-  border-color:#aebfc4;
-  background:#fbfcfc;
-}
-
-.card-featured{
-  background:#fff !important;
-  border-color:#dce4e6;
-}
-
-.card-top{
-  justify-content:flex-end;
-}
-
-.card .icon{
-  display:none;
-}
-
-.card h3{
-  margin:7px 0 5px;
-  font-size:1.05rem;
-}
-
-.card p{
-  margin-bottom:14px;
-  font-size:.83rem;
-}
-
-.card-link{
-  margin-top:auto;
-  color:#087f92;
-  font-size:.78rem;
-  font-weight:750;
-}
-
-/* Pages de cours */
-.chapter-hero{
-  grid-template-columns:minmax(0,1.4fr) minmax(260px,.6fr);
-  gap:34px;
-  padding:36px 0 28px !important;
-  border-bottom:1px solid #e0e7e9 !important;
-}
-
-.chapter-hero h2{
-  margin-bottom:12px;
-  font-size:clamp(2rem,4.2vw,3.35rem) !important;
-  letter-spacing:-.04em;
-}
-
-.chapter-hero > div > p{
-  max-width:700px;
-  color:#66777e;
-  font-size:.98rem;
-}
-
-.chapter-summary{
-  padding:17px 18px;
-  border-radius:8px;
-  background:#f7f9f9;
-}
-
-.check-list li{
-  padding:6px 0 6px 22px;
-  border-bottom:1px solid #e5eaeb;
-  font-size:.8rem;
-}
-
-.check-list li::before{
+.v54-upcoming a:hover{
   color:#087f92;
 }
 
-/* Cours mis en avant : plus de grand bloc sombre */
-.featured-course,
-.boolean-featured,
-.pert-featured,
-.five-featured,
-.algo-featured-course,
-.tests-featured-course{
-  grid-template-columns:1fr 150px;
-  gap:18px;
-  padding:20px;
-  border:1px solid #dce4e6;
-  border-left:4px solid #00a9c0;
-  border-radius:8px;
-  background:#fff !important;
-  color:#18282f !important;
-}
-
-.featured-course .eyebrow{
-  color:#6a7d84 !important;
-}
-
-.featured-course h3{
-  margin:4px 0 7px;
-  font-size:1.45rem;
-}
-
-.featured-course p{
-  color:#687980 !important;
-  font-size:.84rem;
-}
-
-.featured-course-side{
-  min-height:100px;
-  border:0;
-  border-left:1px solid #e0e6e8;
-  border-radius:0;
-  background:transparent !important;
-  color:#233a44 !important;
-}
-
-.featured-course-side strong{
-  font-size:2rem;
-  color:#087f92;
-}
-
-.featured-course-side span{
-  color:#7b898f !important;
-  font-size:.74rem;
-}
-
-/* Ressources */
-.resource-list{
-  gap:9px;
-}
-
-.resource-list a{
-  padding:14px 15px;
-  border-radius:7px;
-  background:#fff;
-}
-
-.resource-list a:hover{
-  background:#fbfcfc;
-}
-
-.resource-list strong{
-  font-size:.87rem;
-}
-
-.resource-list span{
-  font-size:.78rem;
-}
-
-/* Installation PWA : fonctionnalité conservée mais discrète */
-.app-install-compact{
+/* Installation : discrète */
+.v54-install-section{
   padding-top:40px;
 }
 
-.app-install-compact .app-install-card{
-  display:block;
-  padding:17px 18px;
-  border:1px solid #dce4e6;
-  border-radius:8px;
-  background:#f8faf9;
-}
-
-.app-install-compact .app-install-icon{
-  display:none;
-}
-
-.app-install-compact h2{
-  margin-bottom:5px;
-  font-size:1.15rem;
-}
-
-.app-install-compact p{
-  max-width:760px;
-  margin-bottom:8px;
-  color:#6f7f85;
-  font-size:.8rem;
-}
-
-.app-install-compact .hero-actions{
-  margin-top:10px;
-}
-
-.install-help{
-  margin-top:8px;
-  border:1px solid #dce4e6;
-  border-radius:7px;
+.v54-install-row{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px 17px;
+  border:1px solid #dce5e7;
+  border-radius:11px;
   background:#fff;
-  font-size:.8rem;
 }
 
-/* Sections interactives : on garde la fonction, on calme l'habillage */
-.boolean-lab,
-.logic-animation-card,
-.gantt-demo-card,
-.gantt-interactive,
-.gantt-delay-lab,
-.pert-duration-card,
-.pert-network-card,
-.pert-delay-card,
-.electric-test-card,
-.materials-lab,
-.greenhouse-card,
-.test-animation-card,
-.truth-table-card,
-.exercise-card{
+.v54-install-row h2{
+  margin:2px 0 3px;
+  font-size:1rem;
+}
+
+.v54-install-row p:last-child{
+  margin:0;
+  color:#7a898f;
+  font-size:.76rem;
+}
+
+.v54-install-row .hero-actions{
+  flex:0 0 auto;
+  margin:0;
+}
+
+/* Le reste du site garde son identité originale, mais quelques codes IA sont calmés */
+.badge{
   box-shadow:none !important;
-  border-radius:8px !important;
+  font-size:.7rem;
 }
 
-/* Footer clair, plus proche d'un site institutionnel */
+.status{
+  box-shadow:none !important;
+  font-size:.68rem;
+}
+
+.card{
+  box-shadow:0 6px 18px rgba(23,41,52,.04);
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 9px 24px rgba(23,41,52,.075);
+}
+
+.btn{
+  border-radius:8px;
+  box-shadow:none !important;
+}
+
+.chapter-hero{
+  box-shadow:0 8px 24px rgba(23,41,52,.035);
+}
+
 footer{
-  padding:22px 24px;
-  border-top:1px solid #dfe6e8;
-  background:#f7f9f9;
-  color:#53676f;
+  border-top:1px solid rgba(255,255,255,.08);
 }
 
-footer strong{
-  color:#233a44;
+@media(max-width:1050px){
+  .v54-level-grid{grid-template-columns:repeat(3,1fr)}
+  .v54-snt-layout{grid-template-columns:1fr 1fr}
 }
 
-/* Réduction de la densité visuelle mobile */
-@media(max-width:900px){
-  .editorial-levels,
-  .level-grid.level-grid-five{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-  .home-course-groups{
-    grid-template-columns:1fr;
-  }
-  .chapter-hero{
-    grid-template-columns:1fr;
-  }
+@media(max-width:760px){
+  .v54-level-grid{grid-template-columns:1fr 1fr}
+  .v54-recent-list{grid-template-columns:1fr}
+  .v54-snt-layout{grid-template-columns:1fr}
+  .v54-upcoming{display:block}
+  .v54-upcoming > div{margin-top:8px}
+  .v54-install-row{align-items:flex-start;flex-direction:column}
 }
 
-@media(max-width:650px){
-  .header-inner{
-    flex-direction:row;
-    align-items:center;
-    gap:14px;
-    padding:12px 16px;
+@media(max-width:520px){
+  .v54-home-hero{
+    margin-top:8px;
+    padding:34px 18px 30px !important;
   }
-  .logo{
-    width:150px;
-    max-height:55px;
+  .v54-home-hero h2{
+    font-size:2.45rem !important;
   }
-  .header-title .eyebrow{
-    display:none;
-  }
-  .header-title h1{
-    font-size:1.05rem;
-  }
-  .header-title .subtitle{
-    font-size:.72rem;
-  }
-  main{
-    padding:16px 16px 50px;
-  }
-  .mr-home-hero{
-    padding:32px 0 28px !important;
-  }
-  .mr-home-hero h2{
-    font-size:2.25rem !important;
-  }
-  .editorial-levels,
-  .level-grid.level-grid-five{
-    grid-template-columns:1fr;
-  }
-  .section{
-    padding-top:36px;
-  }
-  .section-heading{
-    display:block;
-  }
-  .section-intro{
-    margin-top:7px;
-  }
-  .chapter-hero{
-    padding:27px 0 22px !important;
-  }
-  .chapter-hero h2{
-    font-size:2.25rem !important;
-  }
-  .featured-course{
-    grid-template-columns:1fr;
-  }
-  .featured-course-side{
-    min-height:0;
-    align-items:flex-start;
-    border-left:0;
-    border-top:1px solid #e0e6e8;
-    padding-top:12px;
-  }
+  .v54-level-grid{grid-template-columns:1fr}
 }

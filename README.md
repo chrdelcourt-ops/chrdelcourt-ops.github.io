@@ -275,15 +275,14 @@ Nouvel espace `classes/cinquieme-physique-chimie.html` et activité
 - accès 5e ajouté sur l'accueil ;
 - ajout au sitemap, à Google Analytics existant et au cache PWA.
 
-## Version 53 — direction éditoriale
+## Version 54 — design équilibré
 
-Refonte visuelle sans toucher au contenu pédagogique :
-- accueil simplifié et moins promotionnel ;
-- suppression des doublons de navigation et de la plupart des éléments décoratifs ;
-- suppression des emojis décoratifs dans les grands titres ;
-- cartes plus plates, rayons plus discrets, disparition des grosses ombres et gradients ;
-- hiérarchie de cours plus proche d'un site documentaire / pédagogique ;
-- couleurs Marie Rivier utilisées comme accents et non comme décor permanent ;
-- pages de cours harmonisées ;
-- animations et outils interactifs conservés ;
-- installation PWA conservée mais rendue plus discrète.
+- retour à la base visuelle appréciée avant V53 ;
+- accueil modernisé sans effet « landing page IA » ;
+- hero compact avec couleurs du logo Marie Rivier ;
+- navigation par niveau en cartes compactes ;
+- ressources récentes sous forme de liste simple ;
+- SNT regroupé par unités pédagogiques (Internet, Binaire & débit, Web) ;
+- moins d'emojis et de badges sur l'accueil ;
+- effets, ombres et arrondis plus modérés ;
+- toutes les pages, animations, Google Analytics et la PWA sont conservés.
