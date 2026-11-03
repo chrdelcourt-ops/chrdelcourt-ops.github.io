@@ -105,7 +105,7 @@
       <a href="../index.html">← Accueil</a>
       <a href="#objectifs">Objectifs</a>
       <a href="#cours">Cours</a>
-      <a href="#tp">TP HTML/CSS</a>
+      <a href="#tp">TP Notepad++</a>
       <a href="#retenir">À retenir</a>
       <a href="#quiz-web">Quiz</a>
     </div>
@@ -122,7 +122,7 @@
         </p>
         <div class="hero-actions no-print">
           <a class="btn btn-primary" href="#cours">Commencer le cours</a>
-          <button class="btn btn-secondary" type="button" onclick="window.print()">Imprimer / PDF</button>
+          <a class="btn btn-secondary" href="/documents/seconde-snt/cours-le-web-eleve.pdf">Cours élève (PDF)</a>
         </div>
       </div>
       <aside class="chapter-summary">
@@ -134,7 +134,7 @@
           <li>HTML et CSS</li>
           <li>HTTP et client/serveur</li>
           <li>Moteurs de recherche</li>
-          <li>Confidentialité du navigateur</li>
+          <li>Confidentialité et droit d’auteur</li>
         </ul>
       </aside>
     </section>
@@ -166,7 +166,8 @@
           <strong>Internet</strong> est l'infrastructure réseau mondiale. Le <strong>Web</strong> est un service
           qui fonctionne au-dessus d'Internet et permet notamment de consulter des pages reliées entre elles.
         </p>
-        <div class="callout"><strong>Exemple :</strong> un navigateur Web utilise Internet pour communiquer avec un serveur Web.</div>
+        <div class="callout"><strong>Exemple :</strong> un navigateur utilise Internet pour demander une page à un serveur distant.</div>
+        <p><strong>Repères :</strong> Ted Nelson présente le concept d’hypertexte en 1965. En 1989, Tim Berners-Lee propose au CERN le système qui deviendra le Web. En 1993, le CERN place le logiciel du Web dans le domaine public et le navigateur Mosaic se diffuse. À partir de 1995, JavaScript et PHP illustrent le développement de pages interactives et dynamiques.</p>
       </div>
 
       <div class="section-heading lesson-heading">
@@ -190,12 +191,14 @@
       <div class="lesson">
         <p>Une <strong>URL</strong> (Uniform Resource Locator) indique l'emplacement d'une ressource sur le Web.</p>
         <div class="url-demo">
-          <span class="url-part protocol">https://</span><span class="url-part domain">www.exemple.fr</span><span class="url-part path">/snt/web.html</span>
+          <span class="url-part protocol">https://</span><span class="url-part domain">jeux.example</span><span class="url-part path">/tutos.html</span><span class="url-part">?jeu=tetris&amp;niveau=2</span><span class="url-part">#conseils</span>
         </div>
         <div class="url-legend">
-          <div><b>https</b><span>protocole</span></div>
-          <div><b>www.exemple.fr</b><span>nom d'hôte / domaine</span></div>
-          <div><b>/snt/web.html</b><span>chemin vers la ressource</span></div>
+          <div><b>https</b><span>schéma</span></div>
+          <div><b>jeux.example</b><span>nom d’hôte</span></div>
+          <div><b>/tutos.html</b><span>chemin</span></div>
+          <div><b>jeu=tetris et niveau=2</b><span>paramètres</span></div>
+          <div><b>#conseils</b><span>fragment utilisé par le navigateur</span></div>
         </div>
         <div class="callout warning">
           <strong>HTTPS</strong> signifie que les échanges HTTP sont protégés par TLS. Cela ne prouve pas à lui seul qu'un site est honnête ou fiable.
@@ -264,6 +267,15 @@ p {
           <b>←</b>
           <div><strong>Serveur Web</strong><span>renvoie la réponse</span></div>
         </div>
+        <div class="code-card light-code">
+<pre><code>GET /recherche?jeu=tetris&amp;niveau=2 HTTP/1.1
+Host: jeux.example
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8</code></pre>
+        </div>
+        <p>GET est la méthode, <code>/recherche</code> le chemin et <code>jeu</code> et <code>niveau</code> les paramètres. Le fragment de l’URL reste dans le navigateur. Le statut 200 indique un succès. Un statut 404 indique que la ressource demandée est introuvable.</p>
+        <p>Le serveur peut renvoyer un fichier existant ou produire une page selon les paramètres. Un script JavaScript déjà chargé peut aussi réagir à un clic directement dans le navigateur.</p>
       </div>
 
       <div class="section-heading lesson-heading">
@@ -296,6 +308,7 @@ p {
           Un cookie est une petite donnée qu'un site peut demander au navigateur de conserver. Certains sont utiles
           au fonctionnement d'un service ; d'autres peuvent participer à la mesure d'audience ou au suivi publicitaire.
         </p>
+        <p>Tu peux refuser les traceurs facultatifs, gérer les données enregistrées pour un site et contrôler l’accès à la caméra, au micro ou à la localisation. Une fenêtre privée limite certaines traces sur ton appareil. Le site et le réseau peuvent toujours observer les échanges.</p>
       </div>
 
       <div class="section-heading lesson-heading">
@@ -314,92 +327,33 @@ p {
 
     <section id="tp" class="section">
       <div class="section-heading">
-        <div><p class="eyebrow">Travaux pratiques</p><h2>Créer une première page HTML/CSS</h2></div>
-        <p class="section-intro">Objectif : distinguer le contenu de sa présentation.</p>
+        <div><p class="eyebrow">Travaux pratiques • 1 h 30 maximum</p><h2>TP 1 Réparer le site de Tom</h2></div>
+        <p class="section-intro">Travaille dans Notepad++ et vérifie chaque modification dans le navigateur.</p>
+      </div>
+
+      <div class="resource-list">
+        <a href="/documents/seconde-snt/tp1-le-web-notepad-plus-plus-eleve.pdf">
+          <strong>Fiche élève pas à pas</strong>
+          <span>PDF • consignes, exemples avant/après et questions Q1 à Q8</span>
+        </a>
+        <a href="/documents/seconde-snt/tp1-le-web-site-tom-depart.zip" download>
+          <strong>Fichiers de départ du site de Tom</strong>
+          <span>ZIP • extrais le dossier Site_Tom avant de commencer</span>
+        </a>
       </div>
 
       <article class="activity">
-        <div class="activity-number">TP1</div>
+        <div class="activity-number">TP 1</div>
         <div>
-          <h3>Créer le fichier HTML</h3>
-          <p>Dans un éditeur de texte, créer un fichier nommé <code>index.html</code> contenant :</p>
-          <div class="code-card light-code">
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="fr"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;Ma première page&lt;/title&gt;
-  &lt;link rel="stylesheet" href="style.css"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Bienvenue sur ma page&lt;/h1&gt;
-  &lt;p&gt;Je découvre HTML et CSS.&lt;/p&gt;
-  &lt;a href="https://www.education.gouv.fr"&gt;Éducation nationale&lt;/a&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-          </div>
+          <h3>Les cinq étapes</h3>
           <ol>
-            <li>Enregistrer le fichier.</li>
-            <li>L'ouvrir dans un navigateur.</li>
-            <li>Modifier le titre et le paragraphe.</li>
-            <li>Ajouter une deuxième partie avec un titre <code>&lt;h2&gt;</code>.</li>
+            <li><strong>10 min.</strong> Ouvre <code>index.html</code> dans le navigateur et dans Notepad++. Repère les chemins à corriger.</li>
+            <li><strong>30 min.</strong> Répare l’image et la feuille de style. Rends le menu cliquable, ajoute les liens et change la couleur du titre.</li>
+            <li><strong>25 min.</strong> Analyse une URL, une requête et sa réponse, en direct avec le professeur ou à partir du relevé inclus dans la fiche.</li>
+            <li><strong>15 min.</strong> Observe le bouton d’astuce et les résultats de recherche pour distinguer le rôle du navigateur et celui du serveur.</li>
+            <li><strong>10 min.</strong> Vérifie le site et rends le dossier <code>Site_Tom</code> avec tes réponses Q1 à Q8.</li>
           </ol>
-        </div>
-      </article>
-
-      <article class="activity">
-        <div class="activity-number">TP2</div>
-        <div>
-          <h3>Ajouter le fichier CSS</h3>
-          <p>Dans le même dossier, créer <code>style.css</code> :</p>
-          <div class="code-card light-code">
-<pre><code>body {
-  font-family: Arial, sans-serif;
-  max-width: 800px;
-  margin: auto;
-}
-
-h1 {
-  text-align: center;
-}
-
-p {
-  line-height: 1.6;
-}</code></pre>
-          </div>
-          <ol>
-            <li>Actualiser la page.</li>
-            <li>Observer ce qui a changé sans modifier le contenu HTML.</li>
-            <li>Modifier une propriété CSS et expliquer son effet.</li>
-          </ol>
-        </div>
-      </article>
-
-      <article class="activity">
-        <div class="activity-number">A3</div>
-        <div>
-          <h3>Analyser une URL</h3>
-          <p>À partir d'une URL fournie par le professeur, identifier :</p>
-          <ul>
-            <li>le protocole ;</li>
-            <li>le nom de domaine ;</li>
-            <li>le chemin éventuel ;</li>
-            <li>la présence ou non de HTTPS.</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="activity">
-        <div class="activity-number">A4</div>
-        <div>
-          <h3>Comparer des résultats de recherche</h3>
-          <ol>
-            <li>Choisir une même requête pour toute la classe.</li>
-            <li>Observer les premiers résultats.</li>
-            <li>Identifier les résultats sponsorisés lorsqu'ils sont signalés.</li>
-            <li>Comparer auteur, domaine, date et objectif des pages.</li>
-            <li>Expliquer pourquoi le premier résultat n'est pas forcément « le meilleur ».</li>
-          </ol>
+          <p><strong>Après chaque modification :</strong> Ctrl+S dans Notepad++, puis Ctrl+R dans le navigateur.</p>
         </div>
       </article>
     </section>
@@ -522,7 +476,7 @@ p {
           <strong>Éduscol — Programmes et ressources SNT</strong>
           <span>Programme en vigueur et ressources d'accompagnement du thème Le Web.</span>
         </a>
-        <a href="https://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/08/5/spe641_annexe_1063085.pdf" target="_blank" rel="noopener">
+        <a href="https://www.education.gouv.fr/bo/19/Special1/MENE1901641A.htm" target="_blank" rel="noopener">
           <strong>Ministère de l'Éducation nationale — Programme SNT</strong>
           <span>HTML/CSS, URL, HTTP, client/serveur, moteurs de recherche et paramètres du navigateur.</span>
         </a>
@@ -531,7 +485,10 @@ p {
           <span>Ressource d'accompagnement sur HTML, CSS et l'hypertexte.</span>
         </a>
       </div>
-      <p class="source-note">Références vérifiées en septembre 2026.</p>
+      <div class="resource-list">
+        <a href="https://home.cern/fr/science/computing/birth-web/"><strong>CERN</strong><span>La naissance du Web</span></a>
+        <a href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies/que-dit-la-loi"><strong>CNIL</strong><span>Cookies et autres traceurs</span></a>
+      </div>
     </section>
 
     <div class="chapter-nav no-print">
