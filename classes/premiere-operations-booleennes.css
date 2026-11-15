@@ -1,0 +1,183 @@
+body.bool-page {
+  --logic-ink: #132b38;
+  --logic-muted: #48616a;
+  --logic-border: #d5e3e5;
+  --logic-surface: #fff;
+  --logic-accent: #156a62;
+  --logic-soft: #e6f4f0;
+  --logic-dark: #10313f;
+  color: var(--logic-ink);
+  background: #f4f8f8;
+}
+.bool-page .bool-wrap {width: min(1100px, calc(100% - 64px)); margin-inline: auto}
+.bool-page .bool-header {background: #fff; border-bottom: 1px solid var(--logic-border)}
+.bool-header-row {display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 76px}
+.bool-header-row img {display: block; width: min(260px, 46vw); height: auto}
+.bool-back {color: var(--logic-accent); font-size: .91rem; font-weight: 750; text-align: right}
+.bool-page .bool-nav {background: var(--logic-dark); color: #edf8f7; position: sticky; top: 0; z-index: 20}
+.bool-nav-inner {display: flex; gap: 4px 14px; flex-wrap: wrap; padding-block: 6px}
+.bool-nav a {padding: 8px 7px; border-radius: 5px; font-size: .90rem; color: inherit; font-weight: 700}
+.bool-nav a:hover {background: #26515d}
+.bool-page .bool-main {max-width: none; padding: 34px 0 56px}
+.bool-main a:focus-visible, .bool-main button:focus-visible, .bool-main select:focus-visible,
+.bool-page .bool-nav a:focus-visible, .bool-page .bool-header a:focus-visible {
+  outline: 3px solid #aa6412;
+  outline-offset: 3px;
+}
+.bool-hero {
+  display: grid; grid-template-columns: 1.12fr 1fr; align-items: center; gap: 25px;
+  padding: clamp(28px, 5.2vw, 64px); border-radius: 24px; color: #edf9f8;
+  background: radial-gradient(ellipse at 88% 40%, #16555c 0%, #10313f 59%);
+}
+.bool-hero .bool-kicker {color: #a4e9d4}
+.bool-main .bool-kicker {margin: 0 0 7px; font-size: .81rem; font-weight: 750; letter-spacing: .065em}
+.bool-section .bool-kicker {color: var(--logic-accent)}
+.bool-main h1, .bool-main h2, .bool-main h3 {font-family: inherit; letter-spacing: -.031em; margin: 0}
+.bool-hero h1 {font-size: clamp(2.65rem, 5.8vw, 4.95rem); line-height: 1.02; color: #fff}
+.bool-hero-copy {font-size: clamp(1rem, 1.6vw, 1.17rem); margin: 16px 0 24px; max-width: 37ch; color: #deeeef}
+.bool-hero-visual {margin: 0; background: #102c3799; border: 1px solid #79adad77; border-radius: 17px; padding: 14px}
+.bool-hero-visual svg {display: block; max-width: 100%; height: auto; margin-inline: auto}
+.bool-hero-visual figcaption {margin: 5px 3px 3px; color: #d5edf0; font-size: .87rem; text-align: center}
+.bool-actions {display: flex; flex-wrap: wrap; gap: 10px; align-items: center}
+.bool-btn {
+  font: inherit; font-weight: 720; font-size: .92rem; text-align: center; text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center; min-height: 43px;
+  line-height: 1.3; padding: 9px 14px; border-radius: 9px; border: 1px solid transparent; cursor: pointer;
+}
+.bool-btn:hover {text-decoration: none}
+.bool-btn-primary {background: #a4e9d4; color: #10313f; border-color: #a4e9d4}
+.bool-btn-primary:hover {background: #c3f7e7; color: #10313f}
+.bool-btn-hero {background: transparent; color: #efffff; border-color: #a2c7c9}
+.bool-btn-hero:hover {background: #edf9f81c; color: #fff}
+.bool-btn-solid {background: var(--logic-accent); color: #fff; border-color: var(--logic-accent)}
+.bool-btn-solid:hover {background: #104f49; color: #fff}
+.bool-btn-outline {background: #fff; color: var(--logic-accent); border-color: #95b6b1}
+.bool-btn-outline:hover {background: var(--logic-soft); color: #104f49}
+.bool-section {margin-top: 54px; scroll-margin-top: 72px}
+.bool-section-head {display: flex; justify-content: space-between; align-items: end; gap: 18px; margin-bottom: 15px}
+.bool-main h2 {font-size: clamp(1.68rem, 3.35vw, 2.45rem); line-height: 1.15}
+.bool-main h3 {font-size: 1.22rem; line-height: 1.24}
+.bool-section-head p:not(.bool-kicker) {margin: 8px 0 0; color: var(--logic-muted); max-width: 68ch}
+.bool-panel {background: var(--logic-surface); border: 1px solid var(--logic-border); border-radius: 17px; padding: 24px}
+.bool-panel p {margin: 8px 0 12px}
+.bool-course-layout {display: grid; grid-template-columns: 1.85fr 1fr; gap: 16px}
+.bool-method {background: #e9f4f2; scroll-margin-top: 72px}
+.bool-method dl {margin: 13px 0 0}
+.bool-method dl > div {padding-block: 12px; border-top: 1px solid #bfd8d4}
+.bool-method dt {font-weight: 760; margin-bottom: 3px}
+.bool-method dd {margin: 0; color: var(--logic-muted)}
+.bool-cloze-items p {border-top: 1px solid var(--logic-border); margin: 0; padding: 9px 0; line-height: 1.8}
+.bool-cloze-items {margin-bottom: 13px}
+.bool-main select {
+  font: inherit; font-size: .94rem; min-height: 39px; max-width: 100%; border: 1px solid #90adb0;
+  border-radius: 7px; padding: 5px 9px; background: #fff; color: var(--logic-ink); vertical-align: middle;
+}
+.bool-main select[data-check="correct"] {border-color: #24784e; box-shadow: 0 0 0 1px #24784e; background: #ecf8ef}
+.bool-main select[data-check="incorrect"] {border-color: #a64424; box-shadow: 0 0 0 1px #a64424; background: #fff2e7}
+.bool-panel .bool-feedback {margin: 11px 0 0; color: var(--logic-muted); font-size: .91rem}
+.bool-panel .bool-feedback:empty {margin: 0}
+.bool-lab {display: grid; grid-template-columns: 1.17fr 1fr; gap: 32px}
+.bool-control-row {display: flex; flex-wrap: wrap; align-items: end; gap: 12px 23px; margin: 14px 0 19px}
+.bool-control-row label, .bool-circuit-controls label {display: grid; align-content: end; gap: 5px; font-size: .85rem; font-weight: 700}
+.bool-bits {margin: 0; padding: 0; border: 0; min-width: 0}
+.bool-bits legend {font-size: .85rem; font-weight: 700; padding: 0; margin: 0 0 5px}
+.bool-bit {
+  font: inherit; color: var(--logic-ink); background: #f4f8f8; border: 1px solid #adbec2;
+  border-radius: 8px; min-height: 42px; min-width: 52px; padding: 4px 10px; cursor: pointer;
+}
+.bool-bit strong {margin-left: 6px; font-family: ui-monospace, monospace; font-size: 1.05rem}
+.bool-bit[aria-pressed="true"] {background: #d1f3e4; border-color: #1c7761; color: #094a3e}
+.bool-bit:disabled {opacity: .54; cursor: default}
+.bool-lab-result {
+  padding: 13px 15px; background: #e8f3f4; border-radius: 11px; display: flex;
+  justify-content: space-between; align-items: center; gap: 8px;
+}
+.bool-lab-result span {font-size: .86rem; color: var(--logic-muted)}
+.bool-lab-result p {font-family: ui-monospace, monospace; font-weight: 720; margin: 2px 0 0}
+.bool-lab-result output {font-family: ui-monospace, monospace; font-weight: 800; font-size: 2.15rem; line-height: 1}
+.bool-lab-result.is-one {background: #d9f6e9}
+.bool-main .bool-example-note {color: var(--logic-muted); font-size: .88rem; margin: 9px 0 0; min-height: 2.65em}
+.bool-truth table {width: 100%; border-collapse: collapse; margin-top: 11px; color: var(--logic-ink); font-variant-numeric: tabular-nums}
+.bool-truth td, .bool-truth th {padding: 5px 6px; text-align: center; border-bottom: 1px solid var(--logic-border)}
+.bool-truth th {background: #edf5f6}
+.bool-truth [aria-current="true"] {background: #d5f3e7; font-weight: 800}
+.bool-truth p {font-size: .84rem; margin-bottom: 0; color: var(--logic-muted)}
+.bool-sr {position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap}
+.bool-gates {display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; margin-top: 15px}
+.bool-gate {padding: 17px; background: #fff; border: 1px solid var(--logic-border); border-radius: 14px}
+.bool-gate h3 {margin-bottom: 5px}
+.bool-gate p {font-size: .9rem; color: var(--logic-muted); margin: 7px 0 0}
+.bool-gate .bool-formula {font-family: ui-monospace, monospace; font-weight: 720; color: var(--logic-ink); margin-top: 0}
+.bool-symbol-pair {display: grid; grid-template-columns: 1fr 1fr; margin-top: 11px; gap: 4px}
+.bool-symbol-pair figure {margin: 0; min-width: 0; padding: 3px; border-radius: 7px; background: #f4f8f8; text-align: center}
+.bool-symbol-pair svg {display: block; width: min(96px, 100%); margin-inline: auto; color: #10313f}
+.bool-symbol-pair figcaption {font-size: .76rem; color: var(--logic-muted); padding-bottom: 4px}
+.bool-circuit-controls {display: flex; align-items: end; flex-wrap: wrap; gap: 17px 35px}
+.bool-circuit-figure {margin: 16px 0 0; border: 1px solid var(--logic-border); border-radius: 12px; background: #f7fbfa}
+.bool-circuit-figure svg {display: block; width: min(100%, 680px); margin-inline: auto; color: var(--logic-dark)}
+.bool-circuit-figure figcaption {font-size: .87rem; text-align: center; margin: 0 10px 10px; color: var(--logic-muted)}
+.bool-wire {stroke: #748c95; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; fill: none}
+.bool-wire.is-one {stroke: #137854; stroke-width: 4}
+.bool-circuit-reading {margin-top: 9px; display: flex; flex-wrap: wrap; gap: 6px 25px}
+.bool-circuit-reading p {margin: 3px 0 0}
+.bool-quiz-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 16px 28px; margin-bottom: 16px}
+.bool-quiz-grid label {display: flex; flex-direction: column; align-items: flex-start; gap: 6px; font-weight: 650}
+.bool-quiz-grid select {min-width: 124px}
+.bool-tp-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 16px}
+.bool-tp {display: flex; flex-direction: column; align-items: stretch}
+.bool-tp-heading {display: flex; align-items: center; justify-content: space-between; gap: 8px}
+.bool-tp-heading span {font-weight: 750; color: var(--logic-accent)}
+.bool-milestones {list-style: none; padding: 0; margin: 5px 0 18px}
+.bool-milestones li {display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 1px solid var(--logic-border); padding: 10px 0}
+.bool-milestones small {display: block; color: var(--logic-muted)}
+.bool-milestones li > span {font-weight: 750; color: var(--logic-accent)}
+.bool-tp .bool-actions {margin-top: auto}
+.bool-advanced {margin-top: 40px; scroll-margin-top: 72px}
+.bool-advanced > summary {font-size: 1.14rem; font-weight: 750; cursor: pointer}
+.bool-advanced .bool-advanced-intro {color: var(--logic-muted); margin-bottom: 0}
+.bool-advanced h2 {margin-top: 18px; font-size: 1.45rem}
+.bool-main .bool-advanced .boolean-exercises {margin-top: 13px}
+.bool-references {margin-top: 32px; color: var(--logic-muted); font-size: .91rem}
+.bool-main .bool-references h2 {font-size: 1.12rem; letter-spacing: 0}
+.bool-references ul {padding-left: 21px}
+.bool-page footer a {color: inherit; text-decoration: underline}
+.bool-page:has(.bool-main) .skip-link {z-index: 100}
+
+@media (max-width: 790px) {
+  .bool-page .bool-wrap {width: min(100% - 38px, 1100px)}
+  .bool-hero {grid-template-columns: 1fr .86fr; padding: 32px; gap: 14px}
+  .bool-course-layout {grid-template-columns: 1.55fr 1fr}
+  .bool-gates {grid-template-columns: repeat(2,minmax(0,1fr))}
+}
+@media (max-width: 600px) {
+  .bool-page .bool-wrap {width: calc(100% - 28px)}
+  .bool-header-row {min-height: 59px}
+  .bool-page .bool-nav {position: static}
+  .bool-nav-inner {gap: 0 6px; padding-block: 3px}
+  .bool-nav a {font-size: .81rem; padding: 6px 5px}
+  .bool-page .bool-main {padding-top: 16px}
+  .bool-hero {grid-template-columns: 1fr; padding: 24px; border-radius: 17px}
+  .bool-hero-visual {max-width: 370px}
+  .bool-hero-visual svg {max-height: 146px}
+  .bool-section {margin-top: 38px; scroll-margin-top: 12px}
+  .bool-section-head {align-items: flex-start; flex-direction: column; gap: 10px}
+  .bool-lab, .bool-course-layout, .bool-tp-grid, .bool-quiz-grid {grid-template-columns: 1fr}
+  .bool-lab {gap: 19px}
+  .bool-panel {padding: 17px}
+  .bool-gate {padding: 12px}
+  .bool-symbol-pair figcaption {font-size: .69rem}
+  .bool-circuit-controls {gap: 10px 20px}
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(body.bool-page) {scroll-behavior: auto}
+}
+@media print {
+  .bool-page .bool-wrap {width: 100%}
+  .bool-page .bool-nav, .bool-page .bool-actions, .bool-page .bool-section-head .bool-btn {display: none}
+  .bool-hero {display: block; padding: 0; color: #000; background: none}
+  .bool-hero h1, .bool-hero .bool-kicker, .bool-hero-copy {color: #000}
+  .bool-hero-visual {display: none}
+  .bool-section {margin-top: 24px}
+  .bool-gate, .bool-tp, .bool-lab, .bool-course-layout {break-inside: avoid}
+}
+

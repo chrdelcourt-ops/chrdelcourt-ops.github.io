@@ -1,4 +1,4 @@
-const CACHE_NAME = "marie-rivier-pwa-v55";
+const CACHE_NAME = "marie-rivier-pwa-v56";
 const CORE = [
   "/",
   "/index.html",
@@ -26,7 +26,11 @@ const CORE = [
   "/classes/premiere-pert.html",
   "/classes/premiere-pert.js",
   "/classes/premiere-operations-booleennes.html",
-  "/classes/premiere-operations-booleennes.js",
+  "/classes/premiere-operations-booleennes.js?v=56",
+  "/classes/premiere-operations-booleennes.css?v=56",
+  "/documents/premiere-sti2d/cours-logique-a-trous-1ere-sti2d.docx",
+  "/documents/premiere-sti2d/tp-logicly-logique-1ere-sti2d.docx",
+  "/documents/premiere-sti2d/tp-proteus-logique-1ere-sti2d.docx",
   "/classes/premiere-gantt.html",
   "/classes/premiere-gantt.js",
   "/classes/terminale-sti2d.html",

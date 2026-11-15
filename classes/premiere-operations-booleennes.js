@@ -1,228 +1,186 @@
 (() => {
   "use strict";
 
-  let A = 0;
-  let B = 0;
+  const pick = (id) => document.getElementById(id);
 
-  const toggleA = document.getElementById("logic-a");
-  const toggleB = document.getElementById("logic-b");
-  const explain = document.getElementById("logic-explain");
+  const gates = {
+    and: {expression: "A · B", run: (a, b) => a & b, note: "ET donne 1 si les deux entrées valent 1."},
+    or: {expression: "A + B", run: (a, b) => a | b, note: "OU donne 1 si au moins une entrée vaut 1."},
+    not: {expression: "¬A", run: (a) => 1 - a, note: "NON inverse A. Cette porte n’utilise qu’une entrée."},
+    nand: {expression: "¬(A · B)", run: (a, b) => 1 - (a & b), note: "NAND inverse le résultat de ET."},
+    nor: {expression: "¬(A + B)", run: (a, b) => 1 - (a | b), note: "NOR inverse le résultat de OU."},
+    xor: {expression: "A ⊕ B", run: (a, b) => a ^ b, note: "XOR donne 1 si les deux entrées sont différentes."}
+  };
 
-  function setToggle(button, value) {
-    button?.setAttribute("aria-pressed", value ? "true" : "false");
-    const strong = button?.querySelector("strong");
-    if (strong) strong.textContent = value;
-    button?.classList.toggle("active", Boolean(value));
+  function setBit(button, value) {
+    button.setAttribute("aria-pressed", String(Boolean(value)));
+    button.querySelector("strong").textContent = value;
   }
 
-  function updateLogic() {
-    const notA = A ? 0 : 1;
-    const and = A && B ? 1 : 0;
-    const or = A || B ? 1 : 0;
-    const nand = and ? 0 : 1;
-    const nor = or ? 0 : 1;
-    const xor = A !== B ? 1 : 0;
+  const gateSelect = pick("logic-gate");
+  const aButton = pick("logic-a");
+  const bButton = pick("logic-b");
+  const gateOutput = pick("gate-output");
+  const gateTable = pick("gate-truth");
+  let a = 0;
+  let b = 0;
 
-    setToggle(toggleA, A);
-    setToggle(toggleB, B);
+  function updateGate() {
+    const {expression, run, note} = gates[gateSelect.value];
+    const unary = gateSelect.value === "not";
+    const output = run(a, b);
+    setBit(aButton, a);
+    setBit(bButton, b);
+    bButton.disabled = unary;
+    gateOutput.textContent = output;
+    gateOutput.closest(".bool-lab-result").classList.toggle("is-one", output === 1);
+    pick("gate-formula").textContent = expression;
+    pick("logic-explain").textContent = note;
 
-    const values = {
-      "out-not": notA,
-      "out-and": and,
-      "out-or": or,
-      "out-nand": nand,
-      "out-nor": nor,
-      "out-xor": xor
-    };
-
-    Object.entries(values).forEach(([id, value]) => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.textContent = value;
-        el.closest("article")?.classList.toggle("logic-one", value === 1);
+    const inputCases = unary ? [[0], [1]] : [[0, 0], [0, 1], [1, 0], [1, 1]];
+    gateTable.tHead.rows[0].cells[1].hidden = unary;
+    const rows = inputCases.map((inputs) => {
+      const row = document.createElement("tr");
+      const [first, second] = inputs;
+      if (first === a && (unary || second === b)) {
+        row.setAttribute("aria-current", "true");
       }
+      for (const state of [...inputs, run(...inputs)]) {
+        row.insertCell().textContent = state;
+      }
+      return row;
     });
+    gateTable.tBodies[0].replaceChildren(...rows);
+  }
 
-    if (explain) {
-      explain.textContent =
-        `A=${A} et B=${B} : ET=${and}, OU=${or}, NAND=${nand}, NOR=${nor}, XOR=${xor}.`;
+  aButton.addEventListener("click", () => {
+    a = 1 - a;
+    updateGate();
+  });
+  bButton.addEventListener("click", () => {
+    b = 1 - b;
+    updateGate();
+  });
+  gateSelect.addEventListener("change", updateGate);
+
+  const callBits = {p: 0, b: 0, t: 0};
+  const standard = pick("schema-standard");
+  const signalWires = [...document.querySelectorAll("[data-signal]")];
+  const symbols = [...document.querySelectorAll("[data-diagram]")];
+
+  function updateCircuit() {
+    const r = callBits.b | callBits.t;
+    const s = callBits.p & r;
+    const signals = {...callBits, r, s};
+    pick("borne-r").textContent = r;
+    pick("borne-s").textContent = s;
+    for (const wire of signalWires) {
+      wire.classList.toggle("is-one", signals[wire.dataset.signal] === 1);
+    }
+    for (const symbol of symbols) {
+      symbol.style.display = symbol.dataset.diagram === standard.value ? "" : "none";
     }
   }
 
-  toggleA?.addEventListener("click", () => {
-    A = A ? 0 : 1;
-    updateLogic();
-  });
+  for (const button of document.querySelectorAll("[data-borne]")) {
+    button.addEventListener("click", () => {
+      const signal = button.dataset.borne;
+      callBits[signal] = 1 - callBits[signal];
+      setBit(button, callBits[signal]);
+      updateCircuit();
+    });
+  }
+  standard.addEventListener("change", updateCircuit);
 
-  toggleB?.addEventListener("click", () => {
-    B = B ? 0 : 1;
-    updateLogic();
-  });
-
-  function expectedForRow(row) {
-    const a = Number(row.dataset.a);
-    const b = Number(row.dataset.b);
-    const c = Number(row.dataset.c);
-    const notA = a ? 0 : 1;
-    const bc = b && c ? 1 : 0;
-    const f = notA || bc ? 1 : 0;
-    return [notA, bc, f];
+  function bindAnswers(form, answers) {
+    const feedback = form.querySelector("[data-feedback]");
+    const fields = Object.entries(answers).map(([name, expected]) => [form.elements.namedItem(name), expected]);
+    const clearCheck = (field) => {
+      delete field.dataset.check;
+      field.removeAttribute("aria-invalid");
+    };
+    for (const [field] of fields) {
+      field.addEventListener("change", () => {
+        clearCheck(field);
+        feedback.textContent = "";
+      });
+    }
+    form.addEventListener("reset", () => {
+      for (const [field] of fields) clearCheck(field);
+      feedback.textContent = "";
+    });
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      let correct = 0;
+      let missing = 0;
+      for (const [field, expected] of fields) {
+        if (field.value === expected) {
+          correct += 1;
+          field.dataset.check = "correct";
+          field.removeAttribute("aria-invalid");
+        } else if (field.value === "") {
+          missing += 1;
+          clearCheck(field);
+        } else {
+          field.dataset.check = "incorrect";
+          field.setAttribute("aria-invalid", "true");
+        }
+      }
+      const status = correct === fields.length ? "Toutes les réponses sont justes."
+        : missing > 0 ? "Complétez les réponses manquantes et vérifiez les champs signalés."
+          : "Revoyez les champs signalés avec la fiche méthode.";
+      feedback.textContent = correct + " / " + fields.length + " réponses justes. " + status;
+    });
   }
 
-  const ex1Rows = [...document.querySelectorAll("#ex1-table tr")];
-  const resultEx1 = document.getElementById("result-ex1");
+  bindAnswers(pick("cloze"), {
+    nature: "binaire", presence: "1", absence: "0", memory: "maintenant", rows: "8", priority: "ET"
+  });
+  bindAnswers(pick("practice"), {xor: "0", size: "16", order: "0", symbol: "NOR"});
 
-  document.querySelectorAll("#ex1-table input").forEach(input => {
+  const exerciseRows = [...pick("ex1-table").rows];
+  const exerciseFeedback = pick("result-ex1");
+  for (const input of pick("ex1-table").querySelectorAll("input")) {
     input.addEventListener("input", () => {
       input.value = input.value.replace(/[^01]/g, "").slice(0, 1);
       input.classList.remove("ok", "bad");
+      input.removeAttribute("aria-invalid");
+      exerciseFeedback.textContent = "";
     });
-  });
+  }
 
-  document.getElementById("check-ex1")?.addEventListener("click", () => {
-    let correct = 0;
-    let total = 0;
-
-    ex1Rows.forEach(row => {
-      const expected = expectedForRow(row);
-      const inputs = [...row.querySelectorAll("input")];
-      inputs.forEach((input, index) => {
-        total++;
-        input.classList.remove("ok", "bad");
-        if (input.value === String(expected[index])) {
-          correct++;
-          input.classList.add("ok");
-        } else {
-          input.classList.add("bad");
-        }
+  pick("check-ex1").addEventListener("click", () => {
+    let matches = 0;
+    let count = 0;
+    for (const row of exerciseRows) {
+      const {a, b, c} = row.dataset;
+      const notA = 1 - Number(a);
+      const bc = Number(b) & Number(c);
+      const expected = [notA, bc, notA | bc];
+      [...row.querySelectorAll("input")].forEach((input, index) => {
+        const correct = input.value === String(expected[index]);
+        const incorrect = !correct && input.value !== "";
+        input.classList.toggle("ok", correct);
+        input.classList.toggle("bad", incorrect);
+        if (incorrect) input.setAttribute("aria-invalid", "true");
+        else input.removeAttribute("aria-invalid");
+        count += 1;
+        if (correct) matches += 1;
       });
-    });
-
-    if (resultEx1) {
-      resultEx1.textContent = `${correct}/${total} cases correctes`;
-      resultEx1.className = "exercise-result visible " + (correct === total ? "success" : "partial");
     }
+    exerciseFeedback.textContent = matches + " / " + count + " cases justes.";
   });
 
-  document.getElementById("reset-ex1")?.addEventListener("click", () => {
-    document.querySelectorAll("#ex1-table input").forEach(input => {
+  pick("reset-ex1").addEventListener("click", () => {
+    for (const input of pick("ex1-table").querySelectorAll("input")) {
       input.value = "";
       input.classList.remove("ok", "bad");
-    });
-    if (resultEx1) {
-      resultEx1.textContent = "";
-      resultEx1.className = "exercise-result";
+      input.removeAttribute("aria-invalid");
     }
+    exerciseFeedback.textContent = "";
   });
 
-
-  // ---------- Animations pédagogiques ----------
-  const demoButtons = [...document.querySelectorAll(".logic-demo-run")];
-
-  const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-  function setNode(card, name, value) {
-    const node = card.querySelector(`[data-node="${name}"]`);
-    if (!node) return;
-    const strong = node.querySelector("strong");
-    if (strong) strong.textContent = value;
-    node.classList.toggle("signal-on", value === 1);
-  }
-
-  function pulseWire(card, name, on) {
-    const wire = card.querySelector(`[data-wire="${name}"]`);
-    if (!wire) return;
-    wire.classList.remove("pulse", "signal-on");
-    void wire.offsetWidth;
-    if (on) wire.classList.add("signal-on");
-    wire.classList.add("pulse");
-  }
-
-  function setLamp(card, value) {
-    const lamp = card.querySelector('[data-lamp="out"]');
-    if (!lamp) return;
-    const strong = lamp.querySelector("strong");
-    if (strong) strong.textContent = value;
-    lamp.classList.toggle("signal-on", value === 1);
-  }
-
-  async function runGateDemo(type, button) {
-    const card = document.getElementById(`demo-${type}`);
-    const caption = document.getElementById(`caption-${type}`);
-    if (!card || !caption) return;
-
-    const combos = [[0,0],[0,1],[1,0],[1,1]];
-    button.disabled = true;
-
-    for (const [a,b] of combos) {
-      const out = type === "and"
-        ? (a && b ? 1 : 0)
-        : (a !== b ? 1 : 0);
-
-      setNode(card, "a", a);
-      setNode(card, "b", b);
-      setLamp(card, 0);
-
-      pulseWire(card, "a", a);
-      pulseWire(card, "b", b);
-      caption.textContent = `A=${a}, B=${b} : les deux entrées arrivent à la porte ${type === "and" ? "ET" : "XOR"}…`;
-      await wait(650);
-
-      pulseWire(card, "out", out);
-      setLamp(card, out);
-      caption.textContent = type === "and"
-        ? `A=${a}, B=${b} → ET = ${out}. La sortie vaut 1 seulement pour 1 et 1.`
-        : `A=${a}, B=${b} → XOR = ${out}. La sortie vaut 1 seulement si les entrées sont différentes.`;
-      await wait(900);
-    }
-
-    button.disabled = false;
-  }
-
-  async function runExpressionDemo(button) {
-    const card = document.getElementById("demo-expr");
-    const caption = document.getElementById("caption-expr");
-    if (!card || !caption) return;
-
-    button.disabled = true;
-    const stages = [...card.querySelectorAll("[data-stage]")];
-    stages.forEach(s => s.classList.remove("active"));
-
-    setNode(card, "a", 0);
-    setNode(card, "b", 1);
-    setNode(card, "c", 0);
-
-    caption.textContent = "Entrées choisies : A=0, B=1, C=0.";
-    await wait(700);
-
-    const notStage = card.querySelector('[data-stage="not"]');
-    notStage?.classList.add("active");
-    caption.textContent = "Étape 1 : NON A. Comme A=0, ¬A=1.";
-    await wait(950);
-
-    const andStage = card.querySelector('[data-stage="and"]');
-    andStage?.classList.add("active");
-    caption.textContent = "Étape 2 : B ET C. 1 ET 0 donne 0.";
-    await wait(950);
-
-    const orStage = card.querySelector('[data-stage="or"]');
-    orStage?.classList.add("active");
-    caption.textContent = "Étape 3 : ¬A OU (B·C). 1 OU 0 donne F=1.";
-    await wait(1100);
-
-    button.disabled = false;
-  }
-
-  demoButtons.forEach(button => {
-    button.addEventListener("click", async () => {
-      const demo = button.dataset.demo;
-      if (demo === "and" || demo === "xor") {
-        await runGateDemo(demo, button);
-      } else if (demo === "expr") {
-        await runExpressionDemo(button);
-      }
-    });
-  });
-
-  updateLogic();
+  updateGate();
+  updateCircuit();
 })();
+
