@@ -18,9 +18,11 @@
   <meta name="theme-color" content="#10313f">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="premiere-operations-booleennes.css?v=56">
+  <link rel="stylesheet" href="premiere-operations-booleennes-electrique.css?v=1">
   <script src="../analytics.js" defer></script>
   <script src="../script.js" defer></script>
   <script src="premiere-operations-booleennes.js?v=56" defer></script>
+  <script src="premiere-operations-booleennes-electrique.js?v=1" defer></script>
 </head>
 <body class="bool-page">
 <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -36,6 +38,7 @@
   <div class="bool-wrap bool-nav-inner">
     <a href="#cours">Cours à trous</a>
     <a href="#exemples">Portes et symboles</a>
+    <a href="#electrique">Simulation électrique</a>
     <a href="#animations">Circuit interactif</a>
     <a href="#entrainement">Entraînement</a>
     <a href="#tp">Logicly et Proteus</a>
@@ -155,6 +158,72 @@
       <article class="bool-gate"><h3>NON ET <small>· NAND</small></h3><p class="bool-formula">¬(A · B)</p><div class="bool-symbol-pair"><figure><svg viewBox="0 0 104 60" role="img" aria-label="NON ET en symboles IEC"><g fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19H22"/><path d="M4 41H22"/><rect x="22" y="8" width="53" height="44" rx="0" fill="#fff"/><text x="48.5" y="35" text-anchor="middle" font-size="17" font-weight="750" fill="currentColor" stroke="none">&amp;</text><circle cx="80" cy="30" r="5" fill="#fff"/><path d="M85 30H100"/></g></svg><figcaption>IEC</figcaption></figure><figure><svg viewBox="0 0 104 60" role="img" aria-label="NON ET en symboles ANSI/IEEE"><g fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19H22"/><path d="M4 41H22"/><path d="M22 8H48C63 8 75 17 75 30S63 52 48 52H22Z" fill="#fff"/><circle cx="80" cy="30" r="5" fill="#fff"/><path d="M85 30H100"/></g></svg><figcaption>ANSI/IEEE</figcaption></figure></div><p>Seule la combinaison 11 donne 0.</p></article>
       <article class="bool-gate"><h3>NON OU <small>· NOR</small></h3><p class="bool-formula">¬(A + B)</p><div class="bool-symbol-pair"><figure><svg viewBox="0 0 104 60" role="img" aria-label="NON OU en symboles IEC"><g fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19H22"/><path d="M4 41H22"/><rect x="22" y="8" width="53" height="44" rx="0" fill="#fff"/><text x="48.5" y="35" text-anchor="middle" font-size="17" font-weight="750" fill="currentColor" stroke="none">≥1</text><circle cx="80" cy="30" r="5" fill="#fff"/><path d="M85 30H100"/></g></svg><figcaption>IEC</figcaption></figure><figure><svg viewBox="0 0 104 60" role="img" aria-label="NON OU en symboles ANSI/IEEE"><g fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19H28"/><path d="M4 41H28"/><path d="M22 8C46 8 60 10 75 30C60 50 46 52 22 52C32 41 32 19 22 8Z" fill="#fff"/><circle cx="80" cy="30" r="5" fill="#fff"/><path d="M85 30H100"/></g></svg><figcaption>ANSI/IEEE</figcaption></figure></div><p>Seule la combinaison 00 donne 1.</p></article>
       <article class="bool-gate"><h3>OU exclusif <small>· XOR</small></h3><p class="bool-formula">A ⊕ B</p><div class="bool-symbol-pair"><figure><svg viewBox="0 0 104 60" role="img" aria-label="OU exclusif en symboles IEC"><g fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19H22"/><path d="M4 41H22"/><rect x="22" y="8" width="53" height="44" rx="0" fill="#fff"/><text x="48.5" y="35" text-anchor="middle" font-size="17" font-weight="750" fill="currentColor" stroke="none">=1</text><path d="M75 30H100"/></g></svg><figcaption>IEC</figcaption></figure><figure><svg viewBox="0 0 104 60" role="img" aria-label="OU exclusif en symboles ANSI/IEEE"><g fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19H28"/><path d="M4 41H28"/><path d="M22 8C46 8 60 10 75 30C60 50 46 52 22 52C32 41 32 19 22 8Z" fill="#fff"/><path d="M16 8C26 19 26 41 16 52" fill="none"/><path d="M75 30H100"/></g></svg><figcaption>ANSI/IEEE</figcaption></figure></div><p>Avec deux entrées, une seule doit valoir 1.</p></article>
+    </div>
+  </section>
+
+  <section id="electrique" class="bool-section" aria-labelledby="ec-title">
+    <div class="bool-section-head">
+      <div>
+        <p class="bool-kicker">Atelier interactif • schéma + table de vérité</p>
+        <h2 id="ec-title">Des interrupteurs à la logique booléenne</h2>
+        <p>Changez A et B : observez les contacts, le trajet conducteur, l’état de la lampe et la ligne correspondante de la table. Cliquez aussi sur « Essayer » pour tester une ligne de vérité.</p>
+      </div>
+    </div>
+    <div class="bool-panel ec-lab">
+      <div class="ec-toolbar">
+        <label for="ec-operation">Opération logique
+          <select id="ec-operation">
+            <option value="and">ET</option><option value="or">OU</option>
+            <option value="not">NON</option><option value="nand">NAND (NON-ET)</option>
+            <option value="nor">NOR (NON-OU)</option><option value="xor">XOR (OU exclusif)</option>
+          </select>
+        </label>
+        <label for="ec-standard">Symbole logique
+          <select id="ec-standard"><option value="iec">Européen IEC</option><option value="ansi">Américain ANSI/IEEE</option></select>
+        </label>
+        <div class="ec-buttons" role="group" aria-label="Commander les entrées">
+          <button type="button" id="ec-a" aria-pressed="false">A = <strong>0</strong></button>
+          <button type="button" id="ec-b" aria-pressed="false">B = <strong>0</strong></button>
+        </div>
+      </div>
+      <div class="ec-grid">
+        <div class="ec-schematic">
+          <div class="ec-schematic-header">
+            <h3>Schéma électrique</h3>
+            <div class="ec-symbol-wrap"><small id="ec-symbol-label">IEC</small><div id="ec-symbol" aria-label="Symbole de la porte logique">Symbole ET</div></div>
+          </div>
+          <p id="ec-formula" class="bool-formula"><strong>S = A · B</strong></p>
+          <div class="ec-svg-scroll">
+            <svg id="ec-diagram" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Simulation du montage de contacts électriques">
+              <text x="350" y="150" text-anchor="middle" fill="#48616a">Activez JavaScript pour manipuler le circuit.</text>
+            </svg>
+          </div>
+          <p id="ec-status" class="ec-state" data-lit="0" role="status" aria-live="polite">S = 0 — lampe éteinte</p>
+          <p id="ec-explain" class="ec-explain">En ET, deux contacts normalement ouverts sont montés en série.</p>
+          <div class="ec-legend"><span class="ec-active">Trajet conducteur qui allume</span><span>Trajet non conducteur</span></div>
+          <p class="ec-small">NO = normalement ouvert ; NF = normalement fermé. Une entrée à 1 actionne son contact. Modèle virtuel de commande en courant continu, sans câblage réel ni alimentation secteur.</p>
+        </div>
+        <div class="ec-truth">
+          <h3>Table de vérité</h3>
+          <table id="ec-table">
+            <caption class="bool-sr">Valeurs d’entrée et de sortie du circuit choisi</caption>
+            <thead><tr><th scope="col">A</th><th scope="col">B</th><th scope="col">S</th><th scope="col">Tester</th></tr></thead>
+            <tbody>
+              <tr aria-current="true"><td>0</td><td>0</td><td>0</td><td>—</td></tr>
+              <tr><td>0</td><td>1</td><td>0</td><td>—</td></tr>
+              <tr><td>1</td><td>0</td><td>0</td><td>—</td></tr>
+              <tr><td>1</td><td>1</td><td>1</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <p class="ec-small">La ligne verte indique la situation simulée. Pour NON, seule l’entrée A est nécessaire.</p>
+        </div>
+      </div>
+      <div class="ec-guidance">
+        <strong>Ce que je retiens</strong>
+        <p>Contacts <strong>en série</strong> : ET. Contacts <strong>en parallèle</strong> : OU. Contact <strong>normalement fermé</strong> : NON. En combinant ces montages, on obtient NAND, NOR et XOR. La lampe représente la sortie S.</p>
+      </div>
+      <p class="ec-small">Pour approfondir : <a href="https://www.circuitbread.com/textbooks/lessons-in-electric-circuits-volume-iv-digital/ladder-logic/digital-logic-functions" target="_blank" rel="noopener noreferrer">CircuitBread — Digital Logic Functions (schémas de contacts)</a>.</p>
+      <noscript><p>Activez JavaScript pour voir les contacts se déplacer et choisir une combinaison dans la table.</p></noscript>
     </div>
   </section>
 
