@@ -190,15 +190,16 @@
       </div>
       <div class="lesson">
         <p>Une <strong>URL</strong> (Uniform Resource Locator) indique l'emplacement d'une ressource sur le Web.</p>
+        <p>Le nom d’hôte et le chemin correspondent à la page du lycée général et technologique Marie Rivier. Les paramètres et le fragment sont ajoutés pour cet exemple.</p>
         <div class="url-demo">
-          <span class="url-part protocol">https://</span><span class="url-part domain">jeux.example</span><span class="url-part path">/tutos.html</span><span class="url-part">?jeu=tetris&amp;niveau=2</span><span class="url-part">#conseils</span>
+          <span class="url-part protocol">https://</span><span class="url-part domain">marie-rivier.com</span><span class="url-part path">/lycee-general-et-technologique/</span><span class="url-part">?classe=2de&amp;rubrique=formations</span><span class="url-part">#sources</span>
         </div>
         <div class="url-legend">
           <div><b>https</b><span>schéma</span></div>
-          <div><b>jeux.example</b><span>nom d’hôte</span></div>
-          <div><b>/tutos.html</b><span>chemin</span></div>
-          <div><b>jeu=tetris et niveau=2</b><span>paramètres</span></div>
-          <div><b>#conseils</b><span>fragment utilisé par le navigateur</span></div>
+          <div><b>marie-rivier.com</b><span>nom d’hôte</span></div>
+          <div><b>/lycee-general-et-technologique/</b><span>chemin</span></div>
+          <div><b>classe=2de et rubrique=formations</b><span>paramètres</span></div>
+          <div><b>#sources</b><span>fragment utilisé par le navigateur</span></div>
         </div>
         <div class="callout warning">
           <strong>HTTPS</strong> signifie que les échanges HTTP sont protégés par TLS. Cela ne prouve pas à lui seul qu'un site est honnête ou fiable.
@@ -268,13 +269,13 @@ p {
           <div><strong>Serveur Web</strong><span>renvoie la réponse</span></div>
         </div>
         <div class="code-card light-code">
-<pre><code>GET /recherche?jeu=tetris&amp;niveau=2 HTTP/1.1
-Host: jeux.example
+<pre><code>GET /lycee-general-et-technologique/?classe=2de&amp;rubrique=formations HTTP/1.1
+Host: marie-rivier.com
 
 HTTP/1.1 200 OK
 Content-Type: text/html; charset=utf-8</code></pre>
         </div>
-        <p>GET est la méthode, <code>/recherche</code> le chemin et <code>jeu</code> et <code>niveau</code> les paramètres. Le fragment de l’URL reste dans le navigateur. Le statut 200 indique un succès. Un statut 404 indique que la ressource demandée est introuvable.</p>
+        <p>GET est la méthode, <code>/lycee-general-et-technologique/</code> le chemin et <code>classe</code> et <code>rubrique</code> les paramètres. Le fragment de l’URL reste dans le navigateur. Le statut 200 indique un succès. Un statut 404 indique que la ressource demandée est introuvable.</p>
         <p>Le serveur peut renvoyer un fichier existant ou produire une page selon les paramètres. Un script JavaScript déjà chargé peut aussi réagir à un clic directement dans le navigateur.</p>
       </div>
 
