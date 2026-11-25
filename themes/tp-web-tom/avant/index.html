@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accueil | Les jeux de Tom</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <p class="rubrique">Projet SNT • Le Web</p>
+      <h1>Les jeux de Tom</h1>
+      <nav aria-label="Menu principal">
+        <ul>
+          <li>Accueil</li>
+          <li>Top 10</li>
+          <li>Tutos</li>
+        </ul>
+      </nav>
+    </header>
+    <section aria-labelledby="bienvenue">
+      <h2 id="bienvenue">Bienvenue</h2>
+      <img src="manette.svg" alt="Manette de jeu illustrée" width="300" height="170">
+      <p>Je rassemble ici mes jeux préférés et mes idées pour progresser.</p>
+      <p>Aller aux conseils</p>
+    </section>
+    <section aria-labelledby="conseils">
+      <h2 id="conseils">Conseils</h2>
+      <button type="button" id="bouton-astuce" aria-controls="astuce" aria-expanded="false">Afficher une astuce</button>
+      <p id="astuce" hidden>Commence par un niveau simple et essaie une seule stratégie à la fois.</p>
+      <p>Découvrir la naissance du Web</p>
+    </section>
+    <section aria-labelledby="demo">
+      <h2 id="demo">Démonstration HTTP</h2>
+      <p>Ouvre l’onglet Réseau (F12), puis clique sur un lien pour examiner la requête et la réponse.</p>
+      <ul>
+        <li><a href="../recherche/tetris.html?jeu=tetris&amp;niveau=2#resultat">Ouvrir le résultat pour Tetris</a></li>
+        <li><a href="../recherche/pacman.html?jeu=pacman&amp;niveau=3#resultat">Ouvrir le résultat pour Pac-Man</a></li>
+      </ul>
+    </section>
+    <p><a href="../../web.html#corrige-tp">Revenir au corrigé du TP</a></p>
+    <script>
+      const bouton = document.querySelector("#bouton-astuce");
+      const message = document.querySelector("#astuce");
+
+      bouton.addEventListener("click", () => {
+        message.hidden = !message.hidden;
+        bouton.setAttribute("aria-expanded", String(!message.hidden));
+        bouton.textContent = message.hidden ? "Afficher une astuce" : "Masquer l’astuce";
+      });
+    </script>
+  </main>
+</body>
+</html>

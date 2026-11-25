@@ -106,6 +106,7 @@
       <a href="#objectifs">Objectifs</a>
       <a href="#cours">Cours</a>
       <a href="#tp">TP Notepad++</a>
+      <a href="#corrige-tp">Corrigé du TP</a>
       <a href="#retenir">À retenir</a>
       <a href="#quiz-web">Quiz</a>
     </div>
@@ -357,6 +358,67 @@ Content-Type: text/html; charset=utf-8</code></pre>
           <p><strong>Après chaque modification :</strong> Ctrl+S dans Notepad++, puis Ctrl+R dans le navigateur.</p>
         </div>
       </article>
+    </section>
+
+    <section id="corrige-tp" class="section" aria-labelledby="titre-corrige-tp">
+      <div class="section-heading">
+        <h2 id="titre-corrige-tp">Corrigé du TP 1</h2>
+        <p class="section-intro">Ouvre les deux versions du site de Tom. Compare la mise en forme, l’image et les liens.</p>
+      </div>
+
+      <div class="resource-list">
+        <a href="/themes/tp-web-tom/avant/index.html">
+          <strong>Avant la correction</strong>
+          <span>Repère les éléments qui manquent sur la page de départ.</span>
+        </a>
+        <a href="/themes/tp-web-tom/apres/index.html">
+          <strong>Après la correction</strong>
+          <span>Teste Top 10, Tutos, le lien Conseils et le bouton d’astuce.</span>
+        </a>
+      </div>
+
+      <div class="lesson lesson-heading" style="overflow-wrap: anywhere">
+        <h3>Q1 · Repérer les défauts</h3>
+        <p>L’accueil s’affiche avec le style par défaut du navigateur et la manette manque. Dans <code>index.html</code>, <code>href="style.css"</code> et <code>src="manette.svg"</code> demandent deux fichiers dans le même dossier que la page. Ces fichiers se trouvent dans des sous-dossiers.</p>
+
+        <h3>Q2 · Rétablir la feuille de style et l’image</h3>
+        <ul>
+          <li><code>href="Feuille_de_Style/style.css"</code> charge la feuille de style. Le fond devient bleu pâle.</li>
+          <li><code>src="Images/manette.svg"</code> charge la manette. Garde son texte alternatif <code>alt="Manette de jeu illustrée"</code>.</li>
+        </ul>
+        <p>Recopie les noms et la casse des dossiers tels qu’ils figurent dans l’arborescence.</p>
+
+        <h3>Q3 · Rendre le menu et le lien Conseils cliquables</h3>
+        <ul>
+          <li><code>href="top10.html"</code> ouvre la page Top 10 dans le même dossier.</li>
+          <li><code>href="tutos.html"</code> ouvre la page Tutos dans le même dossier.</li>
+          <li><code>href="#conseils"</code> vise le titre qui porte <code>id="conseils"</code> dans la page affichée.</li>
+        </ul>
+        <p>Place le texte de chaque lien dans une balise <code>&lt;a&gt;</code>. Les deux pages du menu contiennent un lien de retour vers <code>index.html</code>.</p>
+
+        <h3>Q4 · Ajouter un lien absolu</h3>
+        <p>L’adresse de <a href="https://home.cern/fr/science/computing/birth-web/">la page du CERN sur la naissance du Web</a> contient le schéma <code>https</code>, l’hôte <code>home.cern</code> et le chemin <code>/fr/science/computing/birth-web/</code>. Le navigateur dispose ainsi de l’adresse complète de la ressource.</p>
+
+        <h3>Q5 · Mettre le titre en vert</h3>
+        <p>Dans <code>Feuille_de_Style/style.css</code>, la règle <code>h1 { color: #176b45; }</code> applique la couleur verte. Le texte « Les jeux de Tom » est écrit dans la balise <code>&lt;h1&gt;</code> du fichier HTML.</p>
+
+        <h3>Q6 · Lire l’URL du relevé HTTP</h3>
+        <div class="url-demo"><span class="url-part protocol">http://</span><span class="url-part domain">127.0.0.1:8000</span><span class="url-part path">/recherche</span><span class="url-part">?jeu=tetris&amp;niveau=2</span><span class="url-part">#resultat</span></div>
+        <ul>
+          <li>Le schéma est <code>http</code>, l’hôte <code>127.0.0.1</code> désigne le poste utilisé et le port est <code>8000</code>.</li>
+          <li>Le chemin est <code>/recherche</code>. Les deux paramètres sont <code>jeu=tetris</code> et <code>niveau=2</code>.</li>
+          <li>Le navigateur utilise le fragment <code>resultat</code> pour atteindre le titre portant <code>id="resultat"</code>.</li>
+        </ul>
+
+        <h3>Q7 · Lire la requête et la réponse</h3>
+        <p>Le navigateur envoie une requête <code>GET</code> vers <code>/recherche?jeu=tetris&amp;niveau=2</code>. Il garde <code>#resultat</code> pour se déplacer dans la page. Le statut <code>200 OK</code> indique que la demande a réussi et <code>Content-Type: text/html; charset=utf-8</code> annonce un document HTML encodé en UTF-8.</p>
+        <p>HTTPS chiffre les échanges, protège leur intégrité et permet au navigateur de vérifier l’identité du serveur pour le nom demandé. Avant de saisir un mot de passe, vérifie le nom de domaine du service.</p>
+
+        <h3>Q8 · Distinguer le rôle du navigateur et celui du serveur</h3>
+        <p>Le bouton d’astuce exécute du JavaScript dans le navigateur. La ligne <code>message.hidden = !message.hidden</code> affiche ou masque un paragraphe déjà chargé. Une fois la page chargée, l’onglet Réseau ne montre aucune nouvelle requête liée à ce clic.</p>
+        <p>Dans le relevé du TP, le serveur Python construit le titre à partir de la valeur du paramètre <code>jeu</code>. On lit déjà « Résultat pour tetris » ou « Résultat pour pacman » dans le HTML de la réponse. L’inspecteur montre le <strong>DOM</strong>, la structure de la page construite par le navigateur, où tu peux retrouver la balise <code>&lt;h1 id="resultat"&gt;</code>.</p>
+        <p class="callout">Les liens de recherche de la démonstration en ligne ouvrent deux pages HTML préparées. Pour observer le titre généré par le serveur Python à partir des paramètres, utilise le relevé de la <a href="/documents/seconde-snt/tp1-le-web-notepad-plus-plus-eleve.pdf#page=4">fiche du TP</a> ou la démonstration locale.</p>
+      </div>
     </section>
 
     <section id="retenir" class="section">
